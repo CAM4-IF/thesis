@@ -1,8 +1,8 @@
 begin
-fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*JJA*.nc")
-fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*JJA*.nc3")
+fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc4")
+fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc1")
 datalog=new(dimsizes(fils),float) ; create list to store output
-plotfile="omega_JJA" ;;;PDF file name!
+plotfile="omega_ANN" ;;;PDF file name!
 wks = gsn_open_wks("pdf", plotfile) ;; open a workstation file!
 nummods=dimsizes(fils1) ;;number of models! 
 plot=new(nummods, graphic)    ;;;Create a panel plot with panels = number of models!
@@ -14,8 +14,8 @@ do while(n.le.dimsizes(fils)-1)
    h=addfile(filen, "r")
    hyam = h->hyam 
    hybm = h->hybm
-   cmd="cdo -mermean -sellonlatbox,0,360,0,10 -selname,OMEGA,PS " + filen + " tmp.nc"
-   cmd1="cdo -mermean -sellonlatbox,0,360,0,10 -selname,OMEGA,PS " + filen1 + " tmp1.nc"
+   cmd="cdo -mermean -sellonlatbox,0,360,-10,10 -selname,OMEGA,PS " + filen + " tmp.nc"
+   cmd1="cdo -mermean -sellonlatbox,0,360,-10,10 -selname,OMEGA,PS " + filen1 + " tmp1.nc"
    areamean=systemfunc(cmd)
    areamean1=systemfunc(cmd1)
    f    = addfile("tmp.nc", "r")
@@ -169,7 +169,7 @@ end do
  resP@cnInfoLabelOn       = False
  resP@lbOrientation =   "horizontal"          ; 
  resP@lbLabelFontHeightF    = 0.004
- resP@txString = "CAM4/CAM-IF JJA 0-10N omega response (shaded) and control climatology (contours)"
+ resP@txString = "CAM4/CAM-IF ANN 0-10N omega response (shaded) and control climatology (contours)"
  resP@lbTitleString    = "K/s"
  resP@lbTitleFontHeightF=.007
  resP@lbTitlePosition ="Bottom"

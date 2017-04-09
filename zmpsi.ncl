@@ -8,10 +8,10 @@ lev_p&lev_p     =  lev_p                   ; create coordinate variable
 lev_p@long_name = "pressure"               ; attach some attributes
 lev_p@units     = "hPa"
 lev_p@positive  = "down"
-fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*DJF*.nc2")
-fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*DJF*.nc1")
+fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc4")
+fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc1")
 datalog=new((/dimsizes(fils),3/),float) ; create list to store output
-plotfile="v4_DJF_mpsi" ;;;PDF file name!
+plotfile="v4_ANN_mpsi" ;;;PDF file name!
 wks = gsn_open_wks("pdf", plotfile) ;; open a workstation file!
 nummods=dimsizes(fils) ;;number of models! 
 plot=new(nummods, graphic)    ;;;Create a panel plot with panels = number of models!
@@ -100,8 +100,8 @@ do while(n.le.dimsizes(fils)-1)
   res@cnFillOpacityF=0.7
   
 
-  mpsimax=max(zmpsical)
-  mpsimaxresponse=((max(zmpsical1)-max(zmpsical))/max(zmpsical))*100
+  mpsimax=min(zmpsical)
+  mpsimaxresponse=((min(zmpsical1)-min(zmpsical))/min(zmpsical))*100
   ;;;;;;;;;;;;;;;;;;;;;;SET THE CONTOUR PLOT RESOURCES!!!!;;;;;;;;;;;;;;;;;;;
   cres                      = True                 ; plot mods desired
   cres@tmYRMode = "Automatic"
@@ -125,7 +125,9 @@ do while(n.le.dimsizes(fils)-1)
   cres@gsnContourNegLineDashPattern =1  
   cres@gsnContourZeroLineThicknessF = 2
   cres@gsnRightString    = f1@case
+  cres@gsnRightStringFontHeightF=0.018
   cres@gsnLeftString  = "Climo max:" + mpsimax + "~C~response (%): " + mpsimaxresponse
+  cres@gsnLeftStringFontHeightF=0.015
  
   cres1=cres
   cres1@cnLineColor="red"
@@ -152,8 +154,8 @@ print(fils1)
  resP@cnInfoLabelOn       = False
  resP@lbOrientation =   "horizontal"          ; 
  resP@lbLabelFontHeightF    = 0.004
- resP@txString = "CAM4/CAM-IF DJF mass streamfunction response with control run climatology (1999-2002)"
- resP@lbTitleString    = "10~S~9~N~ kg s~S~-1~N~ K~S~-1~N~"
+ resP@txString = "CAM4/CAM-IF ANN mass streamfunction response with control run climatology"
+ resP@lbTitleString    = "10~S~9~N~ kg s~S~-1~N~"
  resP@lbTitleFontHeightF=.007
  resP@lbTitlePosition ="Bottom"
  resP@lbLabelAutoStride= False
@@ -163,5 +165,5 @@ print(fils1)
  resP@lbLabelStride=1
  gsn_panel(wks,plot,(/5,5/),resP)  
  delete(wks) 
-crop=systemfunc("/usr/bin/pdfcrop v4_DJF_mpsi.pdf")  ;;remove the excessive white space in the PDF! (generates a $filename$-crop.pdf file)
+crop=systemfunc("/usr/bin/pdfcrop ANN_mpsi.pdf")  ;;remove the excessive white space in the PDF! (generates a $filename$-crop.pdf file)
 end

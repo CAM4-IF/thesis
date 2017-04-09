@@ -1,9 +1,9 @@
 begin
 
-fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*DJF*.nc1")
-fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*DJF*.nc2")
+fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*JJA*.nc")
+fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*JJA*.nc3")
 datalog=new(dimsizes(fils),double) ; create list to store output
-plotfile="v4_spdotomegbar" ;;;PDF file name!
+plotfile="sp_JJA" ;;;PDF file name!
 wks = gsn_open_wks("pdf", plotfile) ;; open a workstation file!
 nummods=dimsizes(fils1) ;;number of models! 
 plot=new(nummods, graphic)    ;;;Create a panel plot with panels = number of models!
@@ -12,14 +12,14 @@ n=0
 do while(n.le.dimsizes(fils)-1)
   f=addfile(fils(n),"r") ; add file
   f1=addfile(fils1(n),"r") ; add file
-  u     = f->T(:,:,{-15:5},:)
+  u     = f->T(:,:,{0:10},:)
   u@units="K"
-  omeg= f->OMEGA(:,:,{-15:5},:)
-  q     = f->Q(:,:,{-15:5},:)
-  u1     = f1->T(:,:,{-15:5},:)
+  omeg= f->OMEGA(:,:,{0:10},:)
+  q     = f->Q(:,:,{0:10},:)
+  u1     = f1->T(:,:,{0:10},:)
   u1@units="K"
-  omeg1=f1->OMEGA(:,:,{-15:5},:)
-  q1     = f1->Q(:,:,{-15:5},:)
+  omeg1=f1->OMEGA(:,:,{0:10},:)
+  q1     = f1->Q(:,:,{0:10},:)
   q    = q/(1-q) ;
   q@long_name = "mixing ratio"
   q1    = q1/(1-q1) ;
@@ -28,7 +28,7 @@ do while(n.le.dimsizes(fils)-1)
   
   hyam = f->hyam ; read from a file the mid-layer coef
   hybm = f->hybm ; read from a file
-  psfc = f->PS(:,{-15:5},:)   ; surface pressure [Pa]
+  psfc = f->PS(:,{0:10},:)   ; surface pressure [Pa]
   P0   = 100000. ; since ps is in Pa or [ f->P0]
   pm  = pres_hybrid_ccm(psfc,P0,hyam,hybm)
   
@@ -36,7 +36,7 @@ do while(n.le.dimsizes(fils)-1)
   
   hyam1 = f1->hyam ; read from a file the mid-layer coef
   hybm1 = f1->hybm ; read from a file
-  psfc1 = f1->PS(:,{-15:5},:)   ; surface pressure [Pa]
+  psfc1 = f1->PS(:,{0:10},:)   ; surface pressure [Pa]
   P01   = 100000. ; since ps is in Pa or [ f->P0]
   pm1  = pres_hybrid_ccm(psfc1,P01,hyam1,hybm1)
   
@@ -46,6 +46,28 @@ do while(n.le.dimsizes(fils)-1)
   
   s1=static_stability(pm, u, 1, 0)
   s2=static_stability(pm1,u1, 1, 0)
+  
+  s1mean=dim_avg_n(s1(:,:,:,:),2)
+  s1mean!1="lev"
+  s1mean&lev=u&lev
+  s1mean!2="lon"
+  s1mean&lon=u&lon
+  s1mean&lev@units="hPa"
+  
+  s2mean=dim_avg_n(s2(:,:,:,:),2)
+  s2mean!1="lev"
+  s2mean&lev=u&lev
+  s2mean!2="lon"
+  s2mean&lon=u&lon
+  s2mean&lev@units="hPa"
+  
+  spdiff=s2(0,:,:,:)-s1(0,:,:,:)
+  spdiff1=dim_avg_n(spdiff,1)
+  spdiff1!0="lev"
+  spdiff1&lev=u&lev
+  spdiff1!1="lon"
+  spdiff1&lon=u&lon
+  spdiff1&lev@units="hPa"
   
   spo=s1*omeg
   spo1=s2*omeg1
@@ -76,7 +98,7 @@ do while(n.le.dimsizes(fils)-1)
   sdotomegbaravg&lev@units="hPa"
   
   
-  opt=(/1,8000,92500/)
+  opt=(/1,10000,92500/)
  wva5 = wgt_vert_avg_beta(pm(0,:,:,:),sdotomegbar, psfc(0,:,:), 1, opt)
  wva5avg=avg(wva5)
  
@@ -89,7 +111,7 @@ do while(n.le.dimsizes(fils)-1)
    szmean&lon=u&lon
    szmean&lev@units="hPa"
    
- opt=(/1,8000,92500/)
+ opt=(/1,10000,92500/)
  wva = wgt_vert_avg_beta(pm, spo, psfc, 1, opt)
  wva1 = wgt_vert_avg_beta(pm, spo1, psfc1, 1, opt)
  wvaavg=avg(wva)
@@ -102,9 +124,9 @@ do while(n.le.dimsizes(fils)-1)
  
  filen=tostring(fils(n))
  filen1=tostring(fils1(n))
- cmd="cdo -fldmean -sellonlatbox,0,360,-15,5 -selname,T,Q,PS,OMEGA " + filen + " tmp.nc"
+ cmd="cdo -fldmean -sellonlatbox,120,180,0,10 -selname,T,Q,PS,OMEGA " + filen + " tmp.nc"
  areamean=systemfunc(cmd)
- cmd1="cdo -fldmean -sellonlatbox,0,360,-15,5 -selname,T,Q,PS,OMEGA " + filen1 + " tmp1.nc"
+ cmd1="cdo -fldmean -sellonlatbox,120,180,0,10 -selname,T,Q,PS,OMEGA " + filen1 + " tmp1.nc"
  areamean1=systemfunc(cmd1)
  f2=addfile("tmp.nc","r") ; add file
  T=f2->T(0,:,:,:) ; extract T data from file
@@ -136,14 +158,15 @@ do while(n.le.dimsizes(fils)-1)
  spomeg=s3*omega
  spomeg1=s4*omega1
  
- 
- print(pm2)
- opt=(/1,8000,92500/)
- wva2 = wgt_vert_avg_beta(pm2, spomeg, PS, 1, opt)
+ print(PS)
+
+ opt=(/1,10000,92500/)
+ print(s3)
+ wva2 = wgt_vert_avg_beta(pm2(:,0,0), s3(:,:,:), PS(:,:), 1, opt)
  fint=avg(wva2)
  
- opt=(/1,8000,92500/)
- wva3 = wgt_vert_avg_beta(pm3, spomeg1, PS1, 1, opt)
+ opt=(/1,10000,92500/)
+ wva3 = wgt_vert_avg_beta(pm3(:,0,0), s4(:,:,:), PS1(:,:), 1, opt)
  fint1=avg(wva3)
  
  print(fint)
@@ -160,8 +183,8 @@ do while(n.le.dimsizes(fils)-1)
   res@tmYRMode = "Automatic"
 
   res@cnLevelSelectionMode = "ExplicitLevels"       ; manually select levels
-  res@cnLevels = (/-30,-20,-15,-10,-8,-6,-4,-3,-2,-1,0,1,2,3,4,6,8,10,15,20,30/)*2e-7
-  res@cnFillColors = (/2,6,12,18,24,40,60,90,106,116,128,130,142,148,156,168,180,208,218,230,250,255/) 
+  res@cnLevels = (/-30,-20,-15,-10,-8,-6,-4,-3,-2,-1,0,1,2,3,4,6,8,10,15,20,30/)*4e-5
+  res@cnFillColors = (/2,6,12,18,24,40,60,90,106,116,0,0,142,148,156,168,180,208,218,230,250,255/) 
   res@cnLinesOn       = False                 ; turn on line labels
   res@cnLineLabelsOn       = False                 ; turn on line labels
   res@cnFillOn             = True                 ; turn on color fill
@@ -174,7 +197,7 @@ do while(n.le.dimsizes(fils)-1)
   res@tiYAxisSide = "Left"	
   res@tiYAxisString    = "Pressure (hPa)"
   res@trYMaxF = 1000.0
-  res@trYMinF = 50.0      ; troposphere only
+  res@trYMinF = 70.0      ; troposphere only
   res@tiXAxisFontHeightF =0.012
   res@tmYROn = False
   res@tmYRLabelsOn = False 
@@ -185,7 +208,7 @@ do while(n.le.dimsizes(fils)-1)
  cres                      = True                 ; plot mods desired
  cres@tmYRMode = "Automatic"
  cres@cnLevelSelectionMode = "ExplicitLevels"
- cres@cnLevels = (/-260,-240,-220,-200,-180,160,-140,-120,-100,-80,-60,-40,-20,0,20,40,60,80,100,120,140,160,180,200,220,240,260/)*5e-7
+ cres@cnLevels = (/-260,-240,-220,-200,-180,160,-140,-120,-100,-80,-60,-40,-20,0,20,40,60,80,100,120,140,160,180,200,220,240,260/)*5e-6
  cres@cnLineLabelsOn       = True                 ; turn on line labels
  cres@cnFillOn             = False                 ; turn on color fill
  cres@gsnDraw = False
@@ -203,22 +226,24 @@ do while(n.le.dimsizes(fils)-1)
  cres@gsnLeftString =""
  cres@gsnContourZeroLineThicknessF = 2
  cres@gsnRightString    = f@case
- cres@trYMinF            = 50.   ; Limits for Y axis.  The limits
+ cres@gsnRightStringFontHeightF= 0.018
+ 
+ cres@trYMinF            = 100.   ; Limits for Y axis.  The limits
  cres@trYMaxF            = 1000.
  cres@cnLineLabelDensityF      = 3.0
  cres@cnLineLabelPlacementMode = "Constant"
  cres@cnLineLabelInterval=1
- cres@gsnLeftString  = "925-80 hPa mean:" + decimalPlaces(wva5avg,8,True) 
+ cres@gsnLeftString  = "925-100 120E-180E hPa mean:" + decimalPlaces(fint,8,True) + "~C~response (%): " + percentresponse
  ;+ "~C~% response:" + decimalPlaces(response,4,True)
  ;cres@gsnLeftString  = tediff
- cres@gsnLeftStringFontHeightF=0.017
+ cres@gsnLeftStringFontHeightF=0.01
 
  cres1=cres
  cres1@cnLineColor="red"
  cres1@gsnContourPosLineDashPattern=1
- plot(n)  = gsn_csm_pres_hgt(wks, sdotomegbaravg(:,:), res)  
+ plot(n)  = gsn_csm_pres_hgt(wks, spdiff1(:,:), res)  
  ;plot(n)  = gsn_csm_pres_hgt(wks, mpsiscal(::-1,:), cres) ;;make the plot! for model "n"
- plot2  = gsn_csm_pres_hgt(wks, szmean(:,:), cres)
+ plot2  = gsn_csm_pres_hgt(wks, s1mean(0,:,:), cres)
  overlay(plot(n),plot2)
  
   n=n+1
@@ -237,7 +262,7 @@ resP                            = True
  resP@cnInfoLabelOn       = False
  resP@lbOrientation =   "horizontal"          ; 
  resP@lbLabelFontHeightF    = 0.004
- resP@txString = "CAM4/CAM-IF DJF (1999-2002) 15S-5N AMIP4K sp_dot*omega_bar (shaded) and sp*omega climatology (contours)"
+ resP@txString = "CAM4/CAM-IF JJA 0S-10N AMIP4K sp response (shaded) and climatology (contours)"
  resP@lbTitleString    = "K/Pa"
  resP@lbTitleFontHeightF=.007
  resP@lbTitlePosition ="Bottom"

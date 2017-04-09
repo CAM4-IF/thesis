@@ -70,12 +70,12 @@ end do
 
 f=addfile("../AMIP/ta_ANN_AMIPmean.nc","r")
 f1=addfile("../AMIP_4K_control_ANN_climo1.nc","r")
-f2  = addfile("testforian_ANN.nc","r")
+f2  = addfile("CAM-IFv5_AMIP_ANN_climo.nc","r")
 f7=addfile("RAOBS.nc","r")
 cmd="cdo -fldmean -sellonlatbox,0,360,-10,10 -selname,ta ../AMIP/ta_ANN_AMIPmean.nc" + " tmp.nc"
 cmd1="cdo -fldmean -sellonlatbox,0,360,-10,10 -selname,T,PS ../AMIP_4K_control_ANN_climo1.nc" + " tmp1.nc"
-cmd2="cdo -fldmean -sellonlatbox,0,360,-10,10 -selname,T,PS testforian_ANN.nc" + " tmp2.nc"
-cmd3="cdo -fldmean -sellonlatbox,0,360,-10,10 -selname,T,PS ERAI_ANN_climo.nc" + " tmp3.nc"
+cmd2="cdo -fldmean -sellonlatbox,0,360,-10,10 -selname,T,PS CAM-IFv5_AMIP_ANN_climo.nc" + " tmp2.nc"
+cmd3="cdo -fldmean -sellonlatbox,0,360,-10,10 -selname,T MERGED_T_trop_ANN.nc" + " tmp3.nc"
 
 areamean=systemfunc(cmd)
 areamean1=systemfunc(cmd1)
@@ -92,7 +92,7 @@ T5=f5->T(0,:,:,:)
 T6=f6->T(0,:,:,:)
 ps3=f4->PS(0,:,:)
 ps4=f5->PS(0,:,:)
-ps5=f6->PS(0,:,:)
+;ps5=f6->PS(0,:,:)
 
 test=f7->T(:,:,:)
 print(test)
@@ -170,7 +170,7 @@ dZ=((287*meanT/9.81)*log(PmeanANN(i)/PmeanANN(i+1)))/1000
 dT=(u5(i+1,0,0)-u5(i,0,0))
 dTdZ6(i)=dT/dZ
 end do
-
+delete(dZ)
 
 dTdZ7=new(dimsizes(elevs),double)
 do i=0,dimsizes(elevs)-2
@@ -183,6 +183,10 @@ end do
 
 
 
+rmse=decimalPlaces(sqrt(avg((dTdZ2(1:43)-dTdZ(1:43))^2)),3,True)
+rmse1=decimalPlaces(sqrt(avg((dTdZ1(1:43)-dTdZ(1:43))^2)),3,True)
+rmse2=decimalPlaces(sqrt(avg((dTdZ3(1:43)-dTdZ(1:43))^2)),3,True)
+
 ;************************************************
 ; plotting parameters
 ;************************************************
@@ -193,33 +197,40 @@ end do
 
  res@xyLineColor     = "blue"
  res@trYReverse        = True                       ; reverse Y-axis
- res@tiMainString    = "KOR"  + ": (" + lon + "E, " + lat + "N) ANN mean"
+ res@tiMainString    =  "ANN mean dT/dz (K/km)"
  res@tiMainFontHeightF=0.018
  res@xyLineThicknesses = 4.0
  res@tiXAxisString=""
- res@tiXAxisFontHeightF=0.018
+ res@tiXAxisFontHeightF=0.015
  res@trYMaxF=1000
  res@trYMinF=100
  res@trXMaxF=0
  res@trXMinF=-9
  res@tiYAxisString="Pressure (hPa)"
- res@tiYAxisFontHeightF=0.018
+ res@tiYAxisFontHeightF=0.015
  res@xyYStyle = "Log"
  res@tmYLMode = "Explicit"
  res@tmYLValues        =(/100,200,300,400,500,600,700,850,1000/)
  res@tmYLLabels=(/100,200,300,400,500,600,700,850,1000/)
- res@tiXAxisString="dT/dz: CAM4-IF: red, CAM4: Blue, CMIP5 AMIP mean: orange, OBS: black"
+ res@tiXAxisString="CAM4-IF: red, CAM4: Blue, CMIP5 AMIP mean: orange, OBS: black"
 
  res@tiXAxisStringFontHeightF=0.008
+ res@gsnRightString  ="CAM4 RMSE: " + rmse + " K/km" + "~C~AMIP mean RMSE: " + rmse1 + " K/km" + "~C~CAM4-IF RMSE: " + rmse2 + " K/km"
+ res@gsnLeftString  ="KOR"  + ": (" + lon + "E, " + lat + "N)"
+ res@gsnLeftStringFontHeightF=0.018
  res@gsnDraw=False
  res@gsnFrame=False
  res@xyLineColor    = "black"
+ res@xyLineThicknesses = 8.0
  plot               = gsn_csm_xy (wks,dTdZ(0:45),PmeanANN(0:45),res) 
  res@xyLineColor    = "orange"
+ res@xyLineThicknesses = 4.0
  plot1              = gsn_csm_xy (wks,dTdZ1(0:45),PmeanANN(0:45),res)
  res@xyLineColor    = "blue"
+ res@xyLineThicknesses = 4.0
  plot2= gsn_csm_xy (wks,dTdZ2(0:45),PmeanANN(0:45),res)
  res@xyLineColor    = "red"
+ res@xyLineThicknesses = 4.0
  plot3= gsn_csm_xy (wks,dTdZ3(0:45),PmeanANN(0:45),res)
  
  
@@ -238,11 +249,11 @@ res1                   = True                       ; plot mods desired
 
  res1@xyLineColor     = "blue"
  res1@trYReverse        = True                       ; reverse Y-axis
- res1@tiMainString    = "10S-10N tropical mean lapse rate"
+ res1@tiMainString    = "10S-10N tropical mean dT/dz (K/km)"
  res1@tiMainFontHeightF=0.018
  res1@xyLineThicknesses = 4.0
  res1@tiXAxisString=""
- res1@tiXAxisFontHeightF=0.018
+ res1@tiXAxisFontHeightF=0.015
  res1@trYMaxF=1000
  res1@trYMinF=100
  res1@trXMaxF=0
@@ -253,20 +264,23 @@ res1                   = True                       ; plot mods desired
  res1@tmYLMode = "Explicit"
  res1@tmYLValues        =(/100,200,300,400,500,600,700,850,1000/)
  res1@tmYLLabels=(/100,200,300,400,500,600,700,850,1000/)
- res1@tiXAxisString="dT/dz: CAM4-IF: red, CAM4: Blue, CMIP5 AMIP mean: orange, ERAI: black"
+ res1@tiXAxisString="CAM4-IF: red, CAM4: Blue, CMIP5 AMIP mean: orange, ERAI/MERRA: black"
 
  res1@tiXAxisStringFontHeightF=0.008
  res1@gsnDraw=False
  res1@gsnFrame=False
  res1@xyLineColor    = "black"
+ 
  ;plot               = gsn_csm_xy (wks,dTdZ(0:45),PmeanANN(0:45),res1) 
  res1@xyLineColor    = "orange"
+ res1@xyLineThicknesses = 4.0
  plot1              = gsn_csm_xy (wks,dTdZ4(0:45),PmeanANN(0:45),res1)
  res1@xyLineColor    = "blue"
  plot2= gsn_csm_xy (wks,dTdZ5(0:45),PmeanANN(0:45),res1)
  res1@xyLineColor    = "red"
  plot3= gsn_csm_xy (wks,dTdZ6(0:45),PmeanANN(0:45),res1)
  res1@xyLineColor    = "black"
+ res1@xyLineThicknesses = 8.0
  plot4= gsn_csm_xy (wks,dTdZ7,elevs,res1)
  
  
@@ -277,9 +291,7 @@ res1                   = True                       ; plot mods desired
 draw(plot1)               
 frame(wks) 
 
-
-;crop=systemfunc("/usr/bin/pdfcrop dtdz_koror.pdf")
-
-;crop=systemfunc("/usr/bin/pdfcrop dtdz_tropmean.png")
+crop=systemfunc("mogrify -trim dtdz_koror.png")
+crop=systemfunc("mogrify -trim dtdz_tropmean.png")
 cleanup=systemfunc("rm tmp*.nc")
 end

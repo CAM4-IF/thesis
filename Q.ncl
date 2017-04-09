@@ -1,6 +1,6 @@
 begin
-fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*JJA*.nc")
-fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*JJA*.nc3")
+fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc4")
+fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc1")
 datalog=new(dimsizes(fils),float) ; create list to store output
 plotfile="all_radQ_JJA_panel" ;;;PDF file name!
 wks = gsn_open_wks("pdf", plotfile) ;; open a workstation file!
@@ -15,9 +15,9 @@ do while(n.le.dimsizes(fils)-1)
    g=addfile("/run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/CAM-IFv4_F2000_4K_ANN_climo.nc1","r")
    hyam = g->hyam 
    hybm = g->hybm
-   cmd="cdo -mermean -sellonlatbox,0,360,0,10 -selname,DTCOND,QRL,QRS,DTV,PS " + filen + " tmp.nc"
-   cmd1="cdo -mermean -sellonlatbox,0,360,0,10 -selname,DTCOND,QRL,QRS,DTV,PS " + filen1 + " tmp1.nc"
-   cmd2="cdo -mermean -sellonlatbox,0,360,0,10 -selname,PS " + filen2 + " tmp2.nc"
+   cmd="cdo -mermean -sellonlatbox,0,360,-15,15 -selname,DTCOND,QRL,QRS,DTV,PS " + filen + " tmp.nc"
+   cmd1="cdo -mermean -sellonlatbox,0,360,-15,15 -selname,DTCOND,QRL,QRS,DTV,PS " + filen1 + " tmp1.nc"
+   cmd2="cdo -mermean -sellonlatbox,0,360,-15,15 -selname,PS " + filen2 + " tmp2.nc"
    areamean=systemfunc(cmd)
    areamean1=systemfunc(cmd1)
    areamean2=systemfunc(cmd2)

@@ -1,6 +1,6 @@
 begin
-fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*DJF*.nc")
-plotfile="DJF_omega500"
+fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc4")
+plotfile="ANN_omega500"
 wks = gsn_open_wks("pdf", plotfile)                      ;Open a workstation
 nummods=dimsizes(fils) ;;number of models! 
 plot=new(nummods+2, graphic)    ;;;Create a panel plot with panels = number of models!
@@ -8,7 +8,7 @@ n=0
 do while(n.le.dimsizes(fils)-1)
 filen=tostring(fils(n))
 pr1= addfile(filen, "r")
-MERRA=addfile("MERRA_DJF_omega_climo_remap.nc", "r")
+MERRA=addfile("MERRA_ANN_omega_climo_remap.nc", "r")
 land=pr1->LANDFRAC(0,{-30:30},:)
 ;pr2= addfile("CAM/files/", "r")
 ;pr3=addfile("CAM/files/","r")
@@ -50,27 +50,27 @@ land_only!1="lon"
 land_only&lon=pr1->lon
 
 
-MERRAmax=max(pr2({-15:5},:))
-MERRAmean=avg(pr2({-15:5},:))
-MERRAvar=variance(pr2({-15:5},:))
+MERRAmax=max(pr2({-15:15},:))
+MERRAmean=avg(pr2({-15:15},:))
+MERRAvar=variance(pr2({-15:15},:))
 
-rmse=(wgt_arearmse(p1({-15:5},:),pr2({-15:5},:),1.0,1.0,0))
+rmse=(wgt_arearmse(p1({-15:15},:),pr2({-15:15},:),1.0,1.0,0))
 print(rmse)
-pcor=pattern_cor(p1({-15:5},:),pr2({-15:5},:),1.0,0)
+pcor=pattern_cor(p1({-15:15},:),pr2({-15:15},:),1.0,0)
 
-rmseocean=(wgt_arearmse(ocean_only({-15:5},:),pr2({-15:5},:),1.0,1.0,0))
-pcorocean=pattern_cor(ocean_only({-15:5},:),pr2({-15:5},:),1.0,0)
+rmseocean=(wgt_arearmse(ocean_only({-15:15},:),pr2({-15:15},:),1.0,1.0,0))
+pcorocean=pattern_cor(ocean_only({-15:15},:),pr2({-15:15},:),1.0,0)
 
-rmseland=(wgt_arearmse(land_only({-15:5},:),pr2({-15:5},:),1.0,1.0,0))
-pcorland=pattern_cor(land_only({-15:5},:),pr2({-15:5},:),1.0,0)
+rmseland=(wgt_arearmse(land_only({-15:15},:),pr2({-15:15},:),1.0,1.0,0))
+pcorland=pattern_cor(land_only({-15:15},:),pr2({-15:15},:),1.0,0)
 
 print(rmseocean)
 print(pcorocean)
 
 
-meanpr=avg(p1({-15:5},:))
-maxpr=max(p1({-15:5},:))
-variancepr=variance(p1({-15:5},:))
+meanpr=avg(p1({-15:15},:))
+maxpr=max(p1({-15:15},:))
+variancepr=variance(p1({-15:15},:))
 
 
 res3                           = True
@@ -159,7 +159,7 @@ res4@lbTitlePosition ="Top"
 res4@lbTitleFontHeightF=.004 
 res4@txFontHeightF    = 0.01
 ;res4@pmLabelBarWidthF=0.3
-res4@txString = "DJF"
+res4@txString = "ANN"
 ;res4@pmLabelBarOrthogonalPosF=0.95
 
 
@@ -167,5 +167,5 @@ gsn_panel(wks,plot,(/4,2/),res4)
 ;draw(wks)
 ;frame(wks)
 delete(wks)
-crop=systemfunc("/usr/bin/pdfcrop DJF_omega500.pdf")
+crop=systemfunc("/usr/bin/pdfcrop ANN_omega500.pdf")
 end

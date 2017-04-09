@@ -1,12 +1,12 @@
 load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/contributed.ncl"
 begin
 
-fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc2")
-fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc2")
+fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc4")
+fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc1")
 datalog=new(dimsizes(fils),double) ; create list to store output
-plotfile="GMS_CAM4_DJF" ;;;PDF file name!
+plotfile="GMS_CAM4_ANN" ;;;PDF file name!
 wks = gsn_open_wks("pdf", plotfile) ;; open a workstation file!
-nummods=dimsizes(fils1) ;;number of models! 
+nummods=dimsizes(fils1+1) ;;number of models! 
 plot=new(nummods, graphic)    ;;;Create a panel plot with panels = number of models!
 ;;;create a giant loop over all models;;;
 n=0
@@ -39,6 +39,7 @@ do while(n.le.dimsizes(fils)-1)
   hyam = f1->hyam ; read from a file the mid-layer coef
   hybm = f1->hybm ; read from a file
   psfc = f->PS(:,:,:)   ; surface pressure [Pa]
+  psfc1=f->PS(:,:,:)
   P0   = 100000. ; since ps is in Pa or [ f->P0]
   pm  = pres_hybrid_ccm(psfc,P0,hyam,hybm)/100.
   pm!1="lev"
@@ -51,7 +52,7 @@ do while(n.le.dimsizes(fils)-1)
   
   hyam1 = f1->hyam ; read from a file the mid-layer coef
   hybm1 = f1->hybm ; read from a file
-  psfc1 = f1->PS(:,{-10:10},:)   ; surface pressure [Pa]
+ ; psfc1 = f1->PS(:,{-10:10},:)   ; surface pressure [Pa]
   P01   = 100000. ; since ps is in Pa or [ f->P0]
   pm1  = pres_hybrid_ccm(psfc1,P01,hyam1,hybm1)/1000.
   
@@ -66,6 +67,8 @@ do while(n.le.dimsizes(fils)-1)
 ; convert to pressure levels
  vp   = vinth2p(V(0,:,:,:),hyam,hybm,lev_p,psfc(0,:,:),2,1000.,1,False)
  UU=vinth2p(U(0,:,:,:),hyam,hybm,lev_p,psfc(0,:,:),2,1000.,1,False)
+ vp1   = vinth2p(V1(0,:,:,:),hyam,hybm,lev_p,psfc1(0,:,:),2,1000.,1,False)
+ UU1=vinth2p(U1(0,:,:,:),hyam,hybm,lev_p,psfc1(0,:,:),2,1000.,1,False)
  up=vinth2p(u(0,:,:,:),hyam,hybm,lev_p,psfc(0,:,:),2,1000.,1,False)
  ZZ=vinth2p(Z(0,:,:,:),hyam,hybm,lev_p,psfc(0,:,:),2,1000.,1,False)
  qq=vinth2p(q(0,:,:,:),hyam,hybm,lev_p,psfc(0,:,:),2,1000.,1,False)
@@ -79,24 +82,36 @@ mlon=dimsizes(up&lat)
 uvmsg=1e+36
 vpot=new((/96,144/),float,uvmsg)
 sf=new((/96,144/),float,uvmsg)
-
-;remapv=f2gsh(vp,(/94,144/),0)
-;remapu=f2gsh(UU,(/94,144/),0)
-
+vpot1=new((/96,144/),float,uvmsg)
+sf1=new((/96,144/),float,uvmsg)
 
 uv2sfvpf(UU({200},:,:),vp({200},:,:),sf,vpot)
+uv2sfvpf(UU1({200},:,:),vp1({200},:,:),sf,vpot1)
 
 chistar=dim_rmvmean_n_Wrap(vpot,0)
+chistar1=dim_rmvmean_n_Wrap(vpot1,0)
 
 chistar!0="lat"
 chistar&lat=u&lat
 chistar!1="lon"
 chistar&lon=u&lon
 
+chistar1!0="lat"
+chistar1&lat=u&lat
+chistar1!1="lon"
+chistar1&lon=u&lon
+chidiff=chistar1-chistar
+
+chidiff!0="lat"
+chidiff&lat=u&lat
+chidiff!1="lon"
+chidiff&lon=u&lon
 
 chistarmin=min(chistar({-20:20},:))
+chistarmin1=min(chistar1({-20:20},:))
 print(chistarmin)
-  
+print(chistarmin1)
+response=100*((chistarmin1-chistarmin)/(chistarmin))
   
 te=new((/dimsizes(lev_p),dimsizes(u&lat),dimsizes(u&lon)/), "double")
 dTdP=new((/dimsizes(lev_p),dimsizes(u&lat),dimsizes(u&lon)/), "double")
@@ -275,20 +290,19 @@ opt=(/0,90,1000/)
   res@mpMinLatF = -35
   res@mpCenterLonF         = -200
   res@tmXTOn="False"
-  res@gsnZonalMean    = True
-  res@gsnZonalMeanXMinF=-15e-6
-  res@gsnZonalMeanXMaxF=15e-6
   res@gsnZonalMeanYRefLine=0
   res@gsnRightString    = f@case
-  res@lbTitleString    = "K/s"
+  res@gsnLeftString    = ""
   res@lbTitleFontHeightF=.007   
-  ;res@gsnLeftString  = "10S-0N/90E-210E mean: " + tropmean + "~C~" + pmean
+  res@gsnRightString    = f@case
+  ;res@gsnLeftString  = "chi* min: " + chistarmin + "chi* response (%): " + response + "~C~GMS: " + GMS2
+  res@gsnLeftString  = "chi* min: " + chistarmin
   
     ;;;;;;;;;;;;;;;;;;;;;;SET THE CONTOUR PLOT RESOURCES!!!!;;;;;;;;;;;;;;;;;;;
  cres                      = True                 ; plot mods desired
  cres@tmYRMode = "Automatic"
  cres@cnLevelSelectionMode = "ExplicitLevels"
- cres@cnLevels = (/-3.6,-3.4,-3.2,-3.,-2.8,-2.6,-2.4,-2.2,-2.,-1.8,-1.6,-1.4,-1.2,-1.,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1.,1.2,1.4,1.6,1.8,2,2.2,2.4,2.6,2.8,3,3.2,3.4,3.6/)*2e-5
+ cres@cnLevels = (/-3.6,-3.4,-3.2,-3.,-2.8,-2.6,-2.4,-2.2,-2.,-1.8,-1.6,-1.4,-1.2,-1.,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1.,1.2,1.4,1.6,1.8,2,2.2,2.4,2.6,2.8,3,3.2,3.4,3.6/)*5e6
  ;cres@cnLevels=(/-100,-50,-25,-10,0,10,25,50,100/)
  cres@cnLineLabelsOn       = True                 ; turn on line labels
  cres@cnFillOn             = False                 ; turn on color fill
@@ -296,7 +310,7 @@ opt=(/0,90,1000/)
  cres@gsnFrame = False
  cres@cnInfoLabelOn = False                ; turn off contour info label
  cres@cnLineThicknessF =0.5
- cres@gsnRightString    = f@case
+ cres@gsnRightString    = ""
  cres@gsnRightStringFontHeightF    = 0.05
  cres@cnLevelSpacingF=200.0
  cres@gsnContourZeroLineThicknessF  = 2.0
@@ -308,10 +322,13 @@ opt=(/0,90,1000/)
  ;cres@gsnLeftString  = "10S-10N response pattern correlation: " + pcor + "~C~10S-10N tropical mean Q:" + qstarmean
  ;cres@gsnLeftString  = "10S-10N response pattern correlation: " + pcor
  cres@gsnLeftStringFontHeightF=0.025
+ cres@gsnLeftString    = ""
  cres@tmXTOn="False"
- cres@gsnZonalMean    = True
+; cres@gsnZonalMean    = True
  
- plot(n)  = gsn_csm_contour_map(wks, chistar, res)  
+ plot(n)  = gsn_csm_contour_map(wks, chistar, res) 
+ ;plot1=gsn_csm_contour(wks,chistar,cres)
+ ;overlay(plot(n),plot1)
   n=n+1
   delete(u)
  ; delete(dp)
@@ -322,15 +339,44 @@ opt=(/0,90,1000/)
   delete(wva)
   delete(mflux)
   delete(chistar)
+  delete(chistar1)
+  delete(chidiff)
   
 end do
+
+
+
+f2=addfile("MERRA_ANN_UV200_climo_remap.nc","r")
+
+U2=f1->U
+V2=f1->V
+
+uvmsg=1e+36
+vpot=new((/96,144/),float,uvmsg)
+sf=new((/96,144/),float,uvmsg)
+
+uv2sfvpf(U2(0,{200},:,:),V2(0,{200},:,:),sf,vpot)
+
+chistar2=dim_rmvmean_n_Wrap(vpot,0)
+
+chistar2!0="lat"
+chistar2&lat=U2&lat
+chistar2!1="lon"
+chistar2&lon=U2&lon
+chistarmin2=min(chistar2({-20:20},:))
+
+print(n)
+print(dimsizes(plot))
+;plot(n)=gsn_csm_contour_map(wks, chistar2, res) 
+
+
 resP                            = True
  resP@gsnPanelLabelBar=True
  resP@cnInfoLabelOn       = False
  resP@lbOrientation =   "horizontal"          ; 
  resP@lbLabelFontHeightF    = 0.004
- resP@txString = ""
- resP@lbTitleString    = "K/Pa"
+ resP@txString = "ANN 200 hPa chi* (contours) and response (shading)"
+ resP@lbTitleString    = "m^2/s"
  resP@lbTitleFontHeightF=.007
  resP@lbTitlePosition ="Bottom"
  resP@lbLabelAutoStride= False
@@ -338,7 +384,7 @@ resP                            = True
  resP@gsnMaximize=True
  resP@gsnPaperOrientation = "portrait"
  resP@lbLabelStride=1
- gsn_panel(wks,plot,(/2,1/),resP)  
+ gsn_panel(wks,plot,(/4,2/),resP)  
  delete(wks) 
-crop=systemfunc("/usr/bin/pdfcrop CAM_ANN_MSE.pdf")  ;;remove the excessive white space in the PDF! (generates a $filename$-crop.pdf file)
+crop=systemfunc("/usr/bin/pdfcrop " + plotfile)  ;;remove the excessive white space in the PDF! (generates a $filename$-crop.pdf file)
 end

@@ -1,5 +1,5 @@
 begin
-fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc2")
+fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc")
 fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc1")
 datalog=new(dimsizes(fils),float) ; create list to store output
 plotfile="test_wc_v4" ;;;PDF file name!
@@ -232,7 +232,7 @@ end do
  resP@lbLabelStride=1
  gsn_panel(wks,plot,(/5,1/),resP)  
  delete(wks) 
-crop=systemfunc("/usr/bin/pdfcrop CAM_ANN_WC.pdf")  ;;remove the excessive white space in the PDF! (generates a $filename$-crop.pdf file)
+crop=systemfunc("/usr/bin/pdfcrop " + plotfile)  ;;remove the excessive white space in the PDF! (generates a $filename$-crop.pdf file)
 print(fils)
 print(fils1)
 delete(fils)

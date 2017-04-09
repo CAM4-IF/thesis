@@ -146,7 +146,7 @@ end do
  resP@lbTitleString    = "K/s"
  resP@lbTitleFontHeightF=.007
   resP@lbLabelBarOn=False
- ;;resP@lbTitlePosition ="Bottom"
+ ;;resP@lbTitlePosition ="Top"
  ;resP@lbLabelAutoStride= False
  resP@txFontHeightF    = 0.01
  resP@gsnMaximize=True
