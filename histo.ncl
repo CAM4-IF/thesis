@@ -4,8 +4,8 @@ load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_code.ncl"
 begin
 wks = gsn_open_wks("pdf","histo")              ; open workstation
 plot=new(2,graphic)
-f=addfile("../mass_flux/FMASS_CAM4-IF_bestrain_ymonmean.nc", "r")
-f1=addfile("../mass_flux/FMASS_CAM4-IF_bestrain_4K_ymonmean.nc", "r")
+f=addfile("../mass_flux/FMASS_CAM4-IF_bestrain_ANN.nc", "r")
+f1=addfile("../mass_flux/FMASS_CAM4-IF_bestrain_4K_ANN.nc", "r")
 ;************************************************
 ; Transform 2-d data into 1-d array
 ;************************************************
