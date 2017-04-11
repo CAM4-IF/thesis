@@ -51,47 +51,57 @@ do while(n.le.dimsizes(fils)-1)
    wva1=wgt_vert_avg_beta(levs(0,:,:,:),T1(0,:,:,:), PS2(0,0,:,:)/100, 0, opt)/900
    response=wva/wva1(0,0)
    print(response)
-   
-   
-   
-   
-   
+   Mprime=asciiread("Mprime.txt",(/301,3/),"float")
    
    res               = True	                   ; plot mods desired
    res@tiMainString  = "Mass flux time series"     ; title
    res@tiXAxisString = "Month"  ; xaxis string
-   res@tiYAxisString = "FMASS (kg/m^2/s)"                  ; yaxis string
-   res@xyExplicitLegendLabels = f@case
-   res@lgLabelFontHeightF     = .01 
-   res@lgOrientation          = "horizontal"
-   res@lgPerimOn              = False               ; no box around
-   res@pmLegendDisplayMode    = "Always"
-   res@pmLegendSide           = "Right"               ; Change location of 
-  ; res@pmLegendParallelPosF   = .50                 ; move units right
-   res@pmLegendOrthogonalPosF = 0              ; move units down
+   res@tiYAxisString = "~F33~D~F~(FMASS)/FMASS (kg/m^2/s)"                  ; yaxis string
 
-  res@pmLegendWidthF         = 0.12                ; Change width and
-  res@pmLegendHeightF        = 0.05 
+   
 
 ; add additional axis on top of plot
    res@tmXUseBottom  = False      ; Keep top axis independent of bottom.
    res@tmXTLabelsOn  = True       ; have tick mark labels
    res@tmXTOn        = True       ; have tick marks
-   res@gsnDraw = True
+   res@gsnDraw = False
    res@gsnFrame = False
    res@trXMaxF  =  300
-   res@trYMaxF= 0.15
-   res@trYMinF=-0.15
+   res@trYMaxF= 0.30
+   res@trYMinF=-0.20
+   res@vpHeightF 	 = 0.4               ; change aspect ratio of plot
+  res@vpWidthF 	         = 0.7
    res@xyLineColors =colors(n)
    timeaxis=fspan(0,300,301)
-   plot(n)=gsn_csm_xy(wks,timeaxis,T(:,18,0,0),res)     ; create plot 
-   clean=systemfunc("rm tmp.nc")
+   res@xyDashPattern  = 0    
+   res@xyLineThicknesses=3
+   res@gsnYRefLine = 0.0 
+   plot(n)=gsn_csm_xy(wks,timeaxis,response(:,0,0),res)     ; create plot 
+   delete(res@xyLineThicknesses)
+   res@xyLineThicknesses=0.25
+   delete(res@xyLineThicknesses)
+   ;res@xyDashPattern  = 2
+   plot1=gsn_csm_xy(wks,timeaxis,Mprime(:,n),res) 
+   overlay(plot(n),plot1)
+   txid = new(3,graphic)                  ; Nine text strings
+txres               = True     
+txres@txFontHeightF = 0.01
+txid(0) = gsn_add_text (wks,plot(0),"Red: CAM4-IF best rainfall", 150, .29 ,txres)
+txid(1) = gsn_add_text (wks,plot(0),"Green: CAM4-IF best T"     , 146, .27,txres)
+txid(2) = gsn_add_text (wks,plot(0),"Blue: CAM4"       , 132, .25 ,txres)
+  draw(plot)
+   clean=systemfunc("rm tmp*.nc")
    delete(T)
    delete(hyam)
    delete(hybm)
-   
    n=n+1
 end do
-;overlay(plot(0),plot(1))
 delete(wks) 
+
+
+
+
+crop=systemfunc("/usr/bin/pdfcrop " + plotfile) 
+print(fils)
+print(fils1)
 end
