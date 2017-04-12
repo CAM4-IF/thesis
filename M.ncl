@@ -16,8 +16,8 @@ do while(n.le.dimsizes(fils)-1)
    h=addfile(filen, "r")
    hyam = h->hyam 
    hybm = h->hybm
-   cmd="cdo -mermean -sellonlatbox,0,360,-30,30 -selname,FMASS,PS,OMEGA " + filen + " tmp.nc"
-   cmd1="cdo -mermean -sellonlatbox,0,360,-30,30 -selname,FMASS,PS,OMEGA " + filen1 + " tmp1.nc"
+   cmd="cdo -mermean -sellonlatbox,0,360,-10,10 -selname,FMASS,PS,OMEGA " + filen + " tmp.nc"
+   cmd1="cdo -mermean -sellonlatbox,0,360,-10,10 -selname,FMASS,PS,OMEGA " + filen1 + " tmp1.nc"
    areamean=systemfunc(cmd)
    areamean1=systemfunc(cmd1)
    f    = addfile("tmp.nc", "r")
@@ -109,7 +109,7 @@ do while(n.le.dimsizes(fils)-1)
    res@lbLabelAutoStride    = True                 ; optimal labels
    res@lbTitleString    = "kg/m^2/s"
    res@lbTitlePosition ="Bottom"
-   res@pmLabelBarOrthogonalPosF=1.15
+   res@pmLabelBarOrthogonalPosF=1.2
    res@lbTitleFontHeightF=.015
   else
   end if
@@ -124,7 +124,10 @@ do while(n.le.dimsizes(fils)-1)
   res@tiXAxisFontHeightF =0.012
   res@tmYROn = False
   res@tmYRLabelsOn = False 
-  res@cnFillOpacityF=0.7
+  res@cnFillOpacityF=1
+res@vpHeightF 	 = 0.4               ; change aspect ratio of plot
+  res@vpWidthF 	         = 0.7
+
 
    
  ;;;;;;;;;;;;;;;;;;;;;;SET THE CONTOUR PLOT RESOURCES!!!!;;;;;;;;;;;;;;;;;;;
@@ -157,8 +160,8 @@ do while(n.le.dimsizes(fils)-1)
  cres@cnLineLabelInterval=1
  cres@gsnLeftString  = "response (%): " + response*100
  cres@gsnCenterString  = "FMASS"
- cres@gsnLeftStringFontHeightF=0.012
- cres@gsnRightStringFontHeightF=0.015
+ cres@gsnLeftStringFontHeightF=0.018
+ cres@gsnRightStringFontHeightF=0.02
  cres@gsnContourPosLineDashPattern =1
 gsn_define_colormap(wks,"BlueWhiteOrangeRed")
  plot(i)  = gsn_csm_pres_hgt(wks, Qdiff(::-1,:), res)  
@@ -169,7 +172,7 @@ gsn_define_colormap(wks,"BlueWhiteOrangeRed")
  res@cnLevels =(/-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10,11,12/)*1e-3
  res@cnFillColors = (/10,15,20,25,30,35,40,45,50,55,60,65,0,0,180,185,190,195,200,205,210,215,220,225,230,235/)
  cres@gsnContourPosLineDashPattern =1 
- cres@gsnLeftString  = "response (upward only) (%): ~C~" + omegresponse*100
+ cres@gsnLeftString  = "response (upward only) (%): " + omegresponse*100
  cres@gsnRightString  = lets(i+1) + " " + f@case
  cres@gsnCenterString  = "OMEGA"
  if(i.eq.2) then
@@ -201,8 +204,8 @@ T=f->FMASS(0,:,:,:)
  resP@gsnPanelLabelBar=True
  resP@cnInfoLabelOn       = False
  resP@lbLabelBarOn = False
- resP@txString = "ANN 30S-30N mean FMASS response (shaded) and climo (contours)"
- resP@txFontHeightF    = 0.01
+ resP@txString = "ANN"
+ resP@txFontHeightF    = 0.03
  resP@gsnMaximize=True
  resP@gsnPaperOrientation = "portrait"
  gsn_panel(wks,plot,(/3,2/),resP)  

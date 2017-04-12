@@ -14,14 +14,14 @@ test=ndtooned(h)
 h1=f1->FMASS(0,{469.0718},:,:)
 test1=ndtooned(h1)
 
-omegup=test
-omegup1=test1
+;omegup=test
+;omegup1=test1
 
-omegupavg=avg(omegup < 0)
-omegupavg1=avg(omegup1 < 0)
-print(omegupavg)
-print(omegupavg1)
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;omegupavg=avg(omegup < 0)
+;omegupavg1=avg(omegup1 < 0)
+;print(omegupavg)
+;print(omegupavg1)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;Create histograms;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -42,25 +42,25 @@ res@tiXAxisString    = "kg/m^2/s"
 
 ;ymax= max((/max(plot0@NumInBins), max(plot1@NumInBins)/))
 
-colors=(/"red","lightblue"/)
+;colors=(/"red","lightblue"/)
 
 
 
   ;res@trYMaxF=ymax+5
-  res@gsnDraw=False
+  ;res@gsnDraw=False
 
-  res@gsnHistogramBarColors = colors(1)
+  ;res@gsnHistogramBarColors = colors(1)
   ;res@gsnHistogramBarColors = "transparent"
-  res@gsnHistogramBarWidthPercent = 100 
-  res@gsEdgeColor = res@gsnHistogramBarColors 
-  plot1 = gsn_histogram(wks,test,res)
+  ;res@gsnHistogramBarWidthPercent = 100 
+  ;res@gsEdgeColor = res@gsnHistogramBarColors 
+  ;plot1 = gsn_histogram(wks,test,res)
 
-  res@gsnHistogramBarColors = "transparent"
+  ;res@gsnHistogramBarColors = "transparent"
  ; res@gsFillColor = "transparent" 
-  res@gsEdgeColor = "red" 
-  res@tiMainString = ""
-  res@tiMainFontHeightF   = 0.015
-  plot0 = gsn_histogram(wks,test1,res)
+  ;res@gsEdgeColor = "red" 
+  ;res@tiMainString = ""
+  ;res@tiMainFontHeightF   = 0.015
+  ;plot0 = gsn_histogram(wks,test1,res)
 
 
 overlay(plot1,plot0)

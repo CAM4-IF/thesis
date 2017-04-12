@@ -22,6 +22,7 @@ wks = gsn_open_wks("pdf", plotfile) ;; open a workstation file!
 nummods=dimsizes(fils) ;;number of models! 
 plot=new(nummods, graphic) 
 colors=(/"red","green","blue"/)
+colors1=(/"black","orange","cyan"/)
 f3= addfile("../mass_flux/CAM-IFv5_F2000_ANN_climo.nc","r")
 cmd3="cdo -s -fldmean -sellonlatbox,0,360,-30,30 -selname,PS,hyam,hybm ../mass_flux/CAM-IFv5_F2000_ANN_climo.nc tmp3.nc"
 cmd3=systemfunc(cmd3)
@@ -56,7 +57,7 @@ do while(n.le.dimsizes(fils)-1)
    res               = True	                   ; plot mods desired
    res@tiMainString  = "Mass flux time series"     ; title
    res@tiXAxisString = "Month"  ; xaxis string
-   res@tiYAxisString = "~F33~D~F~(FMASS)/FMASS (kg/m^2/s)"                  ; yaxis string
+   res@tiYAxisString = "~F33~D~F~(M)/M"                  ; yaxis string
 
    
 
@@ -74,23 +75,25 @@ do while(n.le.dimsizes(fils)-1)
    res@xyLineColors =colors(n)
    timeaxis=fspan(0,300,301)
    res@xyDashPattern  = 0    
-   res@xyLineThicknesses=3
+   res@xyLineThicknesses=4
    res@gsnYRefLine = 0.0 
+
    plot(n)=gsn_csm_xy(wks,timeaxis,response(:,0,0),res)     ; create plot 
    delete(res@xyLineThicknesses)
    res@xyLineThicknesses=0.25
    delete(res@xyLineThicknesses)
    ;res@xyDashPattern  = 2
+   res@xyLineColors =colors1(n)
    plot1=gsn_csm_xy(wks,timeaxis,Mprime(:,n),res) 
    overlay(plot(n),plot1)
    txid = new(3,graphic)                  ; Nine text strings
 txres               = True     
 txres@txFontHeightF = 0.01
-txid(0) = gsn_add_text (wks,plot(0),"Red: CAM4-IF best rainfall", 150, .29 ,txres)
-txid(1) = gsn_add_text (wks,plot(0),"Green: CAM4-IF best T"     , 146, .27,txres)
-txid(2) = gsn_add_text (wks,plot(0),"Blue: CAM4"       , 132, .25 ,txres)
+txid(0) = gsn_add_text (wks,plot(0),"Red/black: CAM4-IF best rainfall", 150, .29 ,txres)
+txid(1) = gsn_add_text (wks,plot(0),"Green/orange: CAM4-IF best T"     , 148.5, .27,txres)
+txid(2) = gsn_add_text (wks,plot(0),"Blue/cyan: CAM4"       , 131, .25 ,txres)
   draw(plot)
-   clean=systemfunc("rm tmp*.nc")
+   
    delete(T)
    delete(hyam)
    delete(hybm)
@@ -100,7 +103,7 @@ delete(wks)
 
 
 
-
+clean=systemfunc("rm tmp*.nc")
 crop=systemfunc("/usr/bin/pdfcrop " + plotfile) 
 print(fils)
 print(fils1)

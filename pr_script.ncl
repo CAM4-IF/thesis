@@ -176,8 +176,6 @@ res4@gsnPaperOrientation="landscape"
 
 
 gsn_panel(wks,plot,(/4,1/),res4)
-;draw(wks)
-;frame(wks)
 delete(wks)
 string1="eps2eps " + plotfile +".epsi" + " " + plotfile +".eps"
 print(string1)
