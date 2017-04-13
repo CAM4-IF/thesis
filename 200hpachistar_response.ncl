@@ -2,9 +2,9 @@ load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/contributed.ncl"
 begin
 
 fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc4")
-fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc1")
+fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc2")
 datalog=new(dimsizes(fils),double) ; create list to store output
-plotfile="200hpachistar_ANN" ;;;PDF file name!
+plotfile="200hpachistar_response_ANN" ;;;PDF file name!
 wks = gsn_open_wks("epsi", plotfile) ;; open a workstation file!
 nummods=dimsizes(fils1) ;;number of models! 
 plot=new(nummods+1, graphic)    ;;;Create a panel plot with panels = number of models!
@@ -180,7 +180,7 @@ chistarmin2=min(chistar2({-30:30},:))
   
    res                      = True        
    res@cnLevelSelectionMode = "ExplicitLevels"   
-   res@cnLevels = (/-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10,11,12/)*1e6
+   res@cnLevels = (/-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10,11,12/)*0.5e6
    res@cnFillColors = (/40,50,60,70,80,85,90,95,100,105,110,120,0,0,130,140,150,160,170,180,190,200,210,220,230,240/)
    res@cnLinesOn       = False               
    res@cnLineLabelsOn       = False                 
@@ -206,8 +206,8 @@ chistarmin2=min(chistar2({-30:30},:))
   res@gsnCenterString    =lets(n) + " " + f@case
   res@gsnCenterStringFontHeightF=0.012
   ;res@gsnLeftString  = "chi* min: " + decimalPlaces(chistarmin/1e6,2,True) + "chi* response (%): " + decimalPlaces(response,2,True) + "~C~GMS: " + GMS2
-  res@gsnLeftString  = "chi* min: " + decimalPlaces(chistarmin/1e6,2,True) + "x1e6 m^2/s" + "~C~Pattern correlation: " + decimalPlaces(pcor,2,True)
-  res@gsnRightString="RMSE: " + decimalPlaces(rmse/1e6,2,True) + "x1e6 m^2/s"
+  ;res@gsnLeftString  = "chi* min: " + decimalPlaces(chistarmin/1e6,2,True) + "x1e6 m^2/s" + "~C~Pattern correlation: " + decimalPlaces(pcor,2,True)
+  ;res@gsnRightString="RMSE: " + decimalPlaces(rmse/1e6,2,True) + "x1e6 m^2/s"
   
 res@tmXBLabelFontHeightF=0.006
 res@gsnRightStringFontHeightF= 0.0065
@@ -242,8 +242,8 @@ res@mpGridLineThicknessF=0.5
 
 
  
- plot(n)  = gsn_csm_contour_map(wks, chistar, res) 
- plot1=gsn_csm_contour(wks,chistar2,cres)
+ plot(n)  = gsn_csm_contour_map(wks, chidiff, res) 
+ plot1=gsn_csm_contour(wks,chistar,cres)
  overlay(plot(n),plot1)
   n=n+1
   delete(u)
@@ -268,7 +268,7 @@ print(n)
 ;res@gsnRightString =""
  
 ;plot(n)=gsn_csm_contour_map(wks, chistar2, res) 
-
+;
 
 resP                            = True
 resP@gsnPanelLabelBar=True
@@ -282,7 +282,7 @@ resP@gsnPaperOrientation = "landscape"
 resP@lbTitlePosition ="Bottom"
 resP@lbTitleFontHeightF=.008
 resP@txFontHeightF    = 0.03
-gsn_panel(wks,plot,(/4,1/),resP)  
+gsn_panel(wks,plot,(/3,1/),resP)  
 delete(wks) 
 string1="eps2eps " + plotfile +".epsi" + " " + plotfile +".eps"
 print(string1)
@@ -290,4 +290,6 @@ system(string1)
 system("epstopdf " + plotfile +".eps") 
 system("rm " + plotfile +".eps") 
 system("rm " + plotfile +".epsi")
+print(fils)
+print(fils1)
 end

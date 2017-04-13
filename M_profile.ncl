@@ -102,7 +102,7 @@ do while(n.le.dimsizes(fils)-1)
  res@tmYLMode = "Explicit"
  res@tmYLValues        =(/100,200,300,400,500,600,700,850,1000/)
  res@tmYLLabels=(/100,200,300,400,500,600,700,850,1000/)
- res@tiXAxisString="M~B~c~N~ kg/m~S~2~N~/s"
+ res@tiXAxisString="M~B~c~N~ (kg/m~S~2~N~/s)"
  res@vpHeightF 	 = 0.7               ; change aspect ratio of plot
  res@vpWidthF 	         = 0.55
  res@gsnXRefLine = 0.0 

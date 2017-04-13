@@ -1,5 +1,5 @@
 begin
-fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc")
+fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc4")
 plotfile="ANN_omega500"
 wks = gsn_open_wks("epsi", plotfile)                      ;Open a workstation
 nummods=dimsizes(fils) ;;number of models! 
@@ -107,11 +107,11 @@ res3@tmXTOn="False"
 res3@tmYROn="False"
 res3@tmYLOn="True"
 res3@gsnCenterString=  lets(n) + " " +  pr1@case
-res3@gsnCenterStringFontHeightF=0.008
-res3@gsnRightString= "RMSE: " + decimalPlaces(rmse,3,True) + " Ocean: " + decimalPlaces(rmseocean,3,True) + " Land: " + decimalPlaces(rmseland,3,True) + "~C~Pat. Cor.: " + decimalPlaces(pcor,3,True) + " Ocean: " + decimalPlaces(pcorocean,3,True) + " Land: " + decimalPlaces(pcorland,3,True)
-res3@gsnLeftString= "Mean: " + decimalPlaces(meanpr,3,True) + " Pa/s" +  "~C~Variance: " + decimalPlaces(variancepr,3,True) + " Pa/s" 
-res3@gsnRightStringFontHeightF= 0.006
-res3@gsnLeftStringFontHeightF= 0.006
+res3@gsnCenterStringFontHeightF=0.001
+res3@gsnRightString= "RMSE: " + decimalPlaces(rmse,4,True) + " Pat. Cor.: " + decimalPlaces(pcor,3,True)
+res3@gsnLeftString= "Variance: " + decimalPlaces(variancepr,5,True) + " Pa/s" 
+res3@gsnRightStringFontHeightF= 0.01
+res3@gsnLeftStringFontHeightF= 0.01
 res3@mpGridLineThicknessF=0.5
 res3@gsnCenterStringFontHeightF=0.012
 
@@ -122,8 +122,6 @@ res3@gsnCenterStringFontHeightF=0.012
 res3@tmXBLabelFontHeightF=0.006
 res3@mpGridLineColor="black"
 
-res3@gsnRightStringFontHeightF= 0.006
-res3@gsnLeftStringFontHeightF= 0.006
 res3@tmXBLabelFontHeightF=0.006
 
 gsn_define_colormap(wks,"nice_gfdl")
@@ -154,9 +152,9 @@ end do
 
 res30                           = res3
 
-res30@gsnCenterString=lets(n) + " ERAI/MERRA"
+res30@gsnCenterString=lets(n) + " MERRA/ERAI"
 res30@gsnRightString=  ""
-res30@gsnLeftString= "Mean : " + decimalPlaces(MERRAmean,3,True) + " Pa/s" + "~C~Variance :" + decimalPlaces(MERRAvar,3,True) + " Pa/s"
+res30@gsnLeftString= "Variance: " + decimalPlaces(MERRAvar,5,True) + " Pa/s"
 
 
 plot(n)=gsn_csm_contour_map(wks,pr2,res30)

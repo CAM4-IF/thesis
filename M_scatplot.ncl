@@ -52,11 +52,14 @@ do while(n.le.dimsizes(fils)-1)
   res@trYMinF=-0.004
   res@trYMaxF=0.004
   res@gsnCenterString  =lets(n) + " " + f@case
-  res@tiYAxisString = "~F33~D~F~(M~B~int~N~)"
+  res@gsnCenterStringFontHeightF=0.03
+  res@tiYAxisString = "~F33~D~F~(M~B~int~N~) (kg/m~S~2~N~/s)"
+  res@tiXAxisString = "Control run M~B~int~N~ (kg/m~S~2~N~/s)"
   rc=regline(y,x)
   yreg=rc*y+rc@yintercept
   plot(n)  = gsn_csm_xy (wks,y,x,res)                    ; create plot
   res@xyMarkLineMode="Lines"
+  res@xyLineColor="Red"
   plot1=gsn_csm_xy(wks,y,yreg,res)
   overlay(plot(n),plot1)
   
