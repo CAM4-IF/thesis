@@ -210,8 +210,8 @@ chistarmin2=min(chistar2({-30:30},:))
   res@gsnRightString="RMSE: " + decimalPlaces(rmse/1e6,2,True) + "x1e6 m^2/s"
   
 res@tmXBLabelFontHeightF=0.006
-res@gsnRightStringFontHeightF= 0.0065
-res@gsnLeftStringFontHeightF= 0.0065
+res@gsnRightStringFontHeightF= 0.01
+res@gsnLeftStringFontHeightF= 0.01
 res@mpGridLineThicknessF=0.5
   
     ;;;;;;;;;;;;;;;;;;;;;;SET THE CONTOUR PLOT RESOURCES!!!!;;;;;;;;;;;;;;;;;;;
