@@ -204,7 +204,7 @@ rmse2=decimalPlaces(sqrt(avg((dTdZ3(1:43)-dTdZ(1:43))^2)),3,True)
  res@xyLineThicknesses = 4.0
  res@tiXAxisFontHeightF=0.018
  res@trYMaxF=1000
- res@trYMinF=100
+ res@trYMinF=80
  res@trXMaxF=0
  res@trXMinF=-9
  res@tiYAxisString="Pressure (hPa)"
@@ -250,7 +250,7 @@ lineres@lgLineThicknesses = 2.5                        ; line thicknesses
 lineres@LineLengthPercent = 9.                         ; expressed as %, 0->100, length of line
 
 textres = True
-textres@lgLabels = (/"CMIP5/AMIP mean","CAM4-IF best T","CAM4 default","RAOBS"/)  ; legend labels (required)
+textres@lgLabels = (/"CAM4-IF best T","CMIP5/AMIP mean","CAM4 default","RAOBS"/)  ; legend labels (required)
 textres@lgLabelFontHeights = (/0.015,0.015,0.015,0.015,0.015/)   
 plot = simple_legend(wks,plot,gres,lineres,textres)
 
@@ -282,7 +282,7 @@ res1                   = True                       ; plot mods desired
  res1@tiXAxisString=""
  res1@tiXAxisFontHeightF=0.015
  res1@trYMaxF=1000
- res1@trYMinF=100
+ res1@trYMinF=80
  res1@trXMaxF=0
  res1@trXMinF=-9
  res1@tiYAxisString="Pressure (hPa)"
