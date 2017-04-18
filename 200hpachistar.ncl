@@ -1,8 +1,8 @@
 load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/contributed.ncl"
 begin
 
-fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc4")
-fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc1")
+fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/CAM*ANN*.nc4")
+fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/CAM*ANN*.nc1")
 datalog=new(dimsizes(fils),double) ; create list to store output
 plotfile="200hpachistar_ANN" ;;;PDF file name!
 wks = gsn_open_wks("epsi", plotfile) ;; open a workstation file!
@@ -180,8 +180,8 @@ chistarmin2=min(chistar2({-30:30},:))
   
    res                      = True        
    res@cnLevelSelectionMode = "ExplicitLevels"   
-   res@cnLevels = (/-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10,11,12/)*1e6
-   res@cnFillColors = (/40,50,60,70,80,85,90,95,100,105,110,120,0,0,130,140,150,160,170,180,190,200,210,220,230,240/)
+   res@cnLevels = (/-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8,9,10,11,12/)*1e6
+   res@cnFillColors = (/40,50,60,70,80,85,90,95,100,105,110,120,0,130,140,150,160,170,180,190,200,210,220,230,240/)
    res@cnLinesOn       = False               
    res@cnLineLabelsOn       = False                 
   res@cnFillOn             = True                
@@ -203,11 +203,10 @@ chistarmin2=min(chistar2({-30:30},:))
   res@mpGridLonSpacingF = 45
   res@pmTickMarkDisplayMode  = "Always" 
   res@gsnLeftString    = "" 
-  res@gsnCenterString    =lets(n) + " " + f@case
+  res@gsnCenterString    = f@case
   res@gsnCenterStringFontHeightF=0.012
-  ;res@gsnLeftString  = "chi* min: " + decimalPlaces(chistarmin/1e6,2,True) + "chi* response (%): " + decimalPlaces(response,2,True) + "~C~GMS: " + GMS2
-  res@gsnLeftString  = "chi* min: " + decimalPlaces(chistarmin/1e6,2,True) + "x1e6 m^2/s" + "~C~Pattern correlation: " + decimalPlaces(pcor,2,True)
-  res@gsnRightString="RMSE: " + decimalPlaces(rmse/1e6,2,True) + "x1e6 m^2/s"
+  res@gsnLeftString  = lets(n) + "                   "  + "(~F33~c~F~~S~~F33~*~F~~N~)~B~min~N~: " + decimalPlaces(chistarmin/1e6,2,True) + "~F34~W~F~10~S~6~N~ m^2/s"
+  res@gsnRightString="r~B~pat~N~: " + decimalPlaces(pcor,2,True) + "; RMSE: " + decimalPlaces(rmse/1e6,2,True) + "~F34~W~F~10~S~6~N~ m^2/s"
   
 res@tmXBLabelFontHeightF=0.006
 res@gsnRightStringFontHeightF= 0.01
@@ -218,14 +217,14 @@ res@mpGridLineThicknessF=0.5
  cres                      = True                 ; plot mods desired
  cres@tmYRMode = "Automatic"
  cres@cnLevelSelectionMode = "ExplicitLevels"
- cres@cnLevels = (/-3.6,-3.4,-3.2,-3.,-2.8,-2.6,-2.4,-2.2,-2.,-1.8,-1.6,-1.4,-1.2,-1.,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1.,1.2,1.4,1.6,1.8,2,2.2,2.4,2.6,2.8,3,3.2,3.4,3.6/)*5e6
+ cres@cnLevels = (/-3.6,-3.4,-3.2,-3.,-2.8,-2.6,-2.4,-2.2,-2.,-1.8,-1.6,-1.4,-1.2,-1.,-0.8,-0.6,-0.4,-0.2,0.2,0.4,0.6,0.8,1.,1.2,1.4,1.6,1.8,2,2.2,2.4,2.6,2.8,3,3.2,3.4,3.6/)*5e6
  ;cres@cnLevels=(/-100,-50,-25,-10,0,10,25,50,100/)
  cres@cnLineLabelsOn       = True                 ; turn on line labels
  cres@cnFillOn             = False                 ; turn on color fill
  cres@gsnDraw = False
  cres@gsnFrame = False
  cres@cnInfoLabelOn = False                ; turn off contour info label
- cres@cnLineThicknessF =0.5
+ cres@cnLineThicknessF =1
  cres@gsnRightString    = ""
  cres@gsnRightStringFontHeightF    = 0.05
  cres@cnLevelSpacingF=200.0
@@ -263,9 +262,6 @@ end do
 
 print(n)
 
-;res@gsnLeftString  = "chi* min: " + decimalPlaces(chistarmin2/1e6,2,True) + "x1e6 m^2/s"
-;res@gsnCenterString=lets(n-1) + " MERRA/ERAI"
-;res@gsnRightString =""
  
 ;plot(n)=gsn_csm_contour_map(wks, chistar2, res) 
 
@@ -275,7 +271,7 @@ resP@gsnPanelLabelBar=True
 resP@cnInfoLabelOn       = False
 resP@lbOrientation =   "horizontal"          ; 
 resP@lbLabelFontHeightF    = 0.006
-resP@txString = "ANN"
+resP@txString = ""
 resP@lbTitleString    = "m^2/s"
 resP@gsnMaximize=True
 resP@gsnPaperOrientation = "landscape"

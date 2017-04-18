@@ -16,8 +16,8 @@ do while(n.le.dimsizes(fils)-1)
    h=addfile(filen, "r")
    hyam = h->hyam 
    hybm = h->hybm
-   cmd="cdo -mermean -sellonlatbox,0,360,-10,10 -selname,FMASS,PS,OMEGA " + filen + " tmp.nc"
-   cmd1="cdo -mermean -sellonlatbox,0,360,-10,10 -selname,FMASS,PS,OMEGA " + filen1 + " tmp1.nc"
+   cmd="cdo -mermean -sellonlatbox,0,360,-30,30 -selname,FMASS,PS,OMEGA " + filen + " tmp.nc"
+   cmd1="cdo -mermean -sellonlatbox,0,360,-30,30 -selname,FMASS,PS,OMEGA " + filen1 + " tmp1.nc"
    areamean=systemfunc(cmd)
    areamean1=systemfunc(cmd1)
    f    = addfile("tmp.nc", "r")
@@ -97,8 +97,8 @@ do while(n.le.dimsizes(fils)-1)
   res@tmYRMode = "Automatic"
 
   res@cnLevelSelectionMode = "ExplicitLevels"       ; manually select levels
-  res@cnLevels =(/-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10,11,12/)*2e-4
-  res@cnFillColors =(/10,15,20,25,30,35,40,45,50,55,60,65,0,0,180,185,190,195,200,205,210,215,220,225,230,235/)
+  res@cnLevels =(/-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8,9,10,11,12/)*2e-4
+  res@cnFillColors =(/10,15,20,25,30,35,40,45,50,55,60,65,0,180,185,190,195,200,205,210,215,220,225,230,235/)
   res@cnLinesOn       = False                 ; turn on line labels
   res@cnLineLabelsOn       = False                 ; turn on line labels
   res@cnFillOn             = True                 ; turn on color fill
@@ -140,8 +140,6 @@ res@vpHeightF 	 = 0.4               ; change aspect ratio of plot
  cres@gsnDraw = False
  cres@gsnFrame = False
  cres@cnInfoLabelOn = False                ; turn off contour info label
- cres@gsnRightString = ""
- cres@gsnLeftString = ""
  cres@tiYAxisString    = "Pressure (hPa)"
  cres@tiXAxisString    = "Longitude"
  cres@tmYROn = False
@@ -151,30 +149,32 @@ res@vpHeightF 	 = 0.4               ; change aspect ratio of plot
  ;cres@gsnContourNegLineDashPattern =-1  
  cres@gsnLeftString =""
  cres@gsnContourZeroLineThicknessF = 2
- cres@gsnRightString    = lets(i) + " " + f@case
+ cres@gsnLeftString    = lets(i) + " " + f@case
  cres@trYMinF            = 75.   ; Limits for Y axis.  The limits
  cres@trYMaxF            = 1000.
  cres@cnLineLabelDensityF      = 3.0
  cres@cnLineLabelFontHeightF =0.01
  cres@cnLineLabelPlacementMode = "Constant"
  cres@cnLineLabelInterval=1
- cres@gsnLeftString  = "response (%): " + response*100
- cres@gsnCenterString  = "FMASS"
- cres@gsnLeftStringFontHeightF=0.018
- cres@gsnRightStringFontHeightF=0.02
+ cres@gsnRightString  = "response (%): " + response*100
+ cres@gsnCenterString  = "M~B~c~N~"
+ cres@gsnLeftStringFontHeightF=0.022
+ cres@gsnRightStringFontHeightF=0.022
+ cres@gsnCenterStringFontHeightF=0.03
  cres@gsnContourPosLineDashPattern =1
 gsn_define_colormap(wks,"BlueWhiteOrangeRed")
  plot(i)  = gsn_csm_pres_hgt(wks, Qdiff(::-1,:), res)  
  plot2  = gsn_csm_pres_hgt(wks, T(::-1,0,:), cres)
  
- 
+ delete(cres@cnLevels)
+ delete(res@cnLevels)
  cres@cnLevels =(/-16,-15,-14,-13,-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16/)*4e-3
- res@cnLevels =(/-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10,11,12/)*1e-3
- res@cnFillColors = (/10,15,20,25,30,35,40,45,50,55,60,65,0,0,180,185,190,195,200,205,210,215,220,225,230,235/)
+ res@cnLevels =(/-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8,9,10,11,12/)*1e-3
+ res@cnFillColors = (/10,15,20,25,30,35,40,45,50,55,60,65,0,180,185,190,195,200,205,210,215,220,225,230,235/)
  cres@gsnContourPosLineDashPattern =1 
- cres@gsnLeftString  = "response (upward only) (%): " + omegresponse*100
- cres@gsnRightString  = lets(i+1) + " " + f@case
- cres@gsnCenterString  = "OMEGA"
+ cres@gsnRightString  = "~F33~w~F~~S~~F34~-~F~~N~ response (%): " + omegresponse*100
+ cres@gsnLeftString  = lets(i+1) + " " + f@case
+ cres@gsnCenterString  = "~F33~w~F~"
  if(i.eq.2) then
   res@lbTitleString    = "Pa/s"
  else
@@ -204,7 +204,7 @@ T=f->FMASS(0,:,:,:)
  resP@gsnPanelLabelBar=True
  resP@cnInfoLabelOn       = False
  resP@lbLabelBarOn = False
- resP@txString = "ANN"
+ resP@txString = ""
  resP@txFontHeightF    = 0.03
  resP@gsnMaximize=True
  resP@gsnPaperOrientation = "portrait"
