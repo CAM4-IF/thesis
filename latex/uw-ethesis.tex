@@ -1,0 +1,816 @@
+% uWaterloo Thesis Template for LaTeX 
+% Last Updated Nov 4, 2016 by Stephen Carr, IST Client Services
+% FOR ASSISTANCE, please send mail to rt-IST-CSmathsci@ist.uwaterloo.ca
+
+% Effective October 2006, the University of Waterloo 
+% requires electronic thesis submission. See the uWaterloo thesis regulations at
+% https://uwaterloo.ca/graduate-studies/thesis.
+
+% DON'T FORGET TO ADD YOUR OWN NAME AND TITLE in the "hyperref" package
+% configuration below. THIS INFORMATION GETS EMBEDDED IN THE PDF FINAL PDF DOCUMENT.
+% You can view the information if you view Properties of the PDF document.
+
+% Many faculties/departments also require one or more printed
+% copies. This template attempts to satisfy both types of output. 
+% It is based on the standard "book" document class which provides all necessary 
+% sectioning structures and allows multi-part theses.
+
+% DISCLAIMER
+% To the best of our knowledge, this template satisfies the current uWaterloo requirements.
+% However, it is your responsibility to assure that you have met all 
+% requirements of the University and your particular department.
+% Many thanks for the feedback from many graduates that assisted the development of this template.
+
+% -----------------------------------------------------------------------
+
+% By default, output is produced that is geared toward generating a PDF 
+% version optimized for viewing on an electronic display, including 
+% hyperlinks within the PDF.
+ 
+% E.g. to process a thesis called "mythesis.tex" based on this template, run:
+
+% pdflatex mythesis	-- first pass of the pdflatex processor
+% bibtex mythesis	-- generates bibliography from .bib data file(s)
+% makeindex         -- should be run only if an index is used 
+% pdflatex mythesis	-- fixes numbering in cross-references, bibliographic references, glossaries, index, etc.
+% pdflatex mythesis	-- fixes numbering in cross-references, bibliographic references, glossaries, index, etc.
+
+% If you use the recommended LaTeX editor, Texmaker, you would open the mythesis.tex
+% file, then click the PDFLaTeX button. Then run BibTeX (under the Tools menu).
+% Then click the PDFLaTeX button two more times. If you have an index as well,
+% you'll need to run MakeIndex from the Tools menu as well, before running pdflatex
+% the last two times.
+
+% N.B. The "pdftex" program allows graphics in the following formats to be
+% included with the "\includegraphics" command: PNG, PDF, JPEG, TIFF
+% Tip 1: Generate your figures and photos in the size you want them to appear
+% in your thesis, rather than scaling them with \includegraphics options.
+% Tip 2: Any drawings you do should be in scalable vector graphic formats:
+% SVG, PNG, WMF, EPS and then converted to PNG or PDF, so they are scalable in
+% the final PDF as well.
+% Tip 3: Photographs should be cropped and compressed so as not to be too large.
+
+% To create a PDF output that is optimized for double-sided printing: 
+%
+% 1) comment-out the \documentclass statement in the preamble below, and
+% un-comment the second \documentclass line.
+%
+% 2) change the value assigned below to the boolean variable
+% "PrintVersion" from "false" to "true".
+
+% --------------------- Start of Document Preamble -----------------------
+
+% Specify the document class, default style attributes, and page dimensions
+% For hyperlinked PDF, suitable for viewing on a computer, use this:
+\documentclass[letterpaper,12pt,titlepage,oneside,final]{book}
+ 
+% For PDF, suitable for double-sided printing, change the PrintVersion variable below
+% to "true" and use this \documentclass line instead of the one above:
+%\documentclass[letterpaper,12pt,titlepage,openright,twoside,final]{book}
+
+% Some LaTeX commands I define for my own nomenclature.
+% If you have to, it's better to change nomenclature once here than in a 
+% million places throughout your thesis!
+\newcommand{\package}[1]{\textbf{#1}} % package names in bold text
+\newcommand{\cmmd}[1]{\textbackslash\texttt{#1}} % command name in tt font 
+\newcommand{\href}[1]{#1} % does nothing, but defines the command so the
+    % print-optimized version will ignore \href tags (redefined by hyperref pkg).
+%\newcommand{\texorpdfstring}[2]{#1} % does nothing, but defines the command
+% Anything defined here may be redefined by packages added below...
+
+% This package allows if-then-else control structures.
+\usepackage{ifthen}
+
+\newboolean{PrintVersion}
+\setboolean{PrintVersion}{false} 
+% CHANGE THIS VALUE TO "true" as necessary, to improve printed results for hard copies
+% by overriding some options of the hyperref package below.
+
+%\usepackage{nomencl} % For a nomenclature (optional; available from ctan.org)
+\usepackage{amsmath,amssymb,amstext} % Lots of math symbols and environments
+\usepackage[pdftex]{graphicx} % For including graphics N.B. pdftex graphics driver 
+\usepackage{float}
+% Hyperlinks make it very easy to navigate an electronic document.
+% In addition, this is where you should specify the thesis title
+% and author as they appear in the properties of the PDF document.
+% Use the "hyperref" package 
+% N.B. HYPERREF MUST BE THE LAST PACKAGE LOADED; ADD ADDITIONAL PKGS ABOVE
+\usepackage[pdftex,pagebackref=false]{hyperref} % with basic options
+		% N.B. pagebackref=true provides links back from the References to the body text. This can cause trouble for printing.
+\hypersetup{
+    plainpages=false,       % needed if Roman numbers in frontpages
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={uWaterloo\ LaTeX\ Thesis\ Template},    % title: CHANGE THIS TEXT!
+%    pdfauthor={Author},    % author: CHANGE THIS TEXT! and uncomment this line
+%    pdfsubject={Subject},  % subject: CHANGE THIS TEXT! and uncomment this line
+%    pdfkeywords={keyword1} {key2} {key3}, % list of keywords, and uncomment this line if desired
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,        % false: boxed links; true: colored links
+    linkcolor=blue,         % color of internal links
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+\ifthenelse{\boolean{PrintVersion}}{   % for improved print quality, change some hyperref options
+\hypersetup{	% override some previously defined hyperref options
+%    colorlinks,%
+    citecolor=black,%
+    filecolor=black,%
+    linkcolor=black,%
+    urlcolor=black}
+}{} % end of ifthenelse (no else)
+
+%\usepackage[automake,toc,abbreviations]{glossaries-extra} % Exception to the rule of hyperref being the last add-on package
+
+% Setting up the page margins...
+% uWaterloo thesis requirements specify a minimum of 1 inch (72pt) margin at the
+% top, bottom, and outside page edges and a 1.125 in. (81pt) gutter
+% margin (on binding side). While this is not an issue for electronic
+% viewing, a PDF may be printed, and so we have the same page layout for
+% both printed and electronic versions, we leave the gutter margin in.
+% Set margins to minimum permitted by uWaterloo thesis regulations:
+\setlength{\marginparwidth}{0pt} % width of margin notes
+% N.B. If margin notes are used, you must adjust \textwidth, \marginparwidth
+% and \marginparsep so that the space left between the margin notes and page
+% edge is less than 15 mm (0.6 in.)
+\setlength{\marginparsep}{0pt} % width of space between body text and margin notes
+\setlength{\evensidemargin}{0.125in} % Adds 1/8 in. to binding side of all 
+% even-numbered pages when the "twoside" printing option is selected
+\setlength{\oddsidemargin}{0.125in} % Adds 1/8 in. to the left of all pages
+% when "oneside" printing is selected, and to the left of all odd-numbered
+% pages when "twoside" printing is selected
+\setlength{\textwidth}{6.375in} % assuming US letter paper (8.5 in. x 11 in.) and 
+% side margins as above
+\raggedbottom
+
+% The following statement specifies the amount of space between
+% paragraphs. Other reasonable specifications are \bigskipamount and \smallskipamount.
+\setlength{\parskip}{\medskipamount}
+
+% The following statement controls the line spacing.  The default
+% spacing corresponds to good typographic conventions and only slight
+% changes (e.g., perhaps "1.2"), if any, should be made.
+\renewcommand{\baselinestretch}{1} % this is the default line space setting
+
+% By default, each chapter will start on a recto (right-hand side)
+% page.  We also force each section of the front pages to start on 
+% a recto page by inserting \cleardoublepage commands.
+% In many cases, this will require that the verso page be
+% blank and, while it should be counted, a page number should not be
+% printed.  The following statements ensure a page number is not
+% printed on an otherwise blank verso page.
+\let\origdoublepage\cleardoublepage
+\newcommand{\clearemptydoublepage}{%
+  \clearpage{\pagestyle{empty}\origdoublepage}}
+\let\cleardoublepage\clearemptydoublepage
+\newcommand{\norm}[1]{\lVert#1\rVert}
+% Define Glossary terms (This is properly done here, in the preamble. Could be \input{} from a file...)
+% Main glossary entries -- definitions of relevant terminology
+%\newglossaryentry{computer}
+%{
+%name=computer,
+%description={A programmable machine that receives input data,
+%               stores and manipulates the data, and provides
+%               formatted output}
+%}
+
+% Nomenclature glossary entries -- New definitions, or unusual terminology
+%\newglossary*{nomenclature}{Nomenclature}
+%\newglossaryentry{dingledorf}
+%{
+%type=nomenclature,
+%name=dingledorf,
+%description={A person of supposed average intelligence who makes incredibly brainless misjudgments}
+%}
+
+% List of Abbreviations (abbreviations type is built in to the glossaries-extra package)
+%\newabbreviation{aaaaz}{AAAAZ}{American Association of Amature Astronomers and Zoologists}
+
+% List of Symbols
+%\newglossary*{symbols}{List of Symbols}
+%\newglossaryentry{rvec}
+%{
+%name={$\mathbf{v}$},
+%sort={label},
+%type=symbols,
+%description={Random vector: a location in n-dimensional Cartesian space, where each dimensional component is %determined by a random process}
+%}
+ 
+%\makeglossaries
+\usepackage{mwe}
+\usepackage{subfig}
+\usepackage[outdir=./]{epstopdf}
+\usepackage{multirow}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+%======================================================================
+%   L O G I C A L    D O C U M E N T -- the content of your thesis
+%======================================================================
+\begin{document}
+
+% For a large document, it is a good idea to divide your thesis
+% into several files, each one containing one chapter.
+% To illustrate this idea, the "front pages" (i.e., title page,
+% declaration, borrowers' page, abstract, acknowledgements,
+% dedication, table of contents, list of tables, list of figures,
+% nomenclature) are contained within the file "uw-ethesis-frontpgs.tex" which is
+% included into the document by the following statement.
+%----------------------------------------------------------------------
+% FRONT MATERIAL
+%----------------------------------------------------------------------
+\input{uw-ethesis-frontpgs} 
+
+%----------------------------------------------------------------------
+% MAIN BODY
+%----------------------------------------------------------------------
+% Because this is a short document, and to reduce the number of files
+% needed for this template, the chapters are not separate
+% documents as suggested above, but you get the idea. If they were
+% separate documents, they would each start with the \chapter command, i.e, 
+% do not contain \documentclass or \begin{document} and \end{document} commands.
+%======================================================================
+\chapter{Introduction}
+%======================================================================
+\section{Background}
+
+The tropics play an integral role in the Earth's climate system; circulations here transport atmospheric momentum, mass, moisture and heat poleward towards the mid-latitudes and drive patterns of rainfall that are vital to billions of people worldwide. These circulations drive and are driven in part by deep moist convection - tropical thunderstorms and downpours - caused by towering plumes of positively buoyant air which derive their buoyancy from the latent heat of condensation. This convection tends to occur over regions where the ocean surface is the warmest (such as in the tropical western Pacific), or over certain land regions during certain times of the year (monsoon season). Convection is what drives a majority of the rainfall in the tropics and patterns of convection are thus vital to the freshwater supply of those living in tropical regions.
+
+As atmospheric concentrations of greenhouse gases increase due to human activities, these patterns of rainfall are projected to change with some areas likely to get wetter and some to get drier. However, there is larger uncertainty in projections of precipitation under climate change are more uncertain than projections of temperature. Even worse, tropical rainfall, which is the majority of the global precipitation, has large uncertainties in highly populated regions such as south Asia. Part of the uncertainty in projections of tropical rainfall under climate change in climate models is related to the fact that moist convection can not be explicitly resolved in today's climate models and needs to be parameterized. This is because convection occurs at very small scales (on the order of 1-10 km) Improving convection schemes in climate models is (or should be) a top priority. This thesis examines a new type of convective scheme under development for use in a version of the NCAR atmospheric climate model (CAM4).
+\subsection{Tropical rainfall and the hydrologic cycle}
+Rainfall in the tropics is quite different from what we are used to in mid-latitudes where it is usually associated with large-scale storm systems. While rainfall in the tropics is generated by many localized convective cells that can be $\mathcal{O}$(1 km) in size, these cells can have organization in the tropics. There are many different ways the rainfall in the tropics organizes on many different spatial and temporal scales including mesoscale convective systems, Kelvin waves, equatorial Rossby Waves, mixed Rossby-gravity waves, tropical cyclones, monsoons the MJO (Madden-Julian Oscillation) and more. However, it is best to start in the broadest sense with the basic equations for water conservation in the tropical atmosphere. In any given atmospheric column, the vertically integrated flux convergence of water vapor into the column must be equal to the rainfall rate (over sufficiently long timescales):
+\begin{align}
+P=-\int_{0}^{z}\mathbf{\nabla}\cdot(\rho{q}\mathbf{V})dz+E
+\end{align}
+(From Holton, p.393)
+$P$ is the precipitation rate ($\frac{kg}{m^{2}}$), $\rho$ is the density of air $(\frac{kg}{m^{3}})$, $q$ is the water vapor mixing ratio (unitless) and $E$ is the surface evaporation rate ($\frac{kg}{m^{2}}$). The top integration limit, z, could be the entire troposphere, however this is not necessary as most of the moisture in the tropics is in the boundary layer. This is because of the exponential relationship between the amount of water vapor the atmosphere can hold and temperature and also the fact that most of the tropics are ocean and this is where the evaporated ocean water is mixes into ($q$ in the boundary layer is roughly constant with height). So z can be taken to be approximately 2 km (Holton, p.393-394). It is also important to relate evaporation over the ocean to known time-mean variables; this is known as the bulk aerodynamic formula for latent heat flux (units of $W m^{-2}$):
+
+\begin{align}
+F_{LH}=\rho{L}C_{E}\norm{\textbf{v}}(q_{s}-q_{a})
+\end{align}
+
+Where $\rho$ is the time-mean air density of the air at the ocean-atmosphere interface, $L$ is the latent heat of vaporization, $\norm{\textbf{v}}$ is the surface or 10-meter wind speed, $q_{s}$ is the water vapor mixing ratio at the ocean surface which is taken to be the saturation water vapor mixing ratio determined by the sea surface temperature (SST), and $q_{a}$ is the water vapor mixing ratio of the atmosphere just above the ocean surface. $C_{E}$ is an empirically determined non-dimensional constant (sometimes called the drag constant) determined to be $\sim$ 1.1-1.2 x $10^{-3}$ for weak surface winds (which are typical in the tropics) \cite{katsaros_evaporation_2001}. From this equation it is easy to see that the drier and windier the air above the ocean the greater the evaporation rate (latent heat flux). Also, the warmer the SST, the greater the evaporation rate (since $q_{s}$ solely depends on SST). Since SSTs are mainly warmed via incoming shortwave solar radiation in the tropics, any change in incoming solar radiation (clouds, for example) can change the evaporation rate via SST. 
+
+On sufficiently long time scales (certainly those used to study climate) global mean evaporation must balance with precipitation:
+\begin{align}
+\langle\overbar{P}\rangle-\langle\overbar{E}\rangle=-\Bigg\langle\int_{0}^{z}\mathbf{\nabla}\cdot(\overbar{\rho}{\overbar{q}}\overbar{\mathbf{V}})dz\Bigg\rangle=0
+\end{align}
+Here, $\langle{.}\rangle$ denotes a global mean (will be used for the zonal mean in other parts of the thesis), and we have added the over-bar to stress that these are time mean quantities (this notation is consistent throughout the thesis). In other words, global time-mean precipitation must balance global time-mean evaporation and the global mean, time-mean moisture flux convergence must also be zero. This is actually a very important constraint or studying climate change as any changes in global mean evaporation will thus change the global mean precipitation rate. In a warming climate, SSTs will warm and thus $q_{s}$ will increase by the Clausius-Clapeyron (C-C) relation:
+\begin{align}
+\frac{d\ln{e_{s}}}{dT}=\frac{L}{RT^{2}}
+\end{align}
+$R$ is the gas constant and $e_{s}$ is the saturation vapor pressure. From this relation, it is clear that there is an exponential relationship between saturation vapor pressure (and thus saturation water vapor mixing ratio) and temperature. The rate of increase in $q_s$ as a function of temperature for temperature values seen in the tropics is $\sim$ $7 \%$ K$^{-1}$ based on this relation and is indeed validated by modeling studies \cite{held_robust_2006,vecchi_weakening_2006}. 
+
+While the amount of water vapor in the Earth's atmosphere increases with increasing surface temperature close to the C-C relation, rainfall in climate models does not. This is because global mean evaporation is energetically constrained to increase at a lower rate, and global precipitation must balance evaporation. The evaporation rate is constrained by the amount of downward shortwave (solar) and longwave (infrared) radiation at the surface (which then goes into heating the oceans). In a warming climate, downward infrared flux at the surface increases as the atmosphere gets warmer and emits more infrared radiation upward and downwards which acts to increase the evaporation rate \cite{boer_climate_1993}. The increase in evaporation/precipitation rate with climate change is estimated at 1-3$\%$ K$^{-1}$ \cite{schneider_water_2010,he_anthropogenic_2015,boer_climate_1993}, much less than the $\sim$ $7 \%$ K$^{-1}$ increase for water vapor. The uncertainty in rate of increase of evaporation/precipitation with climate change is likely due to uncertainty in the change in incoming solar radiation due to changes in clouds \cite{allen_constraints_2002}.
+
+Because of this large increase in water vapor with climate change, a parcel of convectively unstable air in a warmer climate will hold more water. Assuming most of the water is removed through deep moist convection in the tropics (the saturation mixing ratio at the tropopause is much less than saturation mixing ratio of the boundary layer), the time-mean convective updrafts do not need to be as strong to produce the same time-mean precipitation rate \cite{held_robust_2006,vecchi_global_2007}. In other words, the updrafts are not as fast, but carry more water mass and thus the precipitation rate can be the same as in a cooler climate with faster updrafts. Using this simple model, a relation can be developed to estimate the tropical mean convective mass flux \cite{held_robust_2006}:
+\begin{align}
+\Bigg\langle\frac{\delta{M}}{M}\Bigg\rangle=\Bigg\langle\frac{\delta{P}}{P}\Bigg\rangle-\Bigg\langle\frac{\delta{q}}{q}\Bigg\rangle
+\end{align}
+Where $M$ is the estimated mass flux, $P$ is the precipitation rate and $q$ is the boundary layer mixing ratio. Here, angle brackets represent the tropical mean. The term on the right, representing the change in the amount of moisture the atmosphere can hold, is directly related to the C-C relation and can be estimated as 0.07 per K or warming, while the precipitation term has a bit more uncertainty of $\sim$ 0.01-0.03 per K of warming. This implies that $\langle\frac{\delta{M}}{M}\rangle$ will be negative in a warmer world; in other words, the convective mass flux in the tropics will decrease. 
+\subsection{Moist convection}
+
+Moist convection manifests itself in the tropics and elsewhere as towering and bubbling clouds called cumulus clouds that can eventually reach the tropopause and spread out into what is referred to as an ``anvil" (composed of ice crystals). Once the cloud forms begins to form an anvil it is referred to as a cumulonimbus cloud and can become electrified due to charge separation and produce lightning. In the tropics, cumulonimbus clouds can easily reach heights of 60000 (18 km) feet or more. Tropical cyclones (tropical storms and hurricanes) are driven by very organized moist convection that sometimes occurs in the tropics and subtropics. See figure 1.1 for examples of different tropical cumuli clouds in various stages of development.
+
+To better understand the dynamics of moist convection, a simple model called ``parcel theory" is used in meteorology. This theory makes the simplification that a bubble or ``parcel" of buoyant air (air with a lower density than the environment), is lifted upwards until it condenses and then reaches a level where it is positively buoyant (level of free convection). The integrated potential energy of this parcel above this level is referred to as ``CAPE" (convective available potential energy). One key assumption made in this theory is that the parcel does not dilute due to mixing of environmental air with this ``parcel". This potential energy is then transformed into the kinetic energy of the parcel (assuming the CAPE is positive). Once the parcel reaches its condensation level, the parcel's internal temperature will not fall as fast as the surrounding environment as it ascends, due to the continued latent heat release due to condensation. This assumes that the parcel remains saturated with respect to the environment above this level. Oftentimes, the latent heat of fusion (i.e., from freezing) is ignored when calculating CAPE.
+\\
+CAPE can be defined as: 
+\begin{align}
+CAPE=\int_{p_{el}}^{p_{lfc}}(\alpha_{p}-\alpha_{e}){dp}
+\end{align}
+Where $\alpha_{p}$ is the parcel specific volume (inverse of density) of a parcel above the condensation level, $\alpha_{e}$ is the specific volume of the background atmosphere (as a function of $p$), $p_{lfc}$ is the pressure of the liquid condensation level, and $p_{el}$ is the pressure of the equilibrium level, or level of neutral buoyancy where the parcel reaches zero buoyancy. CAPE is a key parameter for the parameterization of moist convection in a climate or weather model.
+
+The density (and hence specific volume, $\alpha$) of dry air ($\rho_{dry}$) can be simply calculated using the ideal gas law for use in (1.1):
+\begin{align}
+\rho_{dry}(p,T)=\frac{p}{R_{d}T}
+\end{align}
+Where $R_{d}$ is the dry gas constant, $T$ is the temperature, and $P$ is the atmospheric pressure.
+\\
+\\
+However, this neglects the fact that water vapour acts to decrease the air density and thus is sometimes corrected for in calculating CAPE. In place of the specific volume, a quantity referred to as the ``virtual temperature" ($T_{v}$) is introduced (also sometimes referred to as the ``density temperature", $T_{p}$), which is the temperature that a parcel of dry air would have to have in order to have the same density as the parcel of air that has water vapour (at the same pressure). $T_{v}$ is defined as (from: \url{http://glossary.ametsoc.org/wiki/Virtual_temperature}): 
+\begin{align}
+T_{v}=T\frac{(1+\frac{q}{\epsilon})}{(1+q)}
+\end{align}
+Where q is the water vapour mixing ratio and $\epsilon$ is the ratio of the gas constant for dry air, $R_{d}$ (287 J/K/kg), to the gas constant for water vapour $R_{v}$ (461 J/K/kg) which is $\approx$ 0.623. Using the virtual temperature, the equation for CAPE then becomes \cite{doswell_effect_1994}:
+\begin{align}
+CAPE=g\int_{z_{el}}^{z_{lfc}}\Big(\frac{(T_{v})_{p}-(T_{v})_{e}}{(T_{v})_{e}}\Big){dz}
+\end{align}
+Note that we have switched the integration to be over geometric height coordinates here from pressure coordinates. 
+\\
+\\
+Even this formulation of CAPE, however, is not perfect as it still neglects dilution of buoyant parcels due to ``entrainment" of drier environmental air and condensate loading (i.e., cloud water and ice that weigh down the parcel) which both act to decrease parcels' buoyancy.
+\\
+\\
+While CAPE is an excellent measure of convective potential, this parameter is rarely directly available as output in climate models and needs to be calculated using a vertical numerical integration at each grid point.
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[width=0.8\linewidth]{../figures/cumuli_photos.jpg}\hfill
+\caption{Tropical cumuli in different stages of development. From: \url{http://www.goes-r.gov/users/comet/tropical/textbook_2nd_edition/navmenu.php_tab_6_page_2.2.1.htm}.}
+\end{figure}
+
+\subsection{Quasi-equilibrium theory}
+
+In the tropics (20S-20N is often used as a definition of the tropics), CAPE is typically positive, especially over oceans, but why this must be the case is not necessarily obvious. Part of the reason may be the fact that the amount of water vapour the atmosphere can hold increases approximately exponentially with increasing temperature by the Clausius-Clapeyron relation ($\sim{7\%}$/K), so warmer regions have more water vapour for parcels and thus can release more latent heat and achieve positive buoyancy. \cite{folkins_ian_tropical_2003} found that there is a sharp increase in convective rainfall where sea surface temperatures (SSTs) exceed 26$^{\circ}$C which is typically true in much of the tropics. Because the tropics typically have positive CAPE (i.e., the tropics are convectively unstable), rainfall from moist convection is the predominant source of rainfall in these regions, with ``stratiform", or precipitation associated with organized weather systems, much less frequent than in the mid-latitudes.
+
+A model of convection that has been used in convective parameterization schemes in climate and weather models is the model of quasi-equilibrium \cite{arakawa_and_schubert_interaction_1974} (see \cite{emanuel_quasi-equilibrium_2007} for more on this theory). Moist convection, through the latent heat of condensation, acts to warm the environmental atmosphere. In a region where moist convection is frequent, the atmospheric lapse rate tends towards ``moist adiabatic" ($\sim{~6.5}$K/km) which is the lapse rate that a saturated lifted parcel would experience. This acts to reduce the positive buoyancy that rising parcels would experience towards zero. Once this state is achieved, moist convection will no longer occur until the CAPE builds up to become positive again. This is typically achieved by radiative cooling of the free atmosphere in tropics. This cycle repeats itself and the assumption is that the time-mean CAPE over long time periods does not change, although it can change over shorter time periods. This tendency for the tropical temperature profile to relax towards a moist adiabatic profile has been incorporated into the convection schemes of many climate models, however, based on observations, this only appears to hold in regions of heavy convection. In reality, convection in the tropics does not always extend to the tropopause (cumulus congestus) and there is a deviation from the moist adiabat at the melting level \cite{folkins_melting_2013}.
+
+
+
+%----------------------------------------------------------------------
+\section{The Tropical Circulation}
+%----------------------------------------------------------------------
+\subsection{Background - weak temperature gradients}
+In the tropics, temperature gradients are relatively smaller than those in the mid-latitudes. This is because the Coriolis force weakens as one heads towards the equator, and thus the Rossby number, $R_{o}=\frac{U}{fL}$ (where U and L are charateristic velocity and length scales, and f is the Coriolis parameter $f=2\Omega\sin{\phi}$ (where $\Omega$ is the angular rotation rate of the Earth and $\phi$ is the latitude), is near 1 (Holton, page 388). The Rossby number represents the ratio of the relative importance of inertia to that of the Coriolis force. This number is small in mid-latitudes and thus it is appropriate to make the simplification that the Coriolis force balances the pressure gradient force there. With larger Rossby numbers (closer to 1) seen in the tropics, one can not make this simplification of the momentum equations. To balance the same characteristic velocity, $U$, in the tropics, the geopotential gradients would be an order of magnitude smaller. Since temperature is related to geopotential height, this means that horizontal temperature gradients in the tropics are much smaller than in the mid-latitudes. Therefore, one could neglect the horizontal advection of T as the horizontal gradients of T are small. 
+
+Below is the general (Eulerian) thermodynamic tendency equation in pressure coordinates (adapted from 11.4 p.387 Holton):
+
+\begin{align}
+\Big(\frac{\partial}{\partial{t}}+\mathbf{V}\boldsymbol{\cdot} \mathbf{\nabla}\Big)T - \sigma\omega =Q_{tot}
+\end{align}
+\\
+Where $\mathbf{v}$ is the total vector wind, $T$ is the temperature, sigma is the static stability, $\frac{RT}{c_{p}p} - \frac{\partial{T}}{\partial{p}} = \frac{T}{\theta}\frac{\partial{\theta}}{\partial{p}}$, $\omega$ is the upward motion motion, $\frac{dp}{dt}$, and $Q_{tot}$ is the total diabatic heating rate. 
+\\
+\\
+Neglecting horizontal T advection in the tropics for the reasons discussed above gives:
+
+\begin{align}
+-\sigma\omega \approx{Q_{tot}}
+\\
+\end{align}
+Where
+\begin{align}
+  \sigma\omega\equiv-\omega\frac{T}{\theta}\frac{\partial{\theta}}{\partial{p}}
+\end{align}
+\\
+We have introduced the potential temperature, $\theta$, in place of $T$ which has similarities to density and is defined as the temperature that a parcel of air would have if moved adiabatically to a reference pressure, $p_{o}$:
+\begin{align}
+\theta=T\Big(\frac{p_{o}}{p}\Big)^{(\frac{R_{d}}{c_{p}})}
+\end{align}
+\\
+(1.6) implies that the total diabatic heating at any point in the tropics is balanced by vertical temperature advection (which is upward motion, $\omega$, multiplied by the static stability, $\sigma$).
+This simple relation is vital to understanding tropical dynamics and the tropical circulation which will be discussed in the next section.
+
+\subsection{Walker circulation}
+
+The Walker circulation is named after Sir Gilbert Walker who while working in India noticed that occasionally the summer monsoon rains would not materialize. He discovered that this seemed to be related to sea level pressure (SLP) gradient changes between the western and eastern equatorial Pacific. The oscillation of this pressure gradient is referred to as the ``southern oscillation" and is typically calculated as a difference in SLP between Darwin, Australia and Tahiti, in the central Pacific. Typically, the SLP over the Maritime Continent and far western tropical Pacific is lower than the SLP in the central/eastern Pacific, but this pressure difference can shrink or even reverse during El Nino events. This pressure gradient causes winds to blow from east to west in the tropical Pacific (trade winds), with rising motion and low-level convergence over the Maritime Continent and sinking motion and low-level divergence over the eastern Pacific. Some refer to the Walker Circulation as a standing Kelvin wave which is simply forced by diabatic heating.
+
+One way to measure the strength of the Walker circulation is to measure upper-tropospheric horizontal divergence (which gives information about the vertical motion by continuity). However, this is typically a very noisy field so instead a scalar potential field of the divergent wind is typically used. This field is obtained using the fundamental theorem of vector calculus (also known as a Helmholtz decomposition) which states that a vector field can be decomposed into divergenceless (rotational) and irrotational (divergent) components. Stated mathematically, the total vector wind, $\mathbf{V}$, can be written as:
+\begin{align}
+\mathbf{V}=\mathbf{V_{rot}}+\mathbf{V_{irr}}
+\\
+\mathbf{\nabla} \times \mathbf{V_{irr}} = 0
+\\
+\mathbf{\nabla} \boldsymbol{\cdot}\mathbf{V_{rot}} = 0
+\end{align}
+From these 2 components, a stream function and a velocity potential can be constructed.
+A velocity potential, $\chi$ can be constructed from the divergent (irrotational) component of the wind so that:
+\begin{align}
+\mathbf{\nabla}\chi=\mathbf{V_{irr}}
+\end{align}
+Which satisfies (1.9) since the curl of the gradient of a scalar field is 0. 
+\\
+\\
+This scalar field evaluated in the upper troposphere, such as at the 200 hPa level, is often used for measuring the strength of the upper-level divergence associated with the ascending region of the Walker circulation \cite{tanaka_trend_2004}. Since the Walker circulation is a zonally asymmetric circulation, the zonal mean needs to be removed to ascertain the contribution Walker circulation contribution to the divergence. This will be referred to as $\chi^{*}$ in this thesis, where $\cdot^{*}$ indicates a deviation from the zonal mean, and this notation will be consistent through this thesis. 
+
+The zonal asymmetry in diabatic heating in the tropics is what causes the zonal asymmetry in divergence and hence the zonal (Walker circulation). This asymmetry is due to the fact that SSTs are warmer in the western Pacific than in the eastern Pacific. The primary balance for the Walker circulation is between diabatic heating and adiabatic cooling in the ascending region (eq. 1.6) and between radiational cooling and adiabatic heating in the descending region (also, eq. 1.6). Thus, any changes to the rate of diabatic heating, $Q_{tot}$ or static stability, $\sigma$ can effect the strength of the circulation, $\omega$.
+\subsection{Hadley circulation}
+
+The Hadley circulation is a zonally-symmetric meridional (north-south) circulation that is characterized by rising air near the equator that reaches the upper troposphere. This circulation is driven by general poleward geopotential height gradient through the troposphere driven by the difference in solar heating between the tropics and mid-latitudes. As air from the tropics heads poleward, it gains in velocity to conserve angular momentum and is deflected eastward due to the Coriolis force. While the Walker circulation can be modeled through a simple energy balance equation, because the Hadley circulation extends into the sub-tropics and beyond, the weak temperature approximation is no longer valid and the Coriolis force no longer small (i.e., the Rossby number, $R_{o}$, is smaller). This complication means that other factors not directly linked to the convection scheme such as the equator-to-pole temperature gradient are important for the Hadley circulation strength and thus most of the analysis of the tropical circulation in this thesis will be for the Walker circulation.
+\\
+\\
+While the Walker circulation can be understood as a balance between diabatic heating (cooling) and adiabatic (heating), the Hadley circulation is more complicated. For the Hadley circulation the balance is now between the Coriolis force plus the divergence of eddy momentum fluxes, as well as between diabatic heating and adiabatic cooling plus the divergence of eddy heat fluxes. Next, I will briefly describe how these relations are obtained, and what factor influence the strength of the Hadley circulation. 
+\\
+\\
+Following Holton, p.318, we start with the zonal mean zonal momentum and zonal mean (zonal means will be indicated by $\langle \cdot \rangle$ notation throughout this thesis) temperature tendency equations assuming quasi-geostrophic motion on a $\beta$ plane (Coriolis parameter is assumed to vary linearly with latitude):
+
+\begin{align}
+\frac{\partial{\langle{u}\rangle}}{\partial{t}} - f_{o}\langle{v}\rangle = -\frac{\partial\Big(\langle{u^{*}v^{*}}\rangle\Big)}{\partial{y}} + \langle\text{frictional drag}\rangle
+\end{align}
+\begin{align}
+\frac{\partial{\langle{T}\rangle}}{\partial{t}} + \frac{N^{2}H}{R}\langle{\omega}\rangle = -\frac{\partial\Big(\langle{u^{*}T^{*}}\rangle\Big)}{\partial{y}} + \langle{Q_{tot}}\rangle
+\end{align}
+$N$ is the buoyancy or Brunt-Vaisala frequency which can be defined as: 
+\begin{align}
+N\equiv\sqrt{\frac{g}{\theta}\frac{d{\theta}}{dz}}
+\end{align}
+And is similar to static stability, $\sigma$, in that it is a measure of the stratification.
+\\
+\\
+If we assume that the zonal mean meridional wind, $\langle{v}\rangle$, and the zonal mean temperature, $\langle{T}\rangle$ are in equilibrium ($\frac{\partial}{\partial{t}}=0$) and neglect the effect of frictional drag, (1.13) and (1.14) simplify to:
+\begin{align}
+-f_{o}\langle{v}\rangle \approx -\frac{\partial\Big(\langle{u^{*}v^{*}}\rangle\Big)}{\partial{y}}
+\end{align}
+\begin{align}
+\frac{N^{2}H}{R}\langle{\omega}\rangle \approx -\frac{\partial\Big(\langle{u^{*}T^{*}}\rangle\Big)}{\partial{y}} + \langle{Q_{tot}}\rangle
+\end{align}
+\\
+\\
+So, in equilibrium, the zonal mean meridional flow is proportional to the divergence of the zonal mean eddy momentum flux ($\langle{u^{*}v^{*}}\rangle$) and zonal mean upward motion ($\langle{\omega}\rangle$) is proportional to the stratification times the zonal mean diabatic heating and zonal mean eddy heat flux convergence ($\langle{u^{*}T^{*}}\rangle$) terms. Note that if the eddy heat flux convergence is considered to be negligible we return the balance between diabatic heating and adiabatic cooling (1.6) seen for the Walker circulation. 
+\\
+\\
+Exploiting the fact that the zonal mean meridional circulation is nondivergent (Holton, p.319), one can construct a zonal mean stream function, $\Psi$, that represents the vertical and meridional flow. This stream function can be calculated solely from the zonal mean meridional wind and is referred to as the meridional mass streamfunction:
+\begin{align}
+\Psi=\frac{2\pi\cos{\phi}}{g}\int_{p_{top}}^{p} \langle{v}\rangle{dp}
+\end{align}
+Where
+\begin{equation}\label{eq:test}
+\langle{v}\rangle \propto -\frac{\partial{\Psi}}{\partial{z}} \text{ and } \langle{\omega}\rangle \propto\frac{\partial{\Psi}}{\partial{y}}
+\end{equation}
+\\
+\\
+Combining (1.13) and (1.14) one can obtain a relation between zonal mean stream function and forcing terms. This equation is analgous to the omega equation used in quasi-geostrophic theory in mid-latitude Meteorology. From Holton, p.320:
+\begin{equation}
+\begin{split}
+\Psi \propto -\frac{\partial}{\partial{y}}(\text{zonal mean diabatic heating}) + \frac{\partial^{2}}{\partial{y^{2}}}(\text{zonal mean eddy heat flux}) \\ + \frac{\partial^{2}}{\partial{y}\partial{z}}(\text{zonal mean eddy momemtnum flux}) + \frac{\partial}{\partial{z}}(\text{zonal frictional drag}) 
+\end{split}
+\end{equation}
+The diabatic heating profile is positive in the tropics and decreases (increases) as one heads north (south) (INSERT FIGURE SHOWING THIS?), therefore the first term in (1.20) causes $\Psi$ to be positive in the Northern Hemisphere and negative in the Southern Hemisphere. The seasonal maximum of the diabatic heating term is reached in boreal winter (DJF in NH and JJA in SH), and this is when the Hadley circulation is at its strongest. The contributions from the other terms are much more complicated to understand, however, and unfortunately this makes developing simple tests to see how the convective scheme (which primarily effects the distribution of tropical diabatic heating) effects the strength of the Hadley circulation. The eddy heat and momentum fluxes are mainly driven by higher latitude dynamics and it is unclear how a change in tropical static stability or diabatic heating would effect these dynamics. Although, the equator-to-pole temperature gradient is likely important for the eddy heat transport term as this is the only way to reduce this gradient (Holton, p.321). To add even more difficulty, \cite{kim_hadley_2001} points out that the effects of eddies can influence tropical diabatic heating and vice-versa.
+\subsection{Response to climate change}
+Start with Knutson and Manabe, 1995, very good paper.
+-expected to weaken due to climate change; primarily due to increase in mean SST (\cite{he_anthropogenic_2015}
+\\
+-this is due to the argument used by Held and Soden (2006) (hydrological cycle).
+\\
+-however, this argument does not really hold locally (Merlis and Schneider, 2010).
+\\
+-Walker ciruclation weakening most robust, some CMIP5 models have HC strengthening. Also, northern and summer hemisphere seasonal cells don't respond in same way.
+\\
+-wide range of scenarios for Hadley cell in RCP8.5, mean is weakening, but there is a lot of variance
+
+
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[width=0.8\linewidth]{../figures/RCP85_mpsi_DJF_crop.pdf}\hfill
+\caption{RCP8.5 DJF mass meridional streamfunction climo and response}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[width=0.8\linewidth]{../figures/RCP85_mpsi_JJA-crop.pdf}\hfill
+\caption{RCP8.5 JJA mass meridional streamfunction climo and response}
+\end{figure}
+
+%======================================================================
+\chapter{Climate model simulations}
+%======================================================================
+\section{CAM4 AGCM}
+-only needs 1 or 2 paragraphs, more detail will be given to convective scheme.
+
+-Do a brief discussion of GCMs here:
+\\
+-solve momentum equations (FV method in the case of CAM4).
+\\
+-show primitive equations and briefly discussed how they are typically solved in a GCM.
+\\
+-parameterizations (radiative, clouds, cryosphere, land surface etc.) and interactions with boundary forcings more important in climate models (for climate change) as N-S equations just move stuff around (weather). 
+\\
+-HC/WC driven by parameterized processes, however. ``\textit{These processes strongly affect regional and global climate, and their parameterizations are considered as a major source for model errors and uncertainty in future climate projections [e.g., Ellingson et al., 1991; Henderson-Sellers et al., 1993; Pedersen and Winther, 2005; Déqué et al., 2007]}.`` - Prein et al, 2015 (\cite{prein_review_2015}). N-S equations are not really source of errors/issues with GCMs anymore, it is from the parameterized quantities.
+\\
+-re convection schemes: ``\textit{However, climate projections with GCM and RCM show that the parameterization of these characteristics of deep convective clouds make up for the largest uncertainties of projected large-scale parameters such as the climate sensitivity [Knight et al., 2007; Sanderson et al., 2008; Sherwood et al., 2014]}`` - Prein et al, 2015 (\cite{prein_review_2015}).
+\\
+-climate models very coarse for convection and parameterization schemes are not as advanced as in NWP (weather models).
+\\
+\section{Zhang-Macfarlane Scheme}
+-mass flux closure, a way of relating the local mass flux (or distribution) to large-scale variables.
+\\
+-can't explicit resolve cumulus clouds so tries to give approximation to ``mean`` values in grid cell (T/q/RH/mass flux, etc.).
+\\
+-ensemble of updrafts and downdrafts.
+\\
+-convective plumes, parcels, entrainment/detrainment key concepts.
+\\
+-provide some background on the math/assumptions used in scheme. (T/q tendency equations).
+\\
+-good piece for intro from Zhang and MacFarlane 1995: ``\textit{Nevertheless, there are deficiencies in the simulated climate. One of the more pronounced of these is the one that motivated the work presented
+in this paper, namely that the tropical troposphere is systematically colder than
+the observed climatological state}.`` and `\textit{`In particular, the radiative-convective equilibrium obtained using the convective
+adjustment scheme yields substantially colder temperatures in the upper
+troposphere. The regime is also somewhat less moist in that region but more so in
+the lower troposphere.}``
+\\
+-Ian's model tries to correct this bias, in the lower troposphere anyway.
+\\
+-important to validate models vs. obs and understand why models biases exist!
+\\
+-climate models do good for surface temp (determines by radiative balance), but other variables such as precip and RH not well simulated. 
+\\
+-GCMs often create or assume a tropical T profile as close to moist adiabatic as a result of continual moist convection (T grads in tropics dissipate fast).
+\\
+-insert Taylor diagrams showing CAM4 model performance.
+%======================================================================
+\section{IF scheme}
+%======================================================================
+-``leaky pipe`` model
+\\
+-replaces Hack shallow convection scheme as well
+\\
+-``mixed`` layer CAPE method.
+\\
+-has MUCH more ice than default CAM4, but is closer (but still lower) than CERES. CAM4 uses an unrealistically large amount of cloud droplets in upper troposphere to increase SW reflectivity. You can show CERES IWP plots here.
+\\
+-seeks to improve deep tropical T profile structure and better representation of MJO.
+\\
+-might be worth going over select parameters in model that are important (amp, ice, REI, etc.)
+\\
+-maybe make a few plots that I can make or Ian has done or I can make for parameterizations in his model.
+\\
+\section{Experimental set-up}
+-SST boundary conditions used: monthly mean SSTs (1982-2001 HadISST) (Hurrell et al., 2008).
+\\
+-1.9x2.5 degree finite volume grid with 26 vertical levels.
+\\
+-ocean model is turned off - atmosphere and land models only.
+\\
+-typically run for 30 years, CAM4 control was run for 50. 
+\\
+-all model versions use CAM4 from CESM1.0.2 and were run on the scinet cluster.
+\\
+-to test response to climate change, used a +4K SST experiment. Want to test if response to climate change is sensitive to convection scheme.
+\\
+-to compare directly with radiosonde dataset (1998-2011), ran CAM4 and CAM4-IF with observed monthly SSTs from 1998-2005. 
+\chapter{Results}
+\section{Present day climate}
+-Will compare default CAM4 (50 year run, F\_2000 compset) with 2 versions of the CAM4-IF (30 year runs, F\_2000 compset); 1 version that has the best T profile, and another that has the best tropical precipitation. Compare precipitation, T profile/lapse rate profile and tropical circulation.
+\subsection{Performance of CAM4-IF compared to default CAM4}
+ANN time-mean precipitation:
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[width=1\linewidth, angle=90]{../figures/ANN_pr.pdf}\hfill
+\caption{ANN rainfall rate.}
+\end{figure}
+\newpage
+
+\begin{table}[H]
+\caption {Rainfall table} \label{tab:title} 
+\begin{center}
+
+\begin{tabular}{|p{4cm}||p{3cm}|p{2cm}|p{2cm}|  }
+\hline
+\multicolumn{4}{|c|}{ANN Rainfall RMSE (mm/day)}\\
+\hline
+Model&Region&30S-30N&15S-15NN\\    \hline
+Default CAM4&Land&1.66&1.78\\    \cline{2-4}
+&Ocean&1.05&1.29\\    \hline
+\text{CAM4-IF best rainfall}&Land&1.73&2.19\\   \cline{2-4}
+&Ocean&0.99&1.21\\   \hline
+CAM4-IF best T&Land&1.56&1.77\\   \cline{2-4}
+&Ocean&1.43&1.60\\   \hline
+\end{tabular}
+
+\begin{tabular}{|p{4cm}||p{3cm}|p{2cm}|p{2cm}|  }
+\hline
+\multicolumn{4}{|c|}{DJF Rainfall RMSE (mm/day)}\\
+\hline
+Model&Region&30S-30N&15S-15N\\    \hline
+Default CAM4&Land&2.29&2.67\\    \cline{2-4}
+&Ocean&1.74&2.30\\    \hline
+\text{CAM4-IF best rainfall}&Land&2.44&3.14\\   \cline{2-4}
+&Ocean&1.90&2.31\\   \hline
+CAM4-IF best T&Land&2.06&2.58\\   \cline{2-4}
+&Ocean&2.00&2.26\\   \hline
+\end{tabular}
+
+\begin{tabular}{|p{4cm}||p{3cm}|p{2cm}|p{2cm}|  }
+\hline
+\multicolumn{4}{|c|}{JJA Rainfall RMSE (mm/day)}\\
+\hline
+Model&Region&30S-30N&15S-15N\\    \hline
+Default CAM4&Land&2.94&2.38\\    \cline{2-4}
+&Ocean&2.10&2.49\\    \hline
+\text{CAM4-IF best rainfall}&Land&2.67&2.95\\   \cline{2-4}
+&Ocean&1.90&2.34\\   \hline
+CAM4-IF best T&Land&2.79&2.70\\   \cline{2-4}
+&Ocean&2.62&2.74\\   \hline
+\end{tabular}
+\end{center}
+\end{table}
+\textbf{Summary}
+
+Main goal of recent iterations of CAM-IF is to create a realistic tropical temperature profile. To do this, need good observational dataset in deep tropics. Radiosonde profiles are and excellent dataset to use, reanalysis has known biases. Radiosondes are seen as the ``gold standard" in meteorology. Although it is often assumed the tropical mean temperature profile is essentially moist adiabatic \cite{emanuel_quasi-equilibrium_2007}, there are some notable deviations \cite{folkins_melting_2013}. The CAM-IF is much improved over the CAM4 in the deep tropical convecting regions, with the CAM-IF having a lower pressure-weighted RMSE at most SPARC deep tropics sites than all the AMIP model members. Generally, most models have a lower tropospheric cold bias and some models have an even larger upper tropospheric cold bias (max around 850 hPa), while the CAM4 has an mid tropospheric warm bias (max around 500 hPa). 
+
+I discussed in a previous section about how the tropical mean static stability is important for the strength of the tropical circulations, especially the Walker circulation. Since static stability (integrated through the troposphere) is determined by $\frac{\partial{T}}{\partial{P}}$, ensuring the vertical profile of T is as close to observations as possible in a climate model should help in the correct representation of the strength of the tropical circulations in a climate model (all else being equal). It would appear that the CAM-IF is fairly successful at improving the T profile over the default CAM, and is even possibly better than all the AMIP models. The lapse rate profiles for Koror (deep tropical western Pacific), for which there are observed radiosondes for from the SPARC high resolution US radiosonde dataset \cite{love_us_nodate}. 
+
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[width=1\linewidth]{../figures/Diego_Garcia_CAM4.png}\hfill
+\caption{Default CAM4 temperature profiles vs. radiosonde observations for Diego Garcia (tropical Indian Ocean) for January, April, July and October. Generally, the model is too cold in the lower troposphere and has a tropopause temperature that is too cold.}%
+\label{fig:1figs}%
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[width=1\linewidth]{../figures/Diego_Garcia_CAM4-IF.png}\hfill
+\caption{Same as above, but for the CAM4-IF. Note the lower tropospheric and tropopause cold bias is no longer present or significantly reduced.}%
+\label{fig:1figs}%
+\end{figure}
+
+
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[width=1\linewidth]{../figures/T_figure-crop.pdf}\hfill
+\caption{\textbf{a}: Annual mean Koror model minus observed temperature profile. \textbf{b}: Annual mean Koror lapse rate. \textbf{c}: Annual mean 20S-20N mean lapse rate.}
+\end{figure}
+
+
+\textbf{MJO}
+Another feature that the CAM4-IF attempts to improve on the default CAM4 is the Madden-Julian Oscillation. 
+
+-using methodology of \cite{vecchi_global_2007} to measure tropical upward mass flux (omega 500)
+\\
+-make density plot of MERRA gridpoints vs. CAM4-IF/CAM4. 
+\\
+-add in 10S-10N lon vs. height omega plots.
+\\
+-CAM4 has bias of too much ascent of Africa/IO - does not have good representation of core of ascent over W. Pac. warm pool. CAM4-IF is too strong with warm pool ascent, but spatial pattern is better (as seen in the pattern correlation).
+\\
+-start with plots of climo omega at ~500 hPa (sigma level 18).
+\\
+-might be nice to have plots of 850 winds.
+\\
+-200 hPa chi*: CAM4-IF models have a better spatial pattern as seen in Fig. 3.6, however, it appears that divergence is too strong over ascending region and this is confirmed in other reanalysis datasets as well (not shown).
+\\
+-Overall, CAM4-IF has some improvement over CAM4, but the improvements are not as great as one would expect from the much improved tropical T profile. The scheme may be having a tendency for too much organization of precipitation (some kind of a feedback). Over-active summer monsoon is probably biggest issue in CAM4-IF.
+\\
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[width=0.9\linewidth, angle=90]{../figures/ANN_omega500.pdf}\hfill
+\caption{ANN climo ~500 hPa omega (sigma level 18) with comparisons to a MERRA/ERAI reanalysis blend.}
+\end{figure}
+\newpage
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[width=0.85\linewidth, angle=90]{../figures/200hpachistar_ANN.pdf}\hfill
+\caption{ANN climo 200 hPa $\chi^{*}$ (shaded) with an MERRA/ERAI reanalysis blend overlaid as contours with a spacing of $10^{6}$ $m^{2}$/$s$.}
+\end{figure}
+\section{Response to a uniform 4K SST warming}
+
+\subsection{General overview}
+
+The main forcing that causes the tropical circulations to weaken under climate change is thought to be the mean SST warming \cite{he_anthropogenic_2015}. Thus, this thesis focuses on the response of the CAM4-IF to a global mean 4K SST warming (see methods for more details). This experiment was performed with the IPCC models, and is referred to as the ``AMIP4K" experiment. Here we will mainly focus on examination of time-mean quantities such as annual means. We find that the while the tropical circulations do weaken in the CAM4-IF, the tropical mean convective mass flux does not weaken as theory would suggest. This suggests that the hydrological cycle argument to the weakening of tropical mean convective mass flux may be sensitive to the type of convective scheme used.
+\\
+The precipitation rate response to warming is constrained by the increase in downward longwave radiative flux (see section 1.1.1). In response to a uniform 4K SST increase, the atmosphere warms so as the planet can regain radiative balance, and thus the downward longwave radiation increases (the atmosphere increases radiation isotropically by the Stefan-Boltzmann law). The global mean increase in downward longwave radiation for the CAM4 and the various CAM4-IF versions is found to be in a tight range 30-31 Wm$^{-2}$, while the global mean surface temperature increases fairly uniformly by around 4.3-4.4K. The global mean tropospheric temperature increases for than 4K because of the increased condensational heating to the very large increase in water vapour capacity of the atmosphere due to the C-C relation. The global mean precipitation response among the CAM4 and CAM4-IF models has some variation and is in the range of 16-19\% which implies an increase of $\approx$ 3.5-4.5\% K$^{-1}$.
+\\
+Similar to the results of \cite{vecchi_global_2007}, the decrease in tropical mean $\omega_{500}^{\uparrow}$ is generally less, and in some case half of the inferred mass flux decrease based on the hydrological cycle argument. The correlation coefficient between the inferred mass flux response and the tropical mean $\omega_{500}^{\uparrow}$ mass flux between the 10 model runs performed here is 0.57, indicating that the relationship is not particularly robust, however, the models are certainly not independent. Regardless, the fact that the upward omega decreases less than inferred raises the possibility that omega may not be directly related to the convective mass flux. Also, the relationship between the $\omega_{500}^{\uparrow}$ response and inferred mass flux response hints at a non-linear relationship in figure x and in figure 4b) in \cite{vecchi_global_2007} for the CMIP5 models. This could indicate that the hydrological cycle argument is not the main reason behind the weakening of the tropical circulations due to climate change. It could be somewhat coincidental that a relationship between $(\delta{\omega_{500}^{\uparrow}})/\omega_{500}^{\uparrow}$ and the inferred mass flux exists.
+\\
+It is not clear physically why upward $\omega$, which is influenced by the large scale circulation, should be related to the sub-gridscale convective mass flux which is a function of local scale variables. In fact, \cite{yano_deep-convective_2009} discusses the fact that researchers do not agree on what the convective mass flux actually is. It was first realized by \cite{riehl_and_malkus_heat_1958} that the upward motions of the tropical circulations could not be responsible for the vertical moist static energy structure observed in the tropics with a minimum in the mid-troposphere. Thus, they hypothesized that ``hot towers" plumes of relatively undiluted air could transport tracers from the boundary layer to the tropopause quite efficiently. These convective plumes occur on the sub-gridscale and must be parameterized. While the convective mass flux can effect the vertical diabatic heating (temperature tendency) structure in an atmospheric column, which can in turn effect the large-scale $\omega$ (see eq. 1.11), it should not be assumed that the $M_{c}$=$\omega$ in the tropics.
+
+\begin{table}[H]
+\caption {Precipitation, $q_{bl}$, inferred convective mass flux and upward 500 hPa omega response} \label{tab:title} 
+\begin{center}
+
+\begin{tabular}{|p{4.5cm}||p{1.25cm}|p{1.5cm}|p{1.75cm}|p{2.5cm}|p{2.25cm}|  }
+\hline
+\multicolumn{6}{|c|}{+4K SST response}\\
+\hline
+Model&$\delta{P}/{P}$&$\delta{(q_{bl})}/q_{bl}$&$\frac{\delta{P}}{P}-\frac{\delta{(q_{bl})}}{q_{bl}}$&$\frac{\delta{P}}{P}-0.07(\Delta{T})$&$(\delta{\omega_{500}^{\uparrow}})/\omega_{500}^{\uparrow}$\\    \hline
+1) Default CAM4&0.161&0.302&-0.142&-0.130&-0.054\\   \hline
+\text{2) CAM4-IF best rainfall}&0.192&0.281&-0.089&-0.093&-0.041\\ \hline
+\text{3) CAM4-IF best T}&0.185&0.285&-0.099&-0.103&-0.068\\ \hline
+4) CAM4-IF 1&0.190&0.289&-0.097&-0.112&-0.068\\  \hline
+5) CAM4-IF 2&0.177&0.274&-0.095&-0.099&-0.061\\  \hline
+6) CAM4-IF 3&0.190&0.285&-0.116&-0.119&-0.041\\  \hline
+7) CAM4-IF 4&0.177&0.293&-0.112&-0.120&-0.091\\  \hline
+8) CAM4-IF 5&0.176&0.288&-0.092&-0.096&-0.096\\  \hline
+9) CAM4-IF 6&0.192&0.285&-0.135&-0.138&-0.033\\  \hline
+10) CAM4-IF 7&0.159&0.294&-0.101&-0.108&-0.104\\  \hline
+\end{tabular}
+
+\end{center}
+\end{table}
+
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[width=0.9\linewidth, angle=90]{../figures/ANN_pr_response.pdf}\hfill
+\caption{ANN precipitation rate response from a 4K SST warming (shaded) with control run climatology (2 mm/day contours, starting at 4 mm/day).}
+\end{figure}
+-it seems that the ITCZs move poleward away from the equator in all 3 models in response to the 4K SST warming, with the effect more pronounces in the CAM4-IF.
+\\
+-largest increase in rainfall seen in the Bay of Bengal, the South China Sea and around the Philippines is consistent with the AMIP4K response seen in CMIP5 models (Chadwick, 2016), with the CAM4-IF best rainfall with the largest increase in that region.
+\\
+-tropical mean (30S-30N) omega is actually near 0 because upward motion is mainly compensated by downward motion in this region (this region essentially contains the HC and WC which have a $\sim$ 0 net omega.
+\\
+-so rather than look at tropical mean omega, we look at the upward omega only. We also choose 500 hPa to be consistent with what others have done.
+\\
+-we find that in general, the upward does not weaken as much as inferred from the hydrological cycle arguments, similar to what the CMIP5 models show in Vecchi and Soden, 2007.
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[width=1\linewidth]{../figures/Rplots.pdf}\hfill
+\caption{Response of tropical mean upward 500 hPa omega (upward mass flux) in various versions of the CAM4-IF. Model ``1" is the default CAM4 (the numbered model versions in table x.x correspond to the numbers in this plot). Note that upward omega is not the same as convective mass flux. The dashed line is the linear least-squares fit, with the solid line the line indicating what the relationship would be if there was a  one-to-one relationship between inferred mass flux and 500 hPa upward omega.}
+\end{figure}
+\newpage
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[width=1\linewidth]{../figures/FMASS_ANN-crop.pdf}\hfill
+\caption{Response of the annual mean 30S-30N mean convective mass flux for the 2 CAM4-IF models and the default CAM4 with the same plots but for omega in the second column.}
+\end{figure}
+
+
+\newpage
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[width=1\linewidth]{../figures/M_profile-crop.pdf}\hfill
+\caption{Vertical profiles of the annual mean tropical \textit{total} mean convective mass flux response and control run climatology. Note the vertical scale is not logarithmic as in previous figures to highlight the "bottom-heavy" nature of the profiles.}
+\end{figure}
+
+
+
+\newpage
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[height=0.9\linewidth]{../figures/M_profiles-crop.pdf}\hfill
+\caption{\textbf{a) and b)}: Downdraft mass flux for the CAM4-IF models. \textbf{c) and d)}: Updraft mass flux for the CAM4-IF models. Note that the updraft mass flux increases by approximately the same amount in both models versions, but downdraft strength increases more in the ``best T" CAM4-IF version.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[width=1\linewidth]{../figures/M_scat-crop.pdf}\hfill
+\caption{Scatterplot of control run $M_{int}$ vs. the fractional response of $M_{int}$ from a 4K SST warming for the 30S-30N region for each gridpoint. Note the scale is different for each model.}
+\end{figure}
+
+-However, when looking at integrated mass flux, we find some very surprising results with the CAM4-IF; we find that in fact, the tropical mean integrated convective mass flux actually strengthens in both version of the CAM4-IF (best T and best rainfall). From Chadwick et al, 2012, all CMIP5 models have a weakening of convective mass flux in RCP8.5, however, these are coupled simulations with CO2 forcing, not just a mean SST warming. 
+\\
+-Also, the convective mass flux response in the CAM4-IF models does not seem to be consistent with the hydrological cycle argument for mass flux weakening of Held and Soden 2006. While the inferred convective mass flux weakens in the CAM4-IF models, the actual mass flux does not. This could mean that there is a large change in precipitation efficiency in the CAM4-IF model with the 4K SST warming. In the very least, it does seem that the convective scheme does effect the convective mass flux response.
+\\
+-There is very distinct structure to the convective mass flux in the control run climatologies as well as in the responses. The CAM4-IF models have a local minimum in convective mass flux a bit above 700 hPa and maxima around 500 hPa and around 900 hPa in the control simulations. This minimum around 700 hPa is thought to be related to downdrafts originating from the melting level above. This feature is also apparent in the default CAM4 control run, but is at a higher level, around 500 hPa. The CAM4 control run also has much stronger mass flux below 500 hPa and especially below 850 hPa. The convective mass flux response in the CAM4-IF models appears to feature a shift upward in the minimum above 700 hPa, presumably in response to the melting level moving upwards in response to the warmer climate. There also appears to be a general shift upward of the mass flux, with a strengthening of mass flux below 600 hPa possibly indicating an increase in shallow convection (cumulus congestus) which is most pronounced in the best rainfall run. The CAM4 has quite a different response, with an apparent weakening of the minimum in mass flux around 500 hPa and significant weakening of the maximum around 300 hPa and below 600 hPa. The tropical mean $M_{int}$ response of the CAM4 ($\sim$ 4.5\%) is very close to the integrated omega response, while this is not the case in the CAM4-IF models which have a weakening of tropical mean integrated omega, but a strengthening of $M_{int}$.
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[width=1\linewidth]{../figures/test-crop.pdf}\hfill
+\caption{A 300-month time-series of monthly mean tropical mean integrated mass flux response for the CAM4-IF best rain (red), CAM4-IF best T (green) and the default CAM4 (blue) in thick lines, with the inferred tropical mean mass flux response in thin lines.}
+\end{figure}
+
+-It is clear that for the CAM4-IF, omega does not respond in the same way as convective mass flux, but appears to do so in the default CAM4 (figure x, e\&f).
+\\
+-Don't believe anyone has looked at convective mass flux response with 4K SST warming.
+\\
+-Walker circulation weakens in all 3 models, with the CAM4 having a maximum of weakening over Africa, and the CAM4-IF models seeing a max weakening over the Indian Ocean. 
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[width=0.8\linewidth, angle=90]{../figures/200hpachistar_response_ANN.pdf}\hfill
+\caption{200 hPa annual mean $\chi*$ response (shaded) with the control run annual mean climatology in contours.}
+\end{figure}
+
+\subsection{Tropical circulation}
+
+\subsection{Effect of convective cloud}
+
+
+
+\chapter{Conclusion}
+-lots to say here, anything we can say with certainty?
+\\
+-would be nice to run coupled simulations - things like MJO/ENSO may interact in unexpected ways with convective scheme.
+\\
+-is ice cloud in tropics being modeled properly in GCMs? (tropical ice cloud amount seems to be improved in CAM5)
+\\
+-discuss convection permitting modeling - could be the best way forward as CPU power increases.
+\\
+\section{Future work}
+-1-2 paragraphs here to discuss future experiments and improvements to the CAM4-IF.
+-running 1 degree simulations or coupled simulations could be enlightening as some studies show that MJO depends on ocean-atmosphere coupling.
+
+%----------------------------------------------------------------------
+% END MATERIAL
+%----------------------------------------------------------------------
+
+% B I B L I O G R A P H Y
+% -----------------------
+
+% The following statement selects the style to use for references.  It controls the sort order of the entries in the bibliography and also the formatting for the in-text labels.
+\bibliographystyle{plain}
+% This specifies the location of the file containing the bibliographic information.  
+% It assumes you're using BibTeX (if not, why not?).
+\cleardoublepage % This is needed if the book class is used, to place the anchor in the correct page,
+                 % because the bibliography will start on its own page.
+                 % Use \clearpage instead if the document class uses the ``oneside" argument
+\phantomsection  % With hyperref package, enables hyperlinking from the table of contents to bibliography             
+% The following statement causes the title "References" to be used for the bibliography section:
+\renewcommand*{\bibname}{References}
+
+% Add the References to the Table of Contents
+\addcontentsline{toc}{chapter}{\textbf{References}}
+
+\bibliography{uw-ethesis}
+% Tip 5: You can create multiple .bib files to organize your references. 
+% Just list them all in the \bibliogaphy command, separated by commas (no spaces).
+
+% The following statement causes the specified references to be added to the bibliography% even if they were not 
+% cited in the text. The asterisk is a wildcard that causes all entries in the bibliographic database to be included (optional).
+\nocite{*}
+
+% The \appendix statement indicates the beginning of the appendices.
+\appendix
+% Add a title page before the appendices and a line in the Table of Contents
+%\chapter*{APPENDICES}
+%\addcontentsline{toc}{chapter}{APPENDICES}
+%======================================================================
+%\chapter[PDF Plots From Matlab]{Appendix stuff}
+%\label{AppendixA}
+% Tip 4: Example of how to get a shorter chapter title for the Table of Contents 
+%======================================================================
+%\section{A}
+
+%\section{B}
+
+\end{document}

@@ -1,0 +1,124 @@
+% T I T L E   P A G E
+% -------------------
+% Last updated Nov 1, 2016, by Stephen Carr, IST-Client Services
+% The title page is counted as page `i' but we need to suppress the
+% page number.  We also don't want any headers or footers.
+\pagestyle{empty}
+\pagenumbering{roman}
+
+% The contents of the title page are specified in the "titlepage"
+% environment.
+\begin{titlepage}
+        \begin{center}
+        \vspace*{1.0cm}
+
+        \Huge
+        {\bf{An investigation into the impacts of convective parameterization on the representation of the tropical circulation in a GCM} }
+
+        \vspace*{1.0cm}
+
+        \normalsize
+        by \\
+
+        \vspace*{1.0cm}
+
+        \Large
+        Shawn Corvec\\
+
+        \vspace*{3.0cm}
+
+        \normalsize
+        A thesis \\
+        presented to the University of Waterloo \\ 
+        in fulfillment of the \\
+        thesis requirement for the degree of \\
+        Master of Mathematics \\
+        in \\
+        Applied Math \\
+
+        \vspace*{2.0cm}
+
+        Waterloo, Ontario, Canada, 2017 \\
+
+        \vspace*{1.0cm}
+
+        \copyright\ Shawn Corvec 2017 \\
+        \end{center}
+\end{titlepage}
+
+% The rest of the front pages should contain no headers and be numbered using Roman numerals starting with `ii'
+\pagestyle{plain}
+\setcounter{page}{2}
+
+\cleardoublepage % Ends the current page and causes all figures and tables that have so far appeared in the input to be printed.
+% In a two-sided printing style, it also makes the next page a right-hand (odd-numbered) page, producing a blank page if necessary.
+ 
+
+
+% D E C L A R A T I O N   P A G E
+% -------------------------------
+  % The following is a sample Delaration Page as provided by the GSO
+  % December 13th, 2006.  It is designed for an electronic thesis.
+  \noindent
+I hereby declare that I am the sole author of this thesis. This is a true copy of the thesis, including any required final revisions, as accepted by my examiners.
+
+  \bigskip
+  
+  \noindent
+I understand that my thesis may be made electronically available to the public.
+
+\cleardoublepage
+
+% A B S T R A C T
+% ---------------
+
+\begin{center}\textbf{Abstract}\end{center}
+
+Many studies have shown that the tropical circulations (Walker and Hadley circulations) will weaken in a warmer world. Two somewhat independent physical mechanisms have been proposed to explain this weakening; a gross hydrological cycle argument, and static stability argument. However, the gross hydrological cycle argument is likely only applicable to the overall upward convective mass flux in the tropics, not the local circulations (Hadley and Walker). Here, we show that there is potentially an even larger flaw in the hydrological cycle argument and show that by simply changing the convective scheme a climate model that had a weakening convective mass flux with warming can simulate a strengthening of the convective mass flux in the tropics with warming, and still show a weakening of the tropical circulations. Our work supports the theory that static stability is the driver of the weakening of the tropical circulation, and there is also a contribution from changes in cloud radiative heating. We find that there is not a robust relationship between convective mass flux strength and tropical circulation strength.
+\cleardoublepage
+
+% A C K N O W L E D G E M E N T S
+% -------------------------------
+
+\begin{center}\textbf{Acknowledgements}\end{center}
+
+I would like to thank all the little people who made this thesis possible.
+\cleardoublepage
+
+% D E D I C A T I O N
+% -------------------
+
+\begin{center}\textbf{Dedication}\end{center}
+
+\cleardoublepage
+
+% T A B L E   O F   C O N T E N T S
+% ---------------------------------
+\renewcommand\contentsname{Table of Contents}
+\tableofcontents
+\cleardoublepage
+\phantomsection    % allows hyperref to link to the correct page
+
+% L I S T   O F   T A B L E S
+% ---------------------------
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+\cleardoublepage
+\phantomsection		% allows hyperref to link to the correct page
+
+% L I S T   O F   F I G U R E S
+% -----------------------------
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+\cleardoublepage
+\phantomsection		% allows hyperref to link to the correct page
+
+% GLOSSARIES (Lists of definitions, abbreviations, symbols, etc. provided by the glossaries-extra package)
+% -----------------------------
+%\printglossaries
+\cleardoublepage
+\phantomsection		% allows hyperref to link to the correct page
+
+% Change page numbering back to Arabic numerals
+\pagenumbering{arabic}
+

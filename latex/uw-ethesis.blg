@@ -1,0 +1,51 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: uw-ethesis.aux
+The style file: plain.bst
+Database file #1: uw-ethesis.bib
+Warning--to sort, need author or key in noauthor_testing_nodate
+Warning--to sort, need author or key in noauthor_virtual_nodate
+Warning--to sort, need author or key in noauthor_introduction_nodate
+Warning--to sort, need author or key in noauthor_eol_nodate
+You've used 79 entries,
+            2118 wiz_defined-function locations,
+            920 strings with 17497 characters,
+and the built_in function-call counts, 27606 in all, are:
+= -- 2768
+> -- 1188
+< -- 2
++ -- 496
+- -- 392
+* -- 2336
+:= -- 4519
+add.period$ -- 231
+call.type$ -- 79
+change.case$ -- 433
+chr.to.int$ -- 0
+cite$ -- 83
+duplicate$ -- 871
+empty$ -- 2192
+format.name$ -- 392
+if$ -- 5589
+int.to.chr$ -- 0
+int.to.str$ -- 79
+missing$ -- 74
+newline$ -- 391
+num.names$ -- 150
+pop$ -- 314
+preamble$ -- 1
+purify$ -- 354
+quote$ -- 0
+skip$ -- 621
+stack$ -- 0
+substring$ -- 2417
+swap$ -- 97
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 316
+warning$ -- 4
+while$ -- 286
+width$ -- 81
+write$ -- 848
+(There were 4 warnings)
