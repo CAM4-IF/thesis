@@ -1,20 +1,3 @@
-; ***********************************************
-; xy_3.ncl
-;
-; Concepts illustrated:
-;   - Reversing the Y axis
-;   - Changing the line dash pattern in an XY plot
-;   - Creating your own line dash pattern for an XY plot
-;   - Changing the line color and thickness in an XY plot
-;   - Creating a vertical profile plot
-;
-; ***********************************************
-;
-; These files are loaded by default in NCL V6.2.0 and newer
-; load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_code.ncl"
-; load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_csm.ncl"
-load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/skewt_func.ncl"
-;************************************************
 begin
 ;************************************************
 ; read in data
@@ -135,7 +118,7 @@ do while(n.le.dimsizes(fils)-1)
  
  ;res@tiXAxisString="Total M~B~c~N~ (kg/m~S~2~N~/s)"
  res@tiXAxisString="~F33~D~F~T (K)"
- res@vpHeightF 	 = 0.7               ; change aspect ratio of plot
+ res@vpHeightF 	 = 0.6               ; change aspect ratio of plot
  res@vpWidthF 	         = 0.55
  res@gsnXRefLine = 0.0 
 
@@ -220,10 +203,10 @@ plot3 = simple_legend(wks,plot3,gres,lineres,textres)
  overlay(plot(1),plot5)
  txid = new(3,graphic)                  ; Nine text strings
  txres               = True     
- txres@txFontHeightF = 0.012
- txid(0) = gsn_add_text (wks,plot(1),"CAM4: " + decimalPlaces(vertmean(0),1,True) + " %", 3.15e-6, 500,txres)
- txid(1) = gsn_add_text (wks,plot(1),"CAM4-IF best rain: " + decimalPlaces(vertmean(1),1,True) + " %", 4.3e-6, 525,txres)
- txid(2) = gsn_add_text (wks,plot(1),"CAM4-IF best T: " + decimalPlaces(vertmean(2),1,True) + " %", 4.05e-6, 550,txres)
+ txres@txFontHeightF = 0.015
+ txid(0) = gsn_add_text (wks,plot(1),"CAM4: " + decimalPlaces(vertmean(0),1,True) + " %", -5.5e-6, 225,txres)
+ txid(1) = gsn_add_text (wks,plot(1),"CAM4-IF best rain: " + decimalPlaces(vertmean(1),1,True) + " %",-4.05e-6, 255,txres)
+ txid(2) = gsn_add_text (wks,plot(1),"CAM4-IF best T: " + decimalPlaces(vertmean(2),1,True) + " %", -4.35e-6, 285,txres)
  
  
 ;;;;;Static stability;;;;;
@@ -250,10 +233,10 @@ res1=res
  overlay(plot(2),plot7)
  txid1 = new(3,graphic)                  ; Nine text strings
  txres               = True     
- txres@txFontHeightF = 0.012
- txid1(0) = gsn_add_text (wks,plot(2),"CAM4: " + decimalPlaces(vertmean1(0),1,True) + " %", 3.05e-4, 500,txres)
- txid1(1) = gsn_add_text (wks,plot(2),"CAM4-IF best rain: " + decimalPlaces(vertmean1(1),1,True) + " %", 4.3e-4, 525,txres)
- txid1(2) = gsn_add_text (wks,plot(2),"CAM4-IF best T: " + decimalPlaces(vertmean1(2),1,True) + " %", 4.05e-4, 550,txres)
+ txres@txFontHeightF = 0.015
+ txid1(0) = gsn_add_text (wks,plot(2),"CAM4: " + decimalPlaces(vertmean1(0),1,True) + " %", 2.75e-4, 125,txres)
+ txid1(1) = gsn_add_text (wks,plot(2),"CAM4-IF best rain: " + decimalPlaces(vertmean1(1),1,True) + " %", 4.35e-4, 155,txres)
+ txid1(2) = gsn_add_text (wks,plot(2),"CAM4-IF best T: " + decimalPlaces(vertmean1(2),1,True) + " %", 4.05e-4, 185,txres)
  
  
  ;;;;;Omega;;;;;
@@ -280,10 +263,10 @@ res2=res
  overlay(plot(3),plot9)
  txid1 = new(3,graphic)                  ; Nine text strings
  txres               = True     
- txres@txFontHeightF = 0.012
- txid1(0) = gsn_add_text (wks,plot(3),"CAM4: " + decimalPlaces(vertmean2(0),1,True) + " %", 0.0024, 500,txres)
- txid1(1) = gsn_add_text (wks,plot(3),"CAM4-IF best rain: " + decimalPlaces(vertmean2(1),1,True) + " %", 0.0032, 525,txres)
- txid1(2) = gsn_add_text (wks,plot(3),"CAM4-IF best T: " + decimalPlaces(vertmean2(2),1,True) + " %", 0.00305, 550,txres)
+ txres@txFontHeightF = 0.015
+ txid1(0) = gsn_add_text (wks,plot(3),"CAM4: " + decimalPlaces(vertmean2(0),1,True) + " %", 0.0018, 125,txres)
+ txid1(1) = gsn_add_text (wks,plot(3),"CAM4-IF best rain: " + decimalPlaces(vertmean2(1),1,True) + " %", 0.0028, 155,txres)
+ txid1(2) = gsn_add_text (wks,plot(3),"CAM4-IF best T: " + decimalPlaces(vertmean2(2),1,True) + " %", 0.0026, 185,txres)
  
  
 res4 = True

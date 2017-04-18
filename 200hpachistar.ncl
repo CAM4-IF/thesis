@@ -202,7 +202,6 @@ chistarmin2=min(chistar2({-30:30},:))
   res@mpGridLatSpacingF = 15
   res@mpGridLonSpacingF = 45
   res@pmTickMarkDisplayMode  = "Always" 
-  res@gsnLeftString    = "" 
   res@gsnCenterString    = f@case
   res@gsnCenterStringFontHeightF=0.012
   res@gsnLeftString  = lets(n) + "                   "  + "(~F33~c~F~~S~~F33~*~F~~N~)~B~min~N~: " + decimalPlaces(chistarmin/1e6,2,True) + "~F34~W~F~10~S~6~N~ m^2/s"
