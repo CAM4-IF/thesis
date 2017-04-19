@@ -1,8 +1,8 @@
 load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/contributed.ncl"
 begin
 
-fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc4")
-fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc2")
+fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/CAM*ANN*.nc4")
+fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/CAM*4K*ANN*.nc2")
 datalog=new(dimsizes(fils),double) ; create list to store output
 plotfile="200hpachistar_response_ANN" ;;;PDF file name!
 wks = gsn_open_wks("epsi", plotfile) ;; open a workstation file!
@@ -180,8 +180,8 @@ chistarmin2=min(chistar2({-30:30},:))
   
    res                      = True        
    res@cnLevelSelectionMode = "ExplicitLevels"   
-   res@cnLevels = (/-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10,11,12/)*0.5e6
-   res@cnFillColors = (/40,50,60,70,80,85,90,95,100,105,110,120,0,0,130,140,150,160,170,180,190,200,210,220,230,240/)
+   res@cnLevels = (/-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8,9,10,11,12/)*0.5e6
+   res@cnFillColors = (/40,50,60,70,80,85,90,95,100,105,110,120,0,130,140,150,160,170,180,190,200,210,220,230,240/)
    res@cnLinesOn       = False               
    res@cnLineLabelsOn       = False                 
   res@cnFillOn             = True                
@@ -202,16 +202,13 @@ chistarmin2=min(chistar2({-30:30},:))
   res@mpGridLatSpacingF = 15
   res@mpGridLonSpacingF = 45
   res@pmTickMarkDisplayMode  = "Always" 
-  res@gsnLeftString    = "" 
-  res@gsnCenterString    =lets(n) + " " + f@case
+  res@gsnLeftString    = lets(n)
+  res@gsnCenterString    = f@case
   res@gsnCenterStringFontHeightF=0.012
-  ;res@gsnLeftString  = "chi* min: " + decimalPlaces(chistarmin/1e6,2,True) + "chi* response (%): " + decimalPlaces(response,2,True) + "~C~GMS: " + GMS2
-  ;res@gsnLeftString  = "chi* min: " + decimalPlaces(chistarmin/1e6,2,True) + "x1e6 m^2/s" + "~C~Pattern correlation: " + decimalPlaces(pcor,2,True)
-  ;res@gsnRightString="RMSE: " + decimalPlaces(rmse/1e6,2,True) + "x1e6 m^2/s"
+  res@gsnLeftStringFontHeightF=0.012
   
 res@tmXBLabelFontHeightF=0.006
 res@gsnRightStringFontHeightF= 0.0065
-res@gsnLeftStringFontHeightF= 0.0065
 res@mpGridLineThicknessF=0.5
   
     ;;;;;;;;;;;;;;;;;;;;;;SET THE CONTOUR PLOT RESOURCES!!!!;;;;;;;;;;;;;;;;;;;
@@ -225,17 +222,16 @@ res@mpGridLineThicknessF=0.5
  cres@gsnDraw = False
  cres@gsnFrame = False
  cres@cnInfoLabelOn = False                ; turn off contour info label
- cres@cnLineThicknessF =0.5
+ cres@cnLineThicknessF =2
  cres@gsnRightString    = ""
  cres@gsnRightStringFontHeightF    = 0.05
  cres@cnLevelSpacingF=200.0
- cres@gsnContourZeroLineThicknessF  = 2.0
+ cres@gsnContourZeroLineThicknessF  = 4.0
  cres@cnLineLabelDensityF      = 3.0
  cres@cnLineLabelFontHeightF      = 0.004
  cres@cnLineLabelPlacementMode = "Constant"
  cres@gsnContourNegLineDashPattern =2
  cres@cnLineLabelInterval=1
- cres@gsnLeftStringFontHeightF=0.025
  cres@gsnLeftString    = ""
  cres@tmXTOn="False"
 ; cres@gsnZonalMean    = True
@@ -275,12 +271,12 @@ resP@gsnPanelLabelBar=True
 resP@cnInfoLabelOn       = False
 resP@lbOrientation =   "horizontal"          ; 
 resP@lbLabelFontHeightF    = 0.006
-resP@txString = "ANN"
+resP@txString = ""
 resP@lbTitleString    = "m^2/s"
 resP@gsnMaximize=True
 resP@gsnPaperOrientation = "landscape"
 resP@lbTitlePosition ="Bottom"
-resP@lbTitleFontHeightF=.008
+resP@lbTitleFontHeightF=.0012
 resP@txFontHeightF    = 0.03
 gsn_panel(wks,plot,(/3,1/),resP)  
 delete(wks) 
