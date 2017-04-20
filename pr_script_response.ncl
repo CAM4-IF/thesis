@@ -135,9 +135,6 @@ res4@lbTitleString    = "Precipitation rate (mm/day)"
 res4@lbTitlePosition ="Bottom"
 res4@lbTitleFontHeightF=.008
 res4@txFontHeightF    = 0.03
-;res4@pmLabelBarWidthF=0.3
-;res4@txString = "ANN"
-;res4@pmLabelBarOrthogonalPosF=0.95
 res4@gsnMaximize=True
 res4@gsnPaperOrientation="landscape"
 
