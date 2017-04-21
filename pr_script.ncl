@@ -102,6 +102,7 @@ res3@tmXTOn="False"
 res3@tmYROn="False"
 res3@tmYLOn="True"
 
+
 res3@gsnCenterString= pr1@case
 res3@gsnRightString="r~B~pat~N~: " + decimalPlaces(pcor,2,True) + "; RMSE: " + decimalPlaces(rmse,2,True) + " mm/day" + "; Mean: " + decimalPlaces(meanpr,2,True) + " mm/day"
 res3@gsnLeftString=lets(n) + "      "  + pr1@case
@@ -169,15 +170,17 @@ res4@cnInfoLabelOn       = False
 res4@lbOrientation =   "horizontal"          ; 
 res4@gsnPanelMainString    = " "
 res4@lbLabelFontHeightF    = 0.006
-res4@lbTitleString    = "Precipitation rate (mm/day)"
+res4@lbTitleString    = "P (mm/day)"
 res4@lbTitlePosition ="Bottom"
-res4@lbTitleFontHeightF=.008
+res4@lbTitleFontHeightF=.012
 res4@txFontHeightF    = 0.03
 ;res4@pmLabelBarWidthF=0.3
 res4@txString = "ANN"
-;res4@pmLabelBarOrthogonalPosF=0.95
+res4@pmLabelBarOrthogonalPosF=-0.02
 res4@gsnMaximize=True
-res4@gsnPaperOrientation="landscape"
+res4@gsnPaperOrientation="portrait"
+;res4@vpHeightF 	 = 1             ; change aspect ratio of plot
+;res4@vpWidthF 	         = 1.3
 
 
 gsn_panel(wks,plot,(/4,1/),res4)

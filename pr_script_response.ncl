@@ -131,12 +131,13 @@ res4@cnInfoLabelOn       = False
 res4@lbOrientation =   "horizontal"          ; 
 res4@gsnPanelMainString    = " "
 res4@lbLabelFontHeightF    = 0.006
-res4@lbTitleString    = "Precipitation rate (mm/day)"
+res4@lbTitleString    = "P (mm/day)"
 res4@lbTitlePosition ="Bottom"
-res4@lbTitleFontHeightF=.008
+res4@lbTitleFontHeightF=.012
 res4@txFontHeightF    = 0.03
 res4@gsnMaximize=True
 res4@gsnPaperOrientation="landscape"
+res4@pmLabelBarOrthogonalPosF=-0.02
 
 
 gsn_panel(wks,plot,(/4,1/),res4)

@@ -64,11 +64,11 @@ do while(n.le.dimsizes(fils)-1)
    
   
    opt=(/0,100,1000/)
-   wva = wgt_vert_avg_beta(levs, Q, PS/100, 0, opt)/950
+   wva = wgt_vert_avg_beta(levs, Q, PS/100, 0, opt)/900
    Qtot=wva(0,0)
    
    opt1=(/0,100,1000/)
-   wva3 = wgt_vert_avg_beta(pm1/100, Qdiff, PS/100, 0, opt)/950
+   wva3 = wgt_vert_avg_beta(pm1/100, Qdiff, PS/100, 0, opt)/900
    print(wva3)
    Qtot1=wva3(0,0)
    vertmean(n)=(Qtot1/Qtot)*100
