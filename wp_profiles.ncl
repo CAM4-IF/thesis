@@ -114,7 +114,7 @@ do while(n.le.dimsizes(fils)-1)
  res@tmXBLabels=(/-2,0,2,4,6,8,10,12/)*4e-3
  res@tmXBLabelFontHeightF=0.015
  
- res@tiXAxisString="q~B~liq/ice~N~ g/kg"
+ res@tiXAxisString="q~B~liq/ice~N~ (g/kg)"
  res@vpHeightF 	 = 0.7               ; change aspect ratio of plot
  res@vpWidthF 	         = 0.55
  res@gsnXRefLine = 0.0 

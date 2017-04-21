@@ -223,8 +223,8 @@ res@mpGridLineThicknessF=0.5
  cres@gsnFrame = False
  cres@cnInfoLabelOn = False                ; turn off contour info label
  cres@cnLineThicknessF =2
- cres@gsnRightString    = ""
- cres@gsnRightStringFontHeightF    = 0.05
+ cres@gsnRightString    = "~F33~D~F~(~F33~c~F~~S~*~N~) response: " + response
+ cres@gsnRightStringFontHeightF=0.12
  cres@cnLevelSpacingF=200.0
  cres@gsnContourZeroLineThicknessF  = 4.0
  cres@cnLineLabelDensityF      = 3.0
@@ -234,8 +234,6 @@ res@mpGridLineThicknessF=0.5
  cres@cnLineLabelInterval=1
  cres@gsnLeftString    = ""
  cres@tmXTOn="False"
-; cres@gsnZonalMean    = True
-
 
  
  plot(n)  = gsn_csm_contour_map(wks, chidiff, res) 
@@ -272,11 +270,12 @@ resP@cnInfoLabelOn       = False
 resP@lbOrientation =   "horizontal"          ; 
 resP@lbLabelFontHeightF    = 0.006
 resP@txString = ""
-resP@lbTitleString    = "m^2/s"
+resP@lbTitleString    = "~F33~D~F~(~F33~c~F~~S~*~N~) m~S~2~N~/s"
 resP@gsnMaximize=True
 resP@gsnPaperOrientation = "landscape"
 resP@lbTitlePosition ="Bottom"
-resP@lbTitleFontHeightF=.0012
+resP@pmLabelBarOrthogonalPosF=-0.02
+resP@lbTitleFontHeightF=.015
 resP@txFontHeightF    = 0.03
 gsn_panel(wks,plot,(/3,1/),resP)  
 delete(wks) 

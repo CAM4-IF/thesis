@@ -271,11 +271,12 @@ resP@cnInfoLabelOn       = False
 resP@lbOrientation =   "horizontal"          ; 
 resP@lbLabelFontHeightF    = 0.006
 resP@txString = ""
-resP@lbTitleString    = "m^2/s"
+resP@lbTitleString    = "~F33~c~F~~S~*~N~ m~S~2~N~/s"
+resP@pmLabelBarOrthogonalPosF=-0.02
 resP@gsnMaximize=True
 resP@gsnPaperOrientation = "landscape"
 resP@lbTitlePosition ="Bottom"
-resP@lbTitleFontHeightF=.008
+resP@lbTitleFontHeightF=.015
 resP@txFontHeightF    = 0.03
 gsn_panel(wks,plot,(/4,1/),resP)  
 delete(wks) 

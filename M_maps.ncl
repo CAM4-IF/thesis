@@ -1,7 +1,7 @@
 begin
 fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/mass_flux/*_ANN*.nc11")
 fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/mass_flux/*4K_ANN*.nc21")
-plotfile="ANN_M_omega_response"
+plotfile="ANN_M_omega"
 wks = gsn_open_wks("epsi", plotfile)                      ;Open a workstation
 nummods=dimsizes(fils) ;;number of models! 
 plot=new(nummods+2, graphic)    ;;;Create a panel plot with panels = number of models!
@@ -50,14 +50,14 @@ wva2&lat=f->lat
 wva2!1="lon"
 wva2&lon=f->lon
 
-fmassavg=avg(MDIFF)
+fmassavg=avg(wva)
 omegavg=avg(odiff)
 avgomeg=avg(omegavg)/avg(wva2)
 avgm=avg(fmassavg)/avg(wva)
 print(avgomeg)
 print(avgm)
 print(avg(wva))
-pcor=pattern_cor(MDIFF({-30:30},:),odiff({-30:30},:),1.0,0)
+pcor=pattern_cor(wva({-30:30},:),wva2({-30:30},:),1.0,0)
 
 res3                           = True
 res3@gsnDraw =  False
@@ -75,10 +75,10 @@ res3@pmTickMarkDisplayMode  = "Always"
 res3@mpOutlineOn = True
 res3@mpFillOn = False
 res3@cnLevelSelectionMode = "ExplicitLevels" ; use explicit levels
-res3@cnLevels = (/-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8,9,10,11,12/)*0.5e-3
-;res3@cnLevels = (/-1,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-14,-15/)*1e-3
-;res3@cnFillColors = (/170,160,150,140,130,120,110,100,90,80,70,60,50,40,20,2,0/)
-res3@cnFillColors = (/240,230,220,210,200,190,180,170,160,150,140,130,0,120,110,105,95,90,85,80,70,60,50,40,30/)
+;res3@cnLevels = (/-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8,9,10,11,12/)*0.5e-3
+res3@cnLevels = (/-1,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-14,-15/)*1e-3
+res3@cnFillColors = (/170,160,150,140,130,120,110,100,90,80,70,60,50,40,20,2,0/)
+;res3@cnFillColors = (/240,230,220,210,200,190,180,170,160,150,140,130,0,120,110,105,95,90,85,80,70,60,50,40,30/)
 res3@cnFillOn = True
 res3@cnFillMode= "RasterFill"
 res3@cnRasterSmoothingOn = "True"
@@ -113,24 +113,24 @@ cres@cnLevels = (/-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8,9,10,11
  cres@gsnContourZeroLineThicknessF  = 4.0
   cres@gsnContourNegLineDashPattern =2
 
-;gsn_define_colormap(wks,"nice_gfdl")
-plot(n)= gsn_csm_contour_map(wks,MDIFF,res3)
-plot1=gsn_csm_contour(wks,odiff,cres)
+gsn_define_colormap(wks,"nice_gfdl")
+plot(n)= gsn_csm_contour_map(wks,wva,res3)
+;plot1=gsn_csm_contour(wks,wva2,cres)
 ;;;;attach zonal means;;;
   zres=True
-  zres@trXMinF              = -2*1e-3      ; Could also use gsnZonalMeanXMinF
-  zres@trXMaxF              = 2*1e-3    ; Could also use gsnZonalMeanXMaxF
+  zres@trXMinF              = -2*6e-3      ; Could also use gsnZonalMeanXMinF
+  zres@trXMaxF              = 2*6e-3    ; Could also use gsnZonalMeanXMaxF
   zres@trYMinF              = -30
   zres@trYMaxF              =  30
 
   zres@tmXBMode             = "Explicit"
 
-  zres@tmXBValues           = (/-2,0,2/)*1e-3
+  zres@tmXBValues           = (/-2,0,2/)*6e-3
   zres@tmXBLabels           = zres@tmXBValues + ""   ; Make it a string
   zres@tmXBLabelFontHeightF = 0.01                   ; Make slightly smaller.
   zres@vpWidthF             = 0.1
- zonal_id = gsn_csm_attach_zonal_means(wks,plot(n),MDIFF,zres)
-overlay(plot(n),plot1)
+ zonal_id = gsn_csm_attach_zonal_means(wks,plot(n),wva,zres)
+;overlay(plot(n),plot1)
 n=n+1
  delete(T)
  delete(T1)
@@ -146,10 +146,11 @@ res4@cnInfoLabelOn       = False
 res4@lbOrientation =   "horizontal"          ; 
 res4@gsnPanelMainString    = " "
 res4@lbLabelFontHeightF    = 0.006
-res4@lbTitleString    = "~F33~D~F~M~B~int~N~ (kg/m~S~2~N~/s)"
+res4@lbTitleString    = "M~B~int~N~ (kg/m~S~2~N~/s)"
 res4@lbTitlePosition ="Bottom"
-res4@lbTitleFontHeightF=.008
+res4@lbTitleFontHeightF=.015
 res4@txFontHeightF    = 0.03
+res4@pmLabelBarOrthogonalPosF=-0.02
 res4@gsnMaximize=True
 res4@gsnPaperOrientation="landscape"
 
