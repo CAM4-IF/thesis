@@ -103,6 +103,7 @@ res3@tmYROn="False"
 res3@tmYLOn="True"
 
 
+
 res3@gsnCenterString= pr1@case
 res3@gsnRightString="r~B~pat~N~: " + decimalPlaces(pcor,2,True) + "; RMSE: " + decimalPlaces(rmse,2,True) + " mm/day" + "; Mean: " + decimalPlaces(meanpr,2,True) + " mm/day"
 res3@gsnLeftString=lets(n) + "      "  + pr1@case

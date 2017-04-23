@@ -16,8 +16,8 @@ do while(n.le.dimsizes(fils)-1)
    h=addfile(filen, "r")
    hyam = h->hyam 
    hybm = h->hybm
-   cmd="cdo -mermean -sellonlatbox,0,360,-5,5 -selname,FMASS,PS,OMEGA " + filen + " tmp.nc"
-   cmd1="cdo -mermean -sellonlatbox,0,360,-5,5 -selname,FMASS,PS,OMEGA " + filen1 + " tmp1.nc"
+   cmd="cdo -mermean -sellonlatbox,0,360,-30,30 -selname,FMASS,PS,OMEGA " + filen + " tmp.nc"
+   cmd1="cdo -mermean -sellonlatbox,0,360,-30,30 -selname,FMASS,PS,OMEGA " + filen1 + " tmp1.nc"
    areamean=systemfunc(cmd)
    areamean1=systemfunc(cmd1)
    f    = addfile("tmp.nc", "r")
@@ -107,9 +107,9 @@ do while(n.le.dimsizes(fils)-1)
    res@lbLabelBarOn = True
    res@lbOrientation =   "horizontal"  
    res@lbLabelAutoStride    = True                 ; optimal labels
-   res@lbTitleString    = "kg/m^2/s"
+   res@lbTitleString    = "kg/m~S~2~N~/s"
    res@lbTitlePosition ="Bottom"
-   res@pmLabelBarOrthogonalPosF=1.2
+   res@pmLabelBarOrthogonalPosF=1.22
    res@lbTitleFontHeightF=.015
   else
   end if
