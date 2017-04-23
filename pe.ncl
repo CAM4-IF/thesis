@@ -5,8 +5,14 @@ fils2=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/resea
 fils3=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/CAM*ANN*.nc2")
 plotfile="ANN_pe"
 wks = gsn_open_wks("epsi", plotfile)                      ;Open a workstation
+datalog=new((/3,4608/),"double")
+datalog1=new((/3,4608/),"double")
+datalog2=new((/3,4608/),"double")
+datalog3=new((/3,4608/),"double")
+modelnames=new(3,"string")
 nummods=dimsizes(fils) ;;number of models! 
 plot=new(nummods+2, graphic)    ;;;Create a panel plot with panels = number of models!
+plots=new(nummods+2, graphic)
 lets=(/"a)","b)","c)","d)"/)
 n=0
 do while(n.le.dimsizes(fils)-1)
@@ -91,7 +97,7 @@ pemap1!1="lon"
 pemap1&lon=pr1->lon
 
 
-preciponly=mask(pemap,(p3*86400.gt.2),True)
+preciponly=-1/(mask(pemap,(p3*86400.gt.2),True))
 preciponly!0="lat"
 preciponly&lat=pr1->lat({-30:30})
 preciponly!1="lon"
@@ -99,10 +105,38 @@ preciponly&lon=pr1->lon
 
 
 
+preciponly1=-1/(mask(pemap1,(p6*86400.gt.2),True))
+preciponly1!0="lat"
+preciponly1&lat=pr1->lat({-30:30})
+preciponly1!1="lon"
+preciponly1&lon=pr1->lon
+
+peresponse=(preciponly1-preciponly)*-1
+peresponse!0="lat"
+peresponse&lat=pr1->lat({-30:30})
+peresponse!1="lon"
+peresponse&lon=pr1->lon
+
+
 pe=avg(preciponly)
-pe1=avg(preciponly)
-print(avg(pe))
-print(avg(pe1))
+pe1=avg(preciponly1)
+
+
+mprimeresponse=mprime1-mprime
+mintresponse=wva1({-30:30},:)-wva({-30:30},:)
+
+x=ndtooned(mprime)
+y=ndtooned(wva({-30:30},:))*-1
+x1=ndtooned(mprime1)
+y1=ndtooned(wva1({-30:30},:))*-1
+
+print(x)
+print(x1)
+datalog(n,:)=x
+datalog1(n,:)=y
+datalog2(n,:)=x1
+datalog3(n,:)=y1
+
 ;;;;compute 
 
 
@@ -136,6 +170,8 @@ avgomeg=avg(omegavg)/avg(wva2)
 avgm=avg(fmassavg)/avg(wva)
 pcor=pattern_cor(wva({-30:30},:),wva2({-30:30},:),1.0,0)
 
+modelnames(n)=f@case
+
 res3                           = True
 res3@gsnDraw =  False
 res3@gsnFrame = False 
@@ -153,7 +189,7 @@ res3@mpOutlineOn = True
 res3@mpFillOn = False
 res3@cnLevelSelectionMode = "ExplicitLevels" ; use explicit levels
 ;res3@cnLevels = (/-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8,9,10,11,12/)*0.5e-3
-res3@cnLevels = (/1,-1,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-14,-15,-20,-25,-30/)*1e-1
+res3@cnLevels = (/1,-1,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-14,-15,-20,-25,-30/)*-1e-1
 res3@cnFillColors = (/0,200,190,180,170,160,150,140,130,120,110,100,90,80,70,60,50,40,20,2,0/)
 ;res3@cnFillColors = (/240,230,220,210,200,190,180,170,160,150,140,130,0,120,110,105,95,90,85,80,70,60,50,40,30/)
 res3@cnFillOn = True
@@ -175,7 +211,7 @@ res3@gsnLeftString= lets(n)
 res3@gsnRightStringFontHeightF= 0.012
 res3@gsnLeftStringFontHeightF= 0.012
 res3@mpGridLineThicknessF=0.5
-res3@gsnRightString="r~B~pat~N~: " + decimalPlaces(pcor,2,True)
+res3@gsnRightString=""
 res3@cnMissingValFillColor = "white"
 
 cres=True
@@ -195,19 +231,24 @@ plot(n)= gsn_csm_contour_map(wks,preciponly,res3)
 plot1=gsn_csm_contour(wks,p3,cres)
 ;;;;attach zonal means;;;
   zres=True
-  zres@trXMinF              = -3      ; Could also use gsnZonalMeanXMinF
-  zres@trXMaxF              = 1   ; Could also use gsnZonalMeanXMaxF
+  zres@trXMinF              = -1      ; Could also use gsnZonalMeanXMinF
+  zres@trXMaxF              = 3  ; Could also use gsnZonalMeanXMaxF
   zres@trYMinF              = -30
   zres@trYMaxF              =  30
 
   zres@tmXBMode             = "Explicit"
 
-  zres@tmXBValues           = (/-3,-2,-1,0,1/)
+  zres@tmXBValues           = (/-1,0,1,2,3/)
   zres@tmXBLabels           = zres@tmXBValues + ""   ; Make it a string
   zres@tmXBLabelFontHeightF = 0.01                   ; Make slightly smaller.
   zres@vpWidthF             = 0.1
  zonal_id = gsn_csm_attach_zonal_means(wks,plot(n),preciponly,zres)
 overlay(plot(n),plot1)
+
+
+ 
+
+
 n=n+1
  delete(T)
  delete(T1)
@@ -235,6 +276,54 @@ res4@gsnPaperOrientation="landscape"
 
 gsn_panel(wks,plot,(/4,1/),res4)
 delete(wks)
+n=0
+lets=(/"a)","b)","c)","d)"/)
+wks = gsn_open_wks("epsi", "test") 
+do while(n.le.dimsizes(fils)-1)
+ 
+ res                   = True                     ; plot mods desired
+  res@gsnMaximize       = True                     ; maximize plot
+  res@tiMainString      = ""           ; add title
+  res@xyMarkLineMode    = "Markers"                ; choose to use markers
+  res@xyMarkers         =  16                      ; choose type of marker  
+  res@xyMarkerColor     = "Black"               ; Marker color
+  res@xyMarkerSizeF     = 0.0005                     ; Marker size (default 0.01)
+  res@gsnDraw=False
+  res@gsnFrame=False
+  res@trXMinF=-0.001
+  ;res@trXMaxF=0.0003
+  res@trYMinF=-0.001
+  ;res@trYMaxF=0.004
+  res@gsnLeftString  =lets(n) + " " + modelnames(n)
+  res@gsnLeftStringFontHeightF=0.03
+  res@tiYAxisString = "M~B~int~N~ (kg/m~S~2~N~/s)"
+  res@tiXAxisString = "M~S~'~N~ (kg/m~S~2~N~/s)"
+  rc=regline(datalog(n,:),datalog1(n,:))
+  rc1=regline(datalog2(n,:),datalog3(n,:))
+  yreg=rc*datalog1(n,:)+rc@yintercept
+  yreg1=rc1*datalog3(n,:)+rc@yintercept
+  plots(n)  = gsn_csm_xy (wks,datalog(n,:),datalog1(n,:),res)                    ; create plot
+  res@xyMarkerColor     = "Red" 
+  plot1 = gsn_csm_xy (wks,datalog2(n,:),datalog3(n,:),res)                    ; create plot
+  res@xyMarkLineMode="Lines"
+  res@xyLineColor="Grey"
+  plot2=gsn_csm_xy(wks,datalog1(n,:),yreg,res)
+  res@xyLineColor="Orange"
+  plot3=gsn_csm_xy(wks,datalog3(n,:),yreg1,res)
+  overlay(plots(n),plot2)
+  overlay(plots(n),plot1)
+  overlay(plots(n),plot3)
+
+n=n+1
+end do
+
+resP                            = True
+resP@txString = ""
+resP@txFontHeightF    = 0.03
+resP@gsnMaximize=True
+resP@gsnPaperOrientation = "portrait"
+gsn_panel(wks,plots,(/1,3/),resP)  
+ delete(wks) 
 
 string1="eps2eps " + plotfile +".epsi" + " " + plotfile +".eps"
 system(string1) 
