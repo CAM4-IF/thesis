@@ -6,46 +6,45 @@ Database file #1: uw-ethesis.bib
 Warning--to sort, need author or key in noauthor_testing_nodate
 Warning--to sort, need author or key in noauthor_virtual_nodate
 Warning--to sort, need author or key in noauthor_introduction_nodate
-Warning--to sort, need author or key in noauthor_eol_nodate
-You've used 79 entries,
+You've used 103 entries,
             2118 wiz_defined-function locations,
-            920 strings with 17497 characters,
-and the built_in function-call counts, 27606 in all, are:
-= -- 2768
-> -- 1188
-< -- 2
-+ -- 496
-- -- 392
-* -- 2336
-:= -- 4519
-add.period$ -- 231
-call.type$ -- 79
-change.case$ -- 433
+            1042 strings with 21974 characters,
+and the built_in function-call counts, 37200 in all, are:
+= -- 3701
+> -- 1723
+< -- 4
++ -- 712
+- -- 578
+* -- 3202
+:= -- 6143
+add.period$ -- 307
+call.type$ -- 103
+change.case$ -- 598
 chr.to.int$ -- 0
-cite$ -- 83
-duplicate$ -- 871
-empty$ -- 2192
-format.name$ -- 392
-if$ -- 5589
+cite$ -- 106
+duplicate$ -- 1150
+empty$ -- 2858
+format.name$ -- 578
+if$ -- 7489
 int.to.chr$ -- 0
-int.to.str$ -- 79
-missing$ -- 74
-newline$ -- 391
-num.names$ -- 150
-pop$ -- 314
+int.to.str$ -- 103
+missing$ -- 100
+newline$ -- 514
+num.names$ -- 200
+pop$ -- 433
 preamble$ -- 1
-purify$ -- 354
+purify$ -- 495
 quote$ -- 0
-skip$ -- 621
+skip$ -- 801
 stack$ -- 0
-substring$ -- 2417
-swap$ -- 97
-text.length$ -- 2
+substring$ -- 3150
+swap$ -- 130
+text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 316
-warning$ -- 4
-while$ -- 286
-width$ -- 81
-write$ -- 848
-(There were 4 warnings)
+type$ -- 410
+warning$ -- 3
+while$ -- 376
+width$ -- 106
+write$ -- 1122
+(There were 3 warnings)

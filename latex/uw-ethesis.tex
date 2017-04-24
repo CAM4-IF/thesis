@@ -244,8 +244,8 @@ Rainfall in the tropics is quite different from what we are used to in mid-latit
 \begin{align}
 P=-\int_{0}^{z}\mathbf{\nabla}\cdot(\rho{q}\mathbf{V})dz+E
 \end{align}
-(From Holton, p.393)
-$P$ is the precipitation rate ($\frac{kg}{m^{2}}$), $\rho$ is the density of air $(\frac{kg}{m^{3}})$, $q$ is the water vapor mixing ratio (unitless) and $E$ is the surface evaporation rate ($\frac{kg}{m^{2}}$). The top integration limit, z, could be the entire troposphere, however this is not necessary as most of the moisture in the tropics is in the boundary layer. This is because of the exponential relationship between the amount of water vapor the atmosphere can hold and temperature and also the fact that most of the tropics are ocean and this is where the evaporated ocean water is mixes into ($q$ in the boundary layer is roughly constant with height). So z can be taken to be approximately 2 km (Holton, p.393-394). It is also important to relate evaporation over the ocean to known time-mean variables; this is known as the bulk aerodynamic formula for latent heat flux (units of $W m^{-2}$):
+(From \cite{holton_introduction_2004}, p.393)
+$P$ is the precipitation rate ($\frac{kg}{m^{2}}$), $\rho$ is the density of air $(\frac{kg}{m^{3}})$, $q$ is the water vapor mixing ratio (unitless) and $E$ is the surface evaporation rate ($\frac{kg}{m^{2}}$). The top integration limit, z, could be the entire troposphere, however this is not necessary as most of the moisture in the tropics is in the boundary layer. This is because of the exponential relationship between the amount of water vapor the atmosphere can hold and temperature and also the fact that most of the tropics are ocean and this is where the evaporated ocean water is mixes into ($q$ in the boundary layer is roughly constant with height). So z can be taken to be approximately 2 km (\cite{holton_introduction_2004}, p.393-394). It is also important to relate evaporation over the ocean to known time-mean variables; this is known as the bulk aerodynamic formula for latent heat flux (units of $W m^{-2}$):
 
 \begin{align}
 F_{LH}=\rho{L}C_{E}\norm{\textbf{v}}(q_{s}-q_{a})
@@ -265,16 +265,11 @@ $R$ is the gas constant and $e_{s}$ is the saturation vapor pressure. From this 
 
 While the amount of water vapor in the Earth's atmosphere increases with increasing surface temperature close to the C-C relation, rainfall in climate models does not. This is because global mean evaporation is energetically constrained to increase at a lower rate, and global precipitation must balance evaporation. The evaporation rate is constrained by the amount of downward shortwave (solar) and longwave (infrared) radiation at the surface (which then goes into heating the oceans). In a warming climate, downward infrared flux at the surface increases as the atmosphere gets warmer and emits more infrared radiation upward and downwards which acts to increase the evaporation rate \cite{boer_climate_1993}. The increase in evaporation/precipitation rate with climate change is estimated at 1-3$\%$ K$^{-1}$ \cite{schneider_water_2010,he_anthropogenic_2015,boer_climate_1993}, much less than the $\sim$ $7 \%$ K$^{-1}$ increase for water vapor. The uncertainty in rate of increase of evaporation/precipitation with climate change is likely due to uncertainty in the change in incoming solar radiation due to changes in clouds \cite{allen_constraints_2002}.
 
-Because of this large increase in water vapor with climate change, a parcel of convectively unstable air in a warmer climate will hold more water. Assuming most of the water is removed through deep moist convection in the tropics (the saturation mixing ratio at the tropopause is much less than saturation mixing ratio of the boundary layer), the time-mean convective updrafts do not need to be as strong to produce the same time-mean precipitation rate \cite{held_robust_2006,vecchi_global_2007}. In other words, the updrafts are not as fast, but carry more water mass and thus the precipitation rate can be the same as in a cooler climate with faster updrafts. Using this simple model, a relation can be developed to estimate the tropical mean convective mass flux \cite{held_robust_2006}:
-\begin{align}
-\Bigg\langle\frac{\delta{M}}{M}\Bigg\rangle=\Bigg\langle\frac{\delta{P}}{P}\Bigg\rangle-\Bigg\langle\frac{\delta{q}}{q}\Bigg\rangle
-\end{align}
-Where $M$ is the estimated mass flux, $P$ is the precipitation rate and $q$ is the boundary layer mixing ratio. Here, angle brackets represent the tropical mean. The term on the right, representing the change in the amount of moisture the atmosphere can hold, is directly related to the C-C relation and can be estimated as 0.07 per K or warming, while the precipitation term has a bit more uncertainty of $\sim$ 0.01-0.03 per K of warming. This implies that $\langle\frac{\delta{M}}{M}\rangle$ will be negative in a warmer world; in other words, the convective mass flux in the tropics will decrease. 
 \subsection{Moist convection}
 
-Moist convection manifests itself in the tropics and elsewhere as towering and bubbling clouds called cumulus clouds that can eventually reach the tropopause and spread out into what is referred to as an ``anvil" (composed of ice crystals). Once the cloud forms begins to form an anvil it is referred to as a cumulonimbus cloud and can become electrified due to charge separation and produce lightning. In the tropics, cumulonimbus clouds can easily reach heights of 60000 (18 km) feet or more. Tropical cyclones (tropical storms and hurricanes) are driven by very organized moist convection that sometimes occurs in the tropics and subtropics. See figure 1.1 for examples of different tropical cumuli clouds in various stages of development.
+Moist convection manifests itself in the tropics and elsewhere as towering and bubbling plumes of cloud called cumulus clouds that can eventually reach the tropopause and spread out into what is referred to as an ``anvil" (composed of ice crystals). Once the cloud forms begins to form an anvil it is referred to as a cumulonimbus cloud and can become electrified due to charge separation and produce lightning. In the tropics, cumulonimbus clouds can easily reach heights of >55000 feet ($\approx$ 17 km) or more \cite{hollars_comparisons_2004}. Tropical cyclones (tropical storms and hurricanes) are driven by organized clusters moist convection that sometimes occurs in the tropics and subtropics. See figure 1.1 for examples of different tropical cumuli clouds in various stages of development.
 
-To better understand the dynamics of moist convection, a simple model called ``parcel theory" is used in meteorology. This theory makes the simplification that a bubble or ``parcel" of buoyant air (air with a lower density than the environment), is lifted upwards until it condenses and then reaches a level where it is positively buoyant (level of free convection). The integrated potential energy of this parcel above this level is referred to as ``CAPE" (convective available potential energy). One key assumption made in this theory is that the parcel does not dilute due to mixing of environmental air with this ``parcel". This potential energy is then transformed into the kinetic energy of the parcel (assuming the CAPE is positive). Once the parcel reaches its condensation level, the parcel's internal temperature will not fall as fast as the surrounding environment as it ascends, due to the continued latent heat release due to condensation. This assumes that the parcel remains saturated with respect to the environment above this level. Oftentimes, the latent heat of fusion (i.e., from freezing) is ignored when calculating CAPE.
+To better understand the physics of moist convection, a simple model called ``parcel theory" is used in meteorology. This theory makes the simplification that a bubble or ``parcel" of buoyant air (air with a lower density than the environment), is lifted upwards until it condenses and then reaches a level where it is positively buoyant (level of free convection). The integrated potential energy of this parcel above this level is referred to as ``CAPE" (convective available potential energy). One key assumption made in this theory is that the parcel does not dilute due to mixing of environmental air with this ``parcel". This potential energy is then transformed into the kinetic energy of the parcel (assuming the CAPE is positive). Once the parcel reaches its condensation level, the parcel's internal temperature will not fall as fast as the surrounding environment as it ascends, due to the continued latent heat release due to condensation. This assumes that the parcel remains saturated with respect to the environment above this level. Oftentimes, the latent heat of fusion (i.e., from freezing) is ignored when calculating CAPE.
 \\
 CAPE can be defined as: 
 \begin{align}
@@ -322,9 +317,9 @@ A model of convection that has been used in convective parameterization schemes 
 \section{The Tropical Circulation}
 %----------------------------------------------------------------------
 \subsection{Background - weak temperature gradients}
-In the tropics, temperature gradients are relatively smaller than those in the mid-latitudes. This is because the Coriolis force weakens as one heads towards the equator, and thus the Rossby number, $R_{o}=\frac{U}{fL}$ (where U and L are charateristic velocity and length scales, and f is the Coriolis parameter $f=2\Omega\sin{\phi}$ (where $\Omega$ is the angular rotation rate of the Earth and $\phi$ is the latitude), is near 1 (Holton, page 388). The Rossby number represents the ratio of the relative importance of inertia to that of the Coriolis force. This number is small in mid-latitudes and thus it is appropriate to make the simplification that the Coriolis force balances the pressure gradient force there. With larger Rossby numbers (closer to 1) seen in the tropics, one can not make this simplification of the momentum equations. To balance the same characteristic velocity, $U$, in the tropics, the geopotential gradients would be an order of magnitude smaller. Since temperature is related to geopotential height, this means that horizontal temperature gradients in the tropics are much smaller than in the mid-latitudes. Therefore, one could neglect the horizontal advection of T as the horizontal gradients of T are small. 
+In the tropics, temperature gradients are relatively smaller than those in the mid-latitudes. This is because the Coriolis force weakens as one heads towards the equator, and thus the Rossby number, $R_{o}=\frac{U}{fL}$ (where U and L are charateristic velocity and length scales, and f is the Coriolis parameter $f=2\Omega\sin{\phi}$ (where $\Omega$ is the angular rotation rate of the Earth and $\phi$ is the latitude), is near 1 (\cite{holton_introduction_2004}, p. 388). The Rossby number represents the ratio of the relative importance of inertia to that of the Coriolis force. This number is small in mid-latitudes and thus it is appropriate to make the simplification that the Coriolis force balances the pressure gradient force there. With larger Rossby numbers (closer to 1) seen in the tropics, one can not make this simplification of the momentum equations. To balance the same characteristic velocity, $U$, in the tropics, the geopotential gradients would be an order of magnitude smaller. Since temperature is related to geopotential height, this means that horizontal temperature gradients in the tropics are much smaller than in the mid-latitudes. Therefore, one could neglect the horizontal advection of T as the horizontal gradients of T are small. 
 
-Below is the general (Eulerian) thermodynamic tendency equation in pressure coordinates (adapted from 11.4 p.387 Holton):
+Below is the general (Eulerian) thermodynamic tendency equation in pressure coordinates (adapted from p.387 \cite{holton_introduction_2004}):
 
 \begin{align}
 \Big(\frac{\partial}{\partial{t}}+\mathbf{V}\boldsymbol{\cdot} \mathbf{\nabla}\Big)T - \sigma\omega =Q_{tot}
@@ -337,7 +332,6 @@ Neglecting horizontal T advection in the tropics for the reasons discussed above
 
 \begin{align}
 -\sigma\omega \approx{Q_{tot}}
-\\
 \end{align}
 Where
 \begin{align}
@@ -350,11 +344,11 @@ We have introduced the potential temperature, $\theta$, in place of $T$ which ha
 \end{align}
 \\
 (1.6) implies that the total diabatic heating at any point in the tropics is balanced by vertical temperature advection (which is upward motion, $\omega$, multiplied by the static stability, $\sigma$).
-This simple relation is vital to understanding tropical dynamics and the tropical circulation which will be discussed in the next section.
+This simple relation is vital to understanding tropical dynamics and the tropical circulations which will be discussed in the next sections.
 
 \subsection{Walker circulation}
 
-The Walker circulation is named after Sir Gilbert Walker who while working in India noticed that occasionally the summer monsoon rains would not materialize. He discovered that this seemed to be related to sea level pressure (SLP) gradient changes between the western and eastern equatorial Pacific. The oscillation of this pressure gradient is referred to as the ``southern oscillation" and is typically calculated as a difference in SLP between Darwin, Australia and Tahiti, in the central Pacific. Typically, the SLP over the Maritime Continent and far western tropical Pacific is lower than the SLP in the central/eastern Pacific, but this pressure difference can shrink or even reverse during El Nino events. This pressure gradient causes winds to blow from east to west in the tropical Pacific (trade winds), with rising motion and low-level convergence over the Maritime Continent and sinking motion and low-level divergence over the eastern Pacific. Some refer to the Walker Circulation as a standing Kelvin wave which is simply forced by diabatic heating.
+The Walker circulation is named after Sir Gilbert Walker who while working in India noticed that occasionally the summer monsoon rains would not materialize. He discovered that this seemed to be related to sea level pressure (SLP) gradient changes between the western and eastern equatorial Pacific. The oscillation of this pressure gradient is referred to as the ``southern oscillation" and is typically calculated as a difference in SLP between Darwin, Australia and Tahiti, in the central Pacific (\cite{holton_introduction_2004} p.382-383). Typically, the SLP over the Maritime Continent and far western tropical Pacific is lower than the SLP in the central/eastern Pacific, but this pressure difference can shrink or even reverse during El Nino events. This pressure gradient causes winds to blow from east to west in the tropical Pacific (trade winds), with rising motion and low-level convergence over the Maritime Continent (Indonesia and environs) and sinking motion and low-level divergence over the eastern Pacific \cite{bjerknes_atmospheric_1969}. The rising motion and upper-level divergence over the Maritime Continent is caused by the relatively warmer waters (sometimes referred to as the western Pacific warm pool) in that region which creates an environment of positive CAPE, and thus convection is favoured there. This region of zonally enhanced time-mean convection generates significant condensational (and freezing) heating in the mid and upper troposphere which acts to rise geopotential heights and create a horizontal pressure gradient out of the region and thus creates a region of upper-level divergent winds flowing outward horizontally from the region. By mass continuity, air from below moves upward and a compensating region of descending air and upper-level convergence forms in the eastern Pacific where covnection is much less frequent. Some describe the Walker Circulation as a standing Kelvin wave being forced by diabatic heating \cite{stechmann_walker_2014}. 
 
 One way to measure the strength of the Walker circulation is to measure upper-tropospheric horizontal divergence (which gives information about the vertical motion by continuity). However, this is typically a very noisy field so instead a scalar potential field of the divergent wind is typically used. This field is obtained using the fundamental theorem of vector calculus (also known as a Helmholtz decomposition) which states that a vector field can be decomposed into divergenceless (rotational) and irrotational (divergent) components. Stated mathematically, the total vector wind, $\mathbf{V}$, can be written as:
 \begin{align}
@@ -383,7 +377,7 @@ The Hadley circulation is a zonally-symmetric meridional (north-south) circulati
 While the Walker circulation can be understood as a balance between diabatic heating (cooling) and adiabatic (heating), the Hadley circulation is more complicated. For the Hadley circulation the balance is now between the Coriolis force plus the divergence of eddy momentum fluxes, as well as between diabatic heating and adiabatic cooling plus the divergence of eddy heat fluxes. Next, I will briefly describe how these relations are obtained, and what factor influence the strength of the Hadley circulation. 
 \\
 \\
-Following Holton, p.318, we start with the zonal mean zonal momentum and zonal mean (zonal means will be indicated by $\langle \cdot \rangle$ notation throughout this thesis) temperature tendency equations assuming quasi-geostrophic motion on a $\beta$ plane (Coriolis parameter is assumed to vary linearly with latitude):
+Following \cite{holton_introduction_2004}, p.318, we start with the zonal mean zonal momentum and zonal mean (zonal means will be indicated by $\langle \cdot \rangle$ notation throughout this thesis) temperature tendency equations assuming quasi-geostrophic motion on a $\beta$ plane (Coriolis parameter is assumed to vary linearly with latitude):
 
 \begin{align}
 \frac{\partial{\langle{u}\rangle}}{\partial{t}} - f_{o}\langle{v}\rangle = -\frac{\partial\Big(\langle{u^{*}v^{*}}\rangle\Big)}{\partial{y}} + \langle\text{frictional drag}\rangle
@@ -410,7 +404,7 @@ If we assume that the zonal mean meridional wind, $\langle{v}\rangle$, and the z
 So, in equilibrium, the zonal mean meridional flow is proportional to the divergence of the zonal mean eddy momentum flux ($\langle{u^{*}v^{*}}\rangle$) and zonal mean upward motion ($\langle{\omega}\rangle$) is proportional to the stratification times the zonal mean diabatic heating and zonal mean eddy heat flux convergence ($\langle{u^{*}T^{*}}\rangle$) terms. Note that if the eddy heat flux convergence is considered to be negligible we return the balance between diabatic heating and adiabatic cooling (1.6) seen for the Walker circulation. 
 \\
 \\
-Exploiting the fact that the zonal mean meridional circulation is nondivergent (Holton, p.319), one can construct a zonal mean stream function, $\Psi$, that represents the vertical and meridional flow. This stream function can be calculated solely from the zonal mean meridional wind and is referred to as the meridional mass streamfunction:
+Exploiting the fact that the zonal mean meridional circulation is nondivergent (\cite{holton_introduction_2004}, p.319), one can construct a zonal mean stream function, $\Psi$, that represents the vertical and meridional flow. This stream function can be calculated solely from the zonal mean meridional wind and is referred to as the meridional mass streamfunction:
 \begin{align}
 \Psi=\frac{2\pi\cos{\phi}}{g}\int_{p_{top}}^{p} \langle{v}\rangle{dp}
 \end{align}
@@ -420,42 +414,74 @@ Where
 \end{equation}
 \\
 \\
-Combining (1.13) and (1.14) one can obtain a relation between zonal mean stream function and forcing terms. This equation is analgous to the omega equation used in quasi-geostrophic theory in mid-latitude Meteorology. From Holton, p.320:
+Combining (1.13) and (1.14) one can obtain a relation between zonal mean stream function and forcing terms. This equation is analgous to the omega equation used in quasi-geostrophic theory in mid-latitude Meteorology. From \cite{holton_introduction_2004}, p.320:
 \begin{equation}
 \begin{split}
-\Psi \propto -\frac{\partial}{\partial{y}}(\text{zonal mean diabatic heating}) + \frac{\partial^{2}}{\partial{y^{2}}}(\text{zonal mean eddy heat flux}) \\ + \frac{\partial^{2}}{\partial{y}\partial{z}}(\text{zonal mean eddy momemtnum flux}) + \frac{\partial}{\partial{z}}(\text{zonal frictional drag}) 
+\Psi \propto -\frac{\partial}{\partial{y}}(\langle\text{diabatic heating}\rangle) + \frac{\partial^{2}}{\partial{y^{2}}}(\langle\text{eddy heat flux}\rangle) \\ + \frac{\partial^{2}}{\partial{y}\partial{z}}(\langle\text{eddy momemtnum flux}\rangle) + \frac{\partial}{\partial{z}}(\langle\text{zonal frictional drag}\rangle) 
 \end{split}
 \end{equation}
-The diabatic heating profile is positive in the tropics and decreases (increases) as one heads north (south) (INSERT FIGURE SHOWING THIS?), therefore the first term in (1.20) causes $\Psi$ to be positive in the Northern Hemisphere and negative in the Southern Hemisphere. The seasonal maximum of the diabatic heating term is reached in boreal winter (DJF in NH and JJA in SH), and this is when the Hadley circulation is at its strongest. The contributions from the other terms are much more complicated to understand, however, and unfortunately this makes developing simple tests to see how the convective scheme (which primarily effects the distribution of tropical diabatic heating) effects the strength of the Hadley circulation. The eddy heat and momentum fluxes are mainly driven by higher latitude dynamics and it is unclear how a change in tropical static stability or diabatic heating would effect these dynamics. Although, the equator-to-pole temperature gradient is likely important for the eddy heat transport term as this is the only way to reduce this gradient (Holton, p.321). To add even more difficulty, \cite{kim_hadley_2001} points out that the effects of eddies can influence tropical diabatic heating and vice-versa.
+The diabatic heating profile is positive in the tropics and decreases (increases) as one heads north (south), therefore the first term in (1.20) causes $\Psi$ to be positive in the Northern Hemisphere and negative in the Southern Hemisphere (figure 1.2).
+
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[width=1\linewidth]{../figures/fig1.png}\hfill
+\caption{\textbf{a)}: Annual mean latitude vs. height plot of $Q_{tot}$ from the CAM4 AGCM. Note the maximum of diabatic heating near the equator. The region where the diabatic heating declines the fastest with increasing latitude is around where the maximum of streamfunction for each of the 2 cells is located in \textbf{b)} (around 15S/N).}
+\end{figure}
+
+The seasonal maximum of the diabatic heating term is reached in boreal winter (DJF in NH and JJA in SH), and this is when the Hadley circulation is at its strongest. The contributions from the other terms are much more complicated to understand, however, and unfortunately this makes developing simple tests to see how the convective scheme (which primarily effects the distribution of tropical diabatic heating) effects the strength of the Hadley circulation. The eddy heat and momentum fluxes are mainly driven by higher latitude dynamics and it is unclear how a change in tropical static stability or diabatic heating would effect these dynamics. Although, the equator-to-pole temperature gradient is likely important for the eddy heat transport term as this is the only way to reduce this gradient (\cite{holton_introduction_2004}, p.321). To add even more difficulty, \cite{kim_hadley_2001} points out that the effects of eddies can influence tropical diabatic heating and vice-versa.
 \subsection{Response to climate change}
-Start with Knutson and Manabe, 1995, very good paper.
--expected to weaken due to climate change; primarily due to increase in mean SST (\cite{he_anthropogenic_2015}
-\\
--this is due to the argument used by Held and Soden (2006) (hydrological cycle).
-\\
--however, this argument does not really hold locally (Merlis and Schneider, 2010).
-\\
--Walker ciruclation weakening most robust, some CMIP5 models have HC strengthening. Also, northern and summer hemisphere seasonal cells don't respond in same way.
-\\
--wide range of scenarios for Hadley cell in RCP8.5, mean is weakening, but there is a lot of variance
+Global mean precipitation is expected to increase with climate change as the downwelling longwave radiation increases as the temperature of the atmosphere increases \cite{boer_climate_1993}, thus one might expect the tropical circulations to increase in strength as well due to the increased condensational heating. However, this has not been found to be the case with global climate models. The first study to examine the mechanisms behind the weakening of the tropical circulation with climate change was \cite{knutson_time-mean_1995} who showed that the increased tropospheric stratification (static stability) more than offsets the increased diabatic heating means the ascending regions (regions with negative $\omega$) of the tropical circulations must weaken (from 1.13). The tropical mean static stability increases due to the maximum of warming in the tropical upper troposphere because of the shift in the moist adiabatic lapse rate (the temperature profile in the tropics is nearly moist adiabatic).
 
+More recent studies have examined other physical mechanisms for the weakening of the tropical circulation due to global warming. One popular mechanism is the weakening of upward convective mass flux due to hydrological cycle constraints \cite{held_robust_2006,vecchi_global_2007,chadwick_spatial_2012}. This is found to mainly manifest itself in the weakening of the Walker circulation \cite{held_robust_2006,vecchi_global_2007} and \cite{he_anthropogenic_2015} found that the main driver is the mean increase in SST in the CMIP5 models \cite{taylor_overview_2011}. The mechanism is as follows: while the boundary layer specific humidity must increase at a rate dictated by the Clausius-Clapeyron relation ($\approx 7\%K^{-1}$), the global mean evporation rate is contrained to increase at a much slower rate (see section 1.1.1). Assuming that most of the moisture in convective plumes is precipitated out (i.e., parcels from the boundary layer reach all the way to the level of neutral buoyancy with the only loss of water content from precipitation), this implies the upward convective mass flux must slow down. In other words, the updrafts are not as fast, but carry more water mass and thus the precipitation rate can be the same as in a cooler climate with faster updrafts. Using this simple model, a relation can be developed to estimate the tropical mean convective mass flux, 
+$M_{c}$ \cite{held_robust_2006}:
 
-\begin{figure}[H]
-\centering
-\noindent\includegraphics[width=0.8\linewidth]{../figures/RCP85_mpsi_DJF_crop.pdf}\hfill
-\caption{RCP8.5 DJF mass meridional streamfunction climo and response}
-\end{figure}
+\begin{equation}\label{eq:HS}
+\Bigg\langle\frac{\delta{M^{'}}}{M^{'}}\Bigg\rangle=\Bigg\langle\frac{\delta{P}}{P}\Bigg\rangle-\Bigg\langle\frac{\delta{q_{bl}}}{q_{bl}}\Bigg\rangle
+\end{equation}
 
-\begin{figure}[H]
-\centering
-\noindent\includegraphics[width=0.8\linewidth]{../figures/RCP85_mpsi_JJA-crop.pdf}\hfill
-\caption{RCP8.5 JJA mass meridional streamfunction climo and response}
-\end{figure}
+Where $M^{'}$ is the inferred convective mass flux, $P$ is the precipitation rate and $q_{bl}$ is the boundary layer mixing ratio. Here, angle brackets represent the tropical mean. The term on the right, representing the change in the amount of moisture the atmosphere can hold, is directly related to the C-C relation and can be estimated as 0.07 per K or warming, while the precipitation term has a bit more uncertainty of $\sim$ 0.01-0.03 per K of warming. This implies that $\langle\frac{\delta{M}}{M}\rangle$ will be negative in a warmer world; in other words, the convective mass flux in the tropics will decrease. 
+
+However, this assumes that a majority of the convective mass flux in the tropics are contained in so-called ``hot-towers" \cite{riehl_and_malkus_heat_1958} which transport parcels rapidly from the boundary layer to the tropopause with no change in moist static energy. However, recent modeling studies using cloud-resolving models show that there is unlikely to be many parcels that make it to the tropopause undiluted \cite{romps_undiluted_2010} as a significant amount of detrainment occurs above the boundary layer \cite{romps_direct_2010}. 
+
+To create even more complications, shallow convection and stratiform rainfall in the tropics accounts for a significant proportion of total rainfall in the tropics \cite{schumacher_stratiform_2003}. In fact, shallow convection has been shown to have its own closed circulation in the tropics \cite{folkins_ian_low-level_2008} which could open a pathway for water vapor to be recharged into the boundary layer instead of all being rained out by deep convection. If the efficiency of rainfall generation per amount of convective mass flux changes with climate change, it could, if the change is large enough, mean that convective mass flux can increase with climate change. A more general potential flaw in this line of reasoning to explain the weakening of the Hadley and Walker circulations is that while the overall upward motion may decrease in the tropical mean, it does not necessarily mean that the local circulations will necessarily weaken \cite{merlis_changes_2011} because local precipitation changes can influence the circulation strength. Local precipitation can increase slower or faster with climate change than the tropical or global mean constraint which arises from the constraint in the increase in the global mean evaporation rate with climate change. 
+
+Another mechanism used to explain the weakening of the Walker circulation from climate change (similar to the static stability argument) is one using the concept of ``gross moist stability", which is outlined in \cite{wills_local_2017}. This theory starts with the assumption that the Walker circulation strength is simply the zonally-anomalous total energy input into the ascending region ($Q_{tot}^{*})$ divided by the gross moist stability. The gross moist stability of a column can be defined as the pressure-weighted vertical integral of the vertical advection of MSE (moist static energy, hereafter referred to as $h$) in pressure coordinates:
+\begin{equation}\label{eq:GMS}
+GMS(x,y) = \int_{p_{LCL}}^{p_{trop}}\bigg(\frac{\partial({h(x,y,p)})}{\partial{p}}\omega(x,y,p)\bigg){dp}
+\end{equation}
+\begin{equation}\label{eq:MSE}
+h=C_{p}T + gz + L_{v}q
+\end{equation}
+The integral is taken from the liquid condensation level (or level of free convection), to the tropopause. Outside of these regions, vertical motions are small \cite{wills_local_2017}. This represents the effective stability that is felt by the convection and is a measure of the efficiency of convection to transport $h$ vertically. $C_{p}$ is the specific heat at constant pressure, $z$ is the geometric height above mean sea level or some other reference height, $L_{v}$ is the latent heat of vaporiztion and $q$ is the water vapour mixing ratio. The authors go on to show that GMS will increase in a warmer world if one makes the approximation that the vertical derivative of $h$ becomes simply: $\Delta{h} = h_{trop} - h_{LCL}$. They go on to show the increase in the term $gz$ dominates in global warming, and thus causes $\Delta{h}$ and thus GMS to increase with global warming and the Walker circulation becomes more ``efficient" at transporting $h$. In other words, the increase in tropopause height and thus the depth of the convection causes the GMS to increase and thus the circulation weakens because it can transport more energy per unit of mass flux. One potentially flaw, that the authors do point out, is that this says nothing about the changes in zonally anomalous energy input (total diabatic heating) into the ascending region from processes such as cloud radiative heating which may change in warmer climate.
+
+While, there is nearly unanimous consensus among the CMIP5 models of a weakening of convective mass flux \cite{chadwick_spatial_2012} and the tropical circulations, with the weakening of the Walker circulation being the most robust \cite{he_anthropogenic_2015}, observational studies have shown that the Walker circulation may in fact be strengthening \cite{lheureux_recent_2013,sandeep_pacific_2014}, while others have shown weakening \cite{vecchi_weakening_2006,power_what_2011}. Additionally, modeling studies have shown little relationship between global mean convective mass flux and the strength of the Walker circulation \cite{sandeep_pacific_2014}. Throughout many of the reanalysis and modeling studies there is often mention that the convective parameterization could be a key factor and influencing the simulated trend in Walker circulation strength. This thesis attempts to determine the sensitivity of the simulated change in Walker circulation strength to the convective scheme.  
+
+The problem of the change in Hadley cell (HC) strength and extent due to climate change appears to be a more complex problem than that of the Walker circulation. The HC is not only effected by the zonal-mean diabatic heating contrast (see eq. 1.26), but also by eddy momentum and heat fluxes, which originate from extratropical regions \cite{walker_eddy_2006,kim_hadley_2001}. The HC is expected to weaken and expand poleward with climate change, with the trend in strength being more uncertain than the expansion \cite{he_anthropogenic_2015,vecchi_global_2007,bony_robust_2013,gastineau_hadley_2009,ma_mechanisms_2011,lu_expansion_2007}. \cite{seo_mechanism_2014} showed that tropics to mid-latitudes temperature gradient explained at least some of the inter-model spread in the change of HC strength 
+in the CMIP5 coupled models. However, recent observational studies indicate that while the HC appears to have expanded at least a few degrees north since the beginning of the satellite era (1979) \cite{johanson_hadley_2009,seidel_recent_2007,hu_observed_2007}, it also appears to show signs of a slight strengthening as well \cite{mitas_has_2005,hu_observed_2007,stachnik_comparison_2011}, although there is a very large spread in uncertainty in the HC intensity among the various reanalysis datasets \cite{stachnik_comparison_2011}. It has been shown that ENSO cycles (El Nino and La Nina events) can effect the strength of the winter HC \cite{oort_observed_1996,quan_change_2004}, which gives support to the theories that show HC strength is mainly a function of diabatic heating such as the Held-Hou model \cite{held_nonlinear_1980} which assumes a Rossby number, $R_{o}$, near 1. This is because El Nino events simply re-arrange the distribution of diabatic heating in the tropics by shifting SSTs which also shift patterns of tropical convection and thus condensational heating. \cite{caballero_role_2007} shows that the Rossby number for the winter cell is in fact $\approx$ 0.5, so the winter cell is likely in a regime where both diabatic heating and eddy fluxes from the mid-latitudes are important. Because of these complications, this thesis will focus mainly on the Walker circulation and will only briefly discuss the HC.
+
 
 %======================================================================
 \chapter{Climate model simulations}
 %======================================================================
-\section{CAM4 AGCM}
+\section{CAM4 AGCM with IF scheme}
+
+To test 
+
+-``leaky pipe`` model
+\\
+-replaces Hack shallow convection scheme as well
+\\
+-``mixed`` layer CAPE method.
+\\
+-has MUCH more ice than default CAM4, but is closer (but still lower) than CERES. CAM4 uses an unrealistically large amount of cloud droplets in upper troposphere to increase SW reflectivity. You can show CERES IWP plots here.
+\\
+-seeks to improve deep tropical T profile structure and better representation of MJO.
+\\
+-might be worth going over select parameters in model that are important (amp, ice, REI, etc.)
+\\
+-maybe make a few plots that I can make or Ian has done or I can make for parameterizations in his model.
+\\
+
 -only needs 1 or 2 paragraphs, more detail will be given to convective scheme.
 
 -Do a brief discussion of GCMs here:
@@ -499,23 +525,6 @@ the lower troposphere.}``
 -GCMs often create or assume a tropical T profile as close to moist adiabatic as a result of continual moist convection (T grads in tropics dissipate fast).
 \\
 -insert Taylor diagrams showing CAM4 model performance.
-%======================================================================
-\section{IF scheme}
-%======================================================================
--``leaky pipe`` model
-\\
--replaces Hack shallow convection scheme as well
-\\
--``mixed`` layer CAPE method.
-\\
--has MUCH more ice than default CAM4, but is closer (but still lower) than CERES. CAM4 uses an unrealistically large amount of cloud droplets in upper troposphere to increase SW reflectivity. You can show CERES IWP plots here.
-\\
--seeks to improve deep tropical T profile structure and better representation of MJO.
-\\
--might be worth going over select parameters in model that are important (amp, ice, REI, etc.)
-\\
--maybe make a few plots that I can make or Ian has done or I can make for parameterizations in his model.
-\\
 \section{Experimental set-up}
 -SST boundary conditions used: monthly mean SSTs (1982-2001 HadISST) (Hurrell et al., 2008).
 \\
@@ -531,14 +540,17 @@ the lower troposphere.}``
 \\
 -to compare directly with radiosonde dataset (1998-2011), ran CAM4 and CAM4-IF with observed monthly SSTs from 1998-2005. 
 \chapter{Results}
-\section{Present day climate}
+\section{Sanity check}
+-Before examining the differences in the response of the CAM4-IF to climate change, good to do a sanity check first to see how the model compares to the performance of the default CAM4 in modern climate. We are most interested in tropical phenomenon, particularly, the large-scale circulation, so would be good to show that the CAM4-IF is at least comparable, in terms of various skill metrics, to the CAM4 with the ZM scheme. Most important phenomenon to examine would be the distribution of time-mean tropical precipitation, and the time-mean tropical T profile, since these are the biggest factors that are influenced by and influence the tropical circulations.
+
 -Will compare default CAM4 (50 year run, F\_2000 compset) with 2 versions of the CAM4-IF (30 year runs, F\_2000 compset); 1 version that has the best T profile, and another that has the best tropical precipitation. Compare precipitation, T profile/lapse rate profile and tropical circulation.
+
 \subsection{Performance of CAM4-IF compared to default CAM4}
 ANN time-mean precipitation:
 \begin{figure}[H]
 \centering
-\noindent\includegraphics[width=1\linewidth, angle=90]{../figures/ANN_pr.pdf}\hfill
-\caption{ANN rainfall rate.}
+\noindent\includegraphics[width=1\linewidth]{../figures/ANN_pr.pdf}\hfill
+\caption{Annual mean precipitation rate for \textbf{a}: the default CAM4, \textbf{b}: the CAM4 with the IF scheme that produces a tropical mean annual mean rainfall distribution with the lowest RMSE when compared to reanalysis, \textbf{c}: the CAM4 with the IF scheme that produces tropical temperature profiles closest to those observed from radiosondes. Here and for the rest of this thesis, r$_{pat}$ indicates the pattern or spatial correlation coefficient.}
 \end{figure}
 \newpage
 
@@ -592,20 +604,22 @@ Main goal of recent iterations of CAM-IF is to create a realistic tropical tempe
 
 I discussed in a previous section about how the tropical mean static stability is important for the strength of the tropical circulations, especially the Walker circulation. Since static stability (integrated through the troposphere) is determined by $\frac{\partial{T}}{\partial{P}}$, ensuring the vertical profile of T is as close to observations as possible in a climate model should help in the correct representation of the strength of the tropical circulations in a climate model (all else being equal). It would appear that the CAM-IF is fairly successful at improving the T profile over the default CAM, and is even possibly better than all the AMIP models. The lapse rate profiles for Koror (deep tropical western Pacific), for which there are observed radiosondes for from the SPARC high resolution US radiosonde dataset \cite{love_us_nodate}. 
 
-\begin{figure}[H]
-\centering
-\noindent\includegraphics[width=1\linewidth]{../figures/Diego_Garcia_CAM4.png}\hfill
-\caption{Default CAM4 temperature profiles vs. radiosonde observations for Diego Garcia (tropical Indian Ocean) for January, April, July and October. Generally, the model is too cold in the lower troposphere and has a tropopause temperature that is too cold.}%
-\label{fig:1figs}%
-\end{figure}
 
-\begin{figure}[H]
-\centering
-\noindent\includegraphics[width=1\linewidth]{../figures/Diego_Garcia_CAM4-IF.png}\hfill
-\caption{Same as above, but for the CAM4-IF. Note the lower tropospheric and tropopause cold bias is no longer present or significantly reduced.}%
-\label{fig:1figs}%
-\end{figure}
+%%%REMOVE THIS SECTION FOR NOW%%%%%%%%
+%\begin{figure}[H]
+%\centering
+%\noindent\includegraphics[width=1\linewidth]{../figures/Diego_Garcia_CAM4.png}\hfill
+%\caption{Default CAM4 temperature profiles vs. radiosonde observations for Diego Garcia (tropical Indian Ocean) for %January, April, July and October. Generally, the model is too cold in the lower troposphere and has a tropopause %temperature that is too cold.}%
+%\label{fig:1figs}%
+%\end{figure}
 
+%\begin{figure}[H]
+%\centering
+%\noindent\includegraphics[width=1\linewidth]{../figures/Diego_Garcia_CAM4-IF.png}\hfill
+%\caption{Same as above, but for the CAM4-IF. Note the lower tropospheric and tropopause cold bias is no longer %present or significantly reduced.}%
+%\label{fig:1figs}%
+%\end{figure}
+%
 
 \begin{figure}[H]
 \centering
@@ -638,10 +652,15 @@ Another feature that the CAM4-IF attempts to improve on the default CAM4 is the 
 \noindent\includegraphics[width=0.9\linewidth, angle=90]{../figures/ANN_omega500.pdf}\hfill
 \caption{ANN climo ~500 hPa omega (sigma level 18) with comparisons to a MERRA/ERAI reanalysis blend.}
 \end{figure}
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[width=0.75\linewidth, angle=90]{../figures/ANN_M_omega.pdf}\hfill
+\caption{$M_{int}$ - pressure-thickness vertically weighted integrated mass flux from 1000-100 hPa with the pattern correlation between $M_{int}$ and the pressure-thickness weighted vertically integrated integrated omega for the same interval indicated.}
+\end{figure}
 \newpage
 \begin{figure}[H]
 \centering
-\noindent\includegraphics[width=0.85\linewidth, angle=90]{../figures/200hpachistar_ANN.pdf}\hfill
+\noindent\includegraphics[width=0.8\linewidth, angle=90]{../figures/200hpachistar_ANN.pdf}\hfill
 \caption{ANN climo 200 hPa $\chi^{*}$ (shaded) with an MERRA/ERAI reanalysis blend overlaid as contours with a spacing of $10^{6}$ $m^{2}$/$s$.}
 \end{figure}
 \section{Response to a uniform 4K SST warming}
@@ -657,7 +676,7 @@ Similar to the results of \cite{vecchi_global_2007}, the decrease in tropical me
 It is not clear physically why upward $\omega$, which is influenced by the large scale circulation, should be related to the sub-gridscale convective mass flux which is a function of local scale variables. In fact, \cite{yano_deep-convective_2009} discusses the fact that researchers do not agree on what the convective mass flux actually is. It was first realized by \cite{riehl_and_malkus_heat_1958} that the upward motions of the tropical circulations could not be responsible for the vertical moist static energy structure observed in the tropics with a minimum in the mid-troposphere. Thus, they hypothesized that ``hot towers" plumes of relatively undiluted air could transport tracers from the boundary layer to the tropopause quite efficiently. These convective plumes occur on the sub-gridscale and must be parameterized. While the convective mass flux can effect the vertical diabatic heating (temperature tendency) structure in an atmospheric column, which can in turn effect the large-scale $\omega$ (see eq. 1.11), it should not be assumed that the $M_{c}$=$\omega$ in the tropics.
 
 \begin{table}[H]
-\caption {Precipitation, $q_{bl}$, inferred convective mass flux and upward 500 hPa omega response} \label{tab:title} 
+\caption {Precipitation, $q_{bl}$, inferred convective mass flux and upward 500 hPa omega response. All quantities indicated here are tropical means (30S-30N).} \label{tab:title} 
 \begin{center}
 
 \begin{tabular}{|p{4.5cm}||p{1.25cm}|p{1.5cm}|p{1.75cm}|p{2.5cm}|p{2.25cm}|  }
@@ -714,6 +733,11 @@ Model&$\delta{P}/{P}$&$\delta{(q_{bl})}/q_{bl}$&$\frac{\delta{P}}{P}-\frac{\delt
 \caption{Vertical profiles of the annual mean tropical \textit{total} mean convective mass flux response and control run climatology. Note the vertical scale is not logarithmic as in previous figures to highlight the "bottom-heavy" nature of the profiles.}
 \end{figure}
 
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[width=0.75\linewidth, angle=90]{../figures/ANN_M_omega_response.pdf}\hfill
+\caption{\textbf{a-c}: As in figure 3.4, but for responses with $\omega_{int}$ indicated in contours, with negative indicating a negative (increased upward motion) response, and solid a positive one.}
+\end{figure}
 
 
 \newpage
@@ -726,7 +750,13 @@ Model&$\delta{P}/{P}$&$\delta{(q_{bl})}/q_{bl}$&$\frac{\delta{P}}{P}-\frac{\delt
 \begin{figure}[H]
 \centering
 \noindent\includegraphics[width=1\linewidth]{../figures/M_scat-crop.pdf}\hfill
-\caption{Scatterplot of control run $M_{int}$ vs. the fractional response of $M_{int}$ from a 4K SST warming for the 30S-30N region for each gridpoint. Note the scale is different for each model.}
+\caption{Scatterplot of control run $M_{int}$ vs. the fractional response of $M_{int}$ from a 4K SST warming for the 30S-30N region for each gridpoint. Note the scale is different for each model. Linear regression fit line is in red.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[width=1\linewidth]{../figures/pescat-crop.pdf}\hfill
+\caption{\textbf{a)-c)}: -$M^{`}$ vs. -$M_{int}$ for each model control (black points) and +4K SST run (red points) for the region 30S-30N, only for grid points where the precipitation rate is $>$ 1 mm/day. \textbf{d)-f)}: -$\omega_{int}$ vs. -$M_{int}$ for the same grid points as \textbf{a)-c)} with linear least-squares best fit lines for regions where -$\omega_{int}$ $>$ 0. }
 \end{figure}
 
 -However, when looking at integrated mass flux, we find some very surprising results with the CAM4-IF; we find that in fact, the tropical mean integrated convective mass flux actually strengthens in both version of the CAM4-IF (best T and best rainfall). From Chadwick et al, 2012, all CMIP5 models have a weakening of convective mass flux in RCP8.5, however, these are coupled simulations with CO2 forcing, not just a mean SST warming. 
@@ -737,7 +767,7 @@ Model&$\delta{P}/{P}$&$\delta{(q_{bl})}/q_{bl}$&$\frac{\delta{P}}{P}-\frac{\delt
 \begin{figure}[H]
 \centering
 \noindent\includegraphics[width=1\linewidth]{../figures/test-crop.pdf}\hfill
-\caption{A 300-month time-series of monthly mean tropical mean integrated mass flux response for the CAM4-IF best rain (red), CAM4-IF best T (green) and the default CAM4 (blue) in thick lines, with the inferred tropical mean mass flux response in thin lines.}
+\caption{A 300-month time-series of monthly responses of $M_{int}$ and $M^{`}$. The correlation coefficient between the actual monthly mean mass flux and the inferred mass flux (from \ref{eq:HS}) is between 0.31-0.36 for the 3 models. }
 \end{figure}
 
 -It is clear that for the CAM4-IF, omega does not respond in the same way as convective mass flux, but appears to do so in the default CAM4 (figure x, e\&f).
@@ -751,11 +781,25 @@ Model&$\delta{P}/{P}$&$\delta{(q_{bl})}/q_{bl}$&$\frac{\delta{P}}{P}-\frac{\delt
 \caption{200 hPa annual mean $\chi*$ response (shaded) with the control run annual mean climatology in contours.}
 \end{figure}
 
-\subsection{Tropical circulation}
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[height=0.9\linewidth]{../figures/T_profile_response-crop.pdf}\hfill
+\caption{\textbf{a)-d)}: 15S-15N annual mean profiles of temperature response, total diabatic heating response, static stability response and omega response. The total diabatic heating and omega responses are integrated from 1000-100 hPa (pressure-weighted) and the percentage response is indicated in those panels. The static stability response is integrated from 1000-150 hPa as the change above that levels is associated with an increase in tropopause height, not from the general warming and the majority of the upward motion (and hence adiabatic cooling) is below that level. While the fractional static stability response among the 3 models is quite similar, the diabatic heating increase is much less in the CAM4-IF models which explains why the mean upward omega weakens more in the CAM4-IF models in this region ($\delta{\sigma}/\sigma - \delta{Q_{tot}}/Q_{tot} \approx \delta{\omega}/\omega$).}
 
-\subsection{Effect of convective cloud}
+\end{figure}
+-This figure is the ``smoking gun" that shows that cloud radiative heating is the reason why upward motion is weakening more in the CAM4-IF models than in the default CAM4. Increased precipitation evaporation could also be responsible as well. The next figure will show all of the component responses in Q for the various models to get a better breakdown of this. The 15S-15N precipitation  
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[height=1\linewidth]{../figures/Q_response_decomp-crop.pdf}\hfill
+\caption{\textbf{a)-d)}: 15S-15N annual mean profiles of diabatic heating response broken down into contributions from condensation and shortwave and longwave radiative heating.}
 
+\end{figure}
 
+\begin{figure}[H]
+\centering
+\noindent\includegraphics[height=1\linewidth,angle=90]{../figures/wp_profiles_response-crop.pdf}\hfill
+\caption{\textbf{a}: Thick lines: 15S-15N annual mean profiles of cloud ice and water mixing ratios. Dashed lines: same, but for the response to a 4K SST warming. The tropospheric mean changes in these quantities is quite small for all the models, and most of the change is a shift upward of the ice and water profiles. The largest tropospheric mean changes are seen in the CAM4, with a $\approx$ 12\% increase in cloud water, with a decrease of $\approx$ 11\% in cloud ice. \textbf{b}: Thick lines: control run 15S-15N annual mean profiles of radiative diabatic heating. Dashed lines: same, but for responses. Pressure-weighted vertically integrated percentage responses are indicated (the positive values indicate increased column cooling).}
+\end{figure}
 
 \chapter{Conclusion}
 -lots to say here, anything we can say with certainty?

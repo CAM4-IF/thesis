@@ -1,17 +1,8 @@
-\begin{thebibliography}{10}
-
-\bibitem{noauthor_eol_nodate}
-{EOL} data archive -- {Manus} {ARM} {AMF} {Radiosonde} {L}3 {Data} ({ESC}
-  {Format}) [{NCAR}/{EOL}].
+\begin{thebibliography}{100}
 
 \bibitem{noauthor_introduction_nodate}
 Introduction to {Tropical} {Meteorology}, {Ch}. 5: {Moisture} and
-  {Precipitation}: {\textless}small{\textgreater}5.2 {Adiabatic} {Processes}
-  and {Vertical} {Distribution} of {Moisture} » {\textless}br/{\textgreater}
-  {\textless}/small{\textgreater}{\textless}small{\textgreater}5.2.2 {Tropical}
-  {Clouds} » {\textless}br/{\textgreater}
-  {\textless}/small{\textgreater}5.2.2.1 {Tropical} {Cloud} {Formation} and
-  {Types}.
+  {Precipitation}.
 
 \bibitem{noauthor_testing_nodate}
 Testing the {Fixed} {Anvil} {Temperature} {Hypothesis} in a {Cloud}-{Resolving}
@@ -63,6 +54,19 @@ G.~J. Boer.
   budgets.
 \newblock {\em Climate Dynamics}, 8(5):225--239, May 1993.
 
+\bibitem{bony_robust_2013}
+Sandrine Bony, Gilles Bellon, Daniel Klocke, Steven Sherwood, Solange Fermepin,
+  and Sébastien Denvil.
+\newblock Robust direct effect of carbon dioxide on tropical circulation and
+  regional precipitation.
+\newblock {\em Nature Geoscience}, 6(6):447--451, June 2013.
+
+\bibitem{caballero_role_2007}
+Rodrigo Caballero.
+\newblock Role of eddies in the interannual variability of {Hadley} cell
+  strength.
+\newblock {\em Geophysical Research Letters}, 34(22):L22705, November 2007.
+
 \bibitem{chadwick_which_2016}
 Robin Chadwick.
 \newblock Which {Aspects} of {CO}2 {Forcing} and {SST} {Warming} {Cause} {Most}
@@ -82,11 +86,24 @@ Jule~G. Charney.
 \newblock {\em Journal of the Atmospheric Sciences}, 20(6):607--609, November
   1963.
 
+\bibitem{chou_mechanisms_2004}
+Chia Chou and J.~David Neelin.
+\newblock Mechanisms of {Global} {Warming} {Impacts} on {Regional} {Tropical}
+  {Precipitation}.
+\newblock {\em Journal of Climate}, 17(13):2688--2701, July 2004.
+
 \bibitem{corvec_changes_2017}
 S.~Corvec and C.~G. Fletcher.
 \newblock Changes to the tropical circulation in the mid-{Pliocene} and their
   implications for future climate.
 \newblock {\em Clim. Past}, 13(2):135--147, February 2017.
+
+\bibitem{crueger_tropical_2013}
+Traute Crueger, Cathy Hohenegger, and Wilhelm May.
+\newblock Tropical precipitation and convection changes in the {Max} {Planck}
+  {Institute} {Earth} system model ({MPI}-{ESM}) in response to {CO}2 forcing.
+\newblock {\em Journal of Advances in Modeling Earth Systems}, 5(1):85--97,
+  March 2013.
 
 \bibitem{dodd_impact_1997}
 J.~P. Dodd and I.~N. James.
@@ -134,6 +151,13 @@ Ian Folkins and Christopher Braun.
 \newblock Tropical {Rainfall} and {Boundary} {Layer} {Moist} {Entropy}.
 \newblock {\em Journal of Climate}, 16(11):1807--1820, June 2003.
 
+\bibitem{folkins_vertical_2005}
+Ian Folkins and Randall~V. Martin.
+\newblock The {Vertical} {Structure} of {Tropical} {Convection} and {Its}
+  {Impact} on the {Budgets} of {Water} {Vapor} and {Ozone}.
+\newblock {\em Journal of the Atmospheric Sciences}, 62(5):1560--1573, May
+  2005.
+
 \bibitem{folkins_simple_2014}
 Ian Folkins, T.~Mitovski, and J.~R. Pierce.
 \newblock A simple way to improve the diurnal cycle in convective rainfall over
@@ -145,6 +169,13 @@ Ian Folkins, T.~Mitovski, and J.~R. Pierce.
 T.~J. Garrett, H.~Gerber, D.~G. Baumgardner, C.~H. Twohy, and E.~M. Weinstock.
 \newblock Small, highly reflective ice crystals in low-latitude cirrus.
 \newblock {\em Geophysical Research Letters}, 30(21):2132, November 2003.
+
+\bibitem{gastineau_hadley_2009}
+Guillaume Gastineau, Laurent Li, and Hervé Le~Treut.
+\newblock The {Hadley} and {Walker} {Circulation} {Changes} in {Global}
+  {Warming} {Conditions} {Described} by {Idealized} {Atmospheric}
+  {Simulations}.
+\newblock {\em Journal of Climate}, 22(14):3993--4013, July 2009.
 
 \bibitem{harrop_role_2016}
 Bryce~E. Harrop and Dennis~L. Hartmann.
@@ -165,11 +196,36 @@ Jie He and Brian~J. Soden.
   {Temperature} {Change}.
 \newblock {\em Journal of Climate}, 28(22):8728--8742, July 2015.
 
+\bibitem{held_nonlinear_1980}
+Isaac~M. Held and Arthur~Y. Hou.
+\newblock Nonlinear {Axially} {Symmetric} {Circulations} in a {Nearly}
+  {Inviscid} {Atmosphere}.
+\newblock {\em Journal of the Atmospheric Sciences}, 37(3):515--533, March
+  1980.
+
 \bibitem{held_robust_2006}
 Isaac~M. Held and Brian~J. Soden.
 \newblock Robust {Responses} of the {Hydrological} {Cycle} to {Global}
   {Warming}.
 \newblock {\em Journal of Climate}, 19(21):5686--5699, November 2006.
+
+\bibitem{hollars_comparisons_2004}
+S.~Hollars, Q.~Fu, Jennifer~M. Comstock, and Thomas~P. Ackerman.
+\newblock Comparisons of {Cloud}-{Top} {Height} {Retrievals} from
+  {Ground}-{Based} 35 {Ghz} {Mmcr} and {Gms}-5 {Satellite} {Observations} at
+  {Arm} {Twp} {Manus} {Site}.
+\newblock {\em Atmospheric Research}, 72(1-4), November 2004.
+
+\bibitem{holton_introduction_2004}
+James~R. Holton.
+\newblock {\em An {Introduction} to {Dynamic} {Meteorology}}.
+\newblock Academic Press, 4 edition, 2004.
+\newblock Google-Books-ID: fhW5oDv3EPsC.
+
+\bibitem{hu_observed_2007}
+Y.~Hu and Q.~Fu.
+\newblock Observed poleward expansion of the {Hadley} circulation since 1979.
+\newblock {\em Atmos. Chem. Phys.}, 7(19):5229--5236, October 2007.
 
 \bibitem{hurrell_new_2008}
 James~W. Hurrell, James~J. Hack, Dennis Shea, Julie~M. Caron, and James
@@ -177,6 +233,19 @@ James~W. Hurrell, James~J. Hack, Dennis Shea, Julie~M. Caron, and James
 \newblock A {New} {Sea} {Surface} {Temperature} and {Sea} {Ice} {Boundary}
   {Dataset} for the {Community} {Atmosphere} {Model}.
 \newblock {\em Journal of Climate}, 21(19):5145--5153, October 2008.
+
+\bibitem{johanson_hadley_2009}
+Celeste~M. Johanson and Qiang Fu.
+\newblock Hadley {Cell} {Widening}: {Model} {Simulations} versus
+  {Observations}.
+\newblock {\em Journal of Climate}, 22(10):2713--2725, May 2009.
+
+\bibitem{johnson_role_1976}
+Richard~H. Johnson.
+\newblock The {Role} of {Convective}-{Scale} {Precipitation} {Downdrafts} in
+  {Cumulus} and {Synoptic}-{Scale} {Interactions}.
+\newblock {\em Journal of the Atmospheric Sciences}, 33(10):1890--1910, October
+  1976.
 
 \bibitem{kang_uncertainty_2013}
 Sarah~M. Kang, Clara Deser, and Lorenzo~M. Polvani.
@@ -230,6 +299,15 @@ Jia-Lin Lin, Daehyun Kim, Myong-In Lee, and In-Sik Kang.
   model ({AGCM}) simulations of convectively coupled equatorial waves.
 \newblock {\em Journal of Geophysical Research: Atmospheres}, 112(D24):D24107,
   December 2007.
+
+\bibitem{lin_twp-ice_2012}
+Yanluan Lin, L.~J. Donner, J.~Petch, P.~Bechtold, J.~Boyle, S.~A. Klein,
+  T.~Komori, K.~Wapler, M.~Willett, X.~Xie, M.~Zhao, S.~Xie, S.~A. McFarlane,
+  and C.~Schumacher.
+\newblock {TWP}-{ICE} global atmospheric model intercomparison: {Convection}
+  responsiveness and resolution impact.
+\newblock {\em Journal of Geophysical Research: Atmospheres}, 117(D9):D09111,
+  May 2012.
 
 \bibitem{liu_changes_2012}
 J.~Liu, M.~Song, Y.~Hu, and X.~Ren.
@@ -349,16 +427,44 @@ Andreas~F. Prein, Wolfgang Langhans, Giorgia Fosser, Andrew Ferrone, Nikolina
   {Demonstrations}, prospects, and challenges.
 \newblock {\em Reviews of Geophysics}, 53(2):2014RG000475, June 2015.
 
+\bibitem{quan_change_2004}
+X.-W. Quan, H.~F. Diaz, and M.P. Hoerling.
+\newblock Change of the tropical {Hadley} cell since 1950.
+\newblock In {\em The {Hadley} {Cell}: {Past}, {Present} and {Future}, edited
+  by {H}. {F}. {Diaz}, and {R}. {S}. {Bradley}}, volume~21 of {\em Advances in
+  {Global} {Change} {Research}}, pages 85--120. Cambridge University Press, New
+  York, 2004.
+
+\bibitem{randall_interactions_1988}
+David~A. Randall, {Harshvardhan}, Donald~A. Dazlich, and Thomas~G. Corsetti.
+\newblock Interactions among {Radiation}, {Convection}, and {Large}-{Scale}
+  {Dynamics} in a {General} {Circulation} {Model}.
+\newblock {\em Journal of the Atmospheric Sciences}, 46(13):1943--1970, July
+  1988.
+
 \bibitem{raymond_convective_2011}
 David~J. Raymond and Michael~J. Herman.
 \newblock Convective quasi-equilibrium reconsidered.
 \newblock {\em Journal of Advances in Modeling Earth Systems}, 3(3):M08003,
   March 2011.
 
+\bibitem{renno_radiative-convective_1994}
+Nilton~O. Rennó, Kerry~A. Emanuel, and Peter~H. Stone.
+\newblock Radiative-convective model with an explicit hydrologic cycle: 1.
+  {Formulation} and sensitivity to model parameters.
+\newblock {\em Journal of Geophysical Research: Atmospheres},
+  99(D7):14429--14441, July 1994.
+
 \bibitem{riehl_and_malkus_heat_1958}
 Herbert {and}~Joanne Riehl {and}~Malkus.
 \newblock On the heat balance in the equatorial trough zone.
 \newblock {\em Geophysica}, 6:503--538, 1958.
+
+\bibitem{romps_direct_2010}
+David~M. Romps.
+\newblock A {Direct} {Measure} of {Entrainment}.
+\newblock {\em Journal of the Atmospheric Sciences}, 67(6):1908--1927, January
+  2010.
 
 \bibitem{romps_undiluted_2010}
 David~M. Romps and Zhiming Kuang.
@@ -366,6 +472,12 @@ David~M. Romps and Zhiming Kuang.
   {Tropical} {Troposphere}?
 \newblock {\em Journal of the Atmospheric Sciences}, 67(2):468--484, February
   2010.
+
+\bibitem{sandeep_pacific_2014}
+S.~Sandeep, Frode Stordal, Prashant~D. Sardeshmukh, and Gilbert~P. Compo.
+\newblock Pacific {Walker} {Circulation} variability in coupled and uncoupled
+  climate models.
+\newblock {\em Climate Dynamics}, 43(1-2):103--117, July 2014.
 
 \bibitem{santer_contributions_2003}
 B.~D. Santer, M.~F. Wehner, T.~M.~L. Wigley, R.~Sausen, G.~A. Meehl, K.~E.
@@ -385,6 +497,25 @@ Arakawa~{and} Schubert.
 \newblock Interaction of a {Cumulus} {Cloud} {Ensemble} with the
   {Large}-{Scale} {Environment}, {Part} {I}.
 \newblock {\em Journal of the Atmospheric Sciences}, 31(3):674--701, 1974.
+
+\bibitem{schumacher_stratiform_2003}
+Courtney Schumacher and Robert~A. Houze.
+\newblock Stratiform {Rain} in the {Tropics} as {Seen} by the {TRMM}
+  {Precipitation} {Radar}.
+\newblock {\em Journal of Climate}, 16(11):1739--1756, June 2003.
+
+\bibitem{seidel_recent_2007}
+Dian~J. Seidel and William~J. Randel.
+\newblock Recent widening of the tropical belt: {Evidence} from tropopause
+  observations.
+\newblock {\em Journal of Geophysical Research: Atmospheres}, 112(D20):D20113,
+  October 2007.
+
+\bibitem{seo_mechanism_2014}
+Kyong-Hwan Seo, Dargan M.~W. Frierson, and Jun-Hyeok Son.
+\newblock A mechanism for future changes in {Hadley} circulation strength in
+  {CMIP}5 climate change simulations.
+\newblock {\em Geophysical Research Letters}, 41(14):2014GL060868, July 2014.
 
 \bibitem{sherwood_response_1994}
 Steven~C. Sherwood, V.~Ramanathan, Tim~P. Barnett, Mary~K. Tyree, and Erich
@@ -450,11 +581,34 @@ Gabriel~A. Vecchi, Brian~J. Soden, Andrew~T. Wittenberg, Isaac~M. Held, Ants
   anthropogenic forcing.
 \newblock {\em Nature}, 441(7089):73--76, May 2006.
 
+\bibitem{waliser_cloud_2009}
+Duane~E. Waliser, Jui-Lin~F. Li, Christopher~P. Woods, Richard~T. Austin, Julio
+  Bacmeister, Jiundar Chern, Anthony Del~Genio, Jonathan~H. Jiang, Zhiming
+  Kuang, Huan Meng, Patrick Minnis, Steve Platnick, William~B. Rossow,
+  Graeme~L. Stephens, Szedung Sun-Mack, Wei-Kuo Tao, Adrian~M. Tompkins,
+  Deborah~G. Vane, Christopher Walker, and Dong Wu.
+\newblock Cloud ice: {A} climate model challenge with signs and expectations of
+  progress.
+\newblock {\em Journal of Geophysical Research: Atmospheres}, 114(D8):D00A21,
+  April 2009.
+
+\bibitem{walker_eddy_2006}
+Christopher~C. Walker and Tapio Schneider.
+\newblock Eddy {Influences} on {Hadley} {Circulations}: {Simulations} with an
+  {Idealized} {GCM}.
+\newblock {\em Journal of the Atmospheric Sciences}, 63(12):3333--3350,
+  December 2006.
+
 \bibitem{williams_analysis_1993}
 Erle Williams and Nilton Renno.
 \newblock An {Analysis} of the {Conditional} {Instability} of the {Tropical}
   {Atmosphere}.
 \newblock {\em Monthly Weather Review}, 121(1):21--36, January 1993.
+
+\bibitem{wills_local_2017}
+Robert~C Wills, Xavier~J Levine, and Tapio Schneider.
+\newblock Local energetic constraints on {Walker} circulation strength.
+\newblock {\em Journal of the Atmospheric Sciences}, March 2017.
 
 \bibitem{yano_deep-convective_2009}
 J.-I. Yano.
@@ -465,6 +619,13 @@ J.-I. Yano.
 J.-I. Yano and R.~S. Plant.
 \newblock Convective quasi-equilibrium.
 \newblock {\em Reviews of Geophysics}, 50(4):RG4004, December 2012.
+
+\bibitem{yu_estimating_1998}
+Jia-Yuh Yu, Chia Chou, and J.~David Neelin.
+\newblock Estimating the {Gross} {Moist} {Stability} of the {Tropical}
+  {Atmosphere}.
+\newblock {\em Journal of the Atmospheric Sciences}, 55(8):1354--1372, April
+  1998.
 
 \bibitem{zhang_sensitivity_1995}
 Zhang.
