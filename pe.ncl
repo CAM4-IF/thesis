@@ -4,15 +4,17 @@ fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/resea
 fils2=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/CAM*ANN*.nc4")
 fils3=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/CAM*ANN*.nc2")
 plotfile="ANN_pe"
-wks = gsn_open_wks("epsi", plotfile)                      ;Open a workstation
+wks = gsn_open_wks("pdf", plotfile)                      ;Open a workstation
 datalog=new((/3,4608/),"double")
 datalog1=new((/3,4608/),"double")
 datalog2=new((/3,4608/),"double")
 datalog3=new((/3,4608/),"double")
+datalog4=new((/3,4608/),"double")
+datalog5=new((/3,4608/),"double")
 modelnames=new(3,"string")
 nummods=dimsizes(fils) ;;number of models! 
 plot=new(nummods+2, graphic)    ;;;Create a panel plot with panels = number of models!
-plots=new(nummods+2, graphic)
+plots=new(6, graphic)
 lets=(/"a)","b)","c)","d)"/)
 n=0
 do while(n.le.dimsizes(fils)-1)
@@ -83,6 +85,19 @@ wva1&lat=pr1->lat
 wva1!1="lon"
 wva1&lon=pr1->lon
 
+pm   = pres_hybrid_ccm(PS,P0,hyam,hybm)
+opt=(/0,10000,100000/)
+wva2 = wgt_vert_avg_beta(pm, O, PS, 0, opt)/90000
+wva3 = wgt_vert_avg_beta(pm, O1, PS, 0, opt)/90000
+wva2!0="lat"
+wva2&lat=pr1->lat
+wva2!1="lon"
+wva2&lon=pr1->lon
+wva3!0="lat"
+wva3&lat=pr1->lat
+wva3!1="lon"
+wva3&lon=pr1->lon
+
 
 pemap=wva({-30:30},:)/(mprime)
 pemap1=wva1({-30:30},:)/(mprime1)
@@ -122,20 +137,65 @@ pe=avg(preciponly)
 pe1=avg(preciponly1)
 
 
+mprimeponly=(mask(mprime,(p3*86400.gt.1),True))
+mprimeponly!0="lat"
+mprimeponly&lat=pr1->lat({-30:30})
+mprimeponly!1="lon"
+mprimeponly&lon=pr1->lon
+
+mprimeponly1=(mask(mprime1,(p6*86400.gt.1),True))
+mprimeponly1!0="lat"
+mprimeponly1&lat=pr1->lat({-30:30})
+mprimeponly1!1="lon"
+mprimeponly1&lon=pr1->lon
+
+
+mintponly=(mask(wva({-30:30},:),(p3*86400.gt.1),True))
+mintponly!0="lat"
+mintponly&lat=pr1->lat({-30:30})
+mintponly!1="lon"
+mintponly&lon=pr1->lon
+
+mintponly1=(mask(wva1({-30:30},:),(p6*86400.gt.1),True))
+mintponly1!0="lat"
+mintponly1&lat=pr1->lat({-30:30})
+mintponly1!1="lon"
+mintponly1&lon=pr1->lon
+
+
+oponly=(mask(wva2({-30:30},:),(p3*86400.gt.1),True))
+oponly!0="lat"
+oponly&lat=pr1->lat({-30:30})
+oponly!1="lon"
+oponly&lon=pr1->lon
+
+
+oponly1=(mask(wva3({-30:30},:),(p3*86400.gt.1),True))
+oponly1!0="lat"
+oponly1&lat=pr1->lat({-30:30})
+oponly1!1="lon"
+oponly1&lon=pr1->lon
+
+
+
+
+
 mprimeresponse=mprime1-mprime
 mintresponse=wva1({-30:30},:)-wva({-30:30},:)
 
-x=ndtooned(mprime)
-y=ndtooned(wva({-30:30},:))*-1
-x1=ndtooned(mprime1)
-y1=ndtooned(wva1({-30:30},:))*-1
+x=ndtooned(mprimeponly)
+y=ndtooned(mintponly)*-1
+x1=ndtooned(mprimeponly1)
+y1=ndtooned(mintponly1)*-1
+x2=ndtooned(oponly)*-1
+x3=ndtooned(oponly1)*-1
 
-print(x)
-print(x1)
 datalog(n,:)=x
 datalog1(n,:)=y
 datalog2(n,:)=x1
 datalog3(n,:)=y1
+datalog4(n,:)=x2
+datalog5(n,:)=x3
 
 ;;;;compute 
 
@@ -152,8 +212,8 @@ wva!1="lon"
 wva&lon=f->lon
 pm   = pres_hybrid_ccm(PS,P0,hyam,hybm)
 pm1   = pres_hybrid_ccm(PS1,P0,hyam,hybm) 
-wva2 = wgt_vert_avg_beta(pm/100, O, PS/100, 0, opt)/900
-wva3 = wgt_vert_avg_beta(pm/100, O1, PS1/100, 0, opt)/900
+wva2 = wgt_vert_avg_beta(pm, O, PS, 1, opt)/900
+wva3 = wgt_vert_avg_beta(pm, O1, PS1, 1, opt)/900
 odiff=wva3-wva2
 odiff!0="lat"
 odiff&lat=f->lat
@@ -278,7 +338,7 @@ gsn_panel(wks,plot,(/4,1/),res4)
 delete(wks)
 n=0
 lets=(/"a)","b)","c)","d)"/)
-wks = gsn_open_wks("epsi", "test") 
+wks = gsn_open_wks("pdf", "test") 
 do while(n.le.dimsizes(fils)-1)
  
  res                   = True                     ; plot mods desired
@@ -291,29 +351,87 @@ do while(n.le.dimsizes(fils)-1)
   res@gsnDraw=False
   res@gsnFrame=False
   res@trXMinF=-0.001
-  ;res@trXMaxF=0.0003
+  res@trXMaxF=0.02
   res@trYMinF=-0.001
-  ;res@trYMaxF=0.004
+  ;res@trYMaxF=0.022
   res@gsnLeftString  =lets(n) + " " + modelnames(n)
   res@gsnLeftStringFontHeightF=0.03
-  res@tiYAxisString = "M~B~int~N~ (kg/m~S~2~N~/s)"
+  res@tiYAxisString = "-M~B~int~N~ (kg/m~S~2~N~/s)"
   res@tiXAxisString = "M~S~'~N~ (kg/m~S~2~N~/s)"
+  res@tmXBFormat="0@*+^sg"
   rc=regline(datalog(n,:),datalog1(n,:))
   rc1=regline(datalog2(n,:),datalog3(n,:))
-  yreg=rc*datalog1(n,:)+rc@yintercept
-  yreg1=rc1*datalog3(n,:)+rc@yintercept
+  yreg=rc*datalog(n,:)+rc@yintercept
+  yreg1=rc1*datalog2(n,:)+rc@yintercept
   plots(n)  = gsn_csm_xy (wks,datalog(n,:),datalog1(n,:),res)                    ; create plot
+  
   res@xyMarkerColor     = "Red" 
   plot1 = gsn_csm_xy (wks,datalog2(n,:),datalog3(n,:),res)                    ; create plot
   res@xyMarkLineMode="Lines"
   res@xyLineColor="Grey"
-  plot2=gsn_csm_xy(wks,datalog1(n,:),yreg,res)
+  plot2=gsn_csm_xy(wks,datalog(n,:),yreg,res)
   res@xyLineColor="Orange"
-  plot3=gsn_csm_xy(wks,datalog3(n,:),yreg1,res)
-  overlay(plots(n),plot2)
+  plot3=gsn_csm_xy(wks,datalog2(n,:),yreg1,res)
   overlay(plots(n),plot1)
+  overlay(plots(n),plot2)
   overlay(plots(n),plot3)
+  txid1 = new(3,graphic)                  ; Nine text strings
+ txres               = True     
+ txres@txFontHeightF = 0.018
+ txid1(0) = gsn_add_text (wks,plots(n),"Control slope: " + sprintf("%5.2f",rc) + "~C~" + "+4K slope: " + sprintf("%5.2f",rc1), 0.005,max(datalog1(n,:))-0.002, txres)
+ gres=True
+  gres@YPosPercent = 50. 
+gres@XPosPercent = 75
+gres@ItemSpacePercent = 5.  
+lineres1 = True
+lineres1@lgLineColors = (/"Grey","Orange"/) ; line colors
+lineres1@lgDashIndexes=(/0,0,0,0,0,0/)
+lineres1@lgLineThicknesses = 2.5                        ; line thicknesses
+lineres1@LineLengthPercent = 9.                         ; expressed as %, 0->100, length of line
 
+textres1 = True
+textres1@lgLabels = (/"Control","+4K" /)  ; legend labels (required)
+textres1@lgLabelFontHeights = (/0.015,0.015,0.015/)   
+plots(n) = simple_legend(wks,plots(n),gres,lineres1,textres1)
+
+res@xyMarkLineMode    = "Markers" 
+res@tiXAxisString = "-~F33~w~F~~B~int~N~ (Pa/s)"
+res@trXMinF=-0.1
+res@trXMaxF=0.15
+res@trYMinF=-0.001
+;res@trYMaxF=0.022
+;res@tmXBFormat="0*+^e"
+res@xyMarkerColor     = "Black" 
+rc2=regline(datalog4(n,:),datalog1(n,:))
+rc3=regline(datalog5(n,:),datalog3(n,:))
+r    = escorc(datalog4(n,:),datalog1(n,:)) 
+r1    = escorc(datalog5(n,:),datalog3(n,:)) 
+yreg2=rc2*datalog4(n,:)+rc2@yintercept
+yreg3=rc3*datalog5(n,:)+rc3@yintercept
+plots(n+3)  = gsn_csm_xy (wks,datalog4(n,:),datalog1(n,:),res)                    ; create plot
+res@xyMarkerColor     = "Red" 
+plot4= gsn_csm_xy (wks,datalog5(n,:),datalog3(n,:),res)                    ; create plot
+overlay(plots(n+3),plot4)
+res@xyMarkLineMode="Lines"
+res@xyLineColor="Grey"
+plot5=gsn_csm_xy(wks,datalog4(n,:),yreg2,res)
+res@xyLineColor="Orange"
+plot6=gsn_csm_xy(wks,datalog5(n,:),yreg3,res)
+;overlay(plots(n+3),plot5)
+;overlay(plots(n+3),plot6)
+cmeanmint=avg(datalog1(n,:))
+cmeanomeg=avg(datalog4(n,:) > 0)
+fmeanmint=avg(datalog3(n,:))
+fmeanomeg=avg(datalog5(n,:) > 0)
+
+mintresponse1=100*(fmeanmint-cmeanmint)/cmeanmint
+omegresponse=100*(fmeanomeg-cmeanomeg)/cmeanomeg
+
+
+ txres               = True     
+ txres@txFontHeightF = 0.018
+ txid1(0) = gsn_add_text (wks,plots(n+3),"Mean M~B~int~N~ response (%): " + sprintf("%5.1f",mintresponse1) + "~C~~C~" + "Mean (~F33~w~F~~B~int~N~)~S~~F34~-~F~~N~ response (%): " + sprintf("%5.1f",omegresponse), 0,max(datalog1(n,:))-0.001, txres)
+  
 n=n+1
 end do
 
@@ -322,12 +440,13 @@ resP@txString = ""
 resP@txFontHeightF    = 0.03
 resP@gsnMaximize=True
 resP@gsnPaperOrientation = "portrait"
-gsn_panel(wks,plots,(/1,3/),resP)  
+gsn_panel(wks,plots,(/2,3/),resP)  
  delete(wks) 
 
-string1="eps2eps " + plotfile +".epsi" + " " + plotfile +".eps"
-system(string1) 
-system("epstopdf " + plotfile +".eps") 
-system("rm " + plotfile +".eps") 
-system("rm " + plotfile +".epsi")
+;string1="eps2eps " + plotfile +".epsi" + " " + plotfile +".eps"
+;system(string1) 
+;system("epstopdf " + plotfile +".eps") 
+;system("rm " + plotfile +".eps") 
+;system("rm " + plotfile +".epsi")
+system("pdfcrop test.pdf")
 end
