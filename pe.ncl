@@ -14,7 +14,7 @@ datalog5=new((/3,4608/),"double")
 modelnames=new(3,"string")
 nummods=dimsizes(fils) ;;number of models! 
 plot=new(nummods+2, graphic)    ;;;Create a panel plot with panels = number of models!
-plots=new(6, graphic)
+plots=new(9, graphic)
 lets=(/"a)","b)","c)","d)"/)
 n=0
 do while(n.le.dimsizes(fils)-1)
@@ -137,40 +137,40 @@ pe=avg(preciponly)
 pe1=avg(preciponly1)
 
 
-mprimeponly=(mask(mprime,(p3*86400.gt.1),True))
+mprimeponly=(mask(mprime,(p3*86400.gt.4),True))
 mprimeponly!0="lat"
 mprimeponly&lat=pr1->lat({-30:30})
 mprimeponly!1="lon"
 mprimeponly&lon=pr1->lon
 
-mprimeponly1=(mask(mprime1,(p6*86400.gt.1),True))
+mprimeponly1=(mask(mprime1,(p6*86400.gt.4),True))
 mprimeponly1!0="lat"
 mprimeponly1&lat=pr1->lat({-30:30})
 mprimeponly1!1="lon"
 mprimeponly1&lon=pr1->lon
 
 
-mintponly=(mask(wva({-30:30},:),(p3*86400.gt.1),True))
+mintponly=(mask(wva({-30:30},:),(p3*86400.gt.4),True))
 mintponly!0="lat"
 mintponly&lat=pr1->lat({-30:30})
 mintponly!1="lon"
 mintponly&lon=pr1->lon
 
-mintponly1=(mask(wva1({-30:30},:),(p6*86400.gt.1),True))
+mintponly1=(mask(wva1({-30:30},:),(p6*86400.gt.4),True))
 mintponly1!0="lat"
 mintponly1&lat=pr1->lat({-30:30})
 mintponly1!1="lon"
 mintponly1&lon=pr1->lon
 
 
-oponly=(mask(wva2({-30:30},:),(p3*86400.gt.1),True))
+oponly=(mask(wva2({-30:30},:),(p3*86400.gt.4),True))
 oponly!0="lat"
 oponly&lat=pr1->lat({-30:30})
 oponly!1="lon"
 oponly&lon=pr1->lon
 
 
-oponly1=(mask(wva3({-30:30},:),(p3*86400.gt.1),True))
+oponly1=(mask(wva3({-30:30},:),(p3*86400.gt.4),True))
 oponly1!0="lat"
 oponly1&lat=pr1->lat({-30:30})
 oponly1!1="lon"
@@ -350,19 +350,22 @@ do while(n.le.dimsizes(fils)-1)
   res@xyMarkerSizeF     = 0.0005                     ; Marker size (default 0.01)
   res@gsnDraw=False
   res@gsnFrame=False
-  res@trXMinF=-0.001
+  res@trXMinF=0.001
   res@trXMaxF=0.02
-  res@trYMinF=-0.001
+  res@trYMinF=0.001
+  res@gsnXRefLine = -3. 
+  res@gsnXRefLine = 0.0 
+  res@gsnYRefLine = 0.0  
   ;res@trYMaxF=0.022
   res@gsnLeftString  =lets(n) + " " + modelnames(n)
   res@gsnLeftStringFontHeightF=0.03
   res@tiYAxisString = "-M~B~int~N~ (kg/m~S~2~N~/s)"
   res@tiXAxisString = "M~S~'~N~ (kg/m~S~2~N~/s)"
   res@tmXBFormat="0@*+^sg"
-  rc=regline(datalog(n,:),datalog1(n,:))
-  rc1=regline(datalog2(n,:),datalog3(n,:))
+  rc=regline(datalog(n,:)<0.008,datalog1(n,:)<0.02)
+  rc1=regline(datalog2(n,:)<0.008,datalog3(n,:)<0.02)
   yreg=rc*datalog(n,:)+rc@yintercept
-  yreg1=rc1*datalog2(n,:)+rc@yintercept
+  yreg1=rc1*datalog2(n,:)+rc1@yintercept
   plots(n)  = gsn_csm_xy (wks,datalog(n,:),datalog1(n,:),res)                    ; create plot
   
   res@xyMarkerColor     = "Red" 
@@ -402,8 +405,8 @@ res@trYMinF=-0.001
 ;res@trYMaxF=0.022
 ;res@tmXBFormat="0*+^e"
 res@xyMarkerColor     = "Black" 
-rc2=regline(datalog4(n,:),datalog1(n,:))
-rc3=regline(datalog5(n,:),datalog3(n,:))
+rc2=regline((datalog4(n,:)>0),datalog1(n,:))
+rc3=regline((datalog5(n,:)>0),datalog3(n,:))
 r    = escorc(datalog4(n,:),datalog1(n,:)) 
 r1    = escorc(datalog5(n,:),datalog3(n,:)) 
 yreg2=rc2*datalog4(n,:)+rc2@yintercept
@@ -414,23 +417,79 @@ plot4= gsn_csm_xy (wks,datalog5(n,:),datalog3(n,:),res)                    ; cre
 overlay(plots(n+3),plot4)
 res@xyMarkLineMode="Lines"
 res@xyLineColor="Grey"
+res@gsnXRefLine = 0.0 
+res@gsnYRefLine = 0.0  
 plot5=gsn_csm_xy(wks,datalog4(n,:),yreg2,res)
 res@xyLineColor="Orange"
 plot6=gsn_csm_xy(wks,datalog5(n,:),yreg3,res)
-;overlay(plots(n+3),plot5)
-;overlay(plots(n+3),plot6)
-cmeanmint=avg(datalog1(n,:))
-cmeanomeg=avg(datalog4(n,:) > 0)
-fmeanmint=avg(datalog3(n,:))
-fmeanomeg=avg(datalog5(n,:) > 0)
+overlay(plots(n+3),plot5)
+overlay(plots(n+3),plot6)
+cmeanmint=avg(datalog1(n,:) > 0.005)
+cmeanomeg=avg(datalog4(n,:) > 0.01)
+fmeanmint=avg(datalog3(n,:) > 0.005)
+fmeanomeg=avg(datalog5(n,:) > 0.01)
 
-mintresponse1=100*(fmeanmint-cmeanmint)/cmeanmint
-omegresponse=100*(fmeanomeg-cmeanomeg)/cmeanomeg
+mintresponse1=(datalog3(n,:)-datalog1(n,:))/datalog1(n,:)
+omegresponse=(datalog5(n,:)-datalog4(n,:))/datalog4(n,:)
 
 
- txres               = True     
- txres@txFontHeightF = 0.018
- txid1(0) = gsn_add_text (wks,plots(n+3),"Mean M~B~int~N~ response (%): " + sprintf("%5.1f",mintresponse1) + "~C~~C~" + "Mean (~F33~w~F~~B~int~N~)~S~~F34~-~F~~N~ response (%): " + sprintf("%5.1f",omegresponse), 0,max(datalog1(n,:))-0.001, txres)
+ ;txres               = True     
+ ;txres@txFontHeightF = 0.018
+ ;txid1(0) = gsn_add_text (wks,plots(n+3),"Mean M~B~int~N~ response (%): " + sprintf("%5.1f",mintresponse1) + "~C~~C~" + "Mean (~F33~w~F~~B~int~N~)~S~~F34~-~F~~N~ response (%): " + sprintf("%5.1f",omegresponse), 0,max(datalog1(n,:))-0.001, txres)
+ gres=True
+  gres@YPosPercent = 50. 
+gres@XPosPercent = 75
+gres@ItemSpacePercent = 5.  
+lineres1 = True
+lineres1@lgLineColors = (/"Grey","Orange"/) ; line colors
+lineres1@lgDashIndexes=(/0,0,0,0,0,0/)
+lineres1@lgLineThicknesses = 2.5                        ; line thicknesses
+lineres1@LineLengthPercent = 9.                         ; expressed as %, 0->100, length of line
+
+textres1 = True
+textres1@lgLabels = (/"Control","+4K" /)  ; legend labels (required)
+textres1@lgLabelFontHeights = (/0.015,0.015,0.015/)   
+plots(n+3) = simple_legend(wks,plots(n+3),gres,lineres1,textres1)
+  
+  
+  
+  
+res1=True
+res1@tiMainString      = ""           ; add title
+res1@xyMarkers         =  16                      ; choose type of marker   
+res1@xyMarkerColor     = "Black"               ; Marker color
+res1@xyMarkerSizeF     = 0.0005                     ; Marker size (default 0.01)
+res1@xyMarkLineMode    = "Markers" 
+res1@tiYAxisString = "~F33~d~F~M~B~int~N~/M~B~int~N~"
+res1@tiXAxisString = "~F33~d~F~~F33~w~F~~B~int~N~/~F33~w~F~~B~int~N~"
+res1@gsnDraw=False
+res1@gsnFrame=False
+res1@trXMinF=-1
+res1@trXMaxF=1
+res1@trYMinF=-1
+res1@trYMaxF=1
+res1@gsnXRefLine = 0.0
+res1@gsnYRefLine = 0.0  
+res1@gsnMaximize=True
+res1@gsnLeftString  =lets(n) + " " + modelnames(n)
+ res1@gsnLeftStringFontHeightF=0.03
+;res@tmXBFormat="0*+^e"
+res1@xyMarkerColor     = "Black" 
+x10=omegresponse<1
+x20=x10>-1
+y10=mintresponse1<1
+y20=y10>-1
+rc4=regline(x20,y20)
+r1    = escorc(x20,y20) 
+print(r1)
+yreg4=rc4*x20+rc4@yintercept
+plots(n+6)  = gsn_csm_xy (wks,x20,y20,res1)                    ; create plot
+res1@xyMarkLineMode="Lines"
+res1@xyLineColor="Grey"
+plot7=gsn_csm_xy(wks,x20,yreg4,res)
+overlay(plots(n+6),plot7)
+delete(mintresponse1)
+delete(omegresponse)
   
 n=n+1
 end do
@@ -440,7 +499,7 @@ resP@txString = ""
 resP@txFontHeightF    = 0.03
 resP@gsnMaximize=True
 resP@gsnPaperOrientation = "portrait"
-gsn_panel(wks,plots,(/2,3/),resP)  
+gsn_panel(wks,plots,(/3,3/),resP)  
  delete(wks) 
 
 ;string1="eps2eps " + plotfile +".epsi" + " " + plotfile +".eps"
