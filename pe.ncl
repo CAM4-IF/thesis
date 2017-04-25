@@ -337,10 +337,11 @@ res4@gsnPaperOrientation="landscape"
 gsn_panel(wks,plot,(/4,1/),res4)
 delete(wks)
 n=0
-lets=(/"a)","b)","c)","d)"/)
+delete(lets)
+lets=(/"a)","b)","c)"/)
 wks = gsn_open_wks("pdf", "test") 
 do while(n.le.dimsizes(fils)-1)
- 
+ lets=(/"a)","b)","c)"/)
  res                   = True                     ; plot mods desired
   res@gsnMaximize       = True                     ; maximize plot
   res@tiMainString      = ""           ; add title
@@ -380,7 +381,7 @@ do while(n.le.dimsizes(fils)-1)
   overlay(plots(n),plot3)
   txid1 = new(3,graphic)                  ; Nine text strings
  txres               = True     
- txres@txFontHeightF = 0.018
+ txres@txFontHeightF = 0.022
  txid1(0) = gsn_add_text (wks,plots(n),"Control slope: " + sprintf("%5.2f",rc) + "~C~" + "+4K slope: " + sprintf("%5.2f",rc1), 0.005,max(datalog1(n,:))-0.002, txres)
  gres=True
   gres@YPosPercent = 50. 
@@ -397,11 +398,14 @@ textres1@lgLabels = (/"Control","+4K" /)  ; legend labels (required)
 textres1@lgLabelFontHeights = (/0.015,0.015,0.015/)   
 plots(n) = simple_legend(wks,plots(n),gres,lineres1,textres1)
 
+delete(lets)
+lets=(/"d)","e)","f)"/)
 res@xyMarkLineMode    = "Markers" 
 res@tiXAxisString = "-~F33~w~F~~B~int~N~ (Pa/s)"
 res@trXMinF=-0.1
 res@trXMaxF=0.15
 res@trYMinF=-0.001
+res@gsnLeftString  =lets(n) + " " + modelnames(n)
 ;res@trYMaxF=0.022
 ;res@tmXBFormat="0*+^e"
 res@xyMarkerColor     = "Black" 
@@ -453,7 +457,7 @@ plots(n+3) = simple_legend(wks,plots(n+3),gres,lineres1,textres1)
   
   
   
-  
+lets=(/"g)","h)","i)"/)
 res1=True
 res1@tiMainString      = ""           ; add title
 res1@xyMarkers         =  16                      ; choose type of marker   
@@ -486,12 +490,16 @@ yreg4=rc4*x20+rc4@yintercept
 plots(n+6)  = gsn_csm_xy (wks,x20,y20,res1)                    ; create plot
 res1@xyMarkLineMode="Lines"
 res1@xyLineColor="Grey"
-plot7=gsn_csm_xy(wks,x20,yreg4,res)
+plot7=gsn_csm_xy(wks,x20,yreg4,res1)
 overlay(plots(n+6),plot7)
 delete(mintresponse1)
 delete(omegresponse)
+txres               = True     
+txres@txFontHeightF = 0.025
+txid1(0) = gsn_add_text (wks,plots(n+6),"r: " + sprintf("%5.2f",r1), -0.5,0.5, txres)
   
 n=n+1
+delete(lets)
 end do
 
 resP                            = True
