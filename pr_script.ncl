@@ -153,7 +153,7 @@ end do
 res30                           = res3
 print(lets)
 print(lets(n))
-res30@gsnLeftString= lets(n)  + "      " + "Merged observed rainfall"
+res30@gsnLeftString= lets(n)  + "      " + "Blended observed rainfall"
 res30@gsnLeftStringFontHeightF= 0.012
 res30@gsnRightString="Mean: " + decimalPlaces(GPCPmean,2,True) + " mm/day"
 res30@gsnCenterString= ""

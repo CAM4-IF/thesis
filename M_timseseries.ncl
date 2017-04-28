@@ -17,12 +17,12 @@ fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/resear
 fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/mass_flux/*timeseries*.nc2*")
 n=0
 lets=(/"a)","b)","c)","d)","e)","f)"/)
-plotfile="test"
+plotfile="test1"
 wks = gsn_open_wks("pdf", plotfile) ;; open a workstation file!
 nummods=dimsizes(fils) ;;number of models! 
 plot=new(nummods, graphic) 
 colors=(/"blue","green","red"/)
-colors1=(/"black","orange","cyan"/)
+colors1=(/"black","orange","black"/)
 f3= addfile("../mass_flux/CAM-IFv5_F2000_ANN_climo.nc","r")
 cmd3="cdo -s -fldmean -sellonlatbox,0,360,-30,30 -selname,PS,hyam,hybm ../mass_flux/CAM-IFv5_F2000_ANN_climo.nc tmp3.nc"
 cmd3=systemfunc(cmd3)
@@ -51,10 +51,10 @@ do while(n.le.dimsizes(fils)-1)
    wva = wgt_vert_avg_beta(levs, T, PS2(:,0,:,:)/100, 0, opt)/900
    wva1=wgt_vert_avg_beta(levs(0,:,:,:),T1(0,:,:,:), PS2(0,0,:,:)/100, 0, opt)/900
    response=wva/wva1(0,0)
-   Mprime=asciiread("Mprime.txt",(/301,3/),"float")
+   Mprime=asciiread("Mprime2.txt",(/301,3/),"float")
    
    res               = True	                   ; plot mods desired
-   res@tiMainString  = "(~F33~D~F~M~B~int~N~)/M~B~int~N~ and (~F33~D~F~M~S~`~N~)/M~S~`~N~ "     ; title
+   res@tiMainString  = "(~F33~D~F~M~B~int~N~)/M~B~int~N~ and (~F33~D~F~M~S~`~N~)/M~S~`~N~ 3-month running mean"     ; title
    res@tiMainFontHeightF=0.02
    res@tiXAxisString = "Month"  ; xaxis string
    res@tiYAxisString = "Fractional change"                  ; yaxis string
@@ -71,7 +71,7 @@ do while(n.le.dimsizes(fils)-1)
    res@gsnFrame = False
    res@trXMaxF  =  300
    res@trYMaxF= 0.35
-   res@trYMinF=-0.20
+   res@trYMinF=-0.05
    res@vpHeightF 	 = 0.55              ; change aspect ratio of plot
   res@vpWidthF 	         = 0.7
    res@xyLineColors =colors(n)
@@ -83,13 +83,13 @@ do while(n.le.dimsizes(fils)-1)
    res@tiXAxisFontHeightF=0.02
    res@tiXAxisFont="times-roman"
    res@tiYAxisFont="times-roman"
-   plot(n)=gsn_csm_xy(wks,timeaxis,response(:,0,0),res)     ; create plot 
+   plot(n)=gsn_csm_xy(wks,timeaxis,  runave(response(:,0,0),3,0),res)     ; create plot 
    delete(res@xyLineThicknesses)
-   res@xyLineThicknesses=0.25
+   res@xyLineThicknesses=2
    delete(res@xyLineThicknesses)
    ;res@xyDashPattern  = 2
    res@xyLineColors =colors1(n)
-   plot1=gsn_csm_xy(wks,timeaxis,Mprime(:,n),res) 
+   plot1=gsn_csm_xy(wks,timeaxis,runave(Mprime(:,n),3,0),res) 
    
    
    rc=regline_stats(response(:,0,0),Mprime(:,n))
@@ -100,14 +100,14 @@ do while(n.le.dimsizes(fils)-1)
 gres@XPosPercent = 5
 gres@ItemSpacePercent = 5.  
 lineres = True
-lineres@lgLineColors = (/"red","green","blue"/) ; line colors
+lineres@lgLineColors = (/"red","green"/) ; line colors
 lineres@lgDashIndexes=(/0,0,0/)
 lineres@lgLineThicknesses = 2.5                        ; line thicknesses
 lineres@LineLengthPercent = 9.                         ; expressed as %, 0->100, length of line
 lineres@lgLabelFontHeightF=0.008
 
 textres = True
-textres@lgLabels = (/"CAM4-IF best T M~B~int~N~","CAM4-IF best rain M~B~int~N~","Default CAM4 M~B~int~N~"/)  ; legend labels (required)
+textres@lgLabels = (/"CAM4-IF best rain M~B~int~N~","CAM4-IF best T M~B~int~N~"/)  ; legend labels (required)
 textres@lgLabelFontHeights = (/0.015,0.015,0.015/)   
 plot1= simple_legend(wks,plot1,gres,lineres,textres)
 
@@ -116,14 +116,14 @@ gres1@YPosPercent = 95
 gres1@XPosPercent = 50
 gres1@ItemSpacePercent = 5.  
 lineres1 = True
-lineres1@lgLineColors = (/"black","orange","cyan"/) ; line colors
+lineres1@lgLineColors = (/"black","orange"/) ; line colors
 lineres1@lgDashIndexes=(/0,0,0/)
 lineres1@lgLineThicknesses = 2.5                        ; line thicknesses
 lineres1@LineLengthPercent = 9.                         ; expressed as %, 0->100, length of line
 lineres1@lgLabelFontHeightF=0.008
 
 textres1 = True
-textres1@lgLabels = (/"CAM4-IF best T M~S~`~N~","CAM4-IF best rain M~S~`~N~","Default CAM4 M~S~`~N~"/)  ; legend labels (required)
+textres1@lgLabels = (/"CAM4-IF best rain M~S~`~N~","CAM4-IF best T M~S~`~N~"/)  ; legend labels (required)
 textres1@lgLabelFontHeights = (/0.015,0.015,0.015/)   
 plot1= simple_legend(wks,plot1,gres1,lineres1,textres1)
   draw(plot)

@@ -110,7 +110,7 @@ chidiff&lon=u&lon
 
 chistarmin=min(chistar({-30:30},:))
 chistarmin1=min(chistar1({-30:30},:))
-response=100*((chistarmin1-chistarmin)/(chistarmin))
+response=((chistarmin1-chistarmin)/(chistarmin))
   
 te=new((/dimsizes(lev_p),dimsizes(u&lat),dimsizes(u&lon)/), "double")
 dTdP=new((/dimsizes(lev_p),dimsizes(u&lat),dimsizes(u&lon)/), "double")
@@ -204,11 +204,11 @@ chistarmin2=min(chistar2({-30:30},:))
   res@pmTickMarkDisplayMode  = "Always" 
   res@gsnLeftString    = lets(n)
   res@gsnCenterString    = f@case
-  res@gsnCenterStringFontHeightF=0.012
-  res@gsnLeftStringFontHeightF=0.012
-  
+  res@gsnCenterStringFontHeightF=0.018
+  res@gsnLeftStringFontHeightF=0.018
+  ;res@gsnRightString    = "~F33~D~F~(~F33~c~F~~S~*~N~) response: " + sprintf("%5.2f",response)
 res@tmXBLabelFontHeightF=0.006
-res@gsnRightStringFontHeightF= 0.0065
+res@gsnRightStringFontHeightF= 0.018
 res@mpGridLineThicknessF=0.5
   
     ;;;;;;;;;;;;;;;;;;;;;;SET THE CONTOUR PLOT RESOURCES!!!!;;;;;;;;;;;;;;;;;;;
@@ -223,8 +223,7 @@ res@mpGridLineThicknessF=0.5
  cres@gsnFrame = False
  cres@cnInfoLabelOn = False                ; turn off contour info label
  cres@cnLineThicknessF =2
- cres@gsnRightString    = "~F33~D~F~(~F33~c~F~~S~*~N~) response: " + response
- cres@gsnRightStringFontHeightF=0.12
+
  cres@cnLevelSpacingF=200.0
  cres@gsnContourZeroLineThicknessF  = 4.0
  cres@cnLineLabelDensityF      = 3.0
@@ -251,8 +250,41 @@ res@mpGridLineThicknessF=0.5
   delete(chidiff)
   
 end do
+delete(U)
+delete(V)
+
+delete(f)
+delete(f1)
+
+;;;;Add AMIP4K chi* plot;;;;
+f=addfile("chi200_response_allmodels_ANN.nc","r") ; add file
+f1=addfile("../CMIP5_AMIP/ANN_AMIP_chi200_climo.nc","r") ; add file
+U=f->velopot
+V=f1->velopot
+res@gsnLeftString    = lets(n)
+res@gsnRightString    =""
+cres@gsnRightString    = ""
+chistar=dim_rmvmean_n_Wrap(U(:,0,:,:),2)
+chistar!1="lat"
+chistar&lat=U&lat
+chistar!2="lon"
+chistar&lon=U&lon
+chistarmean=dim_avg_n(chistar,0)
+chistarmean!0="lat"
+chistarmean&lat=U&lat
+chistarmean!1="lon"
+chistarmean&lon=U&lon
 
 
+chistar1=dim_rmvmean_n_Wrap(V(0,0,:,:),0)
+chistar1!0="lat"
+chistar1&lat=U&lat
+chistar1!1="lon"
+chistar1&lon=U&lon
+ res@gsnCenterString    = "AMIP4K"
+plot(n)  = gsn_csm_contour_map(wks,chistarmean(:,:), res) 
+plot1=gsn_csm_contour(wks,chistar1,cres)
+overlay(plot(n),plot1)
 
 
 print(n)
@@ -277,7 +309,7 @@ resP@lbTitlePosition ="Bottom"
 resP@pmLabelBarOrthogonalPosF=-0.02
 resP@lbTitleFontHeightF=.015
 resP@txFontHeightF    = 0.03
-gsn_panel(wks,plot,(/3,1/),resP)  
+gsn_panel(wks,plot,(/4,1/),resP)  
 delete(wks) 
 string1="eps2eps " + plotfile +".epsi" + " " + plotfile +".eps"
 print(string1)

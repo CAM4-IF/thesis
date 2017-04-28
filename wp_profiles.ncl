@@ -22,7 +22,7 @@ nummods=dimsizes(fils1) ;;number of models!
 plot=new(2, graphic)    ;;;Create a panel plot with panels = number of models!
 ;;;create a giant loop over all models;;;
 n=0
-lets=(/"a)","b)","c)","d)"/)
+lets=(/"a)","b)","c)"/)
 do while(n.le.dimsizes(fils)-1)
    filen=tostring(fils(n))
    filen1=tostring(fils1(n))
@@ -136,7 +136,7 @@ do while(n.le.dimsizes(fils)-1)
 
 n=n+1
 end do      
-
+lets=(/"a)","b)","c)"/)
 res@xyDashPattern  = 1
 res@xyLineColor    = "blue"
  res@xyLineThicknesses = 1.0
@@ -205,7 +205,7 @@ lineres@lgLineThicknesses = 2.5                        ; line thicknesses
 lineres@LineLengthPercent = 9.                         ; expressed as %, 0->100, length of line
 
 textres = True
-textres@lgLabels = (/"CAM4-IF best T IWP","CAM4-IF best rain IWP","Default CAM4 IWP","CAM4-IF best T LWP","CAM4-IF best rain LWP","Default CAM4 LWP" /)  ; legend labels (required)
+textres@lgLabels = (/"CAM4-IF best T q~B~ice","CAM4-IF best rain q~B~ice","Default CAM4 q~B~ice","CAM4-IF best T q~B~liq","CAM4-IF best rain q~B~liq","Default CAM4 q~B~liq" /)  ; legend labels (required)
 textres@lgLabelFontHeights = (/0.015,0.015,0.015/)   
 plot3 = simple_legend(wks,plot3,gres,lineres,textres)
 

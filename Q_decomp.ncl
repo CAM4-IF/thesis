@@ -30,14 +30,13 @@ do while(n.le.dimsizes(fils)-1)
    h=addfile("/run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/CAM4_4K_ANN_climo.nc2", "r")
    hyam = h->hyam 
    hybm = h->hybm
-   zon="cdo -zonmean -selname,PS,DTCOND,QRL,QRS,DTV " + filen + " zon.nc"
-   zon1="cdo -zonmean -selname,PS,DTCOND,QRL,QRS,DTV " + filen1 + " zon1.nc"
-   cmd="cdo -fldmean -sellonlatbox,90,180,-10,10 -sub -selname,PS,DTCOND,QRL,QRS,DTV " + filen + " -selname,PS,DTCOND,QRL,QRS,DTV -enlarge," + filen + " zon.nc"+ " tmp.nc"
-   cmd1="cdo -fldmean -sellonlatbox,90,180,-10,10 -sub -selname,PS,DTCOND,QRL,QRS,DTV " + filen1 + " -selname,PS,DTCOND,QRL,QRS,DTV -enlarge," + filen + " zon.nc"+ " tmp1.nc"
+   zon="cdo -s -zonmean -selname,PS,DTCOND,QRL,QRS,DTV " + filen + " zon.nc"
+   zon1="cdo -s -zonmean -selname,PS,DTCOND,QRL,QRS,DTV " + filen1 + " zon1.nc"
+   cmd="cdo -s -fldmean -sellonlatbox,90,180,-10,10 -sub -selname,PS,DTCOND,QRL,QRS,DTV " + filen + " -selname,PS,DTCOND,QRL,QRS,DTV -enlarge," + filen + " zon.nc"+ " tmp.nc"
+   cmd1="cdo -s -fldmean -sellonlatbox,90,180,-10,10 -sub -selname,PS,DTCOND,QRL,QRS,DTV " + filen1 + " -selname,PS,DTCOND,QRL,QRS,DTV -enlarge," + filen + " zon.nc"+ " tmp1.nc"
    zonmean=systemfunc(zon)
    zonmean1=systemfunc(zon1)
    areamean=systemfunc(cmd)
-   print(cmd)
    areamean1=systemfunc(cmd1)
    f    = addfile("tmp.nc", "r")
    f1=addfile("tmp1.nc","r")
@@ -94,7 +93,6 @@ do while(n.le.dimsizes(fils)-1)
    
    opt1=(/0,100,1000/)
    wva3 = wgt_vert_avg_beta(pm1/100, Qdiff, PS, 0, opt)/900
-   print(wva3)
    Qtot1=wva3(0,0)
    
    s=sw
@@ -112,8 +110,6 @@ do while(n.le.dimsizes(fils)-1)
    wva6 = wgt_vert_avg_beta(levs, ldiff, PS, 0, opt)/900
    datalog3(n,:)=ldiff(:,0,0)
    vertmean2(n)=wva6(0,0)
-   print(wva6)
-   
    
    omeg=sw+cond+lw+diff
    omeg1=sw1+cond1+lw1+diff1
@@ -121,16 +117,15 @@ do while(n.le.dimsizes(fils)-1)
    opt=(/0,100,1000/)
    wva7 = wgt_vert_avg_beta(levs, omeg, PS, 0, opt)/900
    wva8 = wgt_vert_avg_beta(levs, omegdiff, PS, 0, opt)/900
-   vertmean3(n)=wva8(0,0)
-   print(wva7)
+   vertmean3(n)=(wva8(0,0)/wva7(0,0))*100
    
    datalog(n,:)=omegdiff(:,0,0)
    
    diffdiff=diff1-diff
    wva9 = wgt_vert_avg_beta(levs, diff, PS, 0, opt)/900
    wva10 = wgt_vert_avg_beta(levs, diff1, PS, 0, opt)/900
-   vertmean3(n)=wva10(0,0)
-   datalog4(n,:)=diffdiff(:,0,0)
+   ;vertmean3(n)=wva10(0,0)
+   ;datalog4(n,:)=diffdiff(:,0,0)
    
 
  res                   = True                       ; plot mods desired
@@ -190,15 +185,22 @@ res@xyLineColor    = "blue"
  res@xyLineColor    = "black"
  res@xyLineThicknesses = 3.0
  plot3= gsn_csm_xy  (wks,datalog(2,:),T1&lev,res)
-  res@xyLineColor    = "grey"
+ res@xyLineColor    = "magenta4"
  res@xyLineThicknesses = 1.0
  plot30= gsn_csm_xy  (wks,datalog(3,:),T1&lev,res)
+ res@xyLineColor    = "aquamarine"
  plot31= gsn_csm_xy  (wks,datalog(4,:),T1&lev,res)
+ res@xyLineColor    = "aquamarine1"
  plot32= gsn_csm_xy  (wks,datalog(5,:),T1&lev,res)
+ res@xyLineColor    = "aquamarine2"
  plot33= gsn_csm_xy  (wks,datalog(6,:),T1&lev,res)
+ res@xyLineColor    = "aquamarine3"
  plot34= gsn_csm_xy  (wks,datalog(7,:),T1&lev,res)
+ res@xyLineColor    = "mediumpurple1"
  plot35= gsn_csm_xy  (wks,datalog(8,:),T1&lev,res)
+ res@xyLineColor    = "mediumpurple2"
  plot36= gsn_csm_xy  (wks,datalog(9,:),T1&lev,res)
+ res@xyLineColor    = "mediumpurple3"
  ;plot37= gsn_csm_xy  (wks,datalog(10,:),T1&lev,res)
  overlay(plot(0),plot2)
  overlay(plot(0),plot3)
@@ -227,9 +229,9 @@ textres@lgLabelFontHeights = (/0.015,0.015,0.015/)
 txid4 = new(3,graphic)                  ; Nine text strings
  txres               = True     
  txres@txFontHeightF = 0.013
- ;txid4(0) = gsn_add_text (wks,plot(0),"CAM4: " + sprintf("%7.3e",vertmean3(0)), 2.45e-6, 800,txres)
- ;txid4(1) = gsn_add_text (wks,plot(0),"CAM4-IF best rain: " + sprintf("%7.3e",vertmean3(1)),3.85e-6, 825,txres)
- ;txid4(2) = gsn_add_text (wks,plot(0),"CAM4-IF best T: " + sprintf("%7.3e",vertmean3(2)),3.6e-6, 850,txres)
+ txid4(0) = gsn_add_text (wks,plot(0),"CAM4: " + sprintf("%5.2f",vertmean3(0)) + "%", 0.67e-5, 800,txres)
+ txid4(1) = gsn_add_text (wks,plot(0),"CAM4-IF best rain: " + sprintf("%5.2f",vertmean3(1)) + "%",1.02e-5, 825,txres)
+ txid4(2) = gsn_add_text (wks,plot(0),"CAM4-IF best T: " + sprintf("%5.2f",vertmean3(2))+"%",0.95e-5, 850,txres)
  
 plot100 = simple_legend(wks,plot3,gres,lineres,textres)
 
@@ -259,14 +261,20 @@ res@xyLineColor    = "blue"
  res@xyLineColor    = "black"
  res@xyLineThicknesses = 3.0
  plot5= gsn_csm_xy  (wks,datalog1(2,:),T1&lev,res)
-  res@xyLineColor    = "grey"
+ res@xyLineColor    = "magenta4"
  res@xyLineThicknesses = 1.0
  plot40= gsn_csm_xy  (wks,datalog1(3,:),T1&lev,res)
+  res@xyLineColor    = "aquamarine"
  plot41= gsn_csm_xy  (wks,datalog1(4,:),T1&lev,res)
+  res@xyLineColor    = "aquamarine1"
  plot42= gsn_csm_xy  (wks,datalog1(5,:),T1&lev,res)
+  res@xyLineColor    = "aquamarine2"
  plot43= gsn_csm_xy  (wks,datalog1(6,:),T1&lev,res)
+  res@xyLineColor    = "aquamarine3"
  plot44= gsn_csm_xy  (wks,datalog1(7,:),T1&lev,res)
+ res@xyLineColor    = "mediumpurple1"
  plot45= gsn_csm_xy  (wks,datalog1(8,:),T1&lev,res)
+ res@xyLineColor    = "mediumpurple2"
  plot46= gsn_csm_xy  (wks,datalog1(9,:),T1&lev,res)
  overlay(plot(1),plot4)
  overlay(plot(1),plot5)
@@ -277,12 +285,12 @@ res@xyLineColor    = "blue"
  overlay(plot(1),plot44)
  overlay(plot(1),plot45)
  overlay(plot(1),plot46) 
- txid = new(3,graphic)                  ; Nine text strings
- txres               = True     
- txres@txFontHeightF = 0.013
- txid(0) = gsn_add_text (wks,plot(1),"CAM4: " + sprintf("%7.3e",vertmean(0)), -8.1e-6, 175,txres)
- txid(1) = gsn_add_text (wks,plot(1),"CAM4-IF best rain: " + sprintf("%7.3e",vertmean(1)),-6e-6, 200,txres)
- txid(2) = gsn_add_text (wks,plot(1),"CAM4-IF best T: " + sprintf("%7.3e",vertmean(2)), -6.4e-6, 225,txres)
+ ;txid = new(3,graphic)                  ; Nine text strings
+ ;txres               = True     
+ ;txres@txFontHeightF = 0.013
+ ;txid(0) = gsn_add_text (wks,plot(1),"CAM4: " + sprintf("%7.3e",vertmean(0)) +"%", -8.1e-6, 175,txres)
+ ;txid(1) = gsn_add_text (wks,plot(1),"CAM4-IF best rain: " + sprintf("%7.3e",vertmean(1)) +"%",-6e-6, 200,txres)
+ ;txid(2) = gsn_add_text (wks,plot(1),"CAM4-IF best T: " + sprintf("%7.3e",vertmean(2)) +"%", -6.4e-6, 225,txres)
  
  
 ;;;;;Static stability;;;;;
@@ -306,14 +314,20 @@ res1@tmXBValues        =(/-8,-6,-4,-2,0,2,4,6/)*1e-6
  res1@xyLineColor    = "black"
  res1@xyLineThicknesses = 3.0
  plot7= gsn_csm_xy  (wks,datalog2(2,:),T1&lev,res1)
- res1@xyLineColor    = "grey"
+  res1@xyLineColor    = "magenta4"
  res1@xyLineThicknesses = 1.0
   plot40= gsn_csm_xy  (wks,datalog2(3,:),T1&lev,res1)
+   res1@xyLineColor    = "aquamarine"
  plot41= gsn_csm_xy  (wks,datalog2(4,:),T1&lev,res1)
+ res1@xyLineColor    = "aquamarine1"
  plot42= gsn_csm_xy  (wks,datalog2(5,:),T1&lev,res1)
+ res1@xyLineColor    = "aquamarine2"
  plot43= gsn_csm_xy  (wks,datalog2(6,:),T1&lev,res1)
+ res1@xyLineColor    = "aquamarine3"
  plot44= gsn_csm_xy  (wks,datalog2(7,:),T1&lev,res1)
+ res1@xyLineColor    = "mediumpurple1"
  plot45= gsn_csm_xy  (wks,datalog2(8,:),T1&lev,res1)
+ res1@xyLineColor    = "mediumpurple2"
  plot46= gsn_csm_xy  (wks,datalog2(9,:),T1&lev,res1)
  overlay(plot(2),plot6)
  overlay(plot(2),plot7)
@@ -324,12 +338,12 @@ res1@tmXBValues        =(/-8,-6,-4,-2,0,2,4,6/)*1e-6
  overlay(plot(2),plot44)
  overlay(plot(2),plot45)
  overlay(plot(2),plot46) 
- txid2 = new(3,graphic)                  ; Nine text strings
- txres               = True     
- txres@txFontHeightF = 0.013
- txid2(0) = gsn_add_text (wks,plot(2),"CAM4: " + sprintf("%7.3e",vertmean1(0)), -2.75e-6, 300,txres)
- txid2(1) = gsn_add_text (wks,plot(2),"CAM4-IF best rain: " + sprintf("%7.3e",vertmean1(1)) ,-2.05e-6, 325,txres)
- txid2(2) = gsn_add_text (wks,plot(2),"CAM4-IF best T: " + sprintf("%7.3e",vertmean1(2)), -2.2e-6, 350,txres)
+ ;txid2 = new(3,graphic)                  ; Nine text strings
+ ;txres               = True     
+ ;txres@txFontHeightF = 0.013
+ ;txid2(0) = gsn_add_text (wks,plot(2),"CAM4: " + sprintf("%7.3e",vertmean1(0)), -2.75e-6, 300,txres)
+ ;txid2(1) = gsn_add_text (wks,plot(2),"CAM4-IF best rain: " + sprintf("%7.3e",vertmean1(1)) ,-2.05e-6, 325,txres)
+ ;txid2(2) = gsn_add_text (wks,plot(2),"CAM4-IF best T: " + sprintf("%7.3e",vertmean1(2)), -2.2e-6, 350,txres)
  
  
  ;;;;;Omega;;;;;
@@ -352,14 +366,20 @@ res2=res
  res2@xyLineColor    = "black"
  res2@xyLineThicknesses = 3.0
  plot9= gsn_csm_xy  (wks,datalog3(2,:),T1&lev,res2)
- res2@xyLineColor    = "grey"
+ res2@xyLineColor    = "magenta4"
  res2@xyLineThicknesses = 1.0
  plot40= gsn_csm_xy  (wks,datalog3(3,:),T1&lev,res2)
+ res2@xyLineColor    = "aquamarine"
  plot41= gsn_csm_xy  (wks,datalog3(4,:),T1&lev,res2)
+ res2@xyLineColor    = "aquamarine1"
  plot42= gsn_csm_xy  (wks,datalog3(5,:),T1&lev,res2)
+ res2@xyLineColor    = "aquamarine2"
  plot43= gsn_csm_xy  (wks,datalog3(6,:),T1&lev,res2)
+ res2@xyLineColor    = "aquamarine3"
  plot44= gsn_csm_xy  (wks,datalog3(7,:),T1&lev,res2)
+ res2@xyLineColor    = "mediumpurple1"
  plot45= gsn_csm_xy  (wks,datalog3(8,:),T1&lev,res2)
+ res2@xyLineColor    = "mediumpurple2"
  plot46= gsn_csm_xy  (wks,datalog3(9,:),T1&lev,res2)
  overlay(plot(3),plot8)
  overlay(plot(3),plot9)
@@ -370,13 +390,13 @@ res2=res
  overlay(plot(3),plot44)
  overlay(plot(3),plot45)
  overlay(plot(3),plot46) 
- txid1 = new(3,graphic)                  ; Nine text strings
- txres               = True     
- txres@txFontHeightF = 0.013
- vertmean2@txFormat="0*+^e"
- txid1(0) = gsn_add_text (wks,plot(3),"CAM4: " + sprintf("%7.3e",vertmean2(0)), -12.4e-6, 500,txres)
- txid1(1) = gsn_add_text (wks,plot(3),"CAM4-IF best rain: " + sprintf("%7.3e",vertmean2(1)),-10.3e-6, 525,txres)
- txid1(2) = gsn_add_text (wks,plot(3),"CAM4-IF best T: " + sprintf("%7.3e",vertmean2(2)),-10.75e-6, 550,txres)
+ ;txid1 = new(3,graphic)                  ; Nine text strings
+ ;;txres               = True     
+ ;txres@txFontHeightF = 0.013
+ ;vertmean2@txFormat="0*+^e"
+ ;txid1(0) = gsn_add_text (wks,plot(3),"CAM4: " + sprintf("%7.3e",vertmean2(0)), -12.4e-6, 500,txres)
+ ;txid1(1) = gsn_add_text (wks,plot(3),"CAM4-IF best rain: " + sprintf("%7.3e",vertmean2(1)),-10.3e-6, 525,txres)
+ ;txid1(2) = gsn_add_text (wks,plot(3),"CAM4-IF best T: " + sprintf("%7.3e",vertmean2(2)),-10.75e-6, 550,txres)
  
  
  

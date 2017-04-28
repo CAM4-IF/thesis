@@ -1,10 +1,10 @@
-\load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_code.ncl"
+load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_code.ncl"
 load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_csm.ncl"
 load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/contributed.ncl"
 load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/diagnostics_cam.ncl"
 
-  case     = "TRMM_2000-2002:"  
-  diro     = "TRMM_3hourly/"        ; output dir: location of plots 
+  case     = "defaultcloud:"  
+  diro     = "TRMM_3hourly/CAM4-IF_defaultcloud/"        ; output dir: location of plots 
 
   latN     = 15
   latS     = -latN       ; symmetric about the equator
@@ -26,14 +26,14 @@ load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/diagnostics_cam.ncl"
   opt@lbBoxSeparatorLinesOn=False
   
   spd      = 8       ; samples per day (6 hour sampling rate)
-  var      = "pr"  ; user specified 
+  var      = "PRECC"  ; user specified 
 
-  diri     = "TRMM_3hourly/"
-  fili     = systemfunc("cd "+diri+" ; ls *proc_*.nc")
+  diri     = "TRMM_3hourly/CAM4-IF_defaultcloud/"
+  fili     = systemfunc("cd "+diri+" ; ls *h1*.nc")
   print(fili)  
 
   f        = addfiles (diri+fili, "r") 
-  VAR   = f[:]->pr(:,{latS:latN},:)     ; (time,lat,lon)
+  VAR   = f[:]->PRECC(:,{latS:latN},:)     ; (time,lat,lon)
   printVarSummary(VAR)
 
   nMsg     = num(ismissing(VAR))  ; check for _FillValue
