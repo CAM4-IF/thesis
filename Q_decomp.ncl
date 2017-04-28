@@ -30,15 +30,20 @@ do while(n.le.dimsizes(fils)-1)
    h=addfile("/run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/CAM4_4K_ANN_climo.nc2", "r")
    hyam = h->hyam 
    hybm = h->hybm
-   cmd="cdo -fldmean -sellonlatbox,0,360,-15,15 -selname,PS,DTCOND,QRL,QRS,DTV " + filen + " tmp.nc"
-   cmd1="cdo -fldmean -sellonlatbox,0,360,-15,15 -selname,PS,DTCOND,QRL,QRS,DTV " + filen1 + " tmp1.nc"
+   zon="cdo -zonmean -selname,PS,DTCOND,QRL,QRS,DTV " + filen + " zon.nc"
+   zon1="cdo -zonmean -selname,PS,DTCOND,QRL,QRS,DTV " + filen1 + " zon1.nc"
+   cmd="cdo -fldmean -sellonlatbox,90,180,-10,10 -sub -selname,PS,DTCOND,QRL,QRS,DTV " + filen + " -selname,PS,DTCOND,QRL,QRS,DTV -enlarge," + filen + " zon.nc"+ " tmp.nc"
+   cmd1="cdo -fldmean -sellonlatbox,90,180,-10,10 -sub -selname,PS,DTCOND,QRL,QRS,DTV " + filen1 + " -selname,PS,DTCOND,QRL,QRS,DTV -enlarge," + filen + " zon.nc"+ " tmp1.nc"
+   zonmean=systemfunc(zon)
+   zonmean1=systemfunc(zon1)
    areamean=systemfunc(cmd)
+   print(cmd)
    areamean1=systemfunc(cmd1)
    f    = addfile("tmp.nc", "r")
    f1=addfile("tmp1.nc","r")
   
    P0   = 100000.                        ; reference pressure [Pa]
-   PS   = f->PS(0,:,:)                         ; Pa  [punits=1]
+   ;PS   = f->PS(0,:,:)                         ; Pa  [punits=1]
    T=f->DTCOND(0,:,:,:)
    T&lev@units="hPa"
    cond=f->DTCOND(0,:,:,:)
@@ -46,11 +51,18 @@ do while(n.le.dimsizes(fils)-1)
    sw=f->QRS(0,:,:,:)
    diff=f->DTV(0,:,:,:)
    
+   
+   PS=new((/1,1/),float)
+   PS(0,:)=1000.
+   PS(:,0)=1000.
+   PS1=new((/1,1/),float)
+   PS1(0,:)=1000.
+   PS1(:,0)=1000.
    pm   = pres_hybrid_ccm(PS,P0,hyam,hybm)    ; ps(time,lev,lat,lon) [Pa] 
    levs=conform_dims(dimsizes(T),T&lev,0)
   
    
-   PS1   = f1->PS(0,:,:)                         ; Pa  [punits=1]
+   ;PS1   = f1->PS(0,:,:)                         ; Pa  [punits=1]
    T1=f1->DTCOND(0,:,:,:)
    T1&lev@units="hPa"
    cond1=f1->DTCOND(0,:,:,:)
@@ -63,24 +75,25 @@ do while(n.le.dimsizes(fils)-1)
    Q1=sw1
    Qdiff=Q1-Q
    
+   
    conddiff=cond1-cond
    datalog1(n,:)=conddiff(:,0,0)
    opt=(/0,100,1000/)
-   wva = wgt_vert_avg_beta(pm/100, cond, PS/100, 0, opt)/900
-   wva1 = wgt_vert_avg_beta(pm1/100, conddiff, PS/100, 0, opt)/900
+   wva = wgt_vert_avg_beta(pm/100, cond, PS, 0, opt)/900
+   wva1 = wgt_vert_avg_beta(pm1/100, conddiff, PS, 0, opt)/900
    vertmean(n)=wva1(0,0)
    
    
-   wva2 = wgt_vert_avg_beta(pm/100, Q, PS/100, 0, opt)/900
-   wva3 = wgt_vert_avg_beta(pm1/100, Qdiff, PS/100, 0, opt)/900
+   wva2 = wgt_vert_avg_beta(pm/100, Q, PS, 0, opt)/900
+   wva3 = wgt_vert_avg_beta(pm1/100, Qdiff, PS, 0, opt)/900
    vertmean1(n)=wva3(0,0)
   
    opt=(/0,100,1000/)
-   wva = wgt_vert_avg_beta(levs, Q, PS/100, 0, opt)/950
+   wva = wgt_vert_avg_beta(levs, Q, PS, 0, opt)/900
    Qtot=wva(0,0)
    
    opt1=(/0,100,1000/)
-   wva3 = wgt_vert_avg_beta(pm1/100, Qdiff, PS/100, 0, opt)/950
+   wva3 = wgt_vert_avg_beta(pm1/100, Qdiff, PS, 0, opt)/900
    print(wva3)
    Qtot1=wva3(0,0)
    
@@ -88,15 +101,15 @@ do while(n.le.dimsizes(fils)-1)
    s1=sw1
    sdiff=s1-s
    opt=(/0,150,1000/)
-   wva3 = wgt_vert_avg_beta(levs, s, PS/100, 0, opt)/850
-   wva4 = wgt_vert_avg_beta(levs, sdiff, PS/100, 0, opt)/850
+   wva3 = wgt_vert_avg_beta(levs, s, PS, 0, opt)/850
+   wva4 = wgt_vert_avg_beta(levs, sdiff, PS, 0, opt)/850
    datalog2(n,:)=sdiff(:,0,0)
    vertmean1(n)=wva4(0,0)
    
    ldiff=lw1-lw
    opt=(/0,100,1000/)
-   wva5 = wgt_vert_avg_beta(levs, lw, PS/100, 0, opt)/900
-   wva6 = wgt_vert_avg_beta(levs, ldiff, PS/100, 0, opt)/900
+   wva5 = wgt_vert_avg_beta(levs, lw, PS, 0, opt)/900
+   wva6 = wgt_vert_avg_beta(levs, ldiff, PS, 0, opt)/900
    datalog3(n,:)=ldiff(:,0,0)
    vertmean2(n)=wva6(0,0)
    print(wva6)
@@ -106,16 +119,16 @@ do while(n.le.dimsizes(fils)-1)
    omeg1=sw1+cond1+lw1+diff1
    omegdiff=omeg1-omeg
    opt=(/0,100,1000/)
-   wva7 = wgt_vert_avg_beta(levs, omeg, PS/100, 0, opt)/900
-   wva8 = wgt_vert_avg_beta(levs, omegdiff, PS/100, 0, opt)/900
+   wva7 = wgt_vert_avg_beta(levs, omeg, PS, 0, opt)/900
+   wva8 = wgt_vert_avg_beta(levs, omegdiff, PS, 0, opt)/900
    vertmean3(n)=wva8(0,0)
    print(wva7)
    
    datalog(n,:)=omegdiff(:,0,0)
    
    diffdiff=diff1-diff
-   wva9 = wgt_vert_avg_beta(levs, diff, PS/100, 0, opt)/900
-   wva10 = wgt_vert_avg_beta(levs, diff1, PS/100, 0, opt)/900
+   wva9 = wgt_vert_avg_beta(levs, diff, PS, 0, opt)/900
+   wva10 = wgt_vert_avg_beta(levs, diff1, PS, 0, opt)/900
    vertmean3(n)=wva10(0,0)
    datalog4(n,:)=diffdiff(:,0,0)
    
@@ -127,8 +140,8 @@ do while(n.le.dimsizes(fils)-1)
  res@xyLineThicknesses = 1.0
  res@tiXAxisString=""
  res@tiXAxisFontHeightF=0.02
- res@trXMinF=-8e-6
- res@trXMaxF=8e-6
+ res@trXMinF=-20e-6
+ res@trXMaxF=20e-6
  res@trYMaxF = 1000.0
  res@trYMinF = 50.0   
  res@tiYAxisString="Pressure (hPa)"
@@ -138,8 +151,8 @@ do while(n.le.dimsizes(fils)-1)
  res@tmYLValues        =(/50,100,200,300,400,500,600,700,850,1000/)
  res@tmYLLabels=(/50,100,200,300,400,500,600,700,850,1000/)
  res@tmXBMode = "Explicit"
- res@tmXBValues        =(/-8,-6,-4,-2,0,2,4,6,8/)*1e-6
- res@tmXBLabels=(/-8,-6,-4,-2,0,2,4,6,8/)*1e-6
+ res@tmXBValues        =(/-20,-15,-10,-5,0,5,10,15,20/)*1e-6
+ res@tmXBLabels=(/-20,-15,-10,-5,0,5,10,15,20/)*1e-6
  res@tmXBLabelFontHeightF=0.015
  
  res@tiXAxisString="K/s"
@@ -147,7 +160,7 @@ do while(n.le.dimsizes(fils)-1)
  res@vpWidthF 	         = 0.55
  res@gsnXRefLine = 0.0 
 
- res@gsnLeftString  ="a) Q~B~tot~N~"
+ res@gsnLeftString  ="a) (Q~B~tot~N~)~S~*"
  res@gsnLeftStringFontHeightF=0.03
  res@gsnRightStringFontHeightF=0.025
  res@gsnDraw=False
@@ -221,17 +234,17 @@ txid4 = new(3,graphic)                  ; Nine text strings
 plot100 = simple_legend(wks,plot3,gres,lineres,textres)
 
  
- res@gsnLeftString  ="b) Q~B~cond~N~"
+ res@gsnLeftString  ="b) (Q~B~cond~N~)~S~*"
  delete(res@trXMinF)
  delete(res@trXMaxF)
  res@trXMinF=-12e-6
- res@trXMaxF=12e-6
+ res@trXMaxF=20e-6
  delete(res@tmXBValues)
  delete(res@tmXBLabels)
  delete(res@tiXAxisString)
  res@tiXAxisString="K/s"
- res@tmXBValues        =(/-12,-8,-4,0,4,8,12/)*1e-6
- res@tmXBLabels=(/-12,-8,-4,0,4,8,12/)*1e-6
+ res@tmXBValues        =(/-20,-15,-10,-5,0,5,10,15,20/)*1e-6
+ res@tmXBLabels=(/-20,-15,-10,-5,0,5,10,15,20/)*1e-6
  res@tmXBLabelFontHeightF=0.015
 
  
@@ -276,14 +289,14 @@ res@xyLineColor    = "blue"
 res1=res
  res1@xyLineThicknesses = 1.0
  res1@tiXAxisString="K/s"
- res1@trXMinF=-4e-6
- res1@trXMaxF=4e-6
- res1@gsnLeftString  ="c) Q~B~sw~N~"
+ res1@trXMinF=-8e-6
+ res1@trXMaxF=6e-6
+ res1@gsnLeftString  ="c) (Q~B~sw~N~)~S~*"
  res1@tmXBLabelFontHeightF=0.012
  delete(res1@tmXBValues)
  delete(res1@tmXBLabels)
-res1@tmXBValues        =(/-4,-3,-2,-1,0,1,2,3,4/)*1e-6
- res1@tmXBLabels=(/-4,-3,-2,-1,0,1,2,3,4/)*1e-6
+res1@tmXBValues        =(/-8,-6,-4,-2,0,2,4,6/)*1e-6
+ res1@tmXBLabels=(/-8,-6,-4,-2,0,2,4,6/)*1e-6
   res1@xyLineThicknesses = 3.0
  res1@xyLineColor    = "blue"
  plot(2)= gsn_csm_xy  (wks,datalog2(0,:),T1&lev,res1)
@@ -323,14 +336,14 @@ res1@tmXBValues        =(/-4,-3,-2,-1,0,1,2,3,4/)*1e-6
 res2=res
  res2@xyLineThicknesses = 3.0
  res2@tiXAxisString="K/s"
- res2@trXMinF=-16e-6
+ res2@trXMinF=-20e-6
  res2@trXMaxF=8e-6
- res2@gsnLeftString  ="d) Q~B~lw~N~"
+ res2@gsnLeftString  ="d) (Q~B~lw~N~)~S~*"
  res2@tmXBLabelFontHeightF=0.012
  delete(res2@tmXBValues)
  delete(res2@tmXBLabels)
- res2@tmXBValues        =(/-16,-12,-8,-4,0,4,8/)*1e-6
- res2@tmXBLabels=(/-16,-12,-8,-4,0,4,6,8/)*1e-6
+ res2@tmXBValues        =(/-20,-16,-12,-8,-4,0,4,8/)*1e-6
+ res2@tmXBLabels=(/-20,-16,-12,-8,-4,0,4,6,8/)*1e-6
  res2@xyLineColor    = "blue"
  plot(3)= gsn_csm_xy  (wks,datalog3(0,:),T1&lev,res2)
  res2@xyLineColor    = "red"
@@ -384,6 +397,7 @@ gsn_panel(wks,plot,(/2,2/),res4)
  delete(wks) 
 crop=systemfunc("/usr/bin/pdfcrop " + plotfile) 
 cleanup=systemfunc("rm tmp*.nc")
+cleanup1=systemfunc("rm zon*.nc")
 print(fils)
 print(fils1)
 end
