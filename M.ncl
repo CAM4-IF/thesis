@@ -172,7 +172,8 @@ gsn_define_colormap(wks,"BlueWhiteOrangeRed")
  res@cnLevels =(/-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8,9,10,11,12/)*1e-3
  res@cnFillColors = (/10,15,20,25,30,35,40,45,50,55,60,65,0,180,185,190,195,200,205,210,215,220,225,230,235/)
  cres@gsnContourPosLineDashPattern =1 
- cres@gsnRightString  = "~F33~w~F~~S~~F34~-~F~~N~ response (%): " + decimalPlaces(omegresponse*100,2,True)
+ ;cres@gsnRightString  = "~F33~w~F~~S~~F34~-~F~~N~ response (%): " + decimalPlaces(omegresponse*100,2,True)
+ cres@gsnRightString  = ""
  cres@gsnLeftString  = lets(i+1) + " " + f@case
  cres@gsnCenterString  = "~F33~w~F~"
  if(i.eq.2) then

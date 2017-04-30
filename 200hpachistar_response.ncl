@@ -259,8 +259,12 @@ delete(f1)
 ;;;;Add AMIP4K chi* plot;;;;
 f=addfile("chi200_response_allmodels_ANN.nc","r") ; add file
 f1=addfile("../CMIP5_AMIP/ANN_AMIP_chi200_climo.nc","r") ; add file
+f2=addfile("chistarstip.nc","r") 
+f3=addfile("chistarstip1.nc","r") 
 U=f->velopot
 V=f1->velopot
+stip=f2->velopot(0,0,:,:)
+stip1=f3->velopot(0,0,:,:)
 res@gsnLeftString    = lets(n)
 res@gsnRightString    =""
 cres@gsnRightString    = ""
@@ -286,6 +290,29 @@ plot(n)  = gsn_csm_contour_map(wks,chistarmean(:,:), res)
 plot1=gsn_csm_contour(wks,chistar1,cres)
 overlay(plot(n),plot1)
 
+res30 = True                            
+  res30@gsnDraw=False
+  res30@gsnFrame=False
+  res30@cnFillOn = True                   ; turn on color/pattern fill
+  res30@cnMonoFillPattern = False   ; allow different patterns
+  res30@cnMonoFillColor = True       ; only use one color (black)
+  res30@cnLevelSelectionMode = "ExplicitLevels" ; set explicit cnlev
+  res30@cnLevels   = (/7,8/)    ; 
+  res30@cnFillPatterns = (/-1,17,17/) ;
+  res30@gsnAddCyclic = True   ; may or may not be needed
+  res30@cnInfoLabelOn       = False       ; turn off info label
+  res30@cnLinesOn           = False       ; do not draw contour lines
+  res30@cnLineLabelsOn      = False    ; do not draw contour labels
+  res30@cnFillScaleF        = 1         ; add extra density
+  res30@gsnRightString   = ""    
+  res30@gsnLeftString    = ""
+  res30@gsnCenterString  = ""
+  res30@lbLabelBarOn=False
+  
+  plot2   = gsn_csm_contour(wks,stip, res30)
+  plot3   = gsn_csm_contour(wks,stip1, res30)
+ overlay(plot(n),plot2)
+ overlay(plot(n),plot3)
 
 print(n)
 
