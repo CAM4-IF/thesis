@@ -25,9 +25,6 @@ print(names)
 numfils=dimsizes(fils)
 
 sperrors=new((/numfils,5/),float)
-cam4rmses=new((/numfils,1/),float)
-cam4ifrmses=new((/numfils,1/),float)
-amiprmses=new((/numfils,1/),float)
 
 m=0
 print(m)
@@ -576,10 +573,6 @@ print(quarts)
 index=(ind(quarts.eq.0))+1
 print(index)
 
-cam4rmses(m,0)=rmsearray(1)
-cam4ifrmses(m,0)=rmsearray(0)
-amiprmses(m,0)=rmsearray(2)
-
 res@xyLineColor     = "blue"
 res@trYReverse        = True                     ; reverse Y-axis
 ;res@tiMainString    =  "ANN mean model-observed temperature (K):"
@@ -1039,9 +1032,7 @@ delete(res)
 ;delete(amip4k)
 delete(amipmods)
 end do
-print(cam4rmses)
-print(cam4ifrmses)
-print(amiprmses)
+print(sperrors)
 system("mv data/*.pdf plots/")
 ;system("gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER -sOutputFile=plots/profiles.pdf plots/*.pdf")
 end

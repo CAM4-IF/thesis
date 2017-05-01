@@ -10,6 +10,8 @@ nummods=dimsizes(fils1) ;;number of models!
 plot=new(nummods+1, graphic)    ;;;Create a panel plot with panels = number of models!
 ;;;create a giant loop over all models;;;
 lets=(/"a)","b)","c)","d)"/)
+f4=addfile("chistar200_maxresponse_ANN.nc","r")
+f5=addfile("chistar200_minresponse_ANN.nc","r")
 n=0
 do while(n.le.dimsizes(fils)-1)
   f=addfile(fils(n),"r") ; add file
@@ -34,6 +36,8 @@ do while(n.le.dimsizes(fils)-1)
   Q1=f1->Q
   Z=f->Z3
   lons=f1->lon
+  maxchi=f4->velopot
+  minchi=f5->velopot
   
   
   
@@ -92,6 +96,8 @@ uv2sfvpf(UU1({200},:,:),vp1({200},:,:),sf,vpot1)
 chistar=dim_rmvmean_n_Wrap(vpot,0)
 chistar1=dim_rmvmean_n_Wrap(vpot1,0)
 
+
+
 chistar!0="lat"
 chistar&lat=u&lat
 chistar!1="lon"
@@ -107,6 +113,20 @@ chidiff!0="lat"
 chidiff&lat=u&lat
 chidiff!1="lon"
 chidiff&lon=u&lon
+maxdiff=chidiff-(maxchi(0,0,:,:))
+mindiff=chidiff-(minchi(0,0,:,:))
+
+maxdiff!0="lat"
+maxdiff&lat=u&lat
+maxdiff!1="lon"
+maxdiff&lon=u&lon
+
+mindiff!0="lat"
+mindiff&lat=u&lat
+mindiff!1="lon"
+mindiff&lon=u&lon
+
+
 
 chistarmin=min(chistar({-30:30},:))
 chistarmin1=min(chistar1({-30:30},:))
@@ -238,6 +258,50 @@ res@mpGridLineThicknessF=0.5
  plot(n)  = gsn_csm_contour_map(wks, chidiff, res) 
  plot1=gsn_csm_contour(wks,chistar,cres)
  overlay(plot(n),plot1)
+ 
+ ;;;Add stipling where response is larger than max response of AMIP4K members;;;
+gt=maxdiff>0
+gt!0="lat"
+gt&lat=u&lat
+gt!1="lon"
+gt&lon=u&lon
+
+lt=mindiff<0
+lt!0="lat"
+lt&lat=u&lat
+lt!1="lon"
+lt&lon=u&lon
+print(lt)
+res30 = True                            
+  res30@gsnDraw=False
+  res30@gsnFrame=False
+  res30@cnFillOn = True                   ; turn on color/pattern fill
+  res30@cnMonoFillPattern = False   ; allow different patterns
+  res30@cnMonoFillColor = True       ; only use one color (black)
+  res30@cnLevelSelectionMode = "ExplicitLevels" ; set explicit cnlev
+  res30@cnLevels   = (/0,0.1/)    ; 
+  res30@cnFillPatterns = (/-1,-1,17/) ;
+  res30@gsnAddCyclic = True   ; may or may not be needed
+  res30@cnInfoLabelOn       = False       ; turn off info label
+  res30@cnLinesOn           = False       ; do not draw contour lines
+  res30@cnLineLabelsOn      = False    ; do not draw contour labels
+  res30@cnFillScaleF        = 1        ; add extra density
+  res30@gsnRightString   = ""    
+  res30@gsnLeftString    = ""
+  res30@gsnCenterString  = ""
+  res30@lbLabelBarOn=False
+  
+  plot2   = gsn_csm_contour(wks,gt, res30)
+  
+  
+  res31=res30
+  res31@cnLevels   = (/-0.1,0/)    ; 
+  res31@cnFillPatterns = (/6,-1,-1/) ; 
+  plot3   = gsn_csm_contour(wks,lt, res31)
+ overlay(plot(n),plot2)
+ overlay(plot(n),plot3) 
+ 
+ 
   n=n+1
   delete(u)
  ; delete(dp)
@@ -260,7 +324,8 @@ delete(f1)
 f=addfile("chi200_response_allmodels_ANN.nc","r") ; add file
 f1=addfile("../CMIP5_AMIP/ANN_AMIP_chi200_climo.nc","r") ; add file
 f2=addfile("chistarstip.nc","r") 
-f3=addfile("chistarstip1.nc","r") 
+f3=addfile("chistarstip1.nc","r")
+
 U=f->velopot
 V=f1->velopot
 stip=f2->velopot(0,0,:,:)
