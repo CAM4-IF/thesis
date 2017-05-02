@@ -1,4 +1,4 @@
-\begin{thebibliography}{56}
+\begin{thebibliography}{59}
 \providecommand{\natexlab}[1]{#1}
 {\catcode`\|=0\catcode`\#=12\catcode`\@=11\catcode`\\=12
 |immediate|write|@auxout{\expandafter\ifx\csname
@@ -114,6 +114,15 @@ Gastineau, G., Li, L., \harvardand{} Le~Treut, H.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/2009JCLI2794.1}.
 
+\harvarditem{Hack}{1994}{hack_parameterization_1994}
+Hack, J.~J.
+\newblock \emph{Parameterization of moist convection in the {National} {Center}
+  for {Atmospheric} {Research} community climate model ({CCM}2)}.
+\newblock \emph{Journal of Geophysical Research: Atmospheres},
+  99(D3):5551--5568 \harvardyearleft 1994\harvardyearright{}.
+\newblock ISSN 2156-2202.
+\newblock \doi{10.1029/93JD03478}.
+
 \harvarditem{He \harvardand{} Soden}{2015}{he_anthropogenic_2015}
 He, J. \harvardand{} Soden, B.~J.
 \newblock \emph{Anthropogenic {Weakening} of the {Tropical} {Circulation}:
@@ -203,11 +212,6 @@ Knutson, T.~R. \harvardand{} Manabe, S.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/1520-0442(1995)008<2181:TMROTT>2.0.CO;2}.
 
-\harvarditem{Love}{????}{love_us_nodate}
-Love, P.
-\newblock \emph{{US} {High} {Vertical} {Resolution} {Radiosonde} :: {SPARC}}
-  \harvardyearleft ????\harvardyearright{}.
-
 \harvarditem[Lu et~al.]{Lu, Vecchi \harvardand{}
   Reichler}{2007}{lu_expansion_2007}
 Lu, J., Vecchi, G.~A., \harvardand{} Reichler, T.
@@ -262,6 +266,12 @@ Mitas, C.~M. \harvardand{} Clement, A.
   2006\harvardyearright{}.
 \newblock ISSN 1944-8007.
 \newblock \doi{10.1029/2005GL024406}.
+
+\harvarditem[Neale et~al.]{Neale, Richter, Conley \harvardand{}
+  Park}{????}{neale_description_2010}
+Neale, R., Richter, J., H., Conley, A., J., \harvardand{} Park, S.
+\newblock \emph{Description of the {NCAR} {Community} {Atmosphere} {Model}
+  ({CAM}4.0)} \harvardyearleft ????\harvardyearright{}.
 
 \harvarditem{Oort \harvardand{} Yienger}{1996}{oort_observed_1996}
 Oort, A.~H. \harvardand{} Yienger, J.~J.
@@ -345,6 +355,16 @@ Schneider, T., O'Gorman, P.~A., \harvardand{} Levine, X.~J.
 \newblock ISSN 1944-9208.
 \newblock \doi{10.1029/2009RG000302}.
 
+\harvarditem[Schoenberg~Ferrier et~al.]{Schoenberg~Ferrier, Simpson
+  \harvardand{} Tao}{1996}{schoenberg_ferrier_factors_1996}
+Schoenberg~Ferrier, B., Simpson, J., \harvardand{} Tao, W.-K.
+\newblock \emph{Factors {Responsible} for {Precipitation} {Efficiencies} in
+  {Midlatitude} and {Tropical} {Squall} {Simulations}}.
+\newblock \emph{Monthly Weather Review}, 124(10):2100--2125 \harvardyearleft
+  1996\harvardyearright{}.
+\newblock ISSN 0027-0644.
+\newblock \doi{10.1175/1520-0493(1996)124<2100:FRFPEI>2.0.CO;2}.
+
 \harvarditem{Schubert}{1974}{arakawa_and_schubert_interaction_1974}
 Schubert, A.~a.
 \newblock \emph{Interaction of a {Cumulus} {Cloud} {Ensemble} with the
@@ -417,6 +437,14 @@ Stechmann, S.~N. \harvardand{} Ogrosky, H.~R.
   \harvardyearleft 2014\harvardyearright{}.
 \newblock ISSN 1944-8007.
 \newblock \doi{10.1002/2014GL062257}.
+
+\harvarditem[Sui et~al.]{Sui, Li \harvardand{} Yang}{2007}{sui_definition_2007}
+Sui, C.-H., Li, X., \harvardand{} Yang, M.-J.
+\newblock \emph{On the {Definition} of {Precipitation} {Efficiency}}.
+\newblock \emph{Journal of the Atmospheric Sciences}, 64(12):4506--4513
+  \harvardyearleft 2007\harvardyearright{}.
+\newblock ISSN 0022-4928.
+\newblock \doi{10.1175/2007JAS2332.1}.
 
 \harvarditem[Tanaka et~al.]{Tanaka, Ishizaki \harvardand{}
   Kitoh}{2004}{tanaka_trend_2004}
@@ -494,16 +522,6 @@ Wills, R.~C., Levine, X.~J., \harvardand{} Schneider, T.
 \newblock ISSN 0022-4928.
 \newblock \doi{10.1175/JAS-D-16-0219.1}.
 
-\harvarditem{Xie \harvardand{} Arkin}{1997}{xie_global_1997}
-Xie, P. \harvardand{} Arkin, P.~A.
-\newblock \emph{Global {Precipitation}: {A} 17-{Year} {Monthly} {Analysis}
-  {Based} on {Gauge} {Observations}, {Satellite} {Estimates}, and {Numerical}
-  {Model} {Outputs}}.
-\newblock \emph{Bulletin of the American Meteorological Society},
-  78(11):2539--2558 \harvardyearleft 1997\harvardyearright{}.
-\newblock ISSN 0003-0007.
-\newblock \doi{10.1175/1520-0477(1997)078<2539:GPAYMA>2.0.CO;2}.
-
 \harvarditem{Yano}{2009}{yano_deep-convective_2009}
 Yano, J.-I.
 \newblock \emph{Deep-convective vertical transport: what is mass flux?}
@@ -511,5 +529,14 @@ Yano, J.-I.
   2009\harvardyearright{}.
 \newblock ISSN 1680-7375.
 \newblock \doi{10.5194/acpd-9-3535-2009}.
+
+\harvarditem{Zhang}{1995}{zhang_sensitivity_1995}
+Zhang.
+\newblock \emph{Sensitivity of climate simulations to the parameterization of
+  cumulus convection in the {Canadian} climate centre general circulation
+  model}.
+\newblock \emph{Atmosphere-Ocean}, 33:407--446 \harvardyearleft
+  1995\harvardyearright{}.
+\newblock \doi{10.1080/07055900.1995.9649539}.
 
 \end{thebibliography}

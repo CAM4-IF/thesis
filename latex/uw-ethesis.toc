@@ -1,5 +1,5 @@
 \contentsline {chapter}{List of Tables}{viii}{section*.2}
-\contentsline {chapter}{List of Figures}{ix}{section*.4}
+\contentsline {chapter}{List of Figures}{x}{section*.4}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Background}{1}{section.1.1}
 \contentsline {subsection}{\numberline {1.1.1}Tropical rainfall and the hydrologic cycle}{2}{subsection.1.1.1}
@@ -11,19 +11,20 @@
 \contentsline {subsection}{\numberline {1.2.3}Hadley circulation}{10}{subsection.1.2.3}
 \contentsline {subsection}{\numberline {1.2.4}Response to climate change}{14}{subsection.1.2.4}
 \contentsline {chapter}{\numberline {2}Climate model simulations}{18}{chapter.2}
-\contentsline {section}{\numberline {2.1}CAM4 AGCM with IF scheme}{18}{section.2.1}
-\contentsline {section}{\numberline {2.2}Zhang-Macfarlane Scheme}{19}{section.2.2}
-\contentsline {section}{\numberline {2.3}Experimental set-up}{20}{section.2.3}
-\contentsline {chapter}{\numberline {3}Results}{21}{chapter.3}
-\contentsline {section}{\numberline {3.1}Control simulations}{21}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Precipitation}{21}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Temperature}{24}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Tropical Dynamics}{27}{subsection.3.1.3}
-\contentsline {section}{\numberline {3.2}Response to a uniform 4K SST warming}{30}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}General overview}{30}{subsection.3.2.1}
-\contentsline {subsection}{\numberline {3.2.2}Convective mass flux}{36}{subsection.3.2.2}
-\contentsline {subsection}{\numberline {3.2.3}Response of Walker Circulation}{45}{subsection.3.2.3}
-\contentsline {subsection}{\numberline {3.2.4}Precipitation efficiency}{48}{subsection.3.2.4}
-\contentsline {chapter}{\numberline {4}Conclusion}{53}{chapter.4}
-\contentsline {section}{\numberline {4.1}Future work}{54}{section.4.1}
-\contentsline {chapter}{\textbf {References}}{55}{section*.31}
+\contentsline {section}{\numberline {2.1}CAM4 AGCM}{18}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Zhang-Macfarlane Scheme}{19}{subsection.2.1.1}
+\contentsline {section}{\numberline {2.2}IF scheme}{21}{section.2.2}
+\contentsline {section}{\numberline {2.3}Experimental set-up}{22}{section.2.3}
+\contentsline {chapter}{\numberline {3}Results}{23}{chapter.3}
+\contentsline {section}{\numberline {3.1}Control simulations}{23}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Precipitation}{24}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Temperature}{26}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Tropical Dynamics}{29}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}Response to a uniform 4K SST warming}{33}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}General overview}{33}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Convective mass flux}{39}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Response of the Walker Circulation}{48}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}Precipitation efficiency}{52}{subsection.3.2.4}
+\contentsline {chapter}{\numberline {4}Conclusion}{57}{chapter.4}
+\contentsline {section}{\numberline {4.1}Future work}{58}{section.4.1}
+\contentsline {chapter}{\textbf {References}}{59}{section*.32}
