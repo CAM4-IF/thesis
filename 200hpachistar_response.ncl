@@ -375,6 +375,7 @@ res30 = True
   res30@lbLabelBarOn=False
   
   plot2   = gsn_csm_contour(wks,stip, res30)
+  res30@cnFillPatterns = (/-1,6,6/) ;
   plot3   = gsn_csm_contour(wks,stip1, res30)
  overlay(plot(n),plot2)
  overlay(plot(n),plot3)

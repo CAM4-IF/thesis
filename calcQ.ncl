@@ -38,8 +38,8 @@ do while(n.le.dimsizes(fils)-1)
    lw1=f1->QRL(0,:,:,:)
    sw1=f1->QRS(0,:,:,:)
    diff1=f1->DTV(0,:,:,:)
-   Qtot=sw+lw+cond+diff
-   Qtot1=sw1+lw1+cond1+diff1
+   Qtot=sw+lw
+   Qtot1=sw1+lw1
    P0=100000.
    PS=new((/1,1/),float)
    PS(0,:)=1000.
