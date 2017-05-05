@@ -98,7 +98,7 @@ res3@gsnLeftString= lets(n)
 res3@gsnRightStringFontHeightF= 0.012
 res3@gsnLeftStringFontHeightF= 0.012
 res3@mpGridLineThicknessF=0.5
-res3@gsnRightString="r~B~pat~N~: " + decimalPlaces(pcor,2,True)
+res3@gsnRightString="r~B~pat~N~: " + sprintf("%5.2f",pcor)
 
 cres=True
 cres@cnLevelSelectionMode = "ExplicitLevels"
@@ -146,7 +146,7 @@ res4@cnInfoLabelOn       = False
 res4@lbOrientation =   "horizontal"          ; 
 res4@gsnPanelMainString    = " "
 res4@lbLabelFontHeightF    = 0.006
-res4@lbTitleString    = "M~B~int~N~ (kg/m~S~2~N~/s)"
+res4@lbTitleString    = "M~B~int~N~ (kg m~S~-2~N~s~S~-1~N~)"
 res4@lbTitlePosition ="Bottom"
 res4@lbTitleFontHeightF=.015
 res4@txFontHeightF    = 0.03

@@ -19,19 +19,19 @@ begin
 ;************************************************
 ; read in data
 ;************************************************FM
-;fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/mass_flux/FMASS*_*ANN*.nc11")
-;fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/mass_flux/FMASS*_*4K_ANN*.nc21")
-fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/mass_flux/FMASS_UP_*ANN.nc1")
-fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/mass_flux/FMASS_UP*4K*ANN.nc2")
+fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/mass_flux/*FMASS*_CAM*ANN*.nc11")
+fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/mass_flux/*FMASS*_CAM*4K_ANN*.nc21")
+;fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/mass_flux/FMASS_CAM*ANN.nc1")
+;fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/mass_flux/FMASS_CAM*4K*ANN.nc2")
 print(fils)
 print(fils1)
-plotfile="M_up_profile" ;;;PDF file name!
+plotfile="M_profile" ;;;PDF file name!
 wks = gsn_open_wks("pdf", plotfile) ;; open a workstation file!
 nummods=dimsizes(fils1) ;;number of models! 
 plot=new(nummods*2, graphic)    ;;;Create a panel plot with panels = number of models!
 ;;;create a giant loop over all models;;;
 n=0
-lets=(/"c)","d)"/)
+lets=(/"a)","b)","c)"/)
 do while(n.le.dimsizes(fils)-1)
    filen=tostring(fils(n))
    filen1=tostring(fils1(n))
@@ -101,8 +101,8 @@ do while(n.le.dimsizes(fils)-1)
  res@tiXAxisFontHeightF=0.02
  res@trYMaxF=1000
  res@trYMinF=100
- ;res@trXMinF=min(T1(:,0,0))-0.0001
- res@trXMinF=-0.009
+ res@trXMinF=min(T1(:,0,0))-0.002
+ ;res@trXMinF=-0.009
  res@trXMaxF=0.002
  ;res@trXMaxF=max(T1(:,0,0))+0.0001
  res@tiYAxisString="Pressure (hPa)"
@@ -111,13 +111,13 @@ do while(n.le.dimsizes(fils)-1)
  res@tmYLMode = "Explicit"
  res@tmYLValues        =(/100,200,300,400,500,600,700,850,1000/)
  res@tmYLLabels=(/100,200,300,400,500,600,700,850,1000/)
- res@tmXBMode = "Explicit"
- res@tmXBValues        =(/-0.01,-0.008,-0.006,-0.004,-0.002,0,0.002/)
- res@tmXBLabels=(/-0.01,-0.008,-0.006,-0.004,-0.002,0,0.002/)
+ ;res@tmXBMode = "Explicit"
+ ;res@tmXBValues        =(/-0.01,-0.008,-0.006,-0.004,-0.002,0,0.002/)
+ ;res@tmXBLabels=(/-0.01,-0.008,-0.006,-0.004,-0.002,0,0.002/)
  res@tmXBLabelFontHeightF=0.015
  
- ;res@tiXAxisString="Total M~B~c~N~ (kg/m~S~2~N~/s)"
- res@tiXAxisString="Updraft M~B~c~N~ (kg/m~S~2~N~/s)"
+ ;res@tiXAxisString="Total M~B~c~N~ (kg m~S~-2~N~ s~S~-1~N~)"
+ res@tiXAxisString="Updraft M~B~c~N~ (kg m~S~-2~N~ s~S~-1~N~)"
  res@vpHeightF 	 = 0.7               ; change aspect ratio of plot
  res@vpWidthF 	         = 0.55
  res@gsnXRefLine = 0.0 
@@ -174,6 +174,8 @@ resP                            = True
  resP@gsnPaperOrientation = "portrait"
  gsn_panel(wks,plot,(/1,3/),resP)  
  delete(wks) 
+ print(fils)
+ print(fils1)
 ;crop=systemfunc("mogrify -trim dtdz_koror.png")
 ;crop=systemfunc("mogrify -trim dtdz_tropmean.png")
 crop=systemfunc("/usr/bin/pdfcrop " + plotfile) 

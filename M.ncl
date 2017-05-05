@@ -97,8 +97,8 @@ do while(n.le.dimsizes(fils)-1)
   res@tmYRMode = "Automatic"
 
   res@cnLevelSelectionMode = "ExplicitLevels"       ; manually select levels
-  res@cnLevels =(/-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8,9,10,11,12/)*2e-4
-  res@cnFillColors =(/10,15,20,25,30,35,40,45,50,55,60,65,0,180,185,190,195,200,205,210,215,220,225,230,235/)
+  res@cnLevels =(/-14,-12,-10,-8,-6,-4,-2,2,4,6,8,10,12,14/)*1e-4
+  res@cnFillColors =(/40,50,60,70,80,90,100,0,140,150,160,170,180,190,200/)
   res@cnLinesOn       = False                 ; turn on line labels
   res@cnLineLabelsOn       = False                 ; turn on line labels
   res@cnFillOn             = True                 ; turn on color fill
@@ -106,11 +106,14 @@ do while(n.le.dimsizes(fils)-1)
   if(i.eq.2) then
    res@lbLabelBarOn = True
    res@lbOrientation =   "horizontal"  
-   res@lbLabelAutoStride    = True                 ; optimal labels
-   res@lbTitleString    = "kg/m~S~2~N~/s"
+   ;res@lbLabelAutoStride    = True                ; optimal labels
+   res@lbTitleString    = "kg m~S~-2~N~ s~S~-1~N~"
    res@lbTitlePosition ="Bottom"
    res@pmLabelBarOrthogonalPosF=1.22
    res@lbTitleFontHeightF=.015
+   res@lbBoxEndCapStyle="TriangleBothEnds"
+   res@lbAutoManage=True
+   ;res@lbLabelStrings =  (/"-2.4e-3","-2e-3","-1.6e-3","-1.2e-3","-8e-4","-4e-4","4e-4","8e-4","1.2e-3","1.6e-3","2e-3","2.4e-3"/)
   else
   end if
   res@gsnDraw = False
@@ -125,6 +128,7 @@ do while(n.le.dimsizes(fils)-1)
   res@tmYROn = False
   res@tmYRLabelsOn = False 
   res@cnFillOpacityF=1
+  
 res@vpHeightF 	 = 0.4               ; change aspect ratio of plot
   res@vpWidthF 	         = 0.7
 
@@ -162,22 +166,22 @@ res@vpHeightF 	 = 0.4               ; change aspect ratio of plot
  cres@gsnRightStringFontHeightF=0.03
  cres@gsnCenterStringFontHeightF=0.035
  cres@gsnContourPosLineDashPattern =1
-gsn_define_colormap(wks,"BlueWhiteOrangeRed")
+gsn_define_colormap(wks,"ncl_default")
  plot(i)  = gsn_csm_pres_hgt(wks, Qdiff(::-1,:), res)  
  plot2  = gsn_csm_pres_hgt(wks, T(::-1,0,:), cres)
  
  delete(cres@cnLevels)
  delete(res@cnLevels)
  cres@cnLevels =(/-16,-15,-14,-13,-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16/)*4e-3
- res@cnLevels =(/-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8,9,10,11,12/)*1e-3
- res@cnFillColors = (/10,15,20,25,30,35,40,45,50,55,60,65,0,180,185,190,195,200,205,210,215,220,225,230,235/)
+ res@cnLevels =(/-14,-12,-10,-8,-6,-4,-2,2,4,6,8,10,12,14/)*0.5e-3
+ res@cnFillColors = (/40,50,60,70,80,90,100,0,140,150,160,170,180,190,200/)
  cres@gsnContourPosLineDashPattern =1 
  ;cres@gsnRightString  = "~F33~w~F~~S~~F34~-~F~~N~ response (%): " + decimalPlaces(omegresponse*100,2,True)
  cres@gsnRightString  = ""
  cres@gsnLeftString  = lets(i+1) + " " + f@case
  cres@gsnCenterString  = "~F33~w~F~"
  if(i.eq.2) then
-  res@lbTitleString    = "Pa/s"
+  res@lbTitleString    = "Pa s~S~-1~N~"
  else
  end if
  plot(i+1)  = gsn_csm_pres_hgt(wks, Qdiff1(::-1,:), res)  

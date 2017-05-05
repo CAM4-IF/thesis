@@ -13,9 +13,9 @@
 ; load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_csm.ncl"    
 ;************************************************
 begin
-fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/mass_flux/*timeseries*.nc1*")
-fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/mass_flux/*timeseries*.nc2*")
-n=0
+fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/mass_flux/*_timeseries*.nc1*")
+fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/mass_flux/*_timeseries*.nc2*")
+n=1
 lets=(/"a)","b)","c)","d)","e)","f)"/)
 plotfile="test1"
 wks = gsn_open_wks("pdf", plotfile) ;; open a workstation file!
@@ -29,29 +29,45 @@ cmd3=systemfunc(cmd3)
 do while(n.le.dimsizes(fils)-1)
    filen=tostring(fils(n))
    filen1=tostring(fils1(n))
+   print(fils)
+   print(fils1)
    hyam = f3->hyam 
    hybm =f3->hybm
-   cmd="cdo -s -timmean -fldmean -sellonlatbox,0,360,-30,30 -selname,FMASS " + filen + " tmp.nc"
-   cmd1="cdo -s -sub -fldmean -sellonlatbox,0,360,-30,30 -selname,FMASS " + filen1 + " tmp.nc" + " tmp1.nc"
-   ;cmd2="cdo -s -div tmp1.nc tmp.nc tmp2.nc"
+   cmd="cdo -fldmean -sellonlatbox,0,360,-30,30 -selname,FMASS,FMASS_DN " + filen + " tmp.nc"
+   cmd1="cdo -fldmean -sellonlatbox,0,360,-30,30 -selname,FMASS,FMASS_DN " + filen1 + " tmp1.nc"
    areamean=systemfunc(cmd)
    areamean1=systemfunc(cmd1)
    ;areamean2=systemfunc(cmd2)
-   f    = addfile("tmp1.nc", "r")
-   f1    = addfile("tmp.nc", "r")
+   f    = addfile("tmp.nc", "r")
+   f1    = addfile("tmp1.nc", "r")
    f2= addfile("tmp3.nc","r")
    T=f->FMASS(0:300,:,:,:)
-   T1=f1->FMASS
+   T2=f->FMASS_DN(0:300,:,:,:)
+   T1=f1->FMASS(0:300,:,:,:)
+   T3=f1->FMASS_DN(0:300,:,:,:)
+   Mup1=T-T2
+   Mup2=T1-T3
+   
+   print(dimsizes(T))
+   print(dimsizes(T2))
+   print(dimsizes(T1))
+   print(dimsizes(T3))
+   Mupresponse=Mup2-Mup1
+   
+   
+   
    PS=f2->PS
    P0   = 100000.     
    levs=conform_dims(dimsizes(T),T&ilev,1)
    PS1=PS(0,0,0)
    PS2=conform(T,PS1,-1)
    opt=(/0,100,1000/)
-   wva = wgt_vert_avg_beta(levs, T, PS2(:,0,:,:)/100, 0, opt)/900
-   wva1=wgt_vert_avg_beta(levs(0,:,:,:),T1(0,:,:,:), PS2(0,0,:,:)/100, 0, opt)/900
-   response=wva/wva1(0,0)
-   Mprime=asciiread("Mprime2.txt",(/301,3/),"float")
+   wva = wgt_vert_avg_beta(levs, Mup1, PS2(:,0,:,:)/100, 0, opt)/900
+   wva1=wgt_vert_avg_beta(levs,Mupresponse, PS2(:,0,:,:)/100, 0, opt)/900
+   
+   
+   response=wva1/wva
+   Mprime=asciiread("Mprime.txt",(/301,3/),"float")
    
    res               = True	                   ; plot mods desired
    res@tiMainString  = "(~F33~D~F~M~B~int~N~)/M~B~int~N~ and (~F33~D~F~M~S~`~N~)/M~S~`~N~ 3-month running mean"     ; title
