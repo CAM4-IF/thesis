@@ -105,11 +105,11 @@ res3@tmYLOn="True"
 
 
 res3@gsnCenterString= pr1@case
-res3@gsnRightString="r~B~pat~N~: " + decimalPlaces(pcor,2,True) + "; RMSE: " + decimalPlaces(rmse,2,True) + " mm/day" + "; Mean: " + decimalPlaces(meanpr,2,True) + " mm/day"
-res3@gsnLeftString=lets(n) + "      "  + pr1@case
+res3@gsnRightString="r~B~pat~N~: " + decimalPlaces(pcor,2,True) + "; RMSE: " + decimalPlaces(rmse,2,True) + " mm day~S~-1~N~" + "; Mean: " + decimalPlaces(meanpr,2,True) + " mm day~S~-1~N~"
+res3@gsnLeftString=lets(n) + " "  + pr1@case
 res3@gsnCenterString= " "
 ;res3@gsnRightString= "RMSE: " + decimalPlaces(rmse,2,True) + " Ocean: " + decimalPlaces(rmseocean,2,True) + " Land: " + decimalPlaces(rmseland,2,True) + "~C~Pat. Cor.: " + decimalPlaces(pcor,2,True) + " Ocean: " + decimalPlaces(pcorocean,2,True) + " Land: " + decimalPlaces(pcorland,2,True)
-;res3@gsnLeftString= "Mean: " + decimalPlaces(meanpr,2,True) + " mm/day" + "~C~Variance: " + decimalPlaces(variancepr,2,True) + " mm/day"
+;res3@gsnLeftString= "Mean: " + decimalPlaces(meanpr,2,True) + " mm day~S~-1~N~" + "~C~Variance: " + decimalPlaces(variancepr,2,True) + " mm day~S~-1~N~"
 res3@gsnRightStringFontHeightF= 0.012
 res3@gsnLeftStringFontHeightF= 0.012
 res3@mpGridLineThicknessF=0.5
@@ -153,9 +153,9 @@ end do
 res30                           = res3
 print(lets)
 print(lets(n))
-res30@gsnLeftString= lets(n)  + "      " + "Blended observed rainfall"
+res30@gsnLeftString= lets(n)  + " Observed rainfall blend"
 res30@gsnLeftStringFontHeightF= 0.012
-res30@gsnRightString="Mean: " + decimalPlaces(GPCPmean,2,True) + " mm/day"
+res30@gsnRightString="Mean: " + decimalPlaces(GPCPmean,2,True) + " mm day~S~-1~N~"
 res30@gsnCenterString= ""
 
 print(n)
@@ -171,7 +171,7 @@ res4@cnInfoLabelOn       = False
 res4@lbOrientation =   "horizontal"          ; 
 res4@gsnPanelMainString    = " "
 res4@lbLabelFontHeightF    = 0.006
-res4@lbTitleString    = "P (mm/day)"
+res4@lbTitleString    = "P (mm day~S~-1~N~)"
 res4@lbTitlePosition ="Bottom"
 res4@lbTitleFontHeightF=.012
 res4@txFontHeightF    = 0.03

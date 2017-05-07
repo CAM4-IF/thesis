@@ -119,7 +119,7 @@ do while(n.le.dimsizes(fils)-1)
  ;res@tiXAxisString="Total M~B~c~N~ (kg m~S~-2~N~ s~S~-1~N~)"
  res@tiXAxisString="Updraft M~B~c~N~ (kg m~S~-2~N~ s~S~-1~N~)"
  res@vpHeightF 	 = 0.7               ; change aspect ratio of plot
- res@vpWidthF 	         = 0.55
+ res@vpWidthF 	         = 0.5
  res@gsnXRefLine = 0.0 
 
  res@tiXAxisStringFontHeightF=0.0015

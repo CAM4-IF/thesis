@@ -339,7 +339,7 @@ delete(wks)
 n=0
 delete(lets)
 lets=(/"a)","b)","c)"/)
-wks = gsn_open_wks("pdf", "test") 
+wks = gsn_open_wks("pdf", "pe_scat") 
 do while(n.le.dimsizes(fils)-1)
  lets=(/"a)","b)","c)"/)
  res                   = True                     ; plot mods desired
@@ -360,13 +360,15 @@ do while(n.le.dimsizes(fils)-1)
   ;res@trYMaxF=0.022
   res@gsnLeftString  =lets(n) + " " + modelnames(n)
   res@gsnLeftStringFontHeightF=0.03
-  res@tiYAxisString = "-M~B~int~N~ (kg/m~S~2~N~/s)"
-  res@tiXAxisString = "M~S~'~N~ (kg/m~S~2~N~/s)"
+  res@tiYAxisString = "-M~B~int~N~ (kg m~S~-2~N~ s~S~-1~N~)"
+  res@tiXAxisString = "M~S~'~N~ (kg m~S~-2~N~ s~S~-1~N~)"
   res@tmXBFormat="0@*+^sg"
   rc=regline(datalog(n,:)<0.008,datalog1(n,:)<0.02)
   rc1=regline(datalog2(n,:)<0.008,datalog3(n,:)<0.02)
   yreg=rc*datalog(n,:)+rc@yintercept
   yreg1=rc1*datalog2(n,:)+rc1@yintercept
+  cor=escorc(datalog(n,:),datalog1(n,:))
+  cor1=escorc(datalog2(n,:),datalog3(n,:))
   plots(n)  = gsn_csm_xy (wks,datalog(n,:),datalog1(n,:),res)                    ; create plot
   
   res@xyMarkerColor     = "Red" 
@@ -382,7 +384,7 @@ do while(n.le.dimsizes(fils)-1)
   txid1 = new(3,graphic)                  ; Nine text strings
  txres               = True     
  txres@txFontHeightF = 0.022
- txid1(0) = gsn_add_text (wks,plots(n),"Control slope: " + sprintf("%5.2f",rc) + "~C~" + "+4K slope: " + sprintf("%5.2f",rc1), 0.005,max(datalog1(n,:))-0.002, txres)
+ txid1(0) = gsn_add_text (wks,plots(n),"Control r: " + sprintf("%5.2f",cor) + "~C~" + "+4K r: " + sprintf("%5.2f",cor1), 0.005,max(datalog1(n,:))-0.002, txres)
  gres=True
   gres@YPosPercent = 50. 
 gres@XPosPercent = 75
@@ -395,13 +397,13 @@ lineres1@LineLengthPercent = 9.                         ; expressed as %, 0->100
 
 textres1 = True
 textres1@lgLabels = (/"Control","+4K" /)  ; legend labels (required)
-textres1@lgLabelFontHeights = (/0.015,0.015,0.015/)   
+textres1@lgLabelFontHeights = (/0.018,0.018,0.018/)   
 plots(n) = simple_legend(wks,plots(n),gres,lineres1,textres1)
 
 delete(lets)
 lets=(/"d)","e)","f)"/)
 res@xyMarkLineMode    = "Markers" 
-res@tiXAxisString = "-~F33~w~F~~B~int~N~ (Pa/s)"
+res@tiXAxisString = "-~F33~w~F~~B~int~N~ (Pa s~S~-1~N~)"
 res@trXMinF=-0.1
 res@trXMaxF=0.15
 res@trYMinF=-0.001
@@ -452,7 +454,7 @@ lineres1@LineLengthPercent = 9.                         ; expressed as %, 0->100
 
 textres1 = True
 textres1@lgLabels = (/"Control","+4K" /)  ; legend labels (required)
-textres1@lgLabelFontHeights = (/0.015,0.015,0.015/)   
+textres1@lgLabelFontHeights = (/0.018,0.018,0.018/)   
 plots(n+3) = simple_legend(wks,plots(n+3),gres,lineres1,textres1)
   
   
@@ -515,5 +517,5 @@ gsn_panel(wks,plots,(/3,3/),resP)
 ;system("epstopdf " + plotfile +".eps") 
 ;system("rm " + plotfile +".eps") 
 ;system("rm " + plotfile +".epsi")
-system("pdfcrop test.pdf")
+system("pdfcrop pe_scat.pdf")
 end
