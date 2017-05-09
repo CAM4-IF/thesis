@@ -25,6 +25,10 @@ print(names)
 numfils=dimsizes(fils)
 
 sperrors=new((/numfils,5/),float)
+cam4rmses=new((/numfils,1/),float)
+cam4ifrmses=new((/numfils,1/),float)
+amiprmses=new((/numfils,1/),float)
+rank=new((/numfils,1/),float)
 
 m=0
 print(m)
@@ -467,7 +471,7 @@ res                   = True                       ; plot mods desired
 res@gsnDraw=False
 res@gsnFrame=False
 res@trYMaxF=1000
-res@trYMinF=80
+res@trYMinF=100
 res@trXMaxF=5
 res@trXMinF=-5
 res@xyLineColor     = "black"
@@ -573,6 +577,11 @@ print(quarts)
 index=(ind(quarts.eq.0))+1
 print(index)
 
+cam4rmses(m,0)=rmsearray(1)
+cam4ifrmses(m,0)=rmsearray(0)
+amiprmses(m,0)=rmsearray(2)
+rank(m,0)=index
+
 res@xyLineColor     = "blue"
 res@trYReverse        = True                     ; reverse Y-axis
 ;res@tiMainString    =  "ANN mean model-observed temperature (K):"
@@ -657,14 +666,14 @@ lineres@lgLineThicknesses = 2.5                        ; line thicknesses
 lineres@LineLengthPercent = 9.                         ; expressed as %, 0->100, length of line
 
 textres = True
-textres@lgLabels = (/"CAM4-IF best T","CMIP5/AMIP mean","CAM4 default", "CMIP5/AMIP members"/)  ; legend labels (required)
+textres@lgLabels = (/"CAM4-IF-t","CMIP5/AMIP mean","CAM4 default", "CMIP5/AMIP members"/)  ; legend labels (required)
 textres@lgLabelFontHeights = (/0.011,0.011,0.011,0.011/)   
 plot = simple_legend(wks,plot,gres,lineres,textres)
 
 txid = new(1,graphic)                  ; Nine text strings
 txres               = True     
 txres@txFontHeightF = 0.01
-txid(0) = gsn_add_text (wks,plot,"~C~CAM4 RMSE: " + rmsearray(1) + " K " + "~C~CAM4-IF RMSE: " + rmsearray(0) + " K," + " rank: " + index + "~C~CMIP5/AMIP RMSE: " + rmsearray(2) + " K", 3, 400 ,txres)
+txid(0) = gsn_add_text (wks,plot,"~C~CAM4 RMSE: " + rmsearray(1) + " K " + "~C~CAM4-IF-t RMSE: " + rmsearray(0) + " K," + " rank: " + index + "~C~CMIP5/AMIP RMSE: " + rmsearray(2) + " K", 3, 400 ,txres)
 
 draw(plot)                 
 frame(wks)
@@ -1032,7 +1041,10 @@ delete(res)
 ;delete(amip4k)
 delete(amipmods)
 end do
-print(sperrors)
+print(cam4rmses)
+print(cam4ifrmses)
+print(amiprmses)
+print(rank)
 system("mv data/*.pdf plots/")
 ;system("gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER -sOutputFile=plots/profiles.pdf plots/*.pdf")
 end

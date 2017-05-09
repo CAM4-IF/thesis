@@ -71,27 +71,33 @@ end do
 f=addfile("../../AMIP/ta_ANN_AMIPmean.nc","r")
 f1=addfile("../../AMIP_4K_control_ANN_climo1.nc","r")
 f2  = addfile("../CAM-IFv5_AMIP_ANN_climo.nc","r")
+f8  = addfile("../CAM-IFv5_AMIP_br_ANN_climo.nc","r")
 ;f7=addfile("RAOBS.nc","r")
 cmd="cdo -fldmean -sellonlatbox,0,360,-20,20 -selname,ta ../../AMIP/ta_ANN_AMIPmean.nc" + " tmp.nc"
 cmd1="cdo -fldmean -sellonlatbox,0,360,-20,20 -selname,T,PS ../../AMIP_4K_control_ANN_climo1.nc" + " tmp1.nc"
 cmd2="cdo -fldmean -sellonlatbox,0,360,-20,20 -selname,T,PS ../CAM-IFv5_AMIP_ANN_climo.nc" + " tmp2.nc"
 cmd3="cdo -fldmean -sellonlatbox,0,360,-20,20 -selname,T ../MERGED_T_trop_ANN.nc" + " tmp3.nc"
+cmd4="cdo -fldmean -sellonlatbox,0,360,-20,20 -selname,T,PS ../CAM-IFv5_AMIP_br_ANN_climo.nc" + " tmp4.nc"
 
 areamean=systemfunc(cmd)
 areamean1=systemfunc(cmd1)
 areamean2=systemfunc(cmd2)
 areamean3=systemfunc(cmd3)
+areamean4=systemfunc(cmd4)
 f3=addfile("tmp.nc","r")
 f4=addfile("tmp1.nc","r")
 f5=addfile("tmp2.nc","r")
 f6=addfile("tmp3.nc","r")
+f7=addfile("tmp4.nc","r")
 
 T3=f3->ta(0,:,:,:)
 T4=f4->T(0,:,:,:)
 T5=f5->T(0,:,:,:)
 T6=f6->T(0,:,:,:)
+T7=f7->T(0,:,:,:)
 ps3=f4->PS(0,:,:)
 ps4=f5->PS(0,:,:)
+ps5=f7->PS(0,:,:)
 ;ps5=f6->PS(0,:,:)
 
 ;test=f7->T(:,:,:)
@@ -142,7 +148,7 @@ T3@_FillValue=1e20
 u3=int2p_n_Wrap(plev*0.01,T3,PmeanANN,0,0)
 u4=vinth2p(T4,hyam,hybm,PmeanANN,ps3,2,1000,1,False)
 u5=vinth2p(T5,hyam,hybm,PmeanANN,ps4,2,1000,1,False)
-;u6=vinth2p(T6,hyam,hybm,PmeanANN,ps5,2,1000,1,False)
+u7=vinth2p(T7,hyam,hybm,PmeanANN,ps5,2,1000,1,False)
 elevs=f6->lev
 u6=int2p_n_Wrap(elevs,T6,PmeanANN,0,0)
 
@@ -173,6 +179,14 @@ dTdZ6(i)=dT/dZ
 end do
 delete(dZ)
 
+dTdZ8=new(dimsizes(PmeanANN),double)
+do i=0,ntimes-2
+meanT=(u7(i,0,0)+u7(i+1,0,0))/2
+dZ=((287*meanT/9.81)*log(PmeanANN(i)/PmeanANN(i+1)))/1000
+dT=(u7(i+1,0,0)-u7(i,0,0))
+dTdZ8(i)=dT/dZ
+end do
+delete(dZ)
 
 dTdZ7=new(dimsizes(PmeanANN),double)
 do i=0,ntimes-2
@@ -204,7 +218,7 @@ rmse2=decimalPlaces(sqrt(avg((dTdZ3(1:43)-dTdZ(1:43))^2)),3,True)
  res@xyLineThicknesses = 4.0
  res@tiXAxisFontHeightF=0.018
  res@trYMaxF=1000
- res@trYMinF=80
+ res@trYMinF=100
  res@trXMaxF=0
  res@trXMinF=-9
  res@tiYAxisString="Pressure (hPa)"
@@ -215,7 +229,7 @@ rmse2=decimalPlaces(sqrt(avg((dTdZ3(1:43)-dTdZ(1:43))^2)),3,True)
  res@tmYLLabels=(/100,200,300,400,500,600,700,850,1000/)
  res@tiXAxisString="dT/dz (K/km)"
 
- ;res@gsnRightString  ="CAM4 RMSE: " + rmse + " K/km" + "~C~AMIP mean RMSE: " + rmse1 + " K/km" + "~C~CAM4-IF RMSE: " + rmse2 + " K/km"
+ ;res@gsnRightString  ="CAM4 RMSE: " + rmse + " K/km" + "~C~AMIP mean RMSE: " + rmse1 + " K/km" + "~C~CAM4-IF-t RMSE: " + rmse2 + " K/km"
  res@gsnLeftString  ="b) KOR"  + ": (" + lon + "E, " + lat + "N)"
  res@gsnLeftStringFontHeightF=0.018
   res@gsnRightStringFontHeightF=0.008
@@ -245,19 +259,19 @@ gres@YPosPercent = 86.    ; expressed as %, 0->100, sets position of top border 
 gres@XPosPercent = 57    ; expressed as %, 0->100, sets position of left border of legend(Default = 5.)
 gres@ItemSpacePercent = 10.  
 lineres = True
-lineres@lgLineColors = (/"red","orange","blue","black"/) ; line colors
+lineres@lgLineColors = (/"orange","red","blue","black"/) ; line colors
 lineres@lgLineThicknesses = 2.5                        ; line thicknesses
 lineres@LineLengthPercent = 9.                         ; expressed as %, 0->100, length of line
 
 textres = True
-textres@lgLabels = (/"CAM4-IF best T","CMIP5/AMIP mean","CAM4 default","RAOBS"/)  ; legend labels (required)
+textres@lgLabels = (/"CMIP5/AMIP mean","CAM4-IF-t","CAM4 default","RAOBS"/)  ; legend labels (required)
 textres@lgLabelFontHeights = (/0.015,0.015,0.015,0.015,0.015/)   
 plot = simple_legend(wks,plot,gres,lineres,textres)
 
 txid = new(1,graphic)                  ; Nine text strings
 txres               = True     
 txres@txFontHeightF = 0.014
-txid(0) = gsn_add_text (wks,plot,"CAM4 RMSE: " + rmse + " K/km" + "~C~CAM4-IF RMSE: " + rmse2  + " K/km" + "~C~CMIP5/AMIP RMSE: " + rmse1 +  " K/km", -2.2, 300 ,txres)
+txid(0) = gsn_add_text (wks,plot,"CAM4 RMSE: " + sprintf("%5.3f",rmse) + " K/km" + "~C~CAM4-IF-t RMSE: " + rmse2  + " K/km" + "~C~CMIP5/AMIP RMSE: " + sprintf("%5.3f",rmse1) +  " K/km", -2.2, 300 ,txres)
 draw(plot)               
 frame(wks) 
  
@@ -267,6 +281,7 @@ delete(txid)
 rmse3=decimalPlaces(sqrt(avg((dTdZ4(1:43)-dTdZ7(1:43))^2)),3,True)
 rmse4=decimalPlaces(sqrt(avg((dTdZ5(1:41)-dTdZ7(1:41))^2)),3,True)
 rmse5=decimalPlaces(sqrt(avg((dTdZ6(1:43)-dTdZ7(1:43))^2)),3,True)
+rmse6=decimalPlaces(sqrt(avg((dTdZ8(1:43)-dTdZ7(1:43))^2)),3,True)
 
 
 wks   = gsn_open_wks ("pdf","dtdz_tropmean")                  ; send graphics to PNG file
@@ -282,7 +297,7 @@ res1                   = True                       ; plot mods desired
  res1@tiXAxisString=""
  res1@tiXAxisFontHeightF=0.015
  res1@trYMaxF=1000
- res1@trYMinF=80
+ res1@trYMinF=100
  res1@trXMaxF=0
  res1@trXMinF=-9
  res1@tiYAxisString="Pressure (hPa)"
@@ -292,43 +307,48 @@ res1                   = True                       ; plot mods desired
  res1@tmYLLabels=(/100,200,300,400,500,600,700,850,1000/)
  res1@tiXAxisString="dT/dz (K/km)"
  res1@tiYAxisFontHeightF=0.018
+ res1@tiXAxisFontHeightF=0.018
  res1@gsnDraw=False
  res1@gsnFrame=False
- res1@xyLineColor    = "black"
  res1@gsnLeftStringFontHeightF=0.018
- res1@xyLineColor    = "orange"
+ res1@xyLineColor    = "black"
+ res1@xyLineThicknesses = 8.0
+ plot4= gsn_csm_xy (wks,dTdZ7(0:45),PmeanANN(0:45),res1)
  res1@xyLineThicknesses = 4.0
+ res1@xyLineColor    = "orange"
  plot1              = gsn_csm_xy (wks,dTdZ4(0:45),PmeanANN(0:45),res1)
  res1@xyLineColor    = "blue"
  plot2= gsn_csm_xy (wks,dTdZ5(0:45),PmeanANN(0:45),res1)
  res1@xyLineColor    = "red"
  plot3= gsn_csm_xy (wks,dTdZ6(0:45),PmeanANN(0:45),res1)
- res1@xyLineColor    = "black"
- res1@xyLineThicknesses = 8.0
- plot4= gsn_csm_xy (wks,dTdZ7(0:45),PmeanANN(0:45),res1)
+ res1@xyLineColor    = "green"
+ plot5= gsn_csm_xy (wks,dTdZ8(0:45),PmeanANN(0:45),res1)
+
  
  
- overlay(plot1,plot2)
- overlay(plot1,plot3)
  overlay(plot1,plot4)
+ overlay(plot1,plot3)
+ overlay(plot1,plot2)
+ overlay(plot1,plot5)
  gres = True
 gres@YPosPercent = 86.    ; expressed as %, 0->100, sets position of top border of legend 
                             ;  when gres@Position is set to its default setting of "Top" (Default = 95.)
 gres@XPosPercent = 62    ; expressed as %, 0->100, sets position of left border of legend(Default = 5.)
 gres@ItemSpacePercent = 10.  
+delete(lineres)
 lineres = True
-lineres@lgLineColors = (/"red","orange","blue","black"/) ; line colors
+lineres@lgLineColors = (/"orange","green","red","blue","black"/) ; line colors
 lineres@lgLineThicknesses = 2.5                        ; line thicknesses
 lineres@LineLengthPercent = 9.                         ; expressed as %, 0->100, length of line
-
+delete(textres)
 textres = True
-textres@lgLabels = (/"CAM4-IF best T","CMIP5/AMIP mean","CAM4 default","MERRA/ERAI"/)  ; legend labels (required)
+textres@lgLabels = (/"CMIP5/AMIP mean","CAM4-IF-r","CAM4-IF-t","CAM4 default","MERRA/ERAI"/)  ; legend labels (required)
 textres@lgLabelFontHeights = (/0.012,0.012,0.012,0.012,0.012/)   
 plot1 = simple_legend(wks,plot1,gres,lineres,textres)
 txid = new(1,graphic)                  ; Nine text strings
 txres               = True     
 txres@txFontHeightF = 0.014
-txid(0) = gsn_add_text (wks,plot1,"CAM4 RMSE: " + rmse4 + " K/km" + "~C~CAM4-IF RMSE: " + rmse5  + " K/km" + "~C~CMIP5/AMIP RMSE: " + rmse3 +  " K/km", -2.2, 300 ,txres)
+txid(0) = gsn_add_text (wks,plot1,"CAM4 RMSE: " + rmse4 + " K/km" + "~C~CAM4-IF-t RMSE: " + rmse5 + " K/km" + "~C~CAM4-IF-r RMSE: " + sprintf("%5.3f",rmse6) + " K/km" + "~C~CMIP5/AMIP RMSE: " + rmse3 +  " K/km", -2.2, 300 ,txres)
 draw(plot1)               
 frame(wks) 
 crop=systemfunc("pdfcrop dtdz_koror.pdf")
