@@ -201,7 +201,7 @@ res30 = True
   
   res31=res30
   res31@cnLevels   = (/-0.1,0/)    ; 
-  res31@cnFillPatterns = (/17,-1,-1/) ; 
+  res31@cnFillPatterns = (/6,-1,-1/) ; 
   plot3   = gsn_csm_contour(wks,lt, res31)
  overlay(plot(n),plot2)
  overlay(plot(n),plot3)

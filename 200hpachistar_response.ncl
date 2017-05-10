@@ -10,6 +10,7 @@ nummods=dimsizes(fils1) ;;number of models!
 plot=new(nummods+1, graphic)    ;;;Create a panel plot with panels = number of models!
 ;;;create a giant loop over all models;;;
 lets=(/"a)","b)","c)","d)"/)
+names=(/"CAM4 default","CAM4-IF-r","CAM4-IF-t"/)
 f4=addfile("chistar200_maxresponse_ANN.nc","r")
 f5=addfile("chistar200_minresponse_ANN.nc","r")
 n=0
@@ -223,7 +224,7 @@ chistarmin2=min(chistar2({-30:30},:))
   res@mpGridLonSpacingF = 45
   res@pmTickMarkDisplayMode  = "Always" 
   res@gsnLeftString    = lets(n)
-  res@gsnCenterString    = f@case
+  res@gsnCenterString    = names(n)
   res@gsnCenterStringFontHeightF=0.018
   res@gsnLeftStringFontHeightF=0.018
   ;res@gsnRightString    = "~F33~D~F~(~F33~c~F~~S~*~N~) response: " + sprintf("%5.2f",response)
@@ -296,7 +297,7 @@ res30 = True
   
   res31=res30
   res31@cnLevels   = (/-0.1,0/)    ; 
-  res31@cnFillPatterns = (/6,-1,-1/) ; 
+  res31@cnFillPatterns = (/17,-1,-1/) ; 
   plot3   = gsn_csm_contour(wks,lt, res31)
  overlay(plot(n),plot2)
  overlay(plot(n),plot3) 
@@ -375,7 +376,7 @@ res30 = True
   res30@lbLabelBarOn=False
   
   plot2   = gsn_csm_contour(wks,stip, res30)
-  res30@cnFillPatterns = (/-1,6,6/) ;
+  res30@cnFillPatterns = (/-1,17,17/) ;
   plot3   = gsn_csm_contour(wks,stip1, res30)
  overlay(plot(n),plot2)
  overlay(plot(n),plot3)
@@ -395,7 +396,7 @@ resP@cnInfoLabelOn       = False
 resP@lbOrientation =   "horizontal"          ; 
 resP@lbLabelFontHeightF    = 0.006
 resP@txString = ""
-resP@lbTitleString    = "~F33~D~F~(~F33~c~F~~S~*~N~) m~S~2~N~/s"
+resP@lbTitleString    = "~F33~D~F~(~F33~c~F~~S~*~N~) m~S~2~N~ s~S~-1~N~"
 resP@gsnMaximize=True
 resP@gsnPaperOrientation = "landscape"
 resP@lbTitlePosition ="Bottom"

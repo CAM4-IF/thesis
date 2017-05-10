@@ -230,7 +230,7 @@ avgomeg=avg(omegavg)/avg(wva2)
 avgm=avg(fmassavg)/avg(wva)
 pcor=pattern_cor(wva({-30:30},:),wva2({-30:30},:),1.0,0)
 
-modelnames(n)=f@case
+modelnames=(/"CAM4 default","CAM4-IF-r","CAM4-IF-t"/)
 
 res3                           = True
 res3@gsnDraw =  False
@@ -342,6 +342,7 @@ lets=(/"a)","b)","c)"/)
 wks = gsn_open_wks("pdf", "pe_scat") 
 do while(n.le.dimsizes(fils)-1)
  lets=(/"a)","b)","c)"/)
+ names=(/"CAM4 default","CAM4-IF-r","CAM4-IF-t"/)
  res                   = True                     ; plot mods desired
   res@gsnMaximize       = True                     ; maximize plot
   res@tiMainString      = ""           ; add title
@@ -402,6 +403,7 @@ plots(n) = simple_legend(wks,plots(n),gres,lineres1,textres1)
 
 delete(lets)
 lets=(/"d)","e)","f)"/)
+names=(/"CAM4 default","CAM4-IF-r","CAM4-IF-t"/)
 res@xyMarkLineMode    = "Markers" 
 res@tiXAxisString = "-~F33~w~F~~B~int~N~ (Pa s~S~-1~N~)"
 res@trXMinF=-0.1
@@ -460,6 +462,7 @@ plots(n+3) = simple_legend(wks,plots(n+3),gres,lineres1,textres1)
   
   
 lets=(/"g)","h)","i)"/)
+names=(/"CAM4 default","CAM4-IF-r","CAM4-IF-t"/)
 res1=True
 res1@tiMainString      = ""           ; add title
 res1@xyMarkers         =  16                      ; choose type of marker   

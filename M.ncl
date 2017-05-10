@@ -9,6 +9,7 @@ plot=new(nummods*2, graphic)    ;;;Create a panel plot with panels = number of m
 ;;;create a giant loop over all models;;;
 n=0
 lets=(/"a)","b)","c)","d)","e)","f)"/)
+names=(/"CAM4 default","CAM4 default","CAM4-IF-r","CAM4-IF-r","CAM4-IF-t","CAM4-IF-t"/)
 i=0
 do while(n.le.dimsizes(fils)-1)
    filen=tostring(fils(n))
@@ -153,7 +154,7 @@ res@vpHeightF 	 = 0.4               ; change aspect ratio of plot
  ;cres@gsnContourNegLineDashPattern =-1  
  cres@gsnLeftString =""
  cres@gsnContourZeroLineThicknessF = 2
- cres@gsnLeftString    = lets(i) + " " + f@case
+ cres@gsnLeftString    = lets(i) + " " + names(i)
  cres@trYMinF            = 75.   ; Limits for Y axis.  The limits
  cres@trYMaxF            = 1000.
  cres@cnLineLabelDensityF      = 3.0
@@ -178,7 +179,7 @@ gsn_define_colormap(wks,"ncl_default")
  cres@gsnContourPosLineDashPattern =1 
  ;cres@gsnRightString  = "~F33~w~F~~S~~F34~-~F~~N~ response (%): " + decimalPlaces(omegresponse*100,2,True)
  cres@gsnRightString  = ""
- cres@gsnLeftString  = lets(i+1) + " " + f@case
+ cres@gsnLeftString  = lets(i+1) + " " + names(i+1)
  cres@gsnCenterString  = "~F33~w~F~"
  if(i.eq.2) then
   res@lbTitleString    = "Pa s~S~-1~N~"
