@@ -5,6 +5,7 @@ wks = gsn_open_wks("epsi", plotfile)                      ;Open a workstation
 nummods=dimsizes(fils) ;;number of models! 
 plot=new(nummods+2, graphic)    ;;;Create a panel plot with panels = number of models!
 lets=(/"a)","b)","c)","d)"/)
+names=(/"CAM4 default","CAM4-IF-r","CAM4-IF-t"/)
 n=0
 do while(n.le.dimsizes(fils)-1)
 print(fils)
@@ -107,7 +108,7 @@ res3@lbLabelBarOn        = False
 res3@tmXTOn="False"
 res3@tmYROn="False"
 res3@tmYLOn="True"
-res3@gsnCenterString=   pr1@case
+res3@gsnCenterString=   names(n)
 res3@gsnCenterStringFontHeightF=0.001
 res3@gsnRightString= "RMSE: " + decimalPlaces(rmse,4,True) + "; r~B~pat~N~: " + decimalPlaces(pcor,3,True)
 res3@gsnLeftString= lets(n)  
@@ -166,8 +167,8 @@ res4@gsnPanelLabelBar=True
 res4@cnInfoLabelOn       = False
 res4@lbOrientation =   "horizontal"          ; 
 res4@gsnPanelMainString    = " "
-res4@lbLabelFontHeightF    = 0.006
-res4@lbTitleString    = "~F33~w~F~~B~500~N~ (Pa/s)"
+res4@lbLabelFontHeightF    = 0.008
+res4@lbTitleString    = "~F33~w~F~~B~500~N~ (Pa s~S~-1~N~)"
 res4@lbTitlePosition ="Bottom"
 res4@lbTitleFontHeightF=.015
 res4@pmLabelBarOrthogonalPosF=-0.02

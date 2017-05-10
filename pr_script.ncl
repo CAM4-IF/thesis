@@ -7,11 +7,15 @@ wks = gsn_open_wks("epsi", plotfile)                      ;Open a workstation
 nummods=dimsizes(fils) ;;number of models! 
 plot=new(nummods+2, graphic)    ;;;Create a panel plot with panels = number of models!
 lets=(/"a)","b)","c)","d)"/)
+names=(/"CAM4 default","CAM4-IF-r","CAM4-IF-t"/)
 n=0
 do while(n.le.dimsizes(fils)-1)
 filen=tostring(fils(n))
 pr1= addfile(filen, "r")
 GPCP=addfile("../MERGED_ANN_PRECIP.nc", "r")
+stip=addfile("../PRECIP_OBS/t-diff-stddev.nc","r")
+stip1=addfile("../PRECIP_OBS/r-diff-stddev.nc","r")
+stip2=addfile("../PRECIP_OBS//blend_ANN_stddev.nc","r")
 land=pr1->LANDFRAC(0,{-30:30},:)
 p1 = pr1->PRECC(0,{-30:30},:)
 p2= pr1->PRECL(0,{-30:30},:)
@@ -32,6 +36,9 @@ diff&lat=pr1->lat({-30:30})
 diff!1="lon"
 diff&lon=pr1->lon
 
+p4=stip->PRECT(0,{-30:30},:)
+p5=stip1->PRECT(0,{-30:30},:)
+p6=stip2->PRECT(0,{-30:30},:)
 
 ocean_only=mask(p3,land,0)
 ocean_only!0="lat"
@@ -86,7 +93,7 @@ res3@mpOutlineOn = True
 res3@mpFillOn = False
 res3@cnLevelSelectionMode = "ExplicitLevels" ; use explicit levels
 res3@cnLevels = (/1,2,3,4,5,6,7,8,9,10,11,12,13,14,15/)
-res3@cnFillColors = (/2,20,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,210,220,230,240/)
+res3@cnFillColors = (/2,10,15,20,60,70,80,90,100,110,120,130,140,150,160,170,180,190,200,210,220,230,240/)
 res3@cnFillOn = True
 res3@cnFillMode= "RasterFill"
 res3@cnRasterSmoothingOn = "True"
@@ -104,22 +111,15 @@ res3@tmYLOn="True"
 
 
 
-res3@gsnCenterString= pr1@case
+;res3@gsnCenterString= names(n)
 res3@gsnRightString="r~B~pat~N~: " + decimalPlaces(pcor,2,True) + "; RMSE: " + decimalPlaces(rmse,2,True) + " mm day~S~-1~N~" + "; Mean: " + decimalPlaces(meanpr,2,True) + " mm day~S~-1~N~"
-res3@gsnLeftString=lets(n) + " "  + pr1@case
+res3@gsnLeftString=lets(n) + " "  + names(n)
 res3@gsnCenterString= " "
 ;res3@gsnRightString= "RMSE: " + decimalPlaces(rmse,2,True) + " Ocean: " + decimalPlaces(rmseocean,2,True) + " Land: " + decimalPlaces(rmseland,2,True) + "~C~Pat. Cor.: " + decimalPlaces(pcor,2,True) + " Ocean: " + decimalPlaces(pcorocean,2,True) + " Land: " + decimalPlaces(pcorland,2,True)
 ;res3@gsnLeftString= "Mean: " + decimalPlaces(meanpr,2,True) + " mm day~S~-1~N~" + "~C~Variance: " + decimalPlaces(variancepr,2,True) + " mm day~S~-1~N~"
 res3@gsnRightStringFontHeightF= 0.012
 res3@gsnLeftStringFontHeightF= 0.012
 res3@mpGridLineThicknessF=0.5
-
-;res3@gsnZonalMean    = True
-;res3@gsnZonalMeanXMinF=0
-;res3@gsnZonalMeanXMaxF=8
-;res3@gsnZonalMeanYRefLine=0
-;res3@tmXBLabelFontHeightF=0.006
-;res3@mpGridLineColor="black"
 
 
 
@@ -143,6 +143,72 @@ plot(n)= gsn_csm_contour_map(wks,p3,res3)
   zres@vpWidthF             = 0.1
   zonal_id = gsn_csm_attach_zonal_means(wks,plot(n),p3,zres)
 
+  
+  
+  
+  
+  
+  if (n.eq.1) then
+  ;;
+;;
+;Add stipling where 10 or more models agree on sign
+  res4 = True                            
+  res4@gsnDraw=False
+  res4@gsnFrame=False
+  res4@cnFillOn = True                   ; turn on color/pattern fill
+  res4@cnMonoFillPattern = False   ; allow different patterns
+  res4@cnMonoFillColor = True       ; only use one color (black)
+  res4@cnLevelSelectionMode = "ExplicitLevels" ; set explicit cnlev
+  res4@cnLevels   = (/0,15/)    ; only have 1 contour level
+  res4@cnFillPatterns = (/-1,17,17/) ; don't fill <0.95, stipple >=0.95
+  res4@gsnAddCyclic = True   ; may or may not be needed
+  res4@cnInfoLabelOn       = False       ; turn off info label
+  res4@cnLinesOn           = False       ; do not draw contour lines
+  res4@cnLineLabelsOn      = False    ; do not draw contour labels
+  res4@cnFillScaleF        = 0.75         ; add extra density
+  res4@gsnRightString   = ""    
+  res4@gsnLeftString    = ""
+  res4@gsnCenterString  = ""
+  res4@lbLabelBarOn=False
+  
+  plot2   = gsn_csm_contour(wks,p5, res4)
+ 
+  
+overlay(plot(n),plot2)
+end if
+  
+  
+if (n.eq.2) then
+  ;;
+;;
+;Add stipling where 10 or more models agree on sign
+  res4 = True                            
+  res4@gsnDraw=False
+  res4@gsnFrame=False
+  res4@cnFillOn = True                   ; turn on color/pattern fill
+  res4@cnMonoFillPattern = False   ; allow different patterns
+  res4@cnMonoFillColor = True       ; only use one color (black)
+  res4@cnLevelSelectionMode = "ExplicitLevels" ; set explicit cnlev
+  res4@cnLevels   = (/0,15/)    ; only have 1 contour level
+  res4@cnFillPatterns = (/-1,17,17/) ; don't fill <0.95, stipple >=0.95
+  res4@gsnAddCyclic = True   ; may or may not be needed
+  res4@cnInfoLabelOn       = False       ; turn off info label
+  res4@cnLinesOn           = False       ; do not draw contour lines
+  res4@cnLineLabelsOn      = False    ; do not draw contour labels
+  res4@cnFillScaleF        = 0.75         ; add extra density
+  res4@gsnRightString   = ""    
+  res4@gsnLeftString    = ""
+  res4@gsnCenterString  = ""
+  res4@lbLabelBarOn=False
+  
+  plot2   = gsn_csm_contour(wks,p4, res4)
+ 
+  
+overlay(plot(n),plot2)
+end if
+
+
+
 n=n+1
 end do
 
@@ -157,34 +223,56 @@ res30@gsnLeftString= lets(n)  + " Observed rainfall blend"
 res30@gsnLeftStringFontHeightF= 0.012
 res30@gsnRightString="Mean: " + decimalPlaces(GPCPmean,2,True) + " mm day~S~-1~N~"
 res30@gsnCenterString= ""
-
-print(n)
-
 plot(n)=gsn_csm_contour_map(wks,pr2,res30)
 zonal_id = gsn_csm_attach_zonal_means(wks,plot(n),pr2,zres)
 
+  ;;
+;;
+;Add stipling where 10 or more models agree on sign
+  res4 = True                            
+  res4@gsnDraw=False
+  res4@gsnFrame=False
+  res4@cnFillOn = True                   ; turn on color/pattern fill
+  res4@cnMonoFillPattern = False   ; allow different patterns
+  res4@cnMonoFillColor = True       ; only use one color (black)
+  res4@cnLevelSelectionMode = "ExplicitLevels" ; set explicit cnlev
+  res4@cnLevels   = (/2,50/)    ; only have 1 contour level
+  res4@cnFillPatterns = (/-1,17,17/) ; don't fill <0.95, stipple >=0.95
+  res4@gsnAddCyclic = True   ; may or may not be needed
+  res4@cnInfoLabelOn       = False       ; turn off info label
+  res4@cnLinesOn           = False       ; do not draw contour lines
+  res4@cnLineLabelsOn      = False    ; do not draw contour labels
+  res4@cnFillScaleF        = 0.75         ; add extra density
+  res4@gsnRightString   = ""    
+  res4@gsnLeftString    = ""
+  res4@gsnCenterString  = ""
+  res4@lbLabelBarOn=False
+  
+  plot2   = gsn_csm_contour(wks,p6, res4)
+ 
+  
+overlay(plot(n),plot2)
+  
 
 
-res4 = True
-res4@gsnPanelLabelBar=True
-res4@cnInfoLabelOn       = False
-res4@lbOrientation =   "horizontal"          ; 
-res4@gsnPanelMainString    = " "
-res4@lbLabelFontHeightF    = 0.006
-res4@lbTitleString    = "P (mm day~S~-1~N~)"
-res4@lbTitlePosition ="Bottom"
-res4@lbTitleFontHeightF=.012
-res4@txFontHeightF    = 0.03
-;res4@pmLabelBarWidthF=0.3
-res4@txString = "ANN"
-res4@pmLabelBarOrthogonalPosF=-0.02
-res4@gsnMaximize=True
-res4@gsnPaperOrientation="portrait"
-;res4@vpHeightF 	 = 1             ; change aspect ratio of plot
-;res4@vpWidthF 	         = 1.3
+
+res6 = True
+res6@gsnPanelLabelBar=True
+res6@cnInfoLabelOn       = False
+res6@lbOrientation =   "horizontal"          ; 
+res6@gsnPanelMainString    = " "
+res6@lbLabelFontHeightF    = 0.006
+res6@lbTitleString    = "P (mm day~S~-1~N~)"
+res6@lbTitlePosition ="Bottom"
+res6@lbTitleFontHeightF=.012
+res6@txFontHeightF    = 0.03
+res6@txString = "ANN"
+res6@pmLabelBarOrthogonalPosF=-0.02
+res6@gsnMaximize=True
+res6@gsnPaperOrientation="portrait"
 
 
-gsn_panel(wks,plot,(/4,1/),res4)
+gsn_panel(wks,plot,(/4,1/),res6)
 delete(wks)
 string1="eps2eps " + plotfile +".epsi" + " " + plotfile +".eps"
 print(string1)

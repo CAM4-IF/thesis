@@ -6,6 +6,7 @@ wks = gsn_open_wks("epsi", plotfile)                      ;Open a workstation
 nummods=dimsizes(fils) ;;number of models! 
 plot=new(nummods+2, graphic)    ;;;Create a panel plot with panels = number of models!
 lets=(/"a)","b)","c)","d)"/)
+names=(/"CAM4 default","CAM4-IF-r","CAM4-IF-t","AMIP4K"/)
 n=0
 do while(n.le.dimsizes(fils)-1)
 filen=tostring(fils(n))
@@ -127,7 +128,7 @@ res3@gsnCenterStringFontHeightF= 0.012
 res3@tmXTOn="False"
 res3@tmYROn="False"
 res3@tmYLOn="True"
-res3@gsnCenterString= pr1@case
+res3@gsnCenterString= names(n)
 res3@gsnRightString= "Response: " + sprintf("%5.2f",response) + "%"
 res3@gsnLeftString= lets(n)
 res3@gsnRightStringFontHeightF= 0.012
@@ -200,7 +201,7 @@ res30 = True
   
   res31=res30
   res31@cnLevels   = (/-0.1,0/)    ; 
-  res31@cnFillPatterns = (/6,-1,-1/) ; 
+  res31@cnFillPatterns = (/17,-1,-1/) ; 
   plot3   = gsn_csm_contour(wks,lt, res31)
  overlay(plot(n),plot2)
  overlay(plot(n),plot3)

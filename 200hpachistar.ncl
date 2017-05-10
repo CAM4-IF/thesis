@@ -10,6 +10,7 @@ nummods=dimsizes(fils1) ;;number of models!
 plot=new(nummods+1, graphic)    ;;;Create a panel plot with panels = number of models!
 ;;;create a giant loop over all models;;;
 lets=(/"a)","b)","c)","d)"/)
+names=(/"CAM4 default","CAM4-IF-r","CAM4-IF-t"/)
 n=0
 do while(n.le.dimsizes(fils)-1)
   f=addfile(fils(n),"r") ; add file
@@ -202,10 +203,10 @@ chistarmin2=min(chistar2({-30:30},:))
   res@mpGridLatSpacingF = 15
   res@mpGridLonSpacingF = 45
   res@pmTickMarkDisplayMode  = "Always" 
-  res@gsnCenterString    = f@case
+  res@gsnCenterString    = names(n)
   res@gsnCenterStringFontHeightF=0.012
-  res@gsnLeftString  = lets(n) + "                   "  + "(~F33~c~F~~S~~F33~*~F~~N~)~B~min~N~: " + decimalPlaces(chistarmin/1e6,2,True) + "~F34~W~F~10~S~6~N~ m^2/s"
-  res@gsnRightString="r~B~pat~N~: " + decimalPlaces(pcor,2,True) + "; RMSE: " + decimalPlaces(rmse/1e6,2,True) + "~F34~W~F~10~S~6~N~ m^2/s"
+  res@gsnLeftString  = lets(n) + "                   "  + "(~F33~c~F~~S~~F33~*~F~~N~)~B~min~N~: " + decimalPlaces(chistarmin/1e6,2,True) + "~F34~W~F~10~S~6~N~  m~S~2~N~ s~S~-1~N~"
+  res@gsnRightString="r~B~pat~N~: " + decimalPlaces(pcor,2,True) + "; RMSE: " + decimalPlaces(rmse/1e6,2,True) + "~F34~W~F~10~S~6~N~  m~S~2~N~ s~S~-1~N~"
   
 res@tmXBLabelFontHeightF=0.006
 res@gsnRightStringFontHeightF= 0.01
@@ -271,7 +272,7 @@ resP@cnInfoLabelOn       = False
 resP@lbOrientation =   "horizontal"          ; 
 resP@lbLabelFontHeightF    = 0.006
 resP@txString = ""
-resP@lbTitleString    = "~F33~c~F~~S~*~N~ m~S~2~N~/s"
+resP@lbTitleString    = "~F33~c~F~~S~*~N~ m~S~2~N~ s~S~-1~N~"
 resP@pmLabelBarOrthogonalPosF=-0.02
 resP@gsnMaximize=True
 resP@gsnPaperOrientation = "landscape"
