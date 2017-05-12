@@ -1,4 +1,4 @@
-\begin{thebibliography}{59}
+\begin{thebibliography}{69}
 \providecommand{\natexlab}[1]{#1}
 {\catcode`\|=0\catcode`\#=12\catcode`\@=11\catcode`\\=12
 |immediate|write|@auxout{\expandafter\ifx\csname
@@ -7,6 +7,12 @@
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
   \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
   \urlstyle{rm}\Url}\fi
+
+\harvarditem{AMS}{2012}{AMS_virtual_2012}
+\emph{Virtual temperature - {AMS} {Glossary}} \harvardyearleft
+  2012\harvardyearright{}.
+\newblock Accessed: 2016-05-10.
+\newline\harvardurl{\url{http://glossary.ametsoc.org/wiki/Virtual_temperature}}
 
 \harvarditem{Allen \harvardand{} Ingram}{2002}{allen_constraints_2002}
 Allen, M.~R. \harvardand{} Ingram, W.~J.
@@ -64,6 +70,16 @@ Chadwick, R., Boutle, I., \harvardand{} Martin, G.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/JCLI-D-12-00543.1}.
 
+\harvarditem[Chou et~al.]{Chou, Neelin, Chen \harvardand{}
+  Tu}{2009}{chou_evaluating_2009}
+Chou, C., Neelin, J.~D., Chen, C.-A., \harvardand{} Tu, J.-Y.
+\newblock \emph{Evaluating the “{Rich}-{Get}-{Richer}” {Mechanism} in
+  {Tropical} {Precipitation} {Change} under {Global} {Warming}}.
+\newblock \emph{Journal of Climate}, 22(8):1982--2005 \harvardyearleft
+  2009\harvardyearright{}.
+\newblock ISSN 0894-8755.
+\newblock \doi{10.1175/2008JCLI2471.1}.
+
 \harvarditem{Doswell \harvardand{} Rasmussen}{1994}{doswell_effect_1994}
 Doswell, C.~A. \harvardand{} Rasmussen, E.~N.
 \newblock \emph{The {Effect} of {Neglecting} the {Virtual} {Temperature}
@@ -78,6 +94,14 @@ Emanuel, K.
 \newblock \emph{Quasi-equilibrium dynamics of the tropical atmosphere}.
 \newblock \emph{The Global Circulation of the Atmosphere}, pages 186--218
   \harvardyearleft 2007\harvardyearright{}.
+
+\harvarditem{Evans \harvardand{} Laing}{2011}{evans_introduction_2011}
+Evans, J.-L. \harvardand{} Laing, A.
+\newblock \emph{Introduction to {Tropical} {Meteorology}, {Ch}. 5: {Moisture}
+  and {Precipitation}}.
+\newblock The COMET Program (UCAR), 2 edition \harvardyearleft
+  2011\harvardyearright{}.
+\newline\harvardurl{\url{http://www.goes-r.gov/users/comet/tropical/textbook_2nd_edition/navmenu.php_tab_6_page_2.2.1.htm}}
 
 \harvarditem{Folkins}{2008}{folkins_ian_low-level_2008}
 Folkins, I.
@@ -102,6 +126,26 @@ Folkins, I. \harvardand{} Braun, C.
   2003\harvardyearright{}.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/1520-0442(2003)016<1807:TRABLM>2.0.CO;2}.
+
+\harvarditem[Folkins et~al.]{Folkins, Mitovski \harvardand{}
+  Pierce}{2014}{folkins_simple_2014}
+Folkins, I., Mitovski, T., \harvardand{} Pierce, J.~R.
+\newblock \emph{A simple way to improve the diurnal cycle in convective
+  rainfall over land in climate models}.
+\newblock \emph{Journal of Geophysical Research: Atmospheres},
+  119(5):2113--2130 \harvardyearleft 2014\harvardyearright{}.
+\newblock ISSN 2169-8996.
+\newblock \doi{10.1002/2013JD020149}.
+
+\harvarditem[Garrett et~al.]{Garrett, Gerber, Baumgardner, Twohy \harvardand{}
+  Weinstock}{2003}{garrett_small_2003}
+Garrett, T.~J., Gerber, H., Baumgardner, D.~G., Twohy, C.~H., \harvardand{}
+  Weinstock, E.~M.
+\newblock \emph{Small, highly reflective ice crystals in low-latitude cirrus}.
+\newblock \emph{Geophysical Research Letters}, 30(21):2132 \harvardyearleft
+  2003\harvardyearright{}.
+\newblock ISSN 1944-8007.
+\newblock \doi{10.1029/2003GL018153}.
 
 \harvarditem[Gastineau et~al.]{Gastineau, Li \harvardand{}
   Le~Treut}{2009}{gastineau_hadley_2009}
@@ -212,6 +256,22 @@ Knutson, T.~R. \harvardand{} Manabe, S.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/1520-0442(1995)008<2181:TMROTT>2.0.CO;2}.
 
+\harvarditem[Kristjánsson et~al.]{Kristjánsson, Edwards \harvardand{}
+  Mitchell}{2000}{kristjansson_impact_2000}
+Kristjánsson, J.~E., Edwards, J.~M., \harvardand{} Mitchell, D.~L.
+\newblock \emph{Impact of a new scheme for optical properties of ice crystals
+  on climates of two {GCMs}}.
+\newblock \emph{Journal of Geophysical Research: Atmospheres},
+  105(D8):10063--10079 \harvardyearleft 2000\harvardyearright{}.
+\newblock ISSN 2156-2202.
+\newblock \doi{10.1029/2000JD900015}.
+
+\harvarditem{Love}{2013}{love_us_2013}
+Love, P.
+\newblock \emph{{US} {High} {Vertical} {Resolution} {Radiosonde} :: {SPARC}}
+  \harvardyearleft 2013\harvardyearright{}.
+\newline\harvardurl{\url{http://www.sparc-climate.org/data-center/data-access/us-radiosonde/}}
+
 \harvarditem[Lu et~al.]{Lu, Vecchi \harvardand{}
   Reichler}{2007}{lu_expansion_2007}
 Lu, J., Vecchi, G.~A., \harvardand{} Reichler, T.
@@ -239,6 +299,14 @@ Ma, J., Xie, S.-P., \harvardand{} Kosaka, Y.
   2011\harvardyearright{}.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/JCLI-D-11-00048.1}.
+
+\harvarditem{Mapes}{1993}{mapes_gregarious_1993}
+Mapes, B.~E.
+\newblock \emph{Gregarious {Tropical} {Convection}}.
+\newblock \emph{Journal of the Atmospheric Sciences}, 50(13):2026--2037
+  \harvardyearleft 1993\harvardyearright{}.
+\newblock ISSN 0022-4928.
+\newblock \doi{10.1175/1520-0469(1993)050<2026:GTC>2.0.CO;2}.
 
 \harvarditem{Merlis \harvardand{} Schneider}{2011}{merlis_changes_2011}
 Merlis, T.~M. \harvardand{} Schneider, T.
@@ -268,10 +336,21 @@ Mitas, C.~M. \harvardand{} Clement, A.
 \newblock \doi{10.1029/2005GL024406}.
 
 \harvarditem[Neale et~al.]{Neale, Richter, Conley \harvardand{}
-  Park}{????}{neale_description_2010}
+  Park}{2010}{neale_description_2010}
 Neale, R., Richter, J., H., Conley, A., J., \harvardand{} Park, S.
-\newblock \emph{Description of the {NCAR} {Community} {Atmosphere} {Model}
-  ({CAM}4.0)} \harvardyearleft ????\harvardyearright{}.
+\newblock \emph{Description of the ncar community atmosphere model (cam4.0)}
+  \harvardyearleft 2010\harvardyearright{}.
+
+\harvarditem[Neale et~al.]{Neale, Richter, Park, Lauritzen, Vavrus, Rasch
+  \harvardand{} Zhang}{2013}{neale_mean_2013}
+Neale, R.~B., Richter, J., Park, S., Lauritzen, P.~H., Vavrus, S.~J., Rasch,
+  P.~J., \harvardand{} Zhang, M.
+\newblock \emph{The {Mean} {Climate} of the {Community} {Atmosphere} {Model}
+  ({CAM}4) in {Forced} {SST} and {Fully} {Coupled} {Experiments}}.
+\newblock \emph{Journal of Climate}, 26(14):5150--5168 \harvardyearleft
+  2013\harvardyearright{}.
+\newblock ISSN 0894-8755.
+\newblock \doi{10.1175/JCLI-D-12-00236.1}.
 
 \harvarditem{Oort \harvardand{} Yienger}{1996}{oort_observed_1996}
 Oort, A.~H. \harvardand{} Yienger, J.~J.
@@ -290,19 +369,6 @@ Power, S.~B. \harvardand{} Kociuba, G.
   2011\harvardyearright{}.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/2011JCLI4101.1}.
-
-\harvarditem[Prein et~al.]{Prein, Langhans, Fosser, Ferrone, Ban, Goergen,
-  Keller, Tölle, Gutjahr, Feser, Brisson, Kollet, Schmidli, van Lipzig
-  \harvardand{} Leung}{2015}{prein_review_2015}
-Prein, A.~F., Langhans, W., Fosser, G., Ferrone, A., Ban, N., Goergen, K.,
-  Keller, M., Tölle, M., Gutjahr, O., Feser, F., Brisson, E., Kollet, S.,
-  Schmidli, J., van Lipzig, N. P.~M., \harvardand{} Leung, R.
-\newblock \emph{A review on regional convection-permitting climate modeling:
-  {Demonstrations}, prospects, and challenges}.
-\newblock \emph{Reviews of Geophysics}, 53(2):2014RG000475 \harvardyearleft
-  2015\harvardyearright{}.
-\newblock ISSN 1944-9208.
-\newblock \doi{10.1002/2014RG000475}.
 
 \harvarditem[Quan et~al.]{Quan, Diaz \harvardand{}
   Hoerling}{2004}{quan_change_2004}
@@ -522,6 +588,19 @@ Wills, R.~C., Levine, X.~J., \harvardand{} Schneider, T.
 \newblock ISSN 0022-4928.
 \newblock \doi{10.1175/JAS-D-16-0219.1}.
 
+\harvarditem[Yang et~al.]{Yang, Qian, Lin, Leung, Rasch, Zhang, McFarlane,
+  Zhao, Zhang, Wang, Wang \harvardand{} Liu}{2013}{yang_uncertainty_2013}
+Yang, B., Qian, Y., Lin, G., Leung, L.~R., Rasch, P.~J., Zhang, G.~J.,
+  McFarlane, S.~A., Zhao, C., Zhang, Y., Wang, H., Wang, M., \harvardand{} Liu,
+  X.
+\newblock \emph{Uncertainty quantification and parameter tuning in the {CAM}5
+  {Zhang}-{McFarlane} convection scheme and impact of improved convection on
+  the global circulation and climate}.
+\newblock \emph{Journal of Geophysical Research: Atmospheres}, 118(2):395--415
+  \harvardyearleft 2013\harvardyearright{}.
+\newblock ISSN 2169-8996.
+\newblock \doi{10.1029/2012JD018213}.
+
 \harvarditem{Yano}{2009}{yano_deep-convective_2009}
 Yano, J.-I.
 \newblock \emph{Deep-convective vertical transport: what is mass flux?}
@@ -529,6 +608,15 @@ Yano, J.-I.
   2009\harvardyearright{}.
 \newblock ISSN 1680-7375.
 \newblock \doi{10.5194/acpd-9-3535-2009}.
+
+\harvarditem{Yano}{2014}{yano_basic_2014}
+Yano, J.-I.
+\newblock \emph{Basic convective element: bubble or plume? {A} historical
+  review}.
+\newblock \emph{Atmos. Chem. Phys.}, 14(13):7019--7030 \harvardyearleft
+  2014\harvardyearright{}.
+\newblock ISSN 1680-7324.
+\newblock \doi{10.5194/acp-14-7019-2014}.
 
 \harvarditem{Zhang}{1995}{zhang_sensitivity_1995}
 Zhang.

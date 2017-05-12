@@ -3,52 +3,47 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: uw-ethesis.aux
 The style file: output.bst
 Database file #1: uw-ethesis.bib
-I was expecting a `,' or a `}'---line 1702 of file uw-ethesis.bib
- :  
- :  url = {http://www.cesm.ucar.edu/models/ccsm4.0/cam/docs/description/cam4_desc.pdf}
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
+Warning--to sort, need author or key in AMS_virtual_2012
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-Warning--empty year in neale_description_2010; set to ????
-You've used 59 entries,
+You've used 69 entries,
             3026 wiz_defined-function locations,
-            1018 strings with 16792 characters,
-and the built_in function-call counts, 41415 in all, are:
-= -- 3515
-> -- 1406
-< -- 78
-+ -- 529
-- -- 445
-* -- 3250
-:= -- 6001
-add.period$ -- 286
-call.type$ -- 59
-change.case$ -- 450
-chr.to.int$ -- 60
-cite$ -- 60
-duplicate$ -- 3153
-empty$ -- 3303
-format.name$ -- 744
-if$ -- 8236
+            1073 strings with 18728 characters,
+and the built_in function-call counts, 47787 in all, are:
+= -- 4050
+> -- 1631
+< -- 86
++ -- 613
+- -- 517
+* -- 3751
+:= -- 6936
+add.period$ -- 328
+call.type$ -- 69
+change.case$ -- 525
+chr.to.int$ -- 70
+cite$ -- 73
+duplicate$ -- 3637
+empty$ -- 3812
+format.name$ -- 850
+if$ -- 9494
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 614
-newline$ -- 411
-num.names$ -- 295
-pop$ -- 1063
+missing$ -- 708
+newline$ -- 476
+num.names$ -- 340
+pop$ -- 1231
 preamble$ -- 1
-purify$ -- 384
+purify$ -- 448
 quote$ -- 0
-skip$ -- 1100
+skip$ -- 1280
 stack$ -- 0
-substring$ -- 2206
-swap$ -- 1763
+substring$ -- 2516
+swap$ -- 2025
 text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 704
+type$ -- 820
 warning$ -- 1
-while$ -- 280
+while$ -- 321
 width$ -- 0
-write$ -- 1012
-(There was 1 error message)
+write$ -- 1172
+(There was 1 warning)
