@@ -15,7 +15,7 @@ pr1= addfile(filen, "r")
 GPCP=addfile("../MERGED_ANN_PRECIP.nc", "r")
 stip=addfile("../PRECIP_OBS/t-diff-stddev.nc","r")
 stip1=addfile("../PRECIP_OBS/r-diff-stddev.nc","r")
-stip2=addfile("../PRECIP_OBS//blend_ANN_stddev.nc","r")
+stip2=addfile("../PRECIP_OBS//test1.nc","r")
 land=pr1->LANDFRAC(0,{-30:30},:)
 p1 = pr1->PRECC(0,{-30:30},:)
 p2= pr1->PRECL(0,{-30:30},:)
@@ -38,7 +38,7 @@ diff&lon=pr1->lon
 
 p4=stip->PRECT(0,{-30:30},:)
 p5=stip1->PRECT(0,{-30:30},:)
-p6=stip2->PRECT(0,{-30:30},:)
+p6=stip2->precip(0,{-30:30},:)
 
 ocean_only=mask(p3,land,0)
 ocean_only!0="lat"
@@ -159,7 +159,7 @@ plot(n)= gsn_csm_contour_map(wks,p3,res3)
   res4@cnMonoFillPattern = False   ; allow different patterns
   res4@cnMonoFillColor = True       ; only use one color (black)
   res4@cnLevelSelectionMode = "ExplicitLevels" ; set explicit cnlev
-  res4@cnLevels   = (/0,15/)    ; only have 1 contour level
+  res4@cnLevels   = (/1,15/)    ; only have 1 contour level
   res4@cnFillPatterns = (/-1,17,17/) ; don't fill <0.95, stipple >=0.95
   res4@gsnAddCyclic = True   ; may or may not be needed
   res4@cnInfoLabelOn       = False       ; turn off info label
@@ -189,7 +189,7 @@ if (n.eq.2) then
   res4@cnMonoFillPattern = False   ; allow different patterns
   res4@cnMonoFillColor = True       ; only use one color (black)
   res4@cnLevelSelectionMode = "ExplicitLevels" ; set explicit cnlev
-  res4@cnLevels   = (/0,15/)    ; only have 1 contour level
+  res4@cnLevels   = (/1,15/)    ; only have 1 contour level
   res4@cnFillPatterns = (/-1,17,17/) ; don't fill <0.95, stipple >=0.95
   res4@gsnAddCyclic = True   ; may or may not be needed
   res4@cnInfoLabelOn       = False       ; turn off info label
@@ -236,7 +236,7 @@ zonal_id = gsn_csm_attach_zonal_means(wks,plot(n),pr2,zres)
   res4@cnMonoFillPattern = False   ; allow different patterns
   res4@cnMonoFillColor = True       ; only use one color (black)
   res4@cnLevelSelectionMode = "ExplicitLevels" ; set explicit cnlev
-  res4@cnLevels   = (/2,50/)    ; only have 1 contour level
+  res4@cnLevels   = (/1,50/)    ; only have 1 contour level
   res4@cnFillPatterns = (/-1,17,17/) ; don't fill <0.95, stipple >=0.95
   res4@gsnAddCyclic = True   ; may or may not be needed
   res4@cnInfoLabelOn       = False       ; turn off info label

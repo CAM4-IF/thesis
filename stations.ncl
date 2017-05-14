@@ -5,7 +5,7 @@ begin
 
   res@gsnMaximize            = True
   res@gsnDraw                = True
-  res@gsnFrame               = False
+  res@gsnFrame               =False
 
   res@mpOutlineOn            = True
   res@mpPerimOn              = False
@@ -18,6 +18,8 @@ begin
   res@mpOceanFillColor       = "LightBlue"
   res@mpMinLatF    = -25.
   res@mpMaxLatF    = 25.
+  res@mpMaxLonF    = 310
+  res@mpMinLonF    = 120
   res@mpCenterLonF         = -200
   lat=(/13.55,19.72,18.43,7.33,21.98,7.08,-14.33,6.97,7.47/)
   lon=(/144.8,204.93,294,134.48,200.65,171.38,189.28,158.22,151.85/)
@@ -27,7 +29,13 @@ begin
   do i=0,8
    gsn_polymarker(wks,map,lon(i),lat(i),gsres)
   end do
-  ;draw(map)
+  names=(/"GUA","HIL","JUA","KOR","LIH","MAJ","PAG","PON","TRU"/)
+  
+  txres               = True     
+  txres@txFontHeightF = 0.01
+  do i=0,8
+   gsn_text (wks,map,names(i),lon(i),lat(i)-2, txres)
+  end do
   frame(wks)
 string1="eps2eps " + plotfile +".epsi" + " " + plotfile+".eps"
 system(string1) 

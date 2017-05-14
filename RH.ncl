@@ -6,6 +6,8 @@ plotfile="test_RH" ;;;PDF file name!
 wks = gsn_open_wks("pdf", plotfile) ;; open a workstation file!
 nummods=dimsizes(fils1) ;;number of models! 
 plot=new(nummods, graphic)    ;;;Create a panel plot with panels = number of models!
+lets=(/"a)","b)","c)"/)
+names=(/"CAM4 default","CAM4-IF-r","CAM4-IF-t"/)
 ;;;create a giant loop over all models;;;
 n=0
 do while(n.le.dimsizes(fils)-1)
@@ -122,15 +124,15 @@ do while(n.le.dimsizes(fils)-1)
  cres@gsnContourNegLineDashPattern =1  
  cres@gsnLeftString =""
  cres@gsnContourZeroLineThicknessF = 2
- cres@gsnRightString    = f@case
+ cres@gsnRightString    = names(n)
  cres@trYMinF            = 100.   ; Limits for Y axis.  The limits
  cres@trYMaxF            = 1000.
  cres@cnLineLabelDensityF      = 3.0
  cres@cnLineLabelPlacementMode = "Constant"
  cres@cnLineLabelInterval=1
- cres@gsnLeftString  = "Response: " + response + "%"
- cres@gsnLeftStringFontHeightF=0.012
- cres@gsnRightStringFontHeightF=0.015
+ cres@gsnLeftString  =lets(n)
+ cres@gsnLeftStringFontHeightF=0.022
+ cres@gsnRightStringFontHeightF=0.022
  cres1=cres
  cres1@cnLineColor="red"
  cres1@gsnContourPosLineDashPattern=1
