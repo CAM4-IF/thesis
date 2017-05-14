@@ -695,7 +695,7 @@ TRU&0.450&0.376&0.408&0.618&1\\  \hline
 \subsection{Precipitation}
 To demonstrate that using this different convection/cloud scheme with the CAM4 does not cause a major degradation in the representation of modern climate, here we will examine the performance of the CAM4 and CAM4-IF using reanalysis and observations (satellite and weather balloon soundings) as a benchmark. First we start with time-mean tropical precipitation (figure \ref{fig:3.1} and table \ref{tab:1}). We see that the CAM4-IF-r version and the CAM4 have similar tropical mean rainfall RMSEs, with the CAM4-IF having a better pattern correlation with the observational dataset. The 2 CAM4-IF models  have less of a ``double-ITCZ" rainfall pattern than the CAM4 and are closer to observations which can be seen in the zonal mean charts on the right of each plot. The CAM4-IF models tends to have too much precipitation in the SASM region around 15$^\circ$N from India to the Philippines, although this is reduced to some extent in the b.r. run. All 3 models have a higher tropical mean rainfall rate than the blended observations, although the mean values are close to those seen in reanalysis data (the satellite data included in this ``blend" bring down the tropical mean). It has been suggested that rainfall in the GPCP precipitation product (and other products derived from satellite data) is likely biased too low when the global mean energy budget is considered \citep{trenberth_earths_2009,trenberth_regional_2013}.
 
-The CAM4-IF-t has a better representation than both the CAM4 and the other CAM4-IF version for tropical mean land rainfall, with ocean rainfall RMSE the lowest in the CAM4-IF-r version in the annual mean and JJA. This could indicate that penetrative downdrafts which reach the lower troposphere is important for simulating land rainfall, although they appear to lead to an over-active summer monsoon. Overall, with the reduction of the double-ITCZ bias seen and better tropical mean pattern correlation seen in the ``CAM4-IF-r", it is likely that this version has the best representation of the tropical circulations (HC and WC), as these are what structure the distribution of rainfall in the tropics.
+The CAM4-IF-t has a better representation than both the CAM4 and the other CAM4-IF version for tropical mean land rainfall, with ocean rainfall RMSE the lowest in the CAM4-IF-r version in the annual mean and JJA. This could indicate that penetrative downdrafts which reach the lower troposphere is important for simulating land rainfall, although they appear to lead to an over-active summer monsoon. Overall, with the reduction of the double-ITCZ bias seen and better tropical mean pattern correlation seen in the CAM4-IF-r, it is likely that this version has the best representation of the tropical circulations (HC and WC), as these are what structure the distribution of rainfall in the tropics.
 \begin{table}
 \caption{Tropical mean (30$^{\circ}$S-30$^{\circ}$N) annual mean total precipitation rate ($P$) RMSE for the 3 CAM4 models and the 12 AMIP modern control members. See section x.x for more information about the datasets and models included here. While the three CAM4-IF model RMSEs' are on the high side of the AMIP model suite, the tropical mean precipitation is near the median of the AMIP members of 3.54 mm day$^{-1}$.}
 \label{tab:rmse}
@@ -730,7 +730,7 @@ AMIP - MRI-CGCM3&1.17&1.38&1.41&1.19&1.16&3.54\\  \hline
 \end{figure}
 
 \begin{table}[H]
-\caption {Rainfall table} \label{tab:title} 
+\caption {Seasonal and regional rainfall table. All RMSEs are a comparison with the observational blend described in section .x.x. } \label{tab:title} 
 \begin{center}
 
 \begin{tabular}{|p{4cm}||p{3cm}|p{2cm}|p{2cm}|  }
@@ -742,7 +742,7 @@ Default CAM4&Land&1.66&1.78\\    \cline{2-4}
 &Ocean&1.05&1.29\\    \hline
 \text{CAM4-IF-r}&Land&1.73&2.19\\   \cline{2-4}
 &Ocean&0.99&1.21\\   \hline
-CAM4-IF best T&Land&1.56&1.77\\   \cline{2-4}
+CAM4-IF-t&Land&1.56&1.77\\   \cline{2-4}
 &Ocean&1.43&1.60\\   \hline
 \end{tabular}
 
@@ -755,7 +755,7 @@ Default CAM4&Land&2.29&2.67\\    \cline{2-4}
 &Ocean&1.74&2.30\\    \hline
 \text{CAM4-IF-r}&Land&2.44&3.14\\   \cline{2-4}
 &Ocean&1.90&2.31\\   \hline
-CAM4-IF best T&Land&2.06&2.58\\   \cline{2-4}
+CAM4-IF-t&Land&2.06&2.58\\   \cline{2-4}
 &Ocean&2.00&2.26\\   \hline
 \end{tabular}
 
@@ -768,7 +768,7 @@ Default CAM4&Land&2.94&2.38\\    \cline{2-4}
 &Ocean&2.10&2.49\\    \hline
 \text{CAM4-IF-r}&Land&2.67&2.95\\   \cline{2-4}
 &Ocean&1.90&2.34\\   \hline
-CAM4-IF best T&Land&2.79&2.70\\   \cline{2-4}
+CAM4-IF-tT&Land&2.79&2.70\\   \cline{2-4}
 &Ocean&2.62&2.74\\   \hline
 \end{tabular}
 \end{center}
@@ -887,7 +887,7 @@ Examining the updraft and downdraft components of $M_{c}$ in the CAM4-IF models 
 \caption{ \textbf{a) and b)}: Vertical profiles of the annual mean tropical mean updraft mass flux, $M_{u}$, for the CAM4-IF models. \textbf{c) and d)}: Downdraft mass flux, $M_{d}$, for the CAM4-IF models. Note that the updraft mass flux increases by approximately the same amount in both models versions, but downdraft strength increases more in the CAM4-IF-t CAM4-IF version.}
 \label{fig:updown}
 \end{figure}
-As we have shown previously in figure \ref{fig:mcomegres}, the response of $omega_{int}$ and $M_{int}$ are strongly spatially correlated, so a different signed response in the tropical mean $omega$ and mass flux responses in the CAM4-IF models would seem to imply that the relationship between these 2 variables is changing under climate change, even though they remain very closely related in their spatial patterns. Also, the sign of the tropical mean repsonse in $M^{`}$ is opposite to that of $M_{int}$ in the CAM4-IF models, so a good start would be to examine how well the relationship between $M^{`}$ and $M_{int}$ is at each gridpoint; this is done is figure \ref{fig:pe} \textbf{a-c}. We can see that the there is a fairly strong correlation between $M_{int}$ and $M^{`}$  on gridpoint-by-gridpoint basis in all 3 models, however the slope is much steeper than 1 for the CAM4 default, indicating the efficiency of $M_{int}$ (even for regions with $P$ greater than 4 mm day$^{-1}$) to produce precipitation is lower than what would be predicted by theory. However, the slopes and y-intercepts of the linear regression fit line do appear to change with the 4K uniform SST warming, indicating a change in the relationship between the 2 variables is likely occurring. 
+As we have shown previously in figure \ref{fig:mcomegres}, the response of $\omega_{int}$ and $M_{int}$ are strongly spatially correlated, so a different signed response in the tropical mean $\omega$ and mass flux responses in the CAM4-IF models would seem to imply that the relationship between these 2 variables is changing under climate change, even though they remain very closely related in their spatial patterns. Also, the sign of the tropical mean repsonse in $M^{`}$ is opposite to that of $M_{int}$ in the CAM4-IF models, so a good start would be to examine how well the relationship between $M^{`}$ and $M_{int}$ is at each gridpoint; this is done is figure \ref{fig:pe} \textbf{a-c}. We can see that the there is a fairly strong correlation between $M_{int}$ and $M^{`}$  on gridpoint-by-gridpoint basis in all 3 models, however the slope is much steeper than 1 for the CAM4 default, indicating the efficiency of $M_{int}$ (even for regions with $P$ greater than 4 mm day$^{-1}$) to produce precipitation is lower than what would be predicted by theory. However, the slopes and y-intercepts of the linear regression fit line do appear to change with the 4K uniform SST warming, indicating a change in the relationship between the 2 variables is likely occurring. 
 
 We can also examine the relationship between $M_{int}$ and $\omega_{int}$ (figure \ref{fig:pe}\textbf{d-f}) and see that the relationship between the 2 does change, most notably in the CAM4-IF. The relationship between $M_{int}$ and $\omega_{int}$  at each gridpoint becomes more steep in the warmer climate, with this implying that the same mass flux in the warmer climate is typically corresponding to a weaker $\omega_{int}$. The opposite is true for the CAM4. However, the most revealing plots are textbf{g-i}, which show the relationship between the $M_{int}$ response and $\omega_{int}$ response at each gridpoint. Generally there is a good relationship between these 2 responses, but with some scatter, but the y-intercepts are the most interesting feature of these graphs. They demonstrate there is an overall offset of the $M_{int}$ compared to the $\omega_{int}$ response. In other words, while the responses of these 2 variables are correlated well spatially, there is an overall increase in mass flux seen, even if the change in $\omega$ is 0 locally. Together, these plots imply that a change in the efficiency of convective mass flux to produce precipitation is occurring in the CAM4-IF models, but no change, or even the opposite, may be occurring in the CAM4 default.
 %%%%%%Leave this figure out for now, add later if need be%%%%%
@@ -906,7 +906,8 @@ We can also examine the relationship between $M_{int}$ and $\omega_{int}$ (figur
 
 In summary the convective mass flux response in the CAM4-IF models does not seem to be consistent with the hydrological cycle argument for mass flux weakening of \citep{held_robust_2006}. While the inferred convective mass flux weakens in the CAM4-IF models, the actual mass flux does not. This could mean that there is a large change in precipitation efficiency in the CAM4-IF model with the 4K SST warming. In the very least, it does seem that the convective scheme does effect the convective mass flux response as this does not occur in the CAM4 with the ZM default scheme. Also, these are +4K SST AMIP experiments, not fully coupled climate change simulations, so it may not be valid to compare directly to the coupled CMIP models. To my knowledge, there is no literature examining the mass flux response in the AMIP4K experiments, so there may be some AMIP4K models that do show an increase in tropical mean convective mass flux.
 
-\subsection{Response of the Walker Circulation}
+\subsection{Response of the Walker and Hadley Circulations}
+In this section we will primarily focus on the Walker circulation, but we will briefly discuss the Hadley circulation as well.
 We see that a weakening of the WC is a very robust response across all the CAM4-IF +4K simulations and the CMIP5 AMIP4K models as well. However, the variation in the magnitude of the response is quite large, ranging from a 36.3\% decrease seen in the MRI-CGCM3 model to only a 3.1\% in the MIROC5 (using $\frac{\delta(\chi_{200})^{*}}{(\chi_{200})}$ as a metric, see table \ref{tab:WC}).
 
 \begin{table}[H]

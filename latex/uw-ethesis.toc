@@ -28,7 +28,7 @@
 \contentsline {section}{\numberline {4.2}Response to a uniform 4K SST warming}{43}{section.4.2}
 \contentsline {subsection}{\numberline {4.2.1}General overview}{43}{subsection.4.2.1}
 \contentsline {subsection}{\numberline {4.2.2}Convective mass flux response}{48}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Response of the Walker Circulation}{56}{subsection.4.2.3}
+\contentsline {subsection}{\numberline {4.2.3}Response of the Walker and Hadley Circulations}{56}{subsection.4.2.3}
 \contentsline {subsection}{\numberline {4.2.4}Precipitation efficiency}{62}{subsection.4.2.4}
 \contentsline {chapter}{\numberline {5}Conclusion}{66}{chapter.5}
 \contentsline {section}{\numberline {5.1}Future work}{67}{section.5.1}
