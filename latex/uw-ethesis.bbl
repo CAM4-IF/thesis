@@ -1,630 +1,694 @@
-\begin{thebibliography}{69}
+\begin{thebibliography}{81}
 \providecommand{\natexlab}[1]{#1}
-{\catcode`\|=0\catcode`\#=12\catcode`\@=11\catcode`\\=12
-|immediate|write|@auxout{\expandafter\ifx\csname
-  natexlab\endcsname\relax\gdef\natexlab#1{#1}\fi}}
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\urlprefix}{URL }
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
   \providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
   \urlstyle{rm}\Url}\fi
 
-\harvarditem{AMS}{2012}{AMS_virtual_2012}
-\emph{Virtual temperature - {AMS} {Glossary}} \harvardyearleft
-  2012\harvardyearright{}.
+\bibitem[{AMS(2012)}]{AMS_virtual_2012}
+Virtual temperature - {AMS} {Glossary}, 2012.
+\newblock \urlprefix\url{http://glossary.ametsoc.org/wiki/Virtual_temperature}.
 \newblock Accessed: 2016-05-10.
-\newline\harvardurl{\url{http://glossary.ametsoc.org/wiki/Virtual_temperature}}
 
-\harvarditem{Allen \harvardand{} Ingram}{2002}{allen_constraints_2002}
-Allen, M.~R. \harvardand{} Ingram, W.~J.
-\newblock \emph{Constraints on future changes in climate and the hydrologic
-  cycle}.
-\newblock \emph{Nature}, 419(6903):224--232 \harvardyearleft
-  2002\harvardyearright{}.
+\bibitem[{Adler et~al.(2003)Adler, Huffman, Chang, Ferraro, Xie, Janowiak,
+  Rudolf, Schneider, Curtis, Bolvin, Gruber, Susskind, Arkin, \&
+  Nelkin}]{adler_version-2_2003}
+Adler, R.~F., Huffman, G.~J., Chang, A., Ferraro, R., Xie, P.-P., Janowiak, J.,
+  Rudolf, B., Schneider, U., Curtis, S., Bolvin, D., Gruber, A., Susskind, J.,
+  Arkin, P., \& Nelkin, E.
+\newblock The {Version}-2 {Global} {Precipitation} {Climatology} {Project}
+  ({GPCP}) {Monthly} {Precipitation} {Analysis} (1979–{Present}).
+\newblock \emph{Journal of Hydrometeorology}, volume~4(6):pp. 1147--1167, 2003.
+\newblock ISSN 1525-755X.
+\newblock \doi{10.1175/1525-7541(2003)004<1147:TVGPCP>2.0.CO;2}.
+
+\bibitem[{Allen \& Ingram(2002)}]{allen_constraints_2002}
+Allen, M.~R. \& Ingram, W.~J.
+\newblock Constraints on future changes in climate and the hydrologic cycle.
+\newblock \emph{Nature}, volume 419(6903):pp. 224--232, 2002.
 \newblock ISSN 0028-0836.
 \newblock \doi{10.1038/nature01092}.
 
-\harvarditem{Bjerknes}{1969}{bjerknes_atmospheric_1969}
+\bibitem[{Arakawa(2004)}]{arakawa_cumulus_2004}
+Arakawa, A.
+\newblock The {Cumulus} {Parameterization} {Problem}: {Past}, {Present}, and
+  {Future}.
+\newblock \emph{Journal of Climate}, volume~17(13):pp. 2493--2525, 2004.
+\newblock ISSN 0894-8755.
+\newblock \doi{10.1175/1520-0442(2004)017<2493:RATCPP>2.0.CO;2}.
+
+\bibitem[{Bjerknes(1969)}]{bjerknes_atmospheric_1969}
 Bjerknes, J.
-\newblock \emph{Atmospheric teleconnections from the equatorial pacific}.
-\newblock \emph{Monthly Weather Review}, 97(3):163--172 \harvardyearleft
-  1969\harvardyearright{}.
+\newblock Atmospheric teleconnections from the equatorial pacific.
+\newblock \emph{Monthly Weather Review}, volume~97(3):pp. 163--172, 1969.
 \newblock ISSN 0027-0644.
 \newblock \doi{10.1175/1520-0493(1969)097<0163:ATFTEP>2.3.CO;2}.
 
-\harvarditem{Boer}{1993}{boer_climate_1993}
+\bibitem[{Boer(1993)}]{boer_climate_1993}
 Boer, G.~J.
-\newblock \emph{Climate change and the regulation of the surface moisture and
-  energy budgets}.
-\newblock \emph{Climate Dynamics}, 8(5):225--239 \harvardyearleft
-  1993\harvardyearright{}.
+\newblock Climate change and the regulation of the surface moisture and energy
+  budgets.
+\newblock \emph{Climate Dynamics}, volume~8(5):pp. 225--239, 1993.
 \newblock ISSN 0930-7575, 1432-0894.
 \newblock \doi{10.1007/BF00198617}.
 
-\harvarditem[Bony et~al.]{Bony, Bellon, Klocke, Sherwood, Fermepin
-  \harvardand{} Denvil}{2013}{bony_robust_2013}
-Bony, S., Bellon, G., Klocke, D., Sherwood, S., Fermepin, S., \harvardand{}
-  Denvil, S.
-\newblock \emph{Robust direct effect of carbon dioxide on tropical circulation
-  and regional precipitation}.
-\newblock \emph{Nature Geoscience}, 6(6):447--451 \harvardyearleft
-  2013\harvardyearright{}.
+\bibitem[{Bony et~al.(2013)Bony, Bellon, Klocke, Sherwood, Fermepin, \&
+  Denvil}]{bony_robust_2013}
+Bony, S., Bellon, G., Klocke, D., Sherwood, S., Fermepin, S., \& Denvil, S.
+\newblock Robust direct effect of carbon dioxide on tropical circulation and
+  regional precipitation.
+\newblock \emph{Nature Geoscience}, volume~6(6):pp. 447--451, 2013.
 \newblock ISSN 1752-0894.
 \newblock \doi{10.1038/ngeo1799}.
 
-\harvarditem{Caballero}{2007}{caballero_role_2007}
+\bibitem[{Caballero(2007)}]{caballero_role_2007}
 Caballero, R.
-\newblock \emph{Role of eddies in the interannual variability of {Hadley} cell
-  strength}.
-\newblock \emph{Geophysical Research Letters}, 34(22):L22705 \harvardyearleft
-  2007\harvardyearright{}.
+\newblock Role of eddies in the interannual variability of {Hadley} cell
+  strength.
+\newblock \emph{Geophysical Research Letters}, volume~34(22):p. L22705, 2007.
 \newblock ISSN 1944-8007.
 \newblock \doi{10.1029/2007GL030971}.
 
-\harvarditem[Chadwick et~al.]{Chadwick, Boutle \harvardand{}
-  Martin}{2012}{chadwick_spatial_2012}
-Chadwick, R., Boutle, I., \harvardand{} Martin, G.
-\newblock \emph{Spatial {Patterns} of {Precipitation} {Change} in {CMIP}5:
-  {Why} the {Rich} {Do} {Not} {Get} {Richer} in the {Tropics}}.
-\newblock \emph{Journal of Climate}, 26(11):3803--3822 \harvardyearleft
-  2012\harvardyearright{}.
+\bibitem[{Chadwick et~al.(2012)Chadwick, Boutle, \&
+  Martin}]{chadwick_spatial_2012}
+Chadwick, R., Boutle, I., \& Martin, G.
+\newblock Spatial {Patterns} of {Precipitation} {Change} in {CMIP}5: {Why} the
+  {Rich} {Do} {Not} {Get} {Richer} in the {Tropics}.
+\newblock \emph{Journal of Climate}, volume~26(11):pp. 3803--3822, 2012.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/JCLI-D-12-00543.1}.
 
-\harvarditem[Chou et~al.]{Chou, Neelin, Chen \harvardand{}
-  Tu}{2009}{chou_evaluating_2009}
-Chou, C., Neelin, J.~D., Chen, C.-A., \harvardand{} Tu, J.-Y.
-\newblock \emph{Evaluating the “{Rich}-{Get}-{Richer}” {Mechanism} in
-  {Tropical} {Precipitation} {Change} under {Global} {Warming}}.
-\newblock \emph{Journal of Climate}, 22(8):1982--2005 \harvardyearleft
-  2009\harvardyearright{}.
+\bibitem[{Chen et~al.(2002)Chen, Xie, Janowiak, \& Arkin}]{chen_global_2002}
+Chen, M., Xie, P., Janowiak, J.~E., \& Arkin, P.~A.
+\newblock Global {Land} {Precipitation}: {A} 50-yr {Monthly} {Analysis} {Based}
+  on {Gauge} {Observations}.
+\newblock \emph{Journal of Hydrometeorology}, volume~3(3):pp. 249--266, 2002.
+\newblock ISSN 1525-755X.
+\newblock \doi{10.1175/1525-7541(2002)003<0249:GLPAYM>2.0.CO;2}.
+
+\bibitem[{Chou et~al.(2009)Chou, Neelin, Chen, \& Tu}]{chou_evaluating_2009}
+Chou, C., Neelin, J.~D., Chen, C.-A., \& Tu, J.-Y.
+\newblock Evaluating the “{Rich}-{Get}-{Richer}” {Mechanism} in {Tropical}
+  {Precipitation} {Change} under {Global} {Warming}.
+\newblock \emph{Journal of Climate}, volume~22(8):pp. 1982--2005, 2009.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/2008JCLI2471.1}.
 
-\harvarditem{Doswell \harvardand{} Rasmussen}{1994}{doswell_effect_1994}
-Doswell, C.~A. \harvardand{} Rasmussen, E.~N.
-\newblock \emph{The {Effect} of {Neglecting} the {Virtual} {Temperature}
-  {Correction} on {CAPE} {Calculations}}.
-\newblock \emph{Weather and Forecasting}, 9(4):625--629 \harvardyearleft
-  1994\harvardyearright{}.
+\bibitem[{Dee et~al.(2011)Dee, Uppala, Simmons, Berrisford, Poli, Kobayashi,
+  Andrae, Balmaseda, Balsamo, Bauer, Bechtold, Beljaars, van~de Berg, Bidlot,
+  Bormann, Delsol, Dragani, Fuentes, Geer, Haimberger, Healy, Hersbach, Hólm,
+  Isaksen, Kållberg, Köhler, Matricardi, McNally, Monge-Sanz, Morcrette,
+  Park, Peubey, de~Rosnay, Tavolato, Thépaut, \&
+  Vitart}]{dee_era-interim_2011}
+Dee, D.~P., Uppala, S.~M., Simmons, A.~J., Berrisford, P., Poli, P., Kobayashi,
+  S., Andrae, U., Balmaseda, M.~A., Balsamo, G., Bauer, P., Bechtold, P.,
+  Beljaars, A. C.~M., van~de Berg, L., Bidlot, J., Bormann, N., Delsol, C.,
+  Dragani, R., Fuentes, M., Geer, A.~J., Haimberger, L., Healy, S.~B.,
+  Hersbach, H., Hólm, E.~V., Isaksen, L., Kållberg, P., Köhler, M.,
+  Matricardi, M., McNally, A.~P., Monge-Sanz, B.~M., Morcrette, J.-J., Park,
+  B.-K., Peubey, C., de~Rosnay, P., Tavolato, C., Thépaut, J.-N., \& Vitart,
+  F.
+\newblock The {ERA}-{Interim} reanalysis: configuration and performance of the
+  data assimilation system.
+\newblock \emph{Quarterly Journal of the Royal Meteorological Society}, volume
+  137(656):pp. 553--597, 2011.
+\newblock ISSN 1477-870X.
+\newblock \doi{10.1002/qj.828}.
+
+\bibitem[{Doswell \& Rasmussen(1994)}]{doswell_effect_1994}
+Doswell, C.~A. \& Rasmussen, E.~N.
+\newblock The {Effect} of {Neglecting} the {Virtual} {Temperature} {Correction}
+  on {CAPE} {Calculations}.
+\newblock \emph{Weather and Forecasting}, volume~9(4):pp. 625--629, 1994.
 \newblock ISSN 0882-8156.
 \newblock \doi{10.1175/1520-0434(1994)009<0625:TEONTV>2.0.CO;2}.
 
-\harvarditem{Emanuel}{2007}{emanuel_quasi-equilibrium_2007}
+\bibitem[{Emanuel(2007)}]{emanuel_quasi-equilibrium_2007}
 Emanuel, K.
-\newblock \emph{Quasi-equilibrium dynamics of the tropical atmosphere}.
-\newblock \emph{The Global Circulation of the Atmosphere}, pages 186--218
-  \harvardyearleft 2007\harvardyearright{}.
+\newblock Quasi-equilibrium dynamics of the tropical atmosphere.
+\newblock \emph{The Global Circulation of the Atmosphere}, pp. 186--218, 2007.
 
-\harvarditem{Evans \harvardand{} Laing}{2011}{evans_introduction_2011}
-Evans, J.-L. \harvardand{} Laing, A.
+\bibitem[{Evans \& Laing(2011)}]{evans_introduction_2011}
+Evans, J.-L. \& Laing, A.
 \newblock \emph{Introduction to {Tropical} {Meteorology}, {Ch}. 5: {Moisture}
   and {Precipitation}}.
-\newblock The COMET Program (UCAR), 2 edition \harvardyearleft
-  2011\harvardyearright{}.
-\newline\harvardurl{\url{http://www.goes-r.gov/users/comet/tropical/textbook_2nd_edition/navmenu.php_tab_6_page_2.2.1.htm}}
+\newblock The COMET Program (UCAR), 2 edition, 2011.
+\newblock
+  \urlprefix\url{http://www.goes-r.gov/users/comet/tropical/textbook_2nd_edition/navmenu.php_tab_6_page_2.2.1.htm}.
 
-\harvarditem{Folkins}{2008}{folkins_ian_low-level_2008}
+\bibitem[{Folkins(2008)}]{folkins_ian_low-level_2008}
 Folkins, I.
-\newblock \emph{A {Low}-{Level} {Circulation} in the {Tropics}}.
-\newblock \emph{Journal of the Atmospheric Sciences}, 65(3):1019--1034
-  \harvardyearleft 2008\harvardyearright{}.
+\newblock A {Low}-{Level} {Circulation} in the {Tropics}.
+\newblock \emph{Journal of the Atmospheric Sciences}, volume~65(3):pp.
+  1019--1034, 2008.
 \newblock ISSN 0022-4928.
 \newblock \doi{10.1175/2007JAS2463.1}.
 
-\harvarditem{Folkins}{2013}{folkins_melting_2013}
+\bibitem[{Folkins(2013)}]{folkins_melting_2013}
 Folkins, I.
-\newblock \emph{The melting level stability anomaly in the tropics}.
-\newblock \emph{Atmos. Chem. Phys.}, 13(3):1167--1176 \harvardyearleft
-  2013\harvardyearright{}.
+\newblock The melting level stability anomaly in the tropics.
+\newblock \emph{Atmos. Chem. Phys.}, volume~13(3):pp. 1167--1176, 2013.
 \newblock ISSN 1680-7324.
 \newblock \doi{10.5194/acp-13-1167-2013}.
 
-\harvarditem{Folkins \harvardand{} Braun}{2003}{folkins_ian_tropical_2003}
-Folkins, I. \harvardand{} Braun, C.
-\newblock \emph{Tropical {Rainfall} and {Boundary} {Layer} {Moist} {Entropy}}.
-\newblock \emph{Journal of Climate}, 16(11):1807--1820 \harvardyearleft
-  2003\harvardyearright{}.
+\bibitem[{Folkins \& Braun(2003)}]{folkins_ian_tropical_2003}
+Folkins, I. \& Braun, C.
+\newblock Tropical {Rainfall} and {Boundary} {Layer} {Moist} {Entropy}.
+\newblock \emph{Journal of Climate}, volume~16(11):pp. 1807--1820, 2003.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/1520-0442(2003)016<1807:TRABLM>2.0.CO;2}.
 
-\harvarditem[Folkins et~al.]{Folkins, Mitovski \harvardand{}
-  Pierce}{2014}{folkins_simple_2014}
-Folkins, I., Mitovski, T., \harvardand{} Pierce, J.~R.
-\newblock \emph{A simple way to improve the diurnal cycle in convective
-  rainfall over land in climate models}.
-\newblock \emph{Journal of Geophysical Research: Atmospheres},
-  119(5):2113--2130 \harvardyearleft 2014\harvardyearright{}.
+\bibitem[{Folkins et~al.(2014)Folkins, Mitovski, \&
+  Pierce}]{folkins_simple_2014}
+Folkins, I., Mitovski, T., \& Pierce, J.~R.
+\newblock A simple way to improve the diurnal cycle in convective rainfall over
+  land in climate models.
+\newblock \emph{Journal of Geophysical Research: Atmospheres}, volume
+  119(5):pp. 2113--2130, 2014.
 \newblock ISSN 2169-8996.
 \newblock \doi{10.1002/2013JD020149}.
 
-\harvarditem[Garrett et~al.]{Garrett, Gerber, Baumgardner, Twohy \harvardand{}
-  Weinstock}{2003}{garrett_small_2003}
-Garrett, T.~J., Gerber, H., Baumgardner, D.~G., Twohy, C.~H., \harvardand{}
-  Weinstock, E.~M.
-\newblock \emph{Small, highly reflective ice crystals in low-latitude cirrus}.
-\newblock \emph{Geophysical Research Letters}, 30(21):2132 \harvardyearleft
-  2003\harvardyearright{}.
+\bibitem[{Garrett et~al.(2003)Garrett, Gerber, Baumgardner, Twohy, \&
+  Weinstock}]{garrett_small_2003}
+Garrett, T.~J., Gerber, H., Baumgardner, D.~G., Twohy, C.~H., \& Weinstock,
+  E.~M.
+\newblock Small, highly reflective ice crystals in low-latitude cirrus.
+\newblock \emph{Geophysical Research Letters}, volume~30(21):p. 2132, 2003.
 \newblock ISSN 1944-8007.
 \newblock \doi{10.1029/2003GL018153}.
 
-\harvarditem[Gastineau et~al.]{Gastineau, Li \harvardand{}
-  Le~Treut}{2009}{gastineau_hadley_2009}
-Gastineau, G., Li, L., \harvardand{} Le~Treut, H.
-\newblock \emph{The {Hadley} and {Walker} {Circulation} {Changes} in {Global}
+\bibitem[{Gastineau et~al.(2009)Gastineau, Li, \&
+  Le~Treut}]{gastineau_hadley_2009}
+Gastineau, G., Li, L., \& Le~Treut, H.
+\newblock The {Hadley} and {Walker} {Circulation} {Changes} in {Global}
   {Warming} {Conditions} {Described} by {Idealized} {Atmospheric}
-  {Simulations}}.
-\newblock \emph{Journal of Climate}, 22(14):3993--4013 \harvardyearleft
-  2009\harvardyearright{}.
+  {Simulations}.
+\newblock \emph{Journal of Climate}, volume~22(14):pp. 3993--4013, 2009.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/2009JCLI2794.1}.
 
-\harvarditem{Hack}{1994}{hack_parameterization_1994}
+\bibitem[{Hack(1994)}]{hack_parameterization_1994}
 Hack, J.~J.
-\newblock \emph{Parameterization of moist convection in the {National} {Center}
-  for {Atmospheric} {Research} community climate model ({CCM}2)}.
+\newblock Parameterization of moist convection in the {National} {Center} for
+  {Atmospheric} {Research} community climate model ({CCM}2).
 \newblock \emph{Journal of Geophysical Research: Atmospheres},
-  99(D3):5551--5568 \harvardyearleft 1994\harvardyearright{}.
+  volume~99(D3):pp. 5551--5568, 1994.
 \newblock ISSN 2156-2202.
 \newblock \doi{10.1029/93JD03478}.
 
-\harvarditem{He \harvardand{} Soden}{2015}{he_anthropogenic_2015}
-He, J. \harvardand{} Soden, B.~J.
-\newblock \emph{Anthropogenic {Weakening} of the {Tropical} {Circulation}:
-  {The} {Relative} {Roles} of {Direct} {CO}2 {Forcing} and {Sea} {Surface}
-  {Temperature} {Change}}.
-\newblock \emph{Journal of Climate}, 28(22):8728--8742 \harvardyearleft
-  2015\harvardyearright{}.
+\bibitem[{He \& Soden(2015)}]{he_anthropogenic_2015}
+He, J. \& Soden, B.~J.
+\newblock Anthropogenic {Weakening} of the {Tropical} {Circulation}: {The}
+  {Relative} {Roles} of {Direct} {CO}2 {Forcing} and {Sea} {Surface}
+  {Temperature} {Change}.
+\newblock \emph{Journal of Climate}, volume~28(22):pp. 8728--8742, 2015.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/JCLI-D-15-0205.1}.
 
-\harvarditem{Held \harvardand{} Hou}{1980}{held_nonlinear_1980}
-Held, I.~M. \harvardand{} Hou, A.~Y.
-\newblock \emph{Nonlinear {Axially} {Symmetric} {Circulations} in a {Nearly}
-  {Inviscid} {Atmosphere}}.
-\newblock \emph{Journal of the Atmospheric Sciences}, 37(3):515--533
-  \harvardyearleft 1980\harvardyearright{}.
+\bibitem[{Held \& Hou(1980)}]{held_nonlinear_1980}
+Held, I.~M. \& Hou, A.~Y.
+\newblock Nonlinear {Axially} {Symmetric} {Circulations} in a {Nearly}
+  {Inviscid} {Atmosphere}.
+\newblock \emph{Journal of the Atmospheric Sciences}, volume~37(3):pp.
+  515--533, 1980.
 \newblock ISSN 0022-4928.
 \newblock \doi{10.1175/1520-0469(1980)037<0515:NASCIA>2.0.CO;2}.
 
-\harvarditem{Held \harvardand{} Soden}{2006}{held_robust_2006}
-Held, I.~M. \harvardand{} Soden, B.~J.
-\newblock \emph{Robust {Responses} of the {Hydrological} {Cycle} to {Global}
-  {Warming}}.
-\newblock \emph{Journal of Climate}, 19(21):5686--5699 \harvardyearleft
-  2006\harvardyearright{}.
+\bibitem[{Held \& Soden(2006)}]{held_robust_2006}
+Held, I.~M. \& Soden, B.~J.
+\newblock Robust {Responses} of the {Hydrological} {Cycle} to {Global}
+  {Warming}.
+\newblock \emph{Journal of Climate}, volume~19(21):pp. 5686--5699, 2006.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/JCLI3990.1}.
 
-\harvarditem[Hollars et~al.]{Hollars, Fu, Comstock \harvardand{}
-  Ackerman}{2004}{hollars_comparisons_2004}
-Hollars, S., Fu, Q., Comstock, J.~M., \harvardand{} Ackerman, T.~P.
-\newblock \emph{Comparisons of {Cloud}-{Top} {Height} {Retrievals} from
+\bibitem[{Hollars et~al.(2004)Hollars, Fu, Comstock, \&
+  Ackerman}]{hollars_comparisons_2004}
+Hollars, S., Fu, Q., Comstock, J.~M., \& Ackerman, T.~P.
+\newblock Comparisons of {Cloud}-{Top} {Height} {Retrievals} from
   {Ground}-{Based} 35 {Ghz} {Mmcr} and {Gms}-5 {Satellite} {Observations} at
-  {Arm} {Twp} {Manus} {Site}}.
-\newblock \emph{Atmospheric Research}, 72(1-4) \harvardyearleft
-  2004\harvardyearright{}.
+  {Arm} {Twp} {Manus} {Site}.
+\newblock \emph{Atmospheric Research}, volume~72(1-4), 2004.
 \newblock \doi{10.1016/j.atmosres.2004.03.015}.
 
-\harvarditem{Holton}{2004}{holton_introduction_2004}
+\bibitem[{Holton(2004)}]{holton_introduction_2004}
 Holton, J.~R.
 \newblock \emph{An {Introduction} to {Dynamic} {Meteorology}}.
-\newblock Academic Press, 4 edition \harvardyearleft 2004\harvardyearright{}.
+\newblock Academic Press, 4 edition, 2004.
 \newblock ISBN 978-0-12-354015-7.
 \newblock Google-Books-ID: fhW5oDv3EPsC.
 
-\harvarditem{Hu \harvardand{} Fu}{2007}{hu_observed_2007}
-Hu, Y. \harvardand{} Fu, Q.
-\newblock \emph{Observed poleward expansion of the {Hadley} circulation since
-  1979}.
-\newblock \emph{Atmos. Chem. Phys.}, 7(19):5229--5236 \harvardyearleft
-  2007\harvardyearright{}.
+\bibitem[{Hu \& Fu(2007)}]{hu_observed_2007}
+Hu, Y. \& Fu, Q.
+\newblock Observed poleward expansion of the {Hadley} circulation since 1979.
+\newblock \emph{Atmos. Chem. Phys.}, volume~7(19):pp. 5229--5236, 2007.
 \newblock ISSN 1680-7324.
 \newblock \doi{10.5194/acp-7-5229-2007}.
 
-\harvarditem{Johanson \harvardand{} Fu}{2009}{johanson_hadley_2009}
-Johanson, C.~M. \harvardand{} Fu, Q.
-\newblock \emph{Hadley {Cell} {Widening}: {Model} {Simulations} versus
-  {Observations}}.
-\newblock \emph{Journal of Climate}, 22(10):2713--2725 \harvardyearleft
-  2009\harvardyearright{}.
+\bibitem[{Johanson \& Fu(2009)}]{johanson_hadley_2009}
+Johanson, C.~M. \& Fu, Q.
+\newblock Hadley {Cell} {Widening}: {Model} {Simulations} versus
+  {Observations}.
+\newblock \emph{Journal of Climate}, volume~22(10):pp. 2713--2725, 2009.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/2008JCLI2620.1}.
 
-\harvarditem{Katsaros}{2001}{katsaros_evaporation_2001}
+\bibitem[{Katsaros(2001)}]{katsaros_evaporation_2001}
 Katsaros, K.
-\newblock \emph{Evaporation {And} {Humidity}}.
-\newblock In \emph{Encyclopedia of {Ocean} {Sciences}}, pages 870--877.
-  Elsevier \harvardyearleft 2001\harvardyearright{}.
+\newblock Evaporation {And} {Humidity}.
+\newblock In \emph{Encyclopedia of {Ocean} {Sciences}}, pp. 870--877. Elsevier,
+  2001.
 \newblock ISBN 978-0-12-227430-5.
 \newblock DOI: 10.1006/rwos.2001.0068.
 
-\harvarditem{Kim \harvardand{} Lee}{2001}{kim_hadley_2001}
-Kim, H.-k. \harvardand{} Lee, S.
-\newblock \emph{Hadley {Cell} {Dynamics} in a {Primitive} {Equation} {Model}.
-  {Part} {II}: {Nonaxisymmetric} {Flow}}.
-\newblock \emph{Journal of the Atmospheric Sciences}, 58(19):2859--2871
-  \harvardyearleft 2001\harvardyearright{}.
+\bibitem[{Kim \& Lee(2001)}]{kim_hadley_2001}
+Kim, H.-k. \& Lee, S.
+\newblock Hadley {Cell} {Dynamics} in a {Primitive} {Equation} {Model}. {Part}
+  {II}: {Nonaxisymmetric} {Flow}.
+\newblock \emph{Journal of the Atmospheric Sciences}, volume~58(19):pp.
+  2859--2871, 2001.
 \newblock ISSN 0022-4928.
 \newblock \doi{10.1175/1520-0469(2001)058<2859:HCDIAP>2.0.CO;2}.
 
-\harvarditem{Knutson \harvardand{} Manabe}{1995}{knutson_time-mean_1995}
-Knutson, T.~R. \harvardand{} Manabe, S.
-\newblock \emph{Time-{Mean} {Response} over the {Tropical} {Pacific} to
-  {Increased} {C}02 in a {Coupled} {Ocean}-{Atmosphere} {Model}}.
-\newblock \emph{Journal of Climate}, 8(9):2181--2199 \harvardyearleft
-  1995\harvardyearright{}.
+\bibitem[{Knutson \& Manabe(1995)}]{knutson_time-mean_1995}
+Knutson, T.~R. \& Manabe, S.
+\newblock Time-{Mean} {Response} over the {Tropical} {Pacific} to {Increased}
+  {C}02 in a {Coupled} {Ocean}-{Atmosphere} {Model}.
+\newblock \emph{Journal of Climate}, volume~8(9):pp. 2181--2199, 1995.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/1520-0442(1995)008<2181:TMROTT>2.0.CO;2}.
 
-\harvarditem[Kristjánsson et~al.]{Kristjánsson, Edwards \harvardand{}
-  Mitchell}{2000}{kristjansson_impact_2000}
-Kristjánsson, J.~E., Edwards, J.~M., \harvardand{} Mitchell, D.~L.
-\newblock \emph{Impact of a new scheme for optical properties of ice crystals
-  on climates of two {GCMs}}.
-\newblock \emph{Journal of Geophysical Research: Atmospheres},
-  105(D8):10063--10079 \harvardyearleft 2000\harvardyearright{}.
+\bibitem[{Kristjánsson et~al.(2000)Kristjánsson, Edwards, \&
+  Mitchell}]{kristjansson_impact_2000}
+Kristjánsson, J.~E., Edwards, J.~M., \& Mitchell, D.~L.
+\newblock Impact of a new scheme for optical properties of ice crystals on
+  climates of two {GCMs}.
+\newblock \emph{Journal of Geophysical Research: Atmospheres}, volume
+  105(D8):pp. 10063--10079, 2000.
 \newblock ISSN 2156-2202.
 \newblock \doi{10.1029/2000JD900015}.
 
-\harvarditem{Love}{2013}{love_us_2013}
-Love, P.
-\newblock \emph{{US} {High} {Vertical} {Resolution} {Radiosonde} :: {SPARC}}
-  \harvardyearleft 2013\harvardyearright{}.
-\newline\harvardurl{\url{http://www.sparc-climate.org/data-center/data-access/us-radiosonde/}}
+\bibitem[{Liu et~al.(2012)Liu, Ostrenga, Teng, \& Kempler}]{liu_tropical_2012}
+Liu, Z., Ostrenga, D., Teng, W., \& Kempler, S.
+\newblock Tropical {Rainfall} {Measuring} {Mission} ({TRMM}) {Precipitation}
+  {Data} and {Services} for {Research} and {Applications}.
+\newblock \emph{Bulletin of the American Meteorological Society},
+  volume~93(9):pp. 1317--1325, 2012.
+\newblock ISSN 0003-0007.
+\newblock \doi{10.1175/BAMS-D-11-00152.1}.
 
-\harvarditem[Lu et~al.]{Lu, Vecchi \harvardand{}
-  Reichler}{2007}{lu_expansion_2007}
-Lu, J., Vecchi, G.~A., \harvardand{} Reichler, T.
-\newblock \emph{Expansion of the {Hadley} cell under global warming}.
-\newblock \emph{Geophysical Research Letters}, 34(6):L06805 \harvardyearleft
-  2007\harvardyearright{}.
+\bibitem[{Love(2013)}]{love_us_2013}
+Love, P.
+\newblock {US} {High} {Vertical} {Resolution} {Radiosonde} :: {SPARC}, 2013.
+\newblock
+  \urlprefix\url{http://www.sparc-climate.org/data-center/data-access/us-radiosonde/}.
+
+\bibitem[{Lu et~al.(2007)Lu, Vecchi, \& Reichler}]{lu_expansion_2007}
+Lu, J., Vecchi, G.~A., \& Reichler, T.
+\newblock Expansion of the {Hadley} cell under global warming.
+\newblock \emph{Geophysical Research Letters}, volume~34(6):p. L06805, 2007.
 \newblock ISSN 1944-8007.
 \newblock \doi{10.1029/2006GL028443}.
 
-\harvarditem[L’Heureux et~al.]{L’Heureux, Lee \harvardand{}
-  Lyon}{2013}{lheureux_recent_2013}
-L’Heureux, M.~L., Lee, S., \harvardand{} Lyon, B.
-\newblock \emph{Recent multidecadal strengthening of the {Walker} circulation
-  across the tropical {Pacific}}.
-\newblock \emph{Nature Climate Change}, 3(6):571--576 \harvardyearleft
-  2013\harvardyearright{}.
+\bibitem[{L’Heureux et~al.(2013)L’Heureux, Lee, \&
+  Lyon}]{lheureux_recent_2013}
+L’Heureux, M.~L., Lee, S., \& Lyon, B.
+\newblock Recent multidecadal strengthening of the {Walker} circulation across
+  the tropical {Pacific}.
+\newblock \emph{Nature Climate Change}, volume~3(6):pp. 571--576, 2013.
 \newblock ISSN 1758-678X.
 \newblock \doi{10.1038/nclimate1840}.
 
-\harvarditem[Ma et~al.]{Ma, Xie \harvardand{} Kosaka}{2011}{ma_mechanisms_2011}
-Ma, J., Xie, S.-P., \harvardand{} Kosaka, Y.
-\newblock \emph{Mechanisms for {Tropical} {Tropospheric} {Circulation} {Change}
-  in {Response} to {Global} {Warming}}.
-\newblock \emph{Journal of Climate}, 25(8):2979--2994 \harvardyearleft
-  2011\harvardyearright{}.
+\bibitem[{Ma et~al.(2011)Ma, Xie, \& Kosaka}]{ma_mechanisms_2011}
+Ma, J., Xie, S.-P., \& Kosaka, Y.
+\newblock Mechanisms for {Tropical} {Tropospheric} {Circulation} {Change} in
+  {Response} to {Global} {Warming}.
+\newblock \emph{Journal of Climate}, volume~25(8):pp. 2979--2994, 2011.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/JCLI-D-11-00048.1}.
 
-\harvarditem{Mapes}{1993}{mapes_gregarious_1993}
+\bibitem[{Mapes(1993)}]{mapes_gregarious_1993}
 Mapes, B.~E.
-\newblock \emph{Gregarious {Tropical} {Convection}}.
-\newblock \emph{Journal of the Atmospheric Sciences}, 50(13):2026--2037
-  \harvardyearleft 1993\harvardyearright{}.
+\newblock Gregarious {Tropical} {Convection}.
+\newblock \emph{Journal of the Atmospheric Sciences}, volume~50(13):pp.
+  2026--2037, 1993.
 \newblock ISSN 0022-4928.
 \newblock \doi{10.1175/1520-0469(1993)050<2026:GTC>2.0.CO;2}.
 
-\harvarditem{Merlis \harvardand{} Schneider}{2011}{merlis_changes_2011}
-Merlis, T.~M. \harvardand{} Schneider, T.
-\newblock \emph{Changes in zonal surface temperature gradients and {Walker}
-  circulations in a wide range of climates}.
-\newblock \emph{Journal of Climate}, 24(17):4757--4768 \harvardyearleft
-  2011\harvardyearright{}.
+\bibitem[{Market et~al.(2003)Market, Allen, Scofield, Kuligowski, \&
+  Gruber}]{market_precipitation_2003}
+Market, P., Allen, S., Scofield, R., Kuligowski, R., \& Gruber, A.
+\newblock Precipitation {Efficiency} of {Warm}-{Season} {Midwestern}
+  {Mesoscale} {Convective} {Systems}.
+\newblock \emph{Weather and Forecasting}, volume~18(6):pp. 1273--1285, 2003.
+\newblock ISSN 0882-8156.
+\newblock \doi{10.1175/1520-0434(2003)018<1273:PEOWMM>2.0.CO;2}.
+
+\bibitem[{Merlis(2012)}]{merlis_general_2012}
+Merlis, T.~M.
+\newblock \emph{The general circulation of the tropical atmosphere and climate
+  changes}.
+\newblock Ph.D. thesis, California Institute of Technology, 2012.
+\newblock \urlprefix\url{http://thesis.library.caltech.edu/6533/}.
+
+\bibitem[{Merlis \& Schneider(2011)}]{merlis_changes_2011}
+Merlis, T.~M. \& Schneider, T.
+\newblock Changes in zonal surface temperature gradients and {Walker}
+  circulations in a wide range of climates.
+\newblock \emph{Journal of Climate}, volume~24(17):pp. 4757--4768, 2011.
 \newblock ISSN 0894-8755, 1520-0442.
 \newblock \doi{10.1175/2011JCLI4042.1}.
 \newblock ArXiv: 1009.0301.
 
-\harvarditem{Mitas \harvardand{} Clement}{2005}{mitas_has_2005}
-Mitas, C.~M. \harvardand{} Clement, A.
-\newblock \emph{Has the {Hadley} cell been strengthening in recent decades?}
-\newblock \emph{Geophysical Research Letters}, 32(3):L03809 \harvardyearleft
-  2005\harvardyearright{}.
+\bibitem[{Mitas \& Clement(2005)}]{mitas_has_2005}
+Mitas, C.~M. \& Clement, A.
+\newblock Has the {Hadley} cell been strengthening in recent decades?
+\newblock \emph{Geophysical Research Letters}, volume~32(3):p. L03809, 2005.
 \newblock ISSN 1944-8007.
 \newblock \doi{10.1029/2004GL021765}.
 
-\harvarditem{Mitas \harvardand{} Clement}{2006}{mitas_recent_2006}
-Mitas, C.~M. \harvardand{} Clement, A.
-\newblock \emph{Recent behavior of the {Hadley} cell and tropical
-  thermodynamics in climate models and reanalyses}.
-\newblock \emph{Geophysical Research Letters}, 33(1):L01810 \harvardyearleft
-  2006\harvardyearright{}.
+\bibitem[{Mitas \& Clement(2006)}]{mitas_recent_2006}
+Mitas, C.~M. \& Clement, A.
+\newblock Recent behavior of the {Hadley} cell and tropical thermodynamics in
+  climate models and reanalyses.
+\newblock \emph{Geophysical Research Letters}, volume~33(1):p. L01810, 2006.
 \newblock ISSN 1944-8007.
 \newblock \doi{10.1029/2005GL024406}.
 
-\harvarditem[Neale et~al.]{Neale, Richter, Conley \harvardand{}
-  Park}{2010}{neale_description_2010}
-Neale, R., Richter, J., H., Conley, A., J., \harvardand{} Park, S.
-\newblock \emph{Description of the ncar community atmosphere model (cam4.0)}
-  \harvardyearleft 2010\harvardyearright{}.
+\bibitem[{Neale et~al.(2010)Neale, Richter, Conley, \&
+  Park}]{neale_description_2010}
+Neale, R., Richter, J., H., Conley, A., J., \& Park, S.
+\newblock Description of the ncar community atmosphere model (cam4.0), 2010.
 
-\harvarditem[Neale et~al.]{Neale, Richter, Park, Lauritzen, Vavrus, Rasch
-  \harvardand{} Zhang}{2013}{neale_mean_2013}
+\bibitem[{Neale et~al.(2013)Neale, Richter, Park, Lauritzen, Vavrus, Rasch, \&
+  Zhang}]{neale_mean_2013}
 Neale, R.~B., Richter, J., Park, S., Lauritzen, P.~H., Vavrus, S.~J., Rasch,
-  P.~J., \harvardand{} Zhang, M.
-\newblock \emph{The {Mean} {Climate} of the {Community} {Atmosphere} {Model}
-  ({CAM}4) in {Forced} {SST} and {Fully} {Coupled} {Experiments}}.
-\newblock \emph{Journal of Climate}, 26(14):5150--5168 \harvardyearleft
-  2013\harvardyearright{}.
+  P.~J., \& Zhang, M.
+\newblock The {Mean} {Climate} of the {Community} {Atmosphere} {Model} ({CAM}4)
+  in {Forced} {SST} and {Fully} {Coupled} {Experiments}.
+\newblock \emph{Journal of Climate}, volume~26(14):pp. 5150--5168, 2013.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/JCLI-D-12-00236.1}.
 
-\harvarditem{Oort \harvardand{} Yienger}{1996}{oort_observed_1996}
-Oort, A.~H. \harvardand{} Yienger, J.~J.
-\newblock \emph{Observed {Interannual} {Variability} in the {Hadley}
-  {Circulation} and {Its} {Connection} to {ENSO}}.
-\newblock \emph{Journal of Climate}, 9(11):2751--2767 \harvardyearleft
-  1996\harvardyearright{}.
+\bibitem[{Oort \& Yienger(1996)}]{oort_observed_1996}
+Oort, A.~H. \& Yienger, J.~J.
+\newblock Observed {Interannual} {Variability} in the {Hadley} {Circulation}
+  and {Its} {Connection} to {ENSO}.
+\newblock \emph{Journal of Climate}, volume~9(11):pp. 2751--2767, 1996.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/1520-0442(1996)009<2751:OIVITH>2.0.CO;2}.
 
-\harvarditem{Power \harvardand{} Kociuba}{2011}{power_what_2011}
-Power, S.~B. \harvardand{} Kociuba, G.
-\newblock \emph{What {Caused} the {Observed} {Twentieth}-{Century} {Weakening}
-  of the {Walker} {Circulation}?}
-\newblock \emph{Journal of Climate}, 24(24):6501--6514 \harvardyearleft
-  2011\harvardyearright{}.
+\bibitem[{Power \& Kociuba(2011)}]{power_what_2011}
+Power, S.~B. \& Kociuba, G.
+\newblock What {Caused} the {Observed} {Twentieth}-{Century} {Weakening} of the
+  {Walker} {Circulation}?
+\newblock \emph{Journal of Climate}, volume~24(24):pp. 6501--6514, 2011.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/2011JCLI4101.1}.
 
-\harvarditem[Quan et~al.]{Quan, Diaz \harvardand{}
-  Hoerling}{2004}{quan_change_2004}
-Quan, X.-W., Diaz, H.~F., \harvardand{} Hoerling, M.
-\newblock \emph{Change of the tropical {Hadley} cell since 1950}.
+\bibitem[{Quan et~al.(2004)Quan, Diaz, \& Hoerling}]{quan_change_2004}
+Quan, X.-W., Diaz, H.~F., \& Hoerling, M.
+\newblock Change of the tropical {Hadley} cell since 1950.
 \newblock In \emph{The {Hadley} {Cell}: {Past}, {Present} and {Future}, edited
   by {H}. {F}. {Diaz}, and {R}. {S}. {Bradley}}, volume~21 of \emph{Advances in
-  {Global} {Change} {Research}}, pages 85--120. Cambridge University Press, New
-  York \harvardyearleft 2004\harvardyearright{}.
+  {Global} {Change} {Research}}, pp. 85--120. Cambridge University Press, New
+  York, 2004.
 
-\harvarditem{Riehl {and}~Malkus}{1958}{riehl_and_malkus_heat_1958}
+\bibitem[{Randall et~al.(2003)Randall, Khairoutdinov, Arakawa, \&
+  Grabowski}]{randall_breaking_2003}
+Randall, D., Khairoutdinov, M., Arakawa, A., \& Grabowski, W.
+\newblock Breaking the {Cloud} {Parameterization} {Deadlock}.
+\newblock \emph{Bulletin of the American Meteorological Society},
+  volume~84(11):pp. 1547--1564, 2003.
+\newblock ISSN 0003-0007.
+\newblock \doi{10.1175/BAMS-84-11-1547}.
+
+\bibitem[{Riehl {and}~Malkus(1958)}]{riehl_and_malkus_heat_1958}
 Riehl {and}~Malkus, H. a.~J.
-\newblock \emph{On the heat balance in the equatorial trough zone}.
-\newblock \emph{Geophysica}, 6:503--538 \harvardyearleft
-  1958\harvardyearright{}.
+\newblock On the heat balance in the equatorial trough zone.
+\newblock \emph{Geophysica}, volume~6:pp. 503--538, 1958.
 
-\harvarditem{Romps}{2010}{romps_direct_2010}
+\bibitem[{Rienecker et~al.(2011)Rienecker, Suarez, Gelaro, Todling, Bacmeister,
+  Liu, Bosilovich, Schubert, Takacs, Kim, Bloom, Chen, Collins, Conaty,
+  da~Silva, Gu, Joiner, Koster, Lucchesi, Molod, Owens, Pawson, Pegion, Redder,
+  Reichle, Robertson, Ruddick, Sienkiewicz, \& Woollen}]{rienecker_merra:_2011}
+Rienecker, M.~M., Suarez, M.~J., Gelaro, R., Todling, R., Bacmeister, J., Liu,
+  E., Bosilovich, M.~G., Schubert, S.~D., Takacs, L., Kim, G.-K., Bloom, S.,
+  Chen, J., Collins, D., Conaty, A., da~Silva, A., Gu, W., Joiner, J., Koster,
+  R.~D., Lucchesi, R., Molod, A., Owens, T., Pawson, S., Pegion, P., Redder,
+  C.~R., Reichle, R., Robertson, F.~R., Ruddick, A.~G., Sienkiewicz, M., \&
+  Woollen, J.
+\newblock {MERRA}: {NASA}’s {Modern}-{Era} {Retrospective} {Analysis} for
+  {Research} and {Applications}.
+\newblock \emph{Journal of Climate}, volume~24(14):pp. 3624--3648, 2011.
+\newblock ISSN 0894-8755.
+\newblock \doi{10.1175/JCLI-D-11-00015.1}.
+
+\bibitem[{Romps(2010)}]{romps_direct_2010}
 Romps, D.~M.
-\newblock \emph{A {Direct} {Measure} of {Entrainment}}.
-\newblock \emph{Journal of the Atmospheric Sciences}, 67(6):1908--1927
-  \harvardyearleft 2010\harvardyearright{}.
+\newblock A {Direct} {Measure} of {Entrainment}.
+\newblock \emph{Journal of the Atmospheric Sciences}, volume~67(6):pp.
+  1908--1927, 2010.
 \newblock ISSN 0022-4928.
 \newblock \doi{10.1175/2010JAS3371.1}.
 
-\harvarditem{Romps \harvardand{} Kuang}{2010}{romps_undiluted_2010}
-Romps, D.~M. \harvardand{} Kuang, Z.
-\newblock \emph{Do {Undiluted} {Convective} {Plumes} {Exist} in the {Upper}
-  {Tropical} {Troposphere}?}
-\newblock \emph{Journal of the Atmospheric Sciences}, 67(2):468--484
-  \harvardyearleft 2010\harvardyearright{}.
+\bibitem[{Romps \& Kuang(2010)}]{romps_undiluted_2010}
+Romps, D.~M. \& Kuang, Z.
+\newblock Do {Undiluted} {Convective} {Plumes} {Exist} in the {Upper}
+  {Tropical} {Troposphere}?
+\newblock \emph{Journal of the Atmospheric Sciences}, volume~67(2):pp.
+  468--484, 2010.
 \newblock ISSN 0022-4928.
 \newblock \doi{10.1175/2009JAS3184.1}.
 
-\harvarditem[Sandeep et~al.]{Sandeep, Stordal, Sardeshmukh \harvardand{}
-  Compo}{2014}{sandeep_pacific_2014}
-Sandeep, S., Stordal, F., Sardeshmukh, P.~D., \harvardand{} Compo, G.~P.
-\newblock \emph{Pacific {Walker} {Circulation} variability in coupled and
-  uncoupled climate models}.
-\newblock \emph{Climate Dynamics}, 43(1-2):103--117 \harvardyearleft
-  2014\harvardyearright{}.
+\bibitem[{Rybka \& Tost(2014)}]{rybka_uncertainties_2014}
+Rybka, H. \& Tost, H.
+\newblock Uncertainties in future climate predictions due to convection
+  parameterisations.
+\newblock \emph{Atmos. Chem. Phys.}, volume~14(11):pp. 5561--5576, 2014.
+\newblock ISSN 1680-7324.
+\newblock \doi{10.5194/acp-14-5561-2014}.
+
+\bibitem[{Sandeep et~al.(2014)Sandeep, Stordal, Sardeshmukh, \&
+  Compo}]{sandeep_pacific_2014}
+Sandeep, S., Stordal, F., Sardeshmukh, P.~D., \& Compo, G.~P.
+\newblock Pacific {Walker} {Circulation} variability in coupled and uncoupled
+  climate models.
+\newblock \emph{Climate Dynamics}, volume~43(1-2):pp. 103--117, 2014.
 \newblock ISSN 0930-7575, 1432-0894.
 \newblock \doi{10.1007/s00382-014-2135-3}.
 
-\harvarditem[Schneider et~al.]{Schneider, O'Gorman \harvardand{}
-  Levine}{2010}{schneider_water_2010}
-Schneider, T., O'Gorman, P.~A., \harvardand{} Levine, X.~J.
-\newblock \emph{Water {Vapor} and the {Dynamics} of {Climate} {Changes}}.
-\newblock \emph{Reviews of Geophysics}, 48(3):RG3001 \harvardyearleft
-  2010\harvardyearright{}.
+\bibitem[{Schneider et~al.(2010)Schneider, O'Gorman, \&
+  Levine}]{schneider_water_2010}
+Schneider, T., O'Gorman, P.~A., \& Levine, X.~J.
+\newblock Water {Vapor} and the {Dynamics} of {Climate} {Changes}.
+\newblock \emph{Reviews of Geophysics}, volume~48(3):p. RG3001, 2010.
 \newblock ISSN 1944-9208.
 \newblock \doi{10.1029/2009RG000302}.
 
-\harvarditem[Schoenberg~Ferrier et~al.]{Schoenberg~Ferrier, Simpson
-  \harvardand{} Tao}{1996}{schoenberg_ferrier_factors_1996}
-Schoenberg~Ferrier, B., Simpson, J., \harvardand{} Tao, W.-K.
-\newblock \emph{Factors {Responsible} for {Precipitation} {Efficiencies} in
-  {Midlatitude} and {Tropical} {Squall} {Simulations}}.
-\newblock \emph{Monthly Weather Review}, 124(10):2100--2125 \harvardyearleft
-  1996\harvardyearright{}.
+\bibitem[{Schoenberg~Ferrier et~al.(1996)Schoenberg~Ferrier, Simpson, \&
+  Tao}]{schoenberg_ferrier_factors_1996}
+Schoenberg~Ferrier, B., Simpson, J., \& Tao, W.-K.
+\newblock Factors {Responsible} for {Precipitation} {Efficiencies} in
+  {Midlatitude} and {Tropical} {Squall} {Simulations}.
+\newblock \emph{Monthly Weather Review}, volume 124(10):pp. 2100--2125, 1996.
 \newblock ISSN 0027-0644.
 \newblock \doi{10.1175/1520-0493(1996)124<2100:FRFPEI>2.0.CO;2}.
 
-\harvarditem{Schubert}{1974}{arakawa_and_schubert_interaction_1974}
+\bibitem[{Schubert(1974)}]{arakawa_and_schubert_interaction_1974}
 Schubert, A.~a.
-\newblock \emph{Interaction of a {Cumulus} {Cloud} {Ensemble} with the
-  {Large}-{Scale} {Environment}, {Part} {I}}.
-\newblock \emph{Journal of the Atmospheric Sciences}, 31(3):674--701
-  \harvardyearleft 1974\harvardyearright{}.
+\newblock Interaction of a {Cumulus} {Cloud} {Ensemble} with the
+  {Large}-{Scale} {Environment}, {Part} {I}.
+\newblock \emph{Journal of the Atmospheric Sciences}, volume~31(3):pp.
+  674--701, 1974.
 \newblock \doi{10.1175/1520-0469(1974)031<0674:IOACCE>2.0.CO;2}.
 
-\harvarditem{Schumacher \harvardand{} Houze}{2003}{schumacher_stratiform_2003}
-Schumacher, C. \harvardand{} Houze, R.~A.
-\newblock \emph{Stratiform {Rain} in the {Tropics} as {Seen} by the {TRMM}
-  {Precipitation} {Radar}}.
-\newblock \emph{Journal of Climate}, 16(11):1739--1756 \harvardyearleft
-  2003\harvardyearright{}.
+\bibitem[{Schumacher \& Houze(2003)}]{schumacher_stratiform_2003}
+Schumacher, C. \& Houze, R.~A.
+\newblock Stratiform {Rain} in the {Tropics} as {Seen} by the {TRMM}
+  {Precipitation} {Radar}.
+\newblock \emph{Journal of Climate}, volume~16(11):pp. 1739--1756, 2003.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/1520-0442(2003)016<1739:SRITTA>2.0.CO;2}.
 
-\harvarditem{Seidel \harvardand{} Randel}{2007}{seidel_recent_2007}
-Seidel, D.~J. \harvardand{} Randel, W.~J.
-\newblock \emph{Recent widening of the tropical belt: {Evidence} from
-  tropopause observations}.
-\newblock \emph{Journal of Geophysical Research: Atmospheres}, 112(D20):D20113
-  \harvardyearleft 2007\harvardyearright{}.
+\bibitem[{Seidel \& Randel(2007)}]{seidel_recent_2007}
+Seidel, D.~J. \& Randel, W.~J.
+\newblock Recent widening of the tropical belt: {Evidence} from tropopause
+  observations.
+\newblock \emph{Journal of Geophysical Research: Atmospheres}, volume
+  112(D20):p. D20113, 2007.
 \newblock ISSN 2156-2202.
 \newblock \doi{10.1029/2007JD008861}.
 
-\harvarditem[Seo et~al.]{Seo, Frierson \harvardand{}
-  Son}{2014}{seo_mechanism_2014}
-Seo, K.-H., Frierson, D. M.~W., \harvardand{} Son, J.-H.
-\newblock \emph{A mechanism for future changes in {Hadley} circulation strength
-  in {CMIP}5 climate change simulations}.
-\newblock \emph{Geophysical Research Letters}, 41(14):2014GL060868
-  \harvardyearleft 2014\harvardyearright{}.
+\bibitem[{Seo et~al.(2014)Seo, Frierson, \& Son}]{seo_mechanism_2014}
+Seo, K.-H., Frierson, D. M.~W., \& Son, J.-H.
+\newblock A mechanism for future changes in {Hadley} circulation strength in
+  {CMIP}5 climate change simulations.
+\newblock \emph{Geophysical Research Letters}, volume~41(14):p. 2014GL060868,
+  2014.
 \newblock ISSN 1944-8007.
 \newblock \doi{10.1002/2014GL060868}.
 
-\harvarditem[Sobel et~al.]{Sobel, Nilsson \harvardand{}
-  Polvani}{2001}{sobel_weak_2001}
-Sobel, A.~H., Nilsson, J., \harvardand{} Polvani, L.~M.
-\newblock \emph{The {Weak} {Temperature} {Gradient} {Approximation} and
-  {Balanced} {Tropical} {Moisture} {Waves}}.
-\newblock \emph{Journal of the Atmospheric Sciences}, 58(23):3650--3665
-  \harvardyearleft 2001\harvardyearright{}.
+\bibitem[{Sherwood et~al.(2014)Sherwood, Bony, \&
+  Dufresne}]{sherwood_spread_2014}
+Sherwood, S.~C., Bony, S., \& Dufresne, J.-L.
+\newblock Spread in model climate sensitivity traced to atmospheric convective
+  mixing.
+\newblock \emph{Nature}, volume 505(7481):pp. 37--42, 2014.
+\newblock ISSN 0028-0836.
+\newblock \doi{10.1038/nature12829}.
+
+\bibitem[{Sobel et~al.(2001)Sobel, Nilsson, \& Polvani}]{sobel_weak_2001}
+Sobel, A.~H., Nilsson, J., \& Polvani, L.~M.
+\newblock The {Weak} {Temperature} {Gradient} {Approximation} and {Balanced}
+  {Tropical} {Moisture} {Waves}.
+\newblock \emph{Journal of the Atmospheric Sciences}, volume~58(23):pp.
+  3650--3665, 2001.
 \newblock ISSN 0022-4928.
 \newblock \doi{10.1175/1520-0469(2001)058<3650:TWTGAA>2.0.CO;2}.
 
-\harvarditem[Sohn et~al.]{Sohn, Lee, Chung \harvardand{}
-  Song}{2016}{sohn_role_2016}
-Sohn, B.-J., Lee, S., Chung, E.-S., \harvardand{} Song, H.-J.
-\newblock \emph{The {Role} of the {Dry} {Static} {Stability} for the {Recent}
-  {Change} in the {Pacific} {Walker} {Circulation}}.
-\newblock \emph{Journal of Climate}, 29(8):2765--2779 \harvardyearleft
-  2016\harvardyearright{}.
+\bibitem[{Sohn et~al.(2016)Sohn, Lee, Chung, \& Song}]{sohn_role_2016}
+Sohn, B.-J., Lee, S., Chung, E.-S., \& Song, H.-J.
+\newblock The {Role} of the {Dry} {Static} {Stability} for the {Recent}
+  {Change} in the {Pacific} {Walker} {Circulation}.
+\newblock \emph{Journal of Climate}, volume~29(8):pp. 2765--2779, 2016.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/JCLI-D-15-0374.1}.
 
-\harvarditem{Stachnik \harvardand{} Schumacher}{2011}{stachnik_comparison_2011}
-Stachnik, J.~P. \harvardand{} Schumacher, C.
-\newblock \emph{A comparison of the {Hadley} circulation in modern reanalyses}.
-\newblock \emph{Journal of Geophysical Research: Atmospheres}, 116(D22):D22102
-  \harvardyearleft 2011\harvardyearright{}.
+\bibitem[{Stachnik \& Schumacher(2011)}]{stachnik_comparison_2011}
+Stachnik, J.~P. \& Schumacher, C.
+\newblock A comparison of the {Hadley} circulation in modern reanalyses.
+\newblock \emph{Journal of Geophysical Research: Atmospheres}, volume
+  116(D22):p. D22102, 2011.
 \newblock ISSN 2156-2202.
 \newblock \doi{10.1029/2011JD016677}.
 
-\harvarditem{Stechmann \harvardand{} Ogrosky}{2014}{stechmann_walker_2014}
-Stechmann, S.~N. \harvardand{} Ogrosky, H.~R.
-\newblock \emph{The {Walker} circulation, diabatic heating, and outgoing
-  longwave radiation}.
-\newblock \emph{Geophysical Research Letters}, 41(24):2014GL062257
-  \harvardyearleft 2014\harvardyearright{}.
+\bibitem[{Stechmann \& Ogrosky(2014)}]{stechmann_walker_2014}
+Stechmann, S.~N. \& Ogrosky, H.~R.
+\newblock The {Walker} circulation, diabatic heating, and outgoing longwave
+  radiation.
+\newblock \emph{Geophysical Research Letters}, volume~41(24):p. 2014GL062257,
+  2014.
 \newblock ISSN 1944-8007.
 \newblock \doi{10.1002/2014GL062257}.
 
-\harvarditem[Sui et~al.]{Sui, Li \harvardand{} Yang}{2007}{sui_definition_2007}
-Sui, C.-H., Li, X., \harvardand{} Yang, M.-J.
-\newblock \emph{On the {Definition} of {Precipitation} {Efficiency}}.
-\newblock \emph{Journal of the Atmospheric Sciences}, 64(12):4506--4513
-  \harvardyearleft 2007\harvardyearright{}.
+\bibitem[{Sui et~al.(2007)Sui, Li, \& Yang}]{sui_definition_2007}
+Sui, C.-H., Li, X., \& Yang, M.-J.
+\newblock On the {Definition} of {Precipitation} {Efficiency}.
+\newblock \emph{Journal of the Atmospheric Sciences}, volume~64(12):pp.
+  4506--4513, 2007.
 \newblock ISSN 0022-4928.
 \newblock \doi{10.1175/2007JAS2332.1}.
 
-\harvarditem[Tanaka et~al.]{Tanaka, Ishizaki \harvardand{}
-  Kitoh}{2004}{tanaka_trend_2004}
-Tanaka, H.~L., Ishizaki, N., \harvardand{} Kitoh, A.
-\newblock \emph{Trend and interannual variability of {Walker}, monsoon and
-  {Hadley} circulations defined by velocity potential in the upper
-  troposphere}.
-\newblock \emph{Tellus A}, 56(3):250--269 \harvardyearleft
-  2004\harvardyearright{}.
+\bibitem[{Tanaka et~al.(2004)Tanaka, Ishizaki, \& Kitoh}]{tanaka_trend_2004}
+Tanaka, H.~L., Ishizaki, N., \& Kitoh, A.
+\newblock Trend and interannual variability of {Walker}, monsoon and {Hadley}
+  circulations defined by velocity potential in the upper troposphere.
+\newblock \emph{Tellus A}, volume~56(3):pp. 250--269, 2004.
 \newblock ISSN 1600-0870.
 \newblock \doi{10.1111/j.1600-0870.2004.00049.x}.
 
-\harvarditem[Taylor et~al.]{Taylor, Stouffer \harvardand{}
-  Meehl}{2011}{taylor_overview_2011}
-Taylor, K.~E., Stouffer, R.~J., \harvardand{} Meehl, G.~A.
-\newblock \emph{An {Overview} of {CMIP}5 and the {Experiment} {Design}}.
+\bibitem[{Taylor et~al.(2011)Taylor, Stouffer, \& Meehl}]{taylor_overview_2011}
+Taylor, K.~E., Stouffer, R.~J., \& Meehl, G.~A.
+\newblock An {Overview} of {CMIP}5 and the {Experiment} {Design}.
 \newblock \emph{Bulletin of the American Meteorological Society},
-  93(4):485--498 \harvardyearleft 2011\harvardyearright{}.
+  volume~93(4):pp. 485--498, 2011.
 \newblock ISSN 0003-0007.
 \newblock \doi{10.1175/BAMS-D-11-00094.1}.
 
-\harvarditem{Trenberth \harvardand{} Fasullo}{2013}{trenberth_regional_2013}
-Trenberth, K.~E. \harvardand{} Fasullo, J.~T.
-\newblock \emph{Regional {Energy} and {Water} {Cycles}: {Transports} from
-  {Ocean} to {Land}}.
-\newblock \emph{Journal of Climate}, 26(20):7837--7851 \harvardyearleft
-  2013\harvardyearright{}.
+\bibitem[{Trenberth \& Fasullo(2013)}]{trenberth_regional_2013}
+Trenberth, K.~E. \& Fasullo, J.~T.
+\newblock Regional {Energy} and {Water} {Cycles}: {Transports} from {Ocean} to
+  {Land}.
+\newblock \emph{Journal of Climate}, volume~26(20):pp. 7837--7851, 2013.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/JCLI-D-13-00008.1}.
 
-\harvarditem[Trenberth et~al.]{Trenberth, Fasullo \harvardand{}
-  Kiehl}{2009}{trenberth_earths_2009}
-Trenberth, K.~E., Fasullo, J.~T., \harvardand{} Kiehl, J.
-\newblock \emph{Earth's {Global} {Energy} {Budget}}.
+\bibitem[{Trenberth et~al.(2009)Trenberth, Fasullo, \&
+  Kiehl}]{trenberth_earths_2009}
+Trenberth, K.~E., Fasullo, J.~T., \& Kiehl, J.
+\newblock Earth's {Global} {Energy} {Budget}.
 \newblock \emph{Bulletin of the American Meteorological Society},
-  90(3):311--323 \harvardyearleft 2009\harvardyearright{}.
+  volume~90(3):pp. 311--323, 2009.
 \newblock ISSN 0003-0007.
 \newblock \doi{10.1175/2008BAMS2634.1}.
 
-\harvarditem{Vecchi \harvardand{} Soden}{2007}{vecchi_global_2007}
-Vecchi, G.~A. \harvardand{} Soden, B.~J.
-\newblock \emph{Global {Warming} and the {Weakening} of the {Tropical}
-  {Circulation}}.
-\newblock \emph{Journal of Climate}, 20(17):4316--4340 \harvardyearleft
-  2007\harvardyearright{}.
+\bibitem[{Turner \& Annamalai(2012)}]{turner_climate_2012}
+Turner, A.~G. \& Annamalai, H.
+\newblock Climate change and the {South} {Asian} summer monsoon.
+\newblock \emph{Nature Climate Change}, volume~2(8):pp. 587--595, 2012.
+\newblock ISSN 1758-678X.
+\newblock \doi{10.1038/nclimate1495}.
+
+\bibitem[{Vecchi \& Soden(2007)}]{vecchi_global_2007}
+Vecchi, G.~A. \& Soden, B.~J.
+\newblock Global {Warming} and the {Weakening} of the {Tropical} {Circulation}.
+\newblock \emph{Journal of Climate}, volume~20(17):pp. 4316--4340, 2007.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/JCLI4258.1}.
 
-\harvarditem[Vecchi et~al.]{Vecchi, Soden, Wittenberg, Held, Leetmaa
-  \harvardand{} Harrison}{2006}{vecchi_weakening_2006}
-Vecchi, G.~A., Soden, B.~J., Wittenberg, A.~T., Held, I.~M., Leetmaa, A.,
-  \harvardand{} Harrison, M.~J.
-\newblock \emph{Weakening of tropical {Pacific} atmospheric circulation due to
-  anthropogenic forcing}.
-\newblock \emph{Nature}, 441(7089):73--76 \harvardyearleft
-  2006\harvardyearright{}.
+\bibitem[{Vecchi et~al.(2006)Vecchi, Soden, Wittenberg, Held, Leetmaa, \&
+  Harrison}]{vecchi_weakening_2006}
+Vecchi, G.~A., Soden, B.~J., Wittenberg, A.~T., Held, I.~M., Leetmaa, A., \&
+  Harrison, M.~J.
+\newblock Weakening of tropical {Pacific} atmospheric circulation due to
+  anthropogenic forcing.
+\newblock \emph{Nature}, volume 441(7089):pp. 73--76, 2006.
 \newblock ISSN 0028-0836.
 \newblock \doi{10.1038/nature04744}.
 
-\harvarditem{Walker \harvardand{} Schneider}{2006}{walker_eddy_2006}
-Walker, C.~C. \harvardand{} Schneider, T.
-\newblock \emph{Eddy {Influences} on {Hadley} {Circulations}: {Simulations}
-  with an {Idealized} {GCM}}.
-\newblock \emph{Journal of the Atmospheric Sciences}, 63(12):3333--3350
-  \harvardyearleft 2006\harvardyearright{}.
+\bibitem[{Walker \& Schneider(2006)}]{walker_eddy_2006}
+Walker, C.~C. \& Schneider, T.
+\newblock Eddy {Influences} on {Hadley} {Circulations}: {Simulations} with an
+  {Idealized} {GCM}.
+\newblock \emph{Journal of the Atmospheric Sciences}, volume~63(12):pp.
+  3333--3350, 2006.
 \newblock ISSN 0022-4928.
 \newblock \doi{10.1175/JAS3821.1}.
 
-\harvarditem[Wills et~al.]{Wills, Levine \harvardand{}
-  Schneider}{2017}{wills_local_2017}
-Wills, R.~C., Levine, X.~J., \harvardand{} Schneider, T.
-\newblock \emph{Local energetic constraints on {Walker} circulation strength}.
-\newblock \emph{Journal of the Atmospheric Sciences} \harvardyearleft
-  2017\harvardyearright{}.
+\bibitem[{Wills et~al.(2017)Wills, Levine, \& Schneider}]{wills_local_2017}
+Wills, R.~C., Levine, X.~J., \& Schneider, T.
+\newblock Local energetic constraints on {Walker} circulation strength.
+\newblock \emph{Journal of the Atmospheric Sciences}, 2017.
 \newblock ISSN 0022-4928.
 \newblock \doi{10.1175/JAS-D-16-0219.1}.
 
-\harvarditem[Yang et~al.]{Yang, Qian, Lin, Leung, Rasch, Zhang, McFarlane,
-  Zhao, Zhang, Wang, Wang \harvardand{} Liu}{2013}{yang_uncertainty_2013}
+\bibitem[{Xie \& Arkin(1997)}]{xie_global_1997}
+Xie, P. \& Arkin, P.~A.
+\newblock Global {Precipitation}: {A} 17-{Year} {Monthly} {Analysis} {Based} on
+  {Gauge} {Observations}, {Satellite} {Estimates}, and {Numerical} {Model}
+  {Outputs}.
+\newblock \emph{Bulletin of the American Meteorological Society},
+  volume~78(11):pp. 2539--2558, 1997.
+\newblock ISSN 0003-0007.
+\newblock \doi{10.1175/1520-0477(1997)078<2539:GPAYMA>2.0.CO;2}.
+
+\bibitem[{Yang et~al.(2013)Yang, Qian, Lin, Leung, Rasch, Zhang, McFarlane,
+  Zhao, Zhang, Wang, Wang, \& Liu}]{yang_uncertainty_2013}
 Yang, B., Qian, Y., Lin, G., Leung, L.~R., Rasch, P.~J., Zhang, G.~J.,
-  McFarlane, S.~A., Zhao, C., Zhang, Y., Wang, H., Wang, M., \harvardand{} Liu,
-  X.
-\newblock \emph{Uncertainty quantification and parameter tuning in the {CAM}5
+  McFarlane, S.~A., Zhao, C., Zhang, Y., Wang, H., Wang, M., \& Liu, X.
+\newblock Uncertainty quantification and parameter tuning in the {CAM}5
   {Zhang}-{McFarlane} convection scheme and impact of improved convection on
-  the global circulation and climate}.
-\newblock \emph{Journal of Geophysical Research: Atmospheres}, 118(2):395--415
-  \harvardyearleft 2013\harvardyearright{}.
+  the global circulation and climate.
+\newblock \emph{Journal of Geophysical Research: Atmospheres}, volume
+  118(2):pp. 395--415, 2013.
 \newblock ISSN 2169-8996.
 \newblock \doi{10.1029/2012JD018213}.
 
-\harvarditem{Yano}{2009}{yano_deep-convective_2009}
+\bibitem[{Yano(2014)}]{yano_basic_2014}
 Yano, J.-I.
-\newblock \emph{Deep-convective vertical transport: what is mass flux?}
-\newblock \emph{Atmos. Chem. Phys. Discuss.}, 2009:3535--3553 \harvardyearleft
-  2009\harvardyearright{}.
-\newblock ISSN 1680-7375.
-\newblock \doi{10.5194/acpd-9-3535-2009}.
-
-\harvarditem{Yano}{2014}{yano_basic_2014}
-Yano, J.-I.
-\newblock \emph{Basic convective element: bubble or plume? {A} historical
-  review}.
-\newblock \emph{Atmos. Chem. Phys.}, 14(13):7019--7030 \harvardyearleft
-  2014\harvardyearright{}.
+\newblock Basic convective element: bubble or plume? {A} historical review.
+\newblock \emph{Atmos. Chem. Phys.}, volume~14(13):pp. 7019--7030, 2014.
 \newblock ISSN 1680-7324.
 \newblock \doi{10.5194/acp-14-7019-2014}.
 
-\harvarditem{Zhang}{1995}{zhang_sensitivity_1995}
+\bibitem[{Zhang(1995)}]{zhang_sensitivity_1995}
 Zhang.
-\newblock \emph{Sensitivity of climate simulations to the parameterization of
-  cumulus convection in the {Canadian} climate centre general circulation
-  model}.
-\newblock \emph{Atmosphere-Ocean}, 33:407--446 \harvardyearleft
-  1995\harvardyearright{}.
+\newblock Sensitivity of climate simulations to the parameterization of cumulus
+  convection in the {Canadian} climate centre general circulation model.
+\newblock \emph{Atmosphere-Ocean}, volume~33:pp. 407--446, 1995.
 \newblock \doi{10.1080/07055900.1995.9649539}.
 
 \end{thebibliography}
