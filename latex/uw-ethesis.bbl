@@ -1,4 +1,4 @@
-\begin{thebibliography}{81}
+\begin{thebibliography}{85}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
@@ -62,6 +62,15 @@ Bony, S., Bellon, G., Klocke, D., Sherwood, S., Fermepin, S., \& Denvil, S.
 \newblock \emph{Nature Geoscience}, volume~6(6):pp. 447--451, 2013.
 \newblock ISSN 1752-0894.
 \newblock \doi{10.1038/ngeo1799}.
+
+\bibitem[{Brient et~al.(2016)Brient, Schneider, Tan, Bony, Qu, \&
+  Hall}]{brient_shallowness_2016}
+Brient, F., Schneider, T., Tan, Z., Bony, S., Qu, X., \& Hall, A.
+\newblock Shallowness of tropical low clouds as a predictor of climate
+  models’ response to warming.
+\newblock \emph{Climate Dynamics}, volume~47(1-2):pp. 433--449, 2016.
+\newblock ISSN 0930-7575, 1432-0894.
+\newblock \doi{10.1007/s00382-015-2846-0}.
 
 \bibitem[{Caballero(2007)}]{caballero_role_2007}
 Caballero, R.
@@ -247,6 +256,15 @@ Hu, Y. \& Fu, Q.
 \newblock ISSN 1680-7324.
 \newblock \doi{10.5194/acp-7-5229-2007}.
 
+\bibitem[{Hurrell et~al.(2008)Hurrell, Hack, Shea, Caron, \&
+  Rosinski}]{hurrell_new_2008}
+Hurrell, J.~W., Hack, J.~J., Shea, D., Caron, J.~M., \& Rosinski, J.
+\newblock A {New} {Sea} {Surface} {Temperature} and {Sea} {Ice} {Boundary}
+  {Dataset} for the {Community} {Atmosphere} {Model}.
+\newblock \emph{Journal of Climate}, volume~21(19):pp. 5145--5153, 2008.
+\newblock ISSN 0894-8755, 1520-0442.
+\newblock \doi{10.1175/2008JCLI2292.1}.
+
 \bibitem[{Johanson \& Fu(2009)}]{johanson_hadley_2009}
 Johanson, C.~M. \& Fu, Q.
 \newblock Hadley {Cell} {Widening}: {Model} {Simulations} versus
@@ -262,6 +280,22 @@ Katsaros, K.
   2001.
 \newblock ISBN 978-0-12-227430-5.
 \newblock DOI: 10.1006/rwos.2001.0068.
+
+\bibitem[{Kay et~al.(2014)Kay, Deser, Phillips, Mai, Hannay, Strand, Arblaster,
+  Bates, Danabasoglu, Edwards, Holland, Kushner, Lamarque, Lawrence, Lindsay,
+  Middleton, Munoz, Neale, Oleson, Polvani, \&
+  Vertenstein}]{kay_community_2014}
+Kay, J.~E., Deser, C., Phillips, A., Mai, A., Hannay, C., Strand, G.,
+  Arblaster, J.~M., Bates, S.~C., Danabasoglu, G., Edwards, J., Holland, M.,
+  Kushner, P., Lamarque, J.-F., Lawrence, D., Lindsay, K., Middleton, A.,
+  Munoz, E., Neale, R., Oleson, K., Polvani, L., \& Vertenstein, M.
+\newblock The {Community} {Earth} {System} {Model} ({CESM}) {Large} {Ensemble}
+  {Project}: {A} {Community} {Resource} for {Studying} {Climate} {Change} in
+  the {Presence} of {Internal} {Climate} {Variability}.
+\newblock \emph{Bulletin of the American Meteorological Society},
+  volume~96(8):pp. 1333--1349, 2014.
+\newblock ISSN 0003-0007.
+\newblock \doi{10.1175/BAMS-D-13-00255.1}.
 
 \bibitem[{Kim \& Lee(2001)}]{kim_hadley_2001}
 Kim, H.-k. \& Lee, S.
@@ -289,6 +323,15 @@ Kristjánsson, J.~E., Edwards, J.~M., \& Mitchell, D.~L.
   105(D8):pp. 10063--10079, 2000.
 \newblock ISSN 2156-2202.
 \newblock \doi{10.1029/2000JD900015}.
+
+\bibitem[{Li et~al.(2015)Li, Zhang, \& Murakami}]{li_strengthening_2015}
+Li, T., Zhang, L., \& Murakami, H.
+\newblock Strengthening of the {Walker} circulation under globalwarming in an
+  aqua-planet general circulation model simulation.
+\newblock \emph{Advances in Atmospheric Sciences}, volume~32(11):pp.
+  1473--1480, 2015.
+\newblock ISSN 0256-1530, 1861-9533.
+\newblock \doi{10.1007/s00376-015-5033-7}.
 
 \bibitem[{Liu et~al.(2012)Liu, Ostrenga, Teng, \& Kempler}]{liu_tropical_2012}
 Liu, Z., Ostrenga, D., Teng, W., \& Kempler, S.
@@ -380,7 +423,10 @@ Mitas, C.~M. \& Clement, A.
 \bibitem[{Neale et~al.(2010)Neale, Richter, Conley, \&
   Park}]{neale_description_2010}
 Neale, R., Richter, J., H., Conley, A., J., \& Park, S.
-\newblock Description of the ncar community atmosphere model (cam4.0), 2010.
+\newblock Description of the {NCAR} {Community} {Atmosphere} {Model}
+  {(CAM4.0)}, 2010.
+\newblock
+  \urlprefix\url{http://www.cesm.ucar.edu/models/ccsm4.0/cam/docs/description/cam4_desc.pdf}.
 
 \bibitem[{Neale et~al.(2013)Neale, Richter, Park, Lauritzen, Vavrus, Rasch, \&
   Zhang}]{neale_mean_2013}
