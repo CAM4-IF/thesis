@@ -1,4 +1,4 @@
-\begin{thebibliography}{85}
+\begin{thebibliography}{89}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
@@ -62,6 +62,16 @@ Bony, S., Bellon, G., Klocke, D., Sherwood, S., Fermepin, S., \& Denvil, S.
 \newblock \emph{Nature Geoscience}, volume~6(6):pp. 447--451, 2013.
 \newblock ISSN 1752-0894.
 \newblock \doi{10.1038/ngeo1799}.
+
+\bibitem[{Bony et~al.(2011)Bony, Webb, Bretherton, Klein, Siebesma, Tselioudis,
+  \& Zhang}]{bony_cfmip:_2011}
+Bony, S., Webb, M., Bretherton, C.~S., Klein, S.~A., Siebesma, P., Tselioudis,
+  G., \& Zhang, M.
+\newblock {CFMIP}: {Towards} a better evaluation and understanding of clouds
+  and cloud feedbacks in {CMIP}5 models.
+\newblock \emph{Clivar Exchanges}, volume~56(2):pp. 20--22, 2011.
+\newblock
+  \urlprefix\url{http://www.euclipse.eu/downloads/CFMIP_CMIP5_Exchanges_May2011.pdf}.
 
 \bibitem[{Brient et~al.(2016)Brient, Schneider, Tan, Bony, Qu, \&
   Hall}]{brient_shallowness_2016}
@@ -146,6 +156,14 @@ Evans, J.-L. \& Laing, A.
 \newblock The COMET Program (UCAR), 2 edition, 2011.
 \newblock
   \urlprefix\url{http://www.goes-r.gov/users/comet/tropical/textbook_2nd_edition/navmenu.php_tab_6_page_2.2.1.htm}.
+
+\bibitem[{Fan et~al.(2012)Fan, Mann, Lee, \& Evans}]{fan_future_2012}
+Fan, F., Mann, M.~E., Lee, S., \& Evans, J.~L.
+\newblock Future {Changes} in the {South} {Asian} {Summer} {Monsoon}: {An}
+  {Analysis} of the {CMIP}3 {Multimodel} {Projections}.
+\newblock \emph{Journal of Climate}, volume~25(11):pp. 3909--3928, 2012.
+\newblock ISSN 0894-8755.
+\newblock \doi{10.1175/JCLI-D-11-00133.1}.
 
 \bibitem[{Folkins(2008)}]{folkins_ian_low-level_2008}
 Folkins, I.
@@ -372,6 +390,15 @@ Ma, J., Xie, S.-P., \& Kosaka, Y.
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/JCLI-D-11-00048.1}.
 
+\bibitem[{Manabe \& Wetherald(1967)}]{manabe_thermal_1967}
+Manabe, S. \& Wetherald, R.~T.
+\newblock Thermal {Equilibrium} of the {Atmosphere} with a {Given}
+  {Distribution} of {Relative} {Humidity}.
+\newblock \emph{Journal of the Atmospheric Sciences}, volume~24(3):pp.
+  241--259, 1967.
+\newblock ISSN 0022-4928.
+\newblock \doi{10.1175/1520-0469(1967)024<0241:TEOTAW>2.0.CO;2}.
+
 \bibitem[{Mapes(1993)}]{mapes_gregarious_1993}
 Mapes, B.~E.
 \newblock Gregarious {Tropical} {Convection}.
@@ -388,6 +415,19 @@ Market, P., Allen, S., Scofield, R., Kuligowski, R., \& Gruber, A.
 \newblock \emph{Weather and Forecasting}, volume~18(6):pp. 1273--1285, 2003.
 \newblock ISSN 0882-8156.
 \newblock \doi{10.1175/1520-0434(2003)018<1273:PEOWMM>2.0.CO;2}.
+
+\bibitem[{Mechoso et~al.(1995)Mechoso, Robertson, Barth, Davey, Delecluse,
+  Gent, Ineson, Kirtman, Latif, Treut, Nagai, Neelin, Philander, Polcher,
+  Schopf, Stockdale, Suarez, Terray, Thual, \& Tribbia}]{mechoso_seasonal_1995}
+Mechoso, C., Robertson, A., Barth, N., Davey, M., Delecluse, P., Gent, P.,
+  Ineson, S., Kirtman, B., Latif, M., Treut, H.~L., Nagai, T., Neelin, J.,
+  Philander, S., Polcher, J., Schopf, P., Stockdale, T., Suarez, M., Terray,
+  L., Thual, O., \& Tribbia, J.
+\newblock The {Seasonal} {Cycle} over the {Tropical} {Pacific} in {Coupled}
+  {Ocean}–{Atmosphere} {General} {Circulation} {Models}.
+\newblock \emph{Monthly Weather Review}, volume 123(9):pp. 2825--2838, 1995.
+\newblock ISSN 0027-0644.
+\newblock \doi{10.1175/1520-0493(1995)123<2825:TSCOTT>2.0.CO;2}.
 
 \bibitem[{Merlis(2012)}]{merlis_general_2012}
 Merlis, T.~M.
