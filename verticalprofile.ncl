@@ -268,7 +268,7 @@ rmse2=decimalPlaces(sqrt(avg((dTdZ3(1:43)-dTdZ(1:43))^2)),3,True)
  res@tmYLLabels=(/100,200,300,400,500,600,700,850,1000/)
  res@tiXAxisString="dT/dz (K/km)"
 
- ;res@gsnRightString  ="CAM4 RMSE: " + rmse + " K/km" + "~C~AMIP mean RMSE: " + rmse1 + " K/km" + "~C~CAM4-IF-t RMSE: " + rmse2 + " K/km"
+ ;res@gsnRightString  ="CAM4-ZM RMSE: " + rmse + " K/km" + "~C~AMIP mean RMSE: " + rmse1 + " K/km" + "~C~CAM4-IF-t RMSE: " + rmse2 + " K/km"
  res@gsnLeftString  ="b) KOR"  + ": (" + lon + "E, " + lat + "N)"
  res@gsnLeftStringFontHeightF=0.018
   res@gsnRightStringFontHeightF=0.008
@@ -310,7 +310,7 @@ plot = simple_legend(wks,plot,gres,lineres,textres)
 txid = new(1,graphic)                  ; Nine text strings
 txres               = True     
 txres@txFontHeightF = 0.014
-txid(0) = gsn_add_text (wks,plot,"CAM4 RMSE: " + sprintf("%5.3f",rmse) + " K/km" + "~C~CAM4-IF-t RMSE: " + rmse2  + " K/km" + "~C~CMIP5/AMIP RMSE: " + sprintf("%5.3f",rmse1) +  " K/km", -2.2, 300 ,txres)
+txid(0) = gsn_add_text (wks,plot,"CAM4-ZM RMSE: " + sprintf("%5.3f",rmse) + " K/km" + "~C~CAM4-IF-t RMSE: " + rmse2  + " K/km" + "~C~CMIP5/AMIP RMSE: " + sprintf("%5.3f",rmse1) +  " K/km", -2.2, 300 ,txres)
 draw(plot)               
 frame(wks) 
  
@@ -381,13 +381,13 @@ lineres@lgLineThicknesses = 2.5                        ; line thicknesses
 lineres@LineLengthPercent = 9.                         ; expressed as %, 0->100, length of line
 delete(textres)
 textres = True
-textres@lgLabels = (/"CMIP5/AMIP mean","CAM4-IF","CAM4 default","MERRA/ERAI"/)  ; legend labels (required)
+textres@lgLabels = (/"CMIP5/AMIP mean","CAM4-IF","CAM4-ZM","MERRA/ERAI"/)  ; legend labels (required)
 textres@lgLabelFontHeights = (/0.012,0.012,0.012,0.012/)   
 plot1 = simple_legend(wks,plot1,gres,lineres,textres)
 txid = new(1,graphic)                  ; Nine text strings
 txres               = True     
 txres@txFontHeightF = 0.014
-txid(0) = gsn_add_text (wks,plot1,"CAM4 RMSE: " + rmse4 + " K/km" + "~C~CAM4-IF RMSE: " + sprintf("%5.3f",rmse5) + " K/km" + "~C~CMIP5/AMIP RMSE: " + rmse3 +  " K/km", -2.2, 300 ,txres)
+txid(0) = gsn_add_text (wks,plot1,"CAM4-ZM RMSE: " + rmse4 + " K/km" + "~C~CAM4-IF RMSE: " + sprintf("%5.3f",rmse5) + " K/km" + "~C~CMIP5/AMIP RMSE: " + rmse3 +  " K/km", -2.2, 300 ,txres)
 draw(plot1)               
 frame(wks) 
 crop=systemfunc("pdfcrop dtdz_koror.pdf")

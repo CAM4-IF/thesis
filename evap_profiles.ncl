@@ -33,12 +33,12 @@ datalog4=new((/3,26/),"double")
 datalog5=new((/3,26/),"double")
 wks = gsn_open_wks("pdf", plotfile) ;; open a workstation file!
 nummods=dimsizes(fils1) ;;number of models! 
-plot=new(3, graphic)    ;;;Create a panel plot with panels = number of models!
+plot=new(4, graphic)    ;;;Create a panel plot with panels = number of models!
 ;;;create a giant loop over all models;;;
 n=0
-lets=(/"a)","b)","c)"/)
-names=(/"CAM4 default","CAM4-IF-r","CAM4-IF-t"/)
-do while(n.le.2)
+lets=(/"a)","b)","c)","d"/)
+names=(/"CAM4-ZM","CAM4-IF-r","CAM4-IF-t","CAM4-IF-tune"/)
+do while(n.le.3)
   print(n)
    if (n.eq.0) then
     filen="../evap/evapterms_ANN_CAM4.nc"
@@ -56,7 +56,7 @@ do while(n.le.2)
     hyam = f3->hyam 
     hybm = f3->hybm
    else
-   
+   print(n)
     filen=tostring(fils(n-1))
     filen1=tostring(fils1(n-1))
    cmd="cdo -s -fldmean -sellonlatbox,0,360,-30,30 -selname,UPRAINDOWN,ANRAINDOWN,ANSNOWSUBL,RLP_RVV " + filen + " tmp.nc"
@@ -86,7 +86,7 @@ do while(n.le.2)
    dp = dpres_plevel(hgt&lev, PS, top, 0)
    rho=(dp*100/dz)/9.81
    rho(25,:,:)=rho(24,:,:)
-   tot=(T+T1+T4)*dz*rho
+   tot=(T4)*dz*rho
    tot!0="lev"
    tot&lev=T&lev
    tot&lev@units="hPa"
@@ -100,7 +100,7 @@ do while(n.le.2)
    dp1 = dpres_plevel(hgt1&lev, PS, top1, 0)
    rho1=(dp1*100/dz1)/9.81
    rho1(25,:,:)=rho1(24,:,:)
-   tot1=(T2+T3+T5)*dz1*rho
+   tot1=(T5)*dz1*rho
    tot1!0="lev"
    tot1&lev=T&lev
    tot1&lev@units="hPa"
@@ -115,7 +115,7 @@ do while(n.le.2)
    V&lev@units="hPa"
    X=f->RLP_RVV(0,:,:,:)
    X&lev@units="hPa"
-   tot=T+U+V+X
+   tot=T+U+V
    tot!0="lev"
    tot&lev=T&lev
    tot&lev@units="hPa"
@@ -141,7 +141,7 @@ do while(n.le.2)
    V1&lev@units="hPa"
    X1=f1->RLP_RVV(0,:,:,:)
    X1&lev@units="hPa"
-   tot1=T1+U1+V1+X1
+   tot1=T1+U1+V1
    tot1!0="lev"
    tot1&lev=T&lev
    tot1&lev@units="hPa"
@@ -187,7 +187,7 @@ do while(n.le.2)
  res@gsnXRefLine = 0.0 
 
  res@tiXAxisStringFontHeightF=0.0015
- res@gsnCenterString  =lets(n) + " " + names(n)
+ res@gsnCenterString  =" " + names(n)
  res@gsnLeftString  =""
  res@gsnCenterStringFontHeightF=0.03
  res@gsnRightStringFontHeightF=0.025
@@ -200,6 +200,7 @@ do while(n.le.2)
   res@xyLineColor    = "red"
    plot(n)= gsn_csm_xy (wks,tot(:,0,0),tot&lev,res)
   res@xyLineThicknesses = 1.0
+  res@xyDashPattern  = 1
   plot1= gsn_csm_xy (wks,tot1(:,0,0),tot1&lev,res)
    overlay(plot(n),plot1)
  else
@@ -226,6 +227,7 @@ do while(n.le.2)
  ;res@xyLineColor    = "cyan"
  ;plot9              = gsn_csm_xy (wks,X1(:,0,0),T1&lev,res)
  res@xyLineColor    = "red"
+   res@xyDashPattern  = 1
  plot11              = gsn_csm_xy (wks,tot1(:,0,0),T1&lev,res)
  
  ;overlay(plot(n),plot1)
@@ -265,7 +267,7 @@ resP                            = True
  resP@txFontHeightF    = 0.03
  resP@gsnMaximize=True
  resP@gsnPaperOrientation = "portrait"
- gsn_panel(wks,plot,(/1,3/),resP)  
+ gsn_panel(wks,plot,(/2,2/),resP)  
  delete(wks) 
  print(fils)
  print(fils1)

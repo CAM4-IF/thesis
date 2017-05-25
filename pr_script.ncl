@@ -59,8 +59,11 @@ GPCPmean=avg(pr2({-30:30},:))
 GPCPvar=variance(pr2({-30:30},:))
 
 rmse=(wgt_arearmse(p3({-30:30},:),pr2({-30:30},:),1.0,1.0,0))
-print(rmse)
-pcor=pattern_cor(p3({-30:30},:),pr2({-30:30},:),1.0,0)
+pcor=pattern_cor(p3({-15:15},:),pr2({-15:15},:),1.0,0)
+
+varrat=variance(p3({-15:15},:))/variance(pr2({-15:15},:))
+print(varrat)
+print(pcor)
 
 rmseocean=(wgt_arearmse(ocean_only({-30:30},:),pr2({-30:30},:),1.0,1.0,0))
 pcorocean=pattern_cor(ocean_only({-30:30},:),pr2({-30:30},:),1.0,0)
@@ -68,8 +71,7 @@ pcorocean=pattern_cor(ocean_only({-30:30},:),pr2({-30:30},:),1.0,0)
 rmseland=(wgt_arearmse(land_only({-30:30},:),pr2({-30:30},:),1.0,1.0,0))
 pcorland=pattern_cor(land_only({-30:30},:),pr2({-30:30},:),1.0,0)
 
-print(rmseocean)
-print(pcorocean)
+
 
 meanpr=avg(p3({-30:30},:))
 maxpr=max(p3({-30:30},:))
@@ -217,8 +219,6 @@ end do
 
 
 res30                           = res3
-print(lets)
-print(lets(n))
 res30@gsnLeftString= lets(n)  + " Observed rainfall blend"
 res30@gsnLeftStringFontHeightF= 0.012
 res30@gsnRightString="Mean: " + decimalPlaces(GPCPmean,2,True) + " mm day~S~-1~N~"
@@ -275,7 +275,6 @@ res6@gsnPaperOrientation="portrait"
 gsn_panel(wks,plot,(/4,1/),res6)
 delete(wks)
 string1="eps2eps " + plotfile +".epsi" + " " + plotfile +".eps"
-print(string1)
 system(string1) 
 system("epstopdf " + plotfile +".eps") 
 system("rm " + plotfile +".eps") 

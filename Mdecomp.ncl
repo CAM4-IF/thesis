@@ -31,9 +31,13 @@ plot=new(nummods*2, graphic)    ;;;Create a panel plot with panels = number of m
 ;;;create a giant loop over all models;;;
 n=1
 i=0
-lets=(/"c)","a)","b)","c)","d)"/)
-names=(/"CAM4 default","CAM4-IF-r","CAM4-IF-t"/)
+lets=(/"c)","a)","b)","c)","d)","a)"/)
+names=(/"CAM4-ZM","CAM4-IF-r","CAM4-IF-t","CAM4-IF-tune"/)
 do while(n.le.dimsizes(fils)-1)
+   print(fils)
+   print(fils1)
+   print(fils2)
+   print(fils3)
    filen=tostring(fils(n))
    filen1=tostring(fils1(n))
    filen2=tostring(fils2(i))
@@ -124,7 +128,7 @@ do while(n.le.dimsizes(fils)-1)
  res@gsnXRefLine = 0.0 
 
  res@tiXAxisStringFontHeightF=0.0015
- res@gsnCenterString  =lets(n) + " " + names(n)
+ res@gsnCenterString  = " " + names(n)
  res@gsnLeftString  =""
  res@gsnCenterStringFontHeightF=0.03
  res@gsnRightStringFontHeightF=0.025
@@ -195,7 +199,7 @@ resP                            = True
  resP@txFontHeightF    = 0.03
  resP@gsnMaximize=True
  resP@gsnPaperOrientation = "portrait"
- gsn_panel(wks,plot,(/2,2/),resP)  
+ gsn_panel(wks,plot,(/3,2/),resP)  
  delete(wks) 
  print(fils2)
  print(fils3)

@@ -58,8 +58,12 @@ MERRAmean=avg(pr2({-30:30},:))
 MERRAvar=variance(pr2({-30:30},:))
 
 rmse=(wgt_arearmse(p1({-30:30},:),pr2({-30:30},:),1.0,1.0,0))
-print(rmse)
-pcor=pattern_cor(p1({-30:30},:),pr2({-30:30},:),1.0,0)
+
+varrat=variance(p1({-15:15},:))/variance(pr2({-15:15},:))
+print(varrat)
+pcor=pattern_cor(p1({-15:15},:),pr2({-15:15},:),1.0,0)
+print(pcor)
+
 
 ;rmseocean=(wgt_arearmse(ocean_only({-30:30},:),pr2({-30:30},:),1.0,1.0,0))
 ;pcorocean=pattern_cor(ocean_only({-30:30},:),pr2({-30:30},:),1.0,0)

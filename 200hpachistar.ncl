@@ -176,6 +176,9 @@ chistarmin2=min(chistar2({-30:30},:))
 
   
   pcor=pattern_cor(chistar({-30:30},:),chistar2({-30:30},:),1.0,0)
+  varrat=variance(chistar({-30:30},:))/variance(chistar2({-30:30},:))
+  print(varrat)
+  print(pcor)
   rmse=(wgt_arearmse(chistar({-30:30},:),chistar2({-30:30},:),1.0,1.0,0))
   
   
