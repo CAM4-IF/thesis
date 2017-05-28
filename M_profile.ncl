@@ -31,9 +31,11 @@ nummods=dimsizes(fils1) ;;number of models!
 plot=new(nummods*2, graphic)    ;;;Create a panel plot with panels = number of models!
 ;;;create a giant loop over all models;;;
 n=0
-lets=(/"a)","b)","c)"/)
-names=(/"CAM4 default","CAM4-IF-r","CAM4-IF-t"/)
+lets=(/"a)","b)","c)","d)"/)
+names=(/"CAM4 default","CAM4-IF-r","CAM4-IF-t","CAM4-IF-t-tune"/)
 do while(n.le.dimsizes(fils)-1)
+   print(fils)
+   print(fils1)
    filen=tostring(fils(n))
    filen1=tostring(fils1(n))
    cmd="cdo -fldmean -sellonlatbox,0,360,-30,30 -selname,FMASS " + filen + " tmp.nc"
@@ -173,7 +175,7 @@ resP                            = True
  resP@txFontHeightF    = 0.03
  resP@gsnMaximize=True
  resP@gsnPaperOrientation = "portrait"
- gsn_panel(wks,plot,(/1,3/),resP)  
+ gsn_panel(wks,plot,(/2,2/),resP)  
  delete(wks) 
  print(fils)
  print(fils1)

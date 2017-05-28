@@ -115,7 +115,7 @@ do while(n.le.3)
    V&lev@units="hPa"
    X=f->RLP_RVV(0,:,:,:)
    X&lev@units="hPa"
-   tot=T+U+V
+   tot=T+U+V+X
    tot!0="lev"
    tot&lev=T&lev
    tot&lev@units="hPa"
@@ -141,7 +141,7 @@ do while(n.le.3)
    V1&lev@units="hPa"
    X1=f1->RLP_RVV(0,:,:,:)
    X1&lev@units="hPa"
-   tot1=T1+U1+V1
+   tot1=T1+U1+V1+X1
    tot1!0="lev"
    tot1&lev=T&lev
    tot1&lev@units="hPa"
@@ -171,11 +171,11 @@ do while(n.le.3)
  res@trXMinF=min(tot1(:,0,0))
  ;res@trXMinF=-0.009
  ;res@trXMaxF=0.002
- res@trXMaxF=max(tot1(:,0,0))+max(tot1(:,0,0))*0.1
+ res@trXMaxF=max(tot(:,0,0))+max(tot(:,0,0))*0.1
  res@tiYAxisString="Pressure (hPa)"
  res@tiYAxisFontHeightF=0.02
  res@tmXBFormat="0*+^e"
- res@xyYStyle = "Linear"
+ res@xyYStyle = "Log"
  res@tmYLMode = "Explicit"
  res@tmYLValues        =(/100,200,300,400,500,600,700,850,1000/)
  res@tmYLLabels=(/100,200,300,400,500,600,700,850,1000/)
@@ -208,39 +208,39 @@ do while(n.le.3)
  T5=U1(:,0,0)-U(:,0,0)
  T6=V1(:,0,0)-V(:,0,0)
  T7=X1(:,0,0)-X(:,0,0)
- ;plot10               = gsn_csm_xy (wks,T(:,0,0),T1&lev,res) 
- ;res@xyLineColor    = "blue"
- ;plot4              = gsn_csm_xy (wks,U(:,0,0),T1&lev,res)
- ;res@xyLineColor    = "orange"
- ;plot5              = gsn_csm_xy (wks,V(:,0,0),T1&lev,res)
- ;;res@xyLineColor    = "cyan"
- ;plot6              = gsn_csm_xy (wks,X(:,0,0),T1&lev,res)
+ plot10               = gsn_csm_xy (wks,T(:,0,0),T1&lev,res) 
+ res@xyLineColor    = "blue"
+ plot4              = gsn_csm_xy (wks,U(:,0,0),T1&lev,res)
+ res@xyLineColor    = "orange"
+ plot5              = gsn_csm_xy (wks,V(:,0,0),T1&lev,res)
+ res@xyLineColor    = "cyan"
+ plot6              = gsn_csm_xy (wks,X(:,0,0),T1&lev,res)
  res@xyLineColor    = "red"
  plot(n)              = gsn_csm_xy (wks,tot(:,0,0),T1&lev,res)
  res@xyLineThicknesses = 1.0
- ;res@xyLineColor    = "black"
- ;plot1              = gsn_csm_xy (wks,T1(:,0,0),T1&lev,res)
- ;res@xyLineColor    = "blue"
- ;plot7              = gsn_csm_xy (wks,U1(:,0,0),T1&lev,res)
- ;res@xyLineColor    = "orange"
- ;plot8              = gsn_csm_xy (wks,V1(:,0,0),T1&lev,res)
- ;res@xyLineColor    = "cyan"
- ;plot9              = gsn_csm_xy (wks,X1(:,0,0),T1&lev,res)
+ res@xyLineColor    = "black"
+ plot1              = gsn_csm_xy (wks,T1(:,0,0),T1&lev,res)
+ res@xyLineColor    = "blue"
+ plot7              = gsn_csm_xy (wks,U1(:,0,0),T1&lev,res)
+ res@xyLineColor    = "orange"
+ plot8              = gsn_csm_xy (wks,V1(:,0,0),T1&lev,res)
+ res@xyLineColor    = "cyan"
+ plot9              = gsn_csm_xy (wks,X1(:,0,0),T1&lev,res)
  res@xyLineColor    = "red"
    res@xyDashPattern  = 1
  plot11              = gsn_csm_xy (wks,tot1(:,0,0),T1&lev,res)
  
- ;overlay(plot(n),plot1)
+ overlay(plot(n),plot1)
  ;overlay(plot(n),plot3)
- ;overlay(plot(n),plot4)
- ;overlay(plot(n),plot5)
- ;overlay(plot(n),plot6)
- ;overlay(plot(n),plot7)
- ;overlay(plot(n),plot8)
- ;overlay(plot(n),plot9)
- ;overlay(plot(n),plot10)
+ overlay(plot(n),plot4)
+ overlay(plot(n),plot5)
+ overlay(plot(n),plot6)
+ overlay(plot(n),plot7)
+ overlay(plot(n),plot8)
+ overlay(plot(n),plot9)
+ overlay(plot(n),plot10)
  overlay(plot(n),plot11)
- ;overlay(plot(n),plot12)
+; overlay(plot(n),plot12)
  
  gres = True
 gres@YPosPercent = 25    ; expressed as %, 0->100, sets position of top border of legend 
@@ -255,7 +255,7 @@ lineres@LineLengthPercent = 9.                         ; expressed as %, 0->100,
 textres = True
 textres@lgLabels = (/"NET","UPRAINDOWN","ANRAINDOWN","ANSNOWSUBL","RLP_RVV"/)  ; legend labels (required)
 textres@lgLabelFontHeights = (/0.015,0.015,0.015,0.015,0.015/)   
-;plot(n) = simple_legend(wks,plot(n),gres,lineres,textres)
+plot(n) = simple_legend(wks,plot(n),gres,lineres,textres)
  end if
 n=n+1
 end do      

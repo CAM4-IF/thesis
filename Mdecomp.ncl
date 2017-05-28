@@ -145,8 +145,16 @@ do while(n.le.dimsizes(fils)-1)
  res@xyLineThicknesses = 1.0
  res@xyDashPattern  = 1
  plot3= gsn_csm_xy  (wks,updraftdiff(:,0,0),T1&ilev,res)
+ if (i.eq.2) then
+  res@xyLineColor    = "blue"
+ res@xyLineThicknesses = 1.0
+ plot1              = gsn_csm_xy (wks,updraft1(:,0,0),T1&ilev,res)
+ overlay(plot(i-1),plot1)
+ overlay(plot(i-1),plot3)
+ else
  overlay(plot(i),plot1)
  overlay(plot(i),plot3)
+ end if
  
  gres = True
 gres@YPosPercent = 13.    ; expressed as %, 0->100, sets position of top border of legend
@@ -165,15 +173,16 @@ textres@lgLabels = (/"Response","4K warming","Control"/)  ; legend labels (requi
 textres@lgLabelFontHeights = (/0.015,0.015,0.015/)   
 plot(i) = simple_legend(wks,plot(i),gres,lineres,textres)
 
- res@trXMaxF=max(downdraft1(:,0,0))+0.0005
+ res@trXMaxF=max(downdraft(:,0,0))+0.002
  res@trXMinF=-0.001
  res@tmXBMode = "Explicit"
  delete(res@tmXBValues)
  delete(res@tmXBLabels)
  res@tmXBValues        =(/-0.002,-0.001,0,0.001,0.002,0.003,0.004,0.005/)
  res@tmXBLabels=(/-0.002,-0.001,0,0.001,0.002,0.003,0.004,0.005/)
- res@gsnCenterString  =lets(n+2) + " " + names(n)
-res@tiXAxisString="M~B~b~N~ (kg m~S~-2~N~ s~S~-1~N~)"
+ res@gsnCenterString  =" " + names(n)
+;res@tiXAxisString="M~B~d~N~ (kg m~S~-2~N~ s~S~-1~N~)"
+res@tiXAxisString="_~H-16~~V-21~u"
 res@xyLineColor    = "black"
  res@xyLineThicknesses = 1.0
  res@xyDashPattern  = 0

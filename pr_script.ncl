@@ -59,9 +59,9 @@ GPCPmean=avg(pr2({-30:30},:))
 GPCPvar=variance(pr2({-30:30},:))
 
 rmse=(wgt_arearmse(p3({-30:30},:),pr2({-30:30},:),1.0,1.0,0))
-pcor=pattern_cor(p3({-15:15},:),pr2({-15:15},:),1.0,0)
+pcor=pattern_cor(p3({-30:30},:),pr2({-30:30},:),1.0,0)
 
-varrat=variance(p3({-15:15},:))/variance(pr2({-15:15},:))
+varrat=variance(p3({-30:30},:))/variance(pr2({-30:30},:))
 print(varrat)
 print(pcor)
 
@@ -262,7 +262,7 @@ res6@cnInfoLabelOn       = False
 res6@lbOrientation =   "horizontal"          ; 
 res6@gsnPanelMainString    = " "
 res6@lbLabelFontHeightF    = 0.006
-res6@lbTitleString    = "P (mm day~S~-1~N~)"
+res6@lbTitleString    = "_~H-18~~V-30~P~N~ (mm day~S~-1~N~)"
 res6@lbTitlePosition ="Bottom"
 res6@lbTitleFontHeightF=.012
 res6@txFontHeightF    = 0.03
