@@ -4,8 +4,6 @@
 ; load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_code.ncl"
 ; load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/gsn_csm.ncl"
 load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/skewt_func.ncl"
-load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/shea_util.ncl"
-
 ;************************************************
 ;;;This script imports an ascii file with a radiosonde profile and compares it with output from the CAM model at the same location
 begin
@@ -15,7 +13,7 @@ begin
 o=0
 p=0
 
-system("rm data/*.pdf")
+system("rm data/*.eps")
 latlons=asciiread("latlon",(/9,2/),"float")
 print(latlons)
 fils=systemfunc("ls data/*")
@@ -25,10 +23,6 @@ print(names)
 numfils=dimsizes(fils)
 
 sperrors=new((/numfils,5/),float)
-cam4rmses=new((/numfils,1/),float)
-cam4ifrmses=new((/numfils,1/),float)
-amiprmses=new((/numfils,1/),float)
-rank=new((/numfils,1/),float)
 
 m=0
 print(m)
@@ -78,7 +72,7 @@ VmeanANN=dim_avg_n(Vdata,1)
  bot=4
  fint=dim_sum_n(s1(top:bot)*dp(top:bot),0)/dim_sum_n(dp(top:bot),0)
  sperrors(m,0)=fint
-f  = addfile("new_data/CAM-IFv5_AMIP_ANN_climo.nc","r")
+f  = addfile("CAM-IFv5_F2000_ANN_climo.nc","r")
 f1  = addfile("AMIP_4K_control_ANN_climo1.nc","r")
 f2=addfile("AMIP/ta_ANN_AMIPmean.nc","r")
 f3=addfile("CAM_IF_AMIP4K_OCT24_ANN_climo.nc","r")
@@ -458,71 +452,64 @@ qdiff2=(q5(:,o,p)-q4)
 
 rmsearray=new(23,float)
 
-tsum=decimalPlaces((sum(Tdiff(1:46))/45),3,True)
-tsum1=decimalPlaces((sum(Tdiff1(1:46))/45),3,True)
-tsum2=decimalPlaces((sum(Tdiff4(1:46))/45),3, True)
+tsum=decimalPlaces((sum(Tdiff(1:45))/45),3,True)
+tsum1=decimalPlaces((sum(Tdiff1(1:45))/45),3,True)
+tsum2=decimalPlaces((sum(Tdiff4(1:45))/45),3, True)
 
 
 
-wks   = gsn_open_wks ("pdf",  fils(m) + "Tobs")                  ; send graphics to pdf file
+wks   = gsn_open_wks ("eps",  fils(m) + "Tobs")                  ; send graphics to eps file
 
 
 res                   = True                       ; plot mods desired
 res@gsnDraw=False
 res@gsnFrame=False
 res@trYMaxF=1000
-res@trYMinF=100
-res@trXMaxF=5
-res@trXMinF=-5
+res@trYMinF=50
+res@trXMaxF=4
+res@trXMinF=-4
 res@xyLineColor     = "black"
-res@xyYStyle = "Log"
-res@gsnXRefLine=0
-res@tmYLMode = "Explicit"
-res@tmYLValues        =(/100,200,300,400,500,600,700,850,1000/)
-res@tmYLLabels=(/100,200,300,400,500,600,700,850,1000/)
-res@xyLineColor    = "grey58"
 
 amipmoddiff=amipmods(:,0)-TmeanANN
-print(amipmoddiff)
-plot4              = gsn_csm_xy(wks,amipmoddiff(1:46),u&lev(1:46),res)
+plot4              = gsn_csm_xy (wks,amipmoddiff(1:45),u&lev(1:45),res)
 amipmoddiff1=amipmods(:,1)-TmeanANN
-plot5              = gsn_csm_xy(wks,amipmoddiff1(1:46),u&lev(1:46),res)
+plot5              = gsn_csm_xy (wks,amipmoddiff1(1:45),u&lev(1:45),res)
 amipmoddiff2=amipmods(:,2)-TmeanANN
-plot6              = gsn_csm_xy(wks,amipmoddiff2(1:46),u&lev(1:46),res)
+plot6              = gsn_csm_xy (wks,amipmoddiff2(1:45),u&lev(1:45),res)
 amipmoddiff3=amipmods(:,3)-TmeanANN
-plot7              = gsn_csm_xy(wks,amipmoddiff3(1:46),u&lev(1:46),res)
+plot7              = gsn_csm_xy (wks,amipmoddiff3(1:45),u&lev(1:45),res)
 amipmoddiff4=amipmods(:,4)-TmeanANN
-plot8              = gsn_csm_xy(wks,amipmoddiff4(1:46),u&lev(1:46),res)
+plot8              = gsn_csm_xy (wks,amipmoddiff4(1:45),u&lev(1:45),res)
 amipmoddiff5=amipmods(:,5)-TmeanANN
-plot9             = gsn_csm_xy(wks,amipmoddiff5(1:46),u&lev(1:46),res)
+plot9             = gsn_csm_xy (wks,amipmoddiff5(1:45),u&lev(1:45),res)
 amipmoddiff6=amipmods(:,6)-TmeanANN
-plot10              = gsn_csm_xy(wks,amipmoddiff6(1:46),u&lev(1:46),res)
+plot10              = gsn_csm_xy (wks,amipmoddiff6(1:45),u&lev(1:45),res)
 amipmoddiff7=amipmods(:,7)-TmeanANN
-plot11              = gsn_csm_xy(wks,amipmoddiff7(1:46),u&lev(1:46),res)
+plot11              = gsn_csm_xy (wks,amipmoddiff7(1:45),u&lev(1:45),res)
 amipmoddiff8=amipmods(:,8)-TmeanANN
-plot12              = gsn_csm_xy(wks,amipmoddiff8(1:46),u&lev(1:46),res)
+plot12              = gsn_csm_xy (wks,amipmoddiff8(1:45),u&lev(1:45),res)
 amipmoddiff9=amipmods(:,9)-TmeanANN
-plot13              =gsn_csm_xy(wks,amipmoddiff9(1:46),u&lev(1:46),res)
+plot13              = gsn_csm_xy (wks,amipmoddiff9(1:45),u&lev(1:45),res)
 amipmoddiff10=amipmods(:,10)-TmeanANN
-plot14              = gsn_csm_xy(wks,amipmoddiff10(1:46),u&lev(1:46),res)
+plot14              = gsn_csm_xy (wks,amipmoddiff10(1:45),u&lev(1:45),res)
 amipmoddiff11=amipmods(:,11)-TmeanANN
-plot15              = gsn_csm_xy(wks,amipmoddiff11(1:46),u&lev(1:46),res)
+plot15              = gsn_csm_xy (wks,amipmoddiff11(1:45),u&lev(1:45),res)
 amipmoddiff12=amipmods(:,12)-TmeanANN
-plot16              =gsn_csm_xy(wks,amipmoddiff12(1:46),u&lev(1:46),res)
+plot16              = gsn_csm_xy (wks,amipmoddiff12(1:45),u&lev(1:45),res)
 amipmoddiff13=amipmods(:,13)-TmeanANN
-plot17              =gsn_csm_xy(wks,amipmoddiff13(1:46),u&lev(1:46),res)
+plot17              = gsn_csm_xy (wks,amipmoddiff13(1:45),u&lev(1:45),res)
 amipmoddiff14=amipmods(:,14)-TmeanANN
-plot18              = gsn_csm_xy(wks,amipmoddiff14(1:46),u&lev(1:46),res)
+plot18              = gsn_csm_xy (wks,amipmoddiff14(1:45),u&lev(1:45),res)
 amipmoddiff15=amipmods(:,15)-TmeanANN
-plot19              = gsn_csm_xy(wks,amipmoddiff15(1:46),u&lev(1:46),res)
+plot19              = gsn_csm_xy (wks,amipmoddiff15(1:45),u&lev(1:45),res)
 amipmoddiff16=amipmods(:,16)-TmeanANN
-plot20              = gsn_csm_xy(wks,amipmoddiff16(1:46),u&lev(1:46),res)
+plot20              = gsn_csm_xy (wks,amipmoddiff16(1:45),u&lev(1:45),res)
 amipmoddiff17=amipmods(:,17)-TmeanANN
-plot21              = gsn_csm_xy(wks,amipmoddiff17(1:46),u&lev(1:46),res)
+plot21              = gsn_csm_xy (wks,amipmoddiff17(1:45),u&lev(1:45),res)
 amipmoddiff18=amipmods(:,18)-TmeanANN
-plot22              = gsn_csm_xy(wks,amipmoddiff18(1:46),u&lev(1:46),res)
+plot22              = gsn_csm_xy (wks,amipmoddiff18(1:45),u&lev(1:45),res)
 amipmoddiff19=amipmods(:,19)-TmeanANN
-plot23              = gsn_csm_xy(wks,amipmoddiff19(1:46),u&lev(1:46),res)
+plot23              = gsn_csm_xy (wks,amipmoddiff19(1:45),u&lev(1:45),res)
 sqe=Tdiff^2
 sqe1=Tdiff1^2
 sqe2=Tdiff4^2
@@ -548,64 +535,62 @@ sqe21=amipmoddiff18^2
 sqe22=amipmoddiff19^2
 
 
-rmsearray(0)=decimalPlaces(sqrt(avg(sqe(1:46))),3,True)
-rmsearray(1)=decimalPlaces(sqrt(avg(sqe1(1:46))),3,True)
-rmsearray(2)=decimalPlaces(sqrt(avg(sqe2(1:46))),3,True)
-rmsearray(3)=decimalPlaces(sqrt(avg(sqe3(1:46))),3,True)
-rmsearray(4)=decimalPlaces(sqrt(avg(sqe4(1:46))),3,True)
-rmsearray(5)=decimalPlaces(sqrt(avg(sqe5(1:46))),3,True)
-rmsearray(6)=decimalPlaces(sqrt(avg(sqe6(1:46))),3,True)
-rmsearray(7)=decimalPlaces(sqrt(avg(sqe7(1:46))),3,True)
-rmsearray(8)=decimalPlaces(sqrt(avg(sqe8(1:46))),3,True)
-rmsearray(9)=decimalPlaces(sqrt(avg(sqe9(1:46))),3,True)
-rmsearray(10)=decimalPlaces(sqrt(avg(sqe10(1:46))),3,True)
-rmsearray(11)=decimalPlaces(sqrt(avg(sqe11(1:46))),3,True)
-rmsearray(12)=decimalPlaces(sqrt(avg(sqe12(1:46))),3,True)
-rmsearray(13)=decimalPlaces(sqrt(avg(sqe13(1:46))),3,True)
-rmsearray(14)=decimalPlaces(sqrt(avg(sqe14(1:46))),3,True)
-rmsearray(15)=decimalPlaces(sqrt(avg(sqe15(1:46))),3,True)
-rmsearray(16)=decimalPlaces(sqrt(avg(sqe16(1:46))),3,True)
-rmsearray(17)=decimalPlaces(sqrt(avg(sqe17(1:46))),3,True)
-rmsearray(18)=decimalPlaces(sqrt(avg(sqe18(1:46))),3,True)
-rmsearray(19)=decimalPlaces(sqrt(avg(sqe19(1:46))),3,True)
-rmsearray(20)=decimalPlaces(sqrt(avg(sqe20(1:46))),3,True)
-rmsearray(21)=decimalPlaces(sqrt(avg(sqe21(1:46))),3,True)
-rmsearray(22)=decimalPlaces(sqrt(avg(sqe22(1:46))),3,True)
+rmsearray(0)=decimalPlaces(sqrt(avg(sqe(1:45))),3,True)
+rmsearray(1)=decimalPlaces(sqrt(avg(sqe1(1:45))),3,True)
+rmsearray(2)=decimalPlaces(sqrt(avg(sqe2(1:45))),3,True)
+rmsearray(3)=decimalPlaces(sqrt(avg(sqe3(1:45))),3,True)
+rmsearray(4)=decimalPlaces(sqrt(avg(sqe4(1:45))),3,True)
+rmsearray(5)=decimalPlaces(sqrt(avg(sqe5(1:45))),3,True)
+rmsearray(6)=decimalPlaces(sqrt(avg(sqe6(1:45))),3,True)
+rmsearray(7)=decimalPlaces(sqrt(avg(sqe7(1:45))),3,True)
+rmsearray(8)=decimalPlaces(sqrt(avg(sqe8(1:45))),3,True)
+rmsearray(9)=decimalPlaces(sqrt(avg(sqe9(1:45))),3,True)
+rmsearray(10)=decimalPlaces(sqrt(avg(sqe10(1:45))),3,True)
+rmsearray(11)=decimalPlaces(sqrt(avg(sqe11(1:45))),3,True)
+rmsearray(12)=decimalPlaces(sqrt(avg(sqe12(1:45))),3,True)
+rmsearray(13)=decimalPlaces(sqrt(avg(sqe13(1:45))),3,True)
+rmsearray(14)=decimalPlaces(sqrt(avg(sqe14(1:45))),3,True)
+rmsearray(15)=decimalPlaces(sqrt(avg(sqe15(1:45))),3,True)
+rmsearray(16)=decimalPlaces(sqrt(avg(sqe16(1:45))),3,True)
+rmsearray(17)=decimalPlaces(sqrt(avg(sqe17(1:45))),3,True)
+rmsearray(18)=decimalPlaces(sqrt(avg(sqe18(1:45))),3,True)
+rmsearray(19)=decimalPlaces(sqrt(avg(sqe19(1:45))),3,True)
+rmsearray(20)=decimalPlaces(sqrt(avg(sqe20(1:45))),3,True)
+rmsearray(21)=decimalPlaces(sqrt(avg(sqe21(1:45))),3,True)
+rmsearray(22)=decimalPlaces(sqrt(avg(sqe22(1:45))),3,True)
 
 quarts=dim_pqsort_n(rmsearray,2,0)
 print(quarts)
 index=(ind(quarts.eq.0))+1
 print(index)
 
-cam4rmses(m,0)=rmsearray(1)
-cam4ifrmses(m,0)=rmsearray(0)
-amiprmses(m,0)=rmsearray(2)
-rank(m,0)=index
-
 res@xyLineColor     = "blue"
 res@trYReverse        = True                     ; reverse Y-axis
-;res@tiMainString    =  "ANN mean model-observed temperature (K):"
-;res@gsnRightString  ="~C~CAM4 RMSE: " + rmsearray(1) + "~C~CAM4-IF RMSE: " + rmsearray(0) + " rank: " + index + "~C~CMIP5/AMIP RMSE: " + rmsearray(2)
+res@tiMainString    = names(m,0) + ": (" + lon + "E, " + lat + "N) ANN mean"
+res@gsnRightString  ="~C~CAM4 RMSE: " + rmsearray(1) + "~C~CAM4-IF RMSE: " + rmsearray(0) + "~C~CMIP5/AMIP RMSE: " + rmsearray(2)
+if(rmsearray(1) .lt. min(rmsearray(0:22))) then
+   res@gsnRightString  ="you win!"
+end if
 res@gsnRightStringFontHeightF=0.008
-res@gsnLeftString  ="a) " + names(m,0) + ": (" + lon + "E, " + lat + "N)"
-res@gsnLeftStringFontHeightF=0.018
+res@gsnLeftString  =""
+res@gsnLeftStringFontHeightF=0.008
 res@tiMainFontHeightF=0.018
 res@xyLineThicknesses = 8.0
-res@tiXAxisString="Model-observed temperature (K)"
-res@tiXAxisFontHeightF=0.018
+res@tiXAxisString="Temperature (model-observed) (K): CAM4-IF: red, CAM4: Blue, CMIP5 AMIP: orange, CMIP5 AMIP members: black"
+res@tiXAxisFontHeightF=0.01
 res@tiYAxisString="Pressure (hPa)"
 res@tiYAxisFontHeightF=0.018
 
 res@xyLineThicknesses = 8.0
 res@xyLineColor    = "red"
-plot               = gsn_csm_xy(wks,Tdiff(1:46),u&lev(1:46),res) 
+plot               = gsn_csm_xy (wks,Tdiff(1:45),u&lev(1:45),res) 
 res@xyLineColor    = "blue"
-plot1              = gsn_csm_xy(wks,Tdiff1(1:46),u&lev(1:46),res)
+plot1              = gsn_csm_xy (wks,Tdiff1(1:45),u&lev(1:45),res)
 res@xyLineColor    = "green"
-;plot2              =gsn_csm_xy(wks,Tdiff4(1:46),u&lev(1:46),res)
+;plot2              = gsn_csm_xy (wks,Tdiff4(1:45),u&lev(1:45),res)
 res@xyLineColor    = "orange"
-plot3              = gsn_csm_xy(wks,Tdiff2(1:46),u&lev(1:46),res)
-res@xyLineColor    = "grey"
+plot3              = gsn_csm_xy (wks,Tdiff2(1:45),u&lev(1:45),res)
+res@xyLineColor    = "black"
 res@xyLineThicknesses = 1.0
 
 mres               = True                     ; marker mods desired
@@ -654,28 +639,8 @@ overlay(plot,plot20)
 overlay(plot,plot21)
 overlay(plot,plot22)
 overlay(plot,plot23)
-
-gres = True
-gres@YPosPercent = 86.    ; expressed as %, 0->100, sets position of top border of legend 
-                            ;  when gres@Position is set to its default setting of "Top" (Default = 95.)
-gres@XPosPercent = 62    ; expressed as %, 0->100, sets position of left border of legend(Default = 5.)
-gres@ItemSpacePercent = 10.  
-lineres = True
-lineres@lgLineColors = (/"red","orange","blue","grey"/) ; line colors
-lineres@lgLineThicknesses = 2.5                        ; line thicknesses
-lineres@LineLengthPercent = 9.                         ; expressed as %, 0->100, length of line
-
-textres = True
-textres@lgLabels = (/"CAM4-IF-t","CMIP5/AMIP mean","CAM4 default", "CMIP5/AMIP members"/)  ; legend labels (required)
-textres@lgLabelFontHeights = (/0.011,0.011,0.011,0.011/)   
-plot = simple_legend(wks,plot,gres,lineres,textres)
-
-txid = new(1,graphic)                  ; Nine text strings
-txres               = True     
-txres@txFontHeightF = 0.01
-txid(0) = gsn_add_text (wks,plot,"~C~CAM4 RMSE: " + rmsearray(1) + " K " + "~C~CAM4-IF-t RMSE: " + rmsearray(0) + " K," + " rank: " + index + "~C~CMIP5/AMIP RMSE: " + rmsearray(2) + " K", 3, 400 ,txres)
-
-draw(plot)                 
+draw(plot)
+gsn_polyline(wks,plot,(/0,0/),(/0,1000/),False)                  
 frame(wks)
 
 
@@ -743,16 +708,16 @@ sqe25=dTdZdiff1^2
 sqe26=dTdZdiff2^2
 sqe27=dTdZdiff3^2
 
-rmse4=decimalPlaces(sqrt(avg(sqe24(1:46))),3,True)
-rmse5=decimalPlaces(sqrt(avg(sqe25(1:46))),3,True)
-rmse6=decimalPlaces(sqrt(avg(sqe26(1:46))),3,True)
+rmse4=decimalPlaces(sqrt(avg(sqe24(1:45))),3,True)
+rmse5=decimalPlaces(sqrt(avg(sqe25(1:45))),3,True)
+rmse6=decimalPlaces(sqrt(avg(sqe26(1:45))),3,True)
 
 
-tsum4=decimalPlaces((sum(dTdZdiff(1:46))/45),3,True)
-tsum5=decimalPlaces((sum(dTdZdiff1(1:46))/45),3,True)
-tsum6=decimalPlaces((sum(dTdZdiff2(1:46))/45),3, True)
+tsum4=decimalPlaces((sum(dTdZdiff(1:45))/45),3,True)
+tsum5=decimalPlaces((sum(dTdZdiff1(1:45))/45),3,True)
+tsum6=decimalPlaces((sum(dTdZdiff2(1:45))/45),3, True)
 
-wks   = gsn_open_wks ("pdf",fils(m) + "dTdZobs")                  ; send graphics to pdf file
+wks   = gsn_open_wks ("eps",fils(m) + "dTdZobs")                  ; send graphics to eps file
 
 res1                   = True                       ; plot mods desired
 res1@xyLineColor     = "blue"
@@ -776,13 +741,13 @@ res1@trYMinF=50
 res1@trXMaxF=4
 res1@trXMinF=-4
 res1@xyLineColor     = "red"
-plot               = gsn_csm_xy (wks,dTdZdiff(1:46),u&lev(1:46),res1) 
+plot               = gsn_csm_xy (wks,dTdZdiff(1:45),u&lev(1:45),res1) 
 res1@xyLineColor    = "blue"
-plot1              = gsn_csm_xy (wks,dTdZdiff1(1:46),u&lev(1:46),res1)
+plot1              = gsn_csm_xy (wks,dTdZdiff1(1:45),u&lev(1:45),res1)
 res1@xyLineColor    = "orange"
-plot2              = gsn_csm_xy (wks,dTdZdiff2(1:46),u&lev(1:46),res1)
+plot2              = gsn_csm_xy (wks,dTdZdiff2(1:45),u&lev(1:45),res1)
 res1@xyLineColor    = "green"
-;plot3              = gsn_csm_xy (wks,dTdZdiff3(1:46),u&lev(1:46),res1)
+;plot3              = gsn_csm_xy (wks,dTdZdiff3(1:45),u&lev(1:45),res1)
 res1@xyLineColor    = "cyan"
 overlay(plot,plot1)
 overlay(plot,plot2)
@@ -805,16 +770,16 @@ sqe8=qdiff^2
 sqe9=qdiff1^2
 sqe10=qdiff2^2
 
-rmse8=sqrt(avg(sqe8(1:46)))
-rmse9=sqrt(avg(sqe9(1:46)))
-rmse10=sqrt(avg(sqe10(1:46)))
+rmse8=sqrt(avg(sqe8(1:45)))
+rmse9=sqrt(avg(sqe9(1:45)))
+rmse10=sqrt(avg(sqe10(1:45)))
 
 
-tsum8=sum(qdiff(1:46))/45
-tsum9=sum(qdiff1(1:46))/45
-tsum10=sum(qdiff2(1:46))/45
+tsum8=sum(qdiff(1:45))/45
+tsum9=sum(qdiff1(1:45))/45
+tsum10=sum(qdiff2(1:45))/45
 
-wks   = gsn_open_wks ("pdf",fils(m) + "Qobs")                  ; send graphics to pdf file
+wks   = gsn_open_wks ("eps",fils(m) + "Qobs")                  ; send graphics to eps file
 
 res1@gsnRightString  ="CAM-IFv2 RMSE: " + rmse8 +"~C~CAM-IFv1 RMSE: " + rmse10 +"~C~CAM4 RMSE: " + rmse9 ;+ "~C~CAM-IFv3 RMSE: " + rmse7
 res1@gsnRightStringFontHeightF=0.008
@@ -828,11 +793,11 @@ res1@tiYAxisString="Pressure (hPa)"
 res1@tiYAxisFontHeightF=0.018
 
 res1@xyLineColor     = "red"
-plot               = gsn_csm_xy (wks,qdiff(1:46)*1000,u&lev(1:46),res1) 
+plot               = gsn_csm_xy (wks,qdiff(1:45)*1000,u&lev(1:45),res1) 
 res@xyLineColor    = "blue"
-plot1              = gsn_csm_xy (wks,qdiff1(1:46)*1000,u&lev(1:46),res1)
+plot1              = gsn_csm_xy (wks,qdiff1(1:45)*1000,u&lev(1:45),res1)
 res@xyLineColor    = "green"
-plot2              = gsn_csm_xy (wks,qdiff2(1:46)*1000,u&lev(1:46),res1)
+plot2              = gsn_csm_xy (wks,qdiff2(1:45)*1000,u&lev(1:45),res1)
 
 
 
@@ -849,7 +814,7 @@ error_bar3=new((ntimes-2),typeof(plot))
 do i=1,ntimes-3
 dum3(i) = gsn_add_polymarker(wks,plot1,qdiff1(i)*1000,lev(i),mres)
 mres@gsLineColor = "blue"                    ; polymarker color
-;error_bar3(i) = gsn_add_polyline(wks,plot1,(/qdiff1(i)*1000+2056*(sqrt(q11(i,o,p))/sqrt(27)),qdiff1(i)*1000-2056*(sqrt(q11(i,o,p))/sqrt(27))/),(/lev(i),lev(i)/),mres)
+error_bar3(i) = gsn_add_polyline(wks,plot1,(/qdiff1(i)*1000+2056*(sqrt(q11(i,o,p))/sqrt(27)),qdiff1(i)*1000-2056*(sqrt(q11(i,o,p))/sqrt(27))/),(/lev(i),lev(i)/),mres)
 end do
 
 
@@ -868,16 +833,16 @@ sqe11=tediff^2
 sqe12=tediff1^2
 sqe13=tediff2^2
 
-rmse11=sqrt(avg(sqe11(1:46)))
-rmse12=sqrt(avg(sqe12(1:46)))
-rmse13=sqrt(avg(sqe13(1:46)))
+rmse11=sqrt(avg(sqe11(1:45)))
+rmse12=sqrt(avg(sqe12(1:45)))
+rmse13=sqrt(avg(sqe13(1:45)))
 
 
-tsum11=sum(tediff(1:46))/45
-tsum12=sum(tediff1(1:46))/45
-tsum13=sum(tediff2(1:46))/45
+tsum11=sum(tediff(1:45))/45
+tsum12=sum(tediff1(1:45))/45
+tsum13=sum(tediff2(1:45))/45
 
-wks   = gsn_open_wks ("pdf",fils(m) + "Teobs")                  ; send graphics to pdf file
+wks   = gsn_open_wks ("eps",fils(m) + "Teobs")                  ; send graphics to eps file
 
 res@gsnRightString  ="CAM-IFv2 RMSE: " + rmse11 +"~C~CAM-IFv1 RMSE: " + rmse13 +"~C~CAM4 RMSE: " + rmse12 ;+ "~C~CAM-IFv3 RMSE: " + rmse7
 res@gsnRightStringFontHeightF=0.008
@@ -894,11 +859,11 @@ res@trXMaxF=8
 res@trXMinF=-8
 
 res@xyLineColor     = "red"
-plot               = gsn_csm_xy (wks,tediff(1:46),u&lev(1:46),res) 
+plot               = gsn_csm_xy (wks,tediff(1:45),u&lev(1:45),res) 
 res@xyLineColor    = "blue"
-plot1              = gsn_csm_xy (wks,tediff1(1:46),u&lev(1:46),res)
+plot1              = gsn_csm_xy (wks,tediff1(1:45),u&lev(1:45),res)
 res@xyLineColor    = "green"
-plot2              = gsn_csm_xy (wks,tediff2(1:46),u&lev(1:46),res)
+plot2              = gsn_csm_xy (wks,tediff2(1:45),u&lev(1:45),res)
 
 
 
@@ -960,17 +925,17 @@ sqe34=dtedzdiff^2
 sqe35=dtedzdiff1^2
 sqe36=dtedzdiff2^2
 
-rmse14=sqrt(avg(sqe34(1:46)))
-rmse15=sqrt(avg(sqe35(1:46)))
-rmse16=sqrt(avg(sqe36(1:46)))
+rmse14=sqrt(avg(sqe34(1:45)))
+rmse15=sqrt(avg(sqe35(1:45)))
+rmse16=sqrt(avg(sqe36(1:45)))
 
 
-tsum14=sum(dtedzdiff(1:46))/45
-tsum15=sum(dtedzdiff1(1:46))/45
-tsum16=sum(dtedzdiff2(1:46))/45
+tsum14=sum(dtedzdiff(1:45))/45
+tsum15=sum(dtedzdiff1(1:45))/45
+tsum16=sum(dtedzdiff2(1:45))/45
 
 
-wks   = gsn_open_wks ("pdf",fils(m) + "dTedZobs")                  ; send graphics to pdf file
+wks   = gsn_open_wks ("eps",fils(m) + "dTedZobs")                  ; send graphics to eps file
 
 res@gsnRightString  ="CAM-IFv2 RMSE: " + rmse14 +"~C~CAM-IFv1 RMSE: " + rmse16 +"~C~CAM4 RMSE: " + rmse15 ;+ "~C~CAM-IFv3 RMSE: " + rmse7
 res@gsnRightStringFontHeightF=0.008
@@ -987,11 +952,11 @@ res@trXMaxF=8
 res@trXMinF=-8
 
 res@xyLineColor     = "red"
-plot               = gsn_csm_xy (wks,dtedzdiff(1:46),u&lev(1:46),res) 
+plot               = gsn_csm_xy (wks,dtedzdiff(1:45),u&lev(1:45),res) 
 res@xyLineColor    = "blue"
-plot1              = gsn_csm_xy (wks,dtedzdiff1(1:46),u&lev(1:46),res)
+plot1              = gsn_csm_xy (wks,dtedzdiff1(1:45),u&lev(1:45),res)
 res@xyLineColor    = "green"
-plot2              = gsn_csm_xy (wks,dtedzdiff2(1:46),u&lev(1:46),res)
+plot2              = gsn_csm_xy (wks,dtedzdiff2(1:45),u&lev(1:45),res)
 overlay(plot,plot1)
 overlay(plot,plot2)
 draw(plot)
@@ -1020,14 +985,14 @@ frame(wks)
 ;skewtOpts@tiMainString = "Koror"
 
 
-;wks  = gsn_open_wks ("pdf", "CAM-IF")
+;wks  = gsn_open_wks ("eps", "CAM-IF")
 ;skewt_bkgd = skewT_BackGround(wks, skewtOpts)
 ;skewt_data = skewT_PlotData(wks,skewt_bkgd,lev,tk(:,o,p),tdc,z(:,o,p),wspd(:,o,p),wdir(:,o,p),dataOpts)
 
 
 ;draw(skewt_bkgd)
 ;frame(wks)
-;wks  = gsn_open_wks ("pdf", "CAM-IF4K")
+;wks  = gsn_open_wks ("eps", "CAM-IF4K")
 ;skewt_bkgd1 = skewT_BackGround(wks, skewtOpts)
 ;skewt_data1 = skewT_PlotData(wks,skewt_bkgd1,lev,tk3(:,o,p),tdc3,z3(:,o,p),wspd(:,o,p),wdir(:,o,p),dataOpts)
 ;draw(skewt_bkgd)
@@ -1041,10 +1006,7 @@ delete(res)
 ;delete(amip4k)
 delete(amipmods)
 end do
-print(cam4rmses)
-print(cam4ifrmses)
-print(amiprmses)
-print(rank)
-system("mv data/*.pdf plots/")
-;system("gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER -sOutputFile=plots/profiles.pdf plots/*.pdf")
+print(sperrors)
+system("mv data/*.eps plots/")
+system("gs -sDEVICE=pdfwrite -dNOPAUSE -dBATCH -dSAFER -sOutputFile=plots/profiles.pdf plots/*.eps")
 end
