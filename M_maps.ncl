@@ -9,6 +9,8 @@ lets=(/"a)","b)","c)","d)"/)
 names=(/"CAM4 default","CAM4-IF-r","CAM4-IF-t"/)
 n=0
 do while(n.le.dimsizes(fils)-1)
+print(fils)
+print(fils1)
 filen=tostring(fils(n))
 filen1=tostring(fils1(n))
 f= addfile(filen, "r")
@@ -147,7 +149,7 @@ res4@cnInfoLabelOn       = False
 res4@lbOrientation =   "horizontal"          ; 
 res4@gsnPanelMainString    = " "
 res4@lbLabelFontHeightF    = 0.006
-res4@lbTitleString    = "M~B~int~N~ (kg m~S~-2~N~s~S~-1~N~)"
+res4@lbTitleString    = "_~H-18~~V-28~M~B~int~N~ (kg m~S~-2~N~s~S~-1~N~)"
 res4@lbTitlePosition ="Bottom"
 res4@lbTitleFontHeightF=.015
 res4@txFontHeightF    = 0.03

@@ -19,7 +19,7 @@ begin
 ;************************************************
 ; read in data
 ;************************************************
-latlons=asciiread("../latlon",(/9,2/),"float")
+latlons=asciiread("../../latlon",(/9,2/),"float")
 lat=latlons(3,0)
 lon=latlons(3,1)
 
@@ -27,7 +27,7 @@ o=round(((90+lat)/1.89473),3)
 p=round((lon/2.5),3)
 r=round(((90+lat)/2.5),3)
 
-data1=asciiread("KOR",(/576,10/),"float")
+data1=asciiread("../KOR",(/576,10/),"float")
 Tdata=new((/48,12/),float)
 Pdata=new((/48,12/),float)
 RHdata=new((/48,12/),float)
@@ -68,34 +68,44 @@ dTdZ(i)=dT/dZ
 end do
 
 
-f=addfile("../AMIP/ta_ANN_AMIPmean.nc","r")
-f1=addfile("../AMIP_4K_control_ANN_climo1.nc","r")
-f2  = addfile("CAM-IFv5_AMIP_ANN_climo.nc","r")
-f7=addfile("RAOBS.nc","r")
-cmd="cdo -fldmean -sellonlatbox,0,360,-10,10 -selname,ta ../AMIP/ta_ANN_AMIPmean.nc" + " tmp.nc"
-cmd1="cdo -fldmean -sellonlatbox,0,360,-10,10 -selname,T,PS ../AMIP_4K_control_ANN_climo1.nc" + " tmp1.nc"
-cmd2="cdo -fldmean -sellonlatbox,0,360,-10,10 -selname,T,PS CAM-IFv5_AMIP_ANN_climo.nc" + " tmp2.nc"
-cmd3="cdo -fldmean -sellonlatbox,0,360,-10,10 -selname,T MERGED_T_trop_ANN.nc" + " tmp3.nc"
+f=addfile("../../AMIP/ta_ANN_AMIPmean.nc","r")
+f1=addfile("../../AMIP_4K_control_ANN_climo1.nc","r")
+f2  = addfile("../CAM-IFv5_AMIP_ANN_climo.nc","r")
+f8  = addfile("../CAM-IFv5_AMIP_br_ANN_climo.nc","r")
+;f7=addfile("RAOBS.nc","r")
+cmd="cdo -fldmean -sellonlatbox,0,360,-20,20 -selname,ta ../../AMIP/ta_ANN_AMIPmean.nc" + " tmp.nc"
+cmd1="cdo -fldmean -sellonlatbox,0,360,-20,20 -selname,T,PS,Z3 ../../AMIP_4K_control_ANN_climo1.nc" + " tmp1.nc"
+cmd2="cdo -fldmean -sellonlatbox,0,360,-20,20 -selname,T,PS,Z3 ../CAM-IFv5_AMIP_ANN_climo.nc" + " tmp2.nc"
+cmd3="cdo -fldmean -sellonlatbox,0,360,-20,20 -selname,T,Z3 ../MERGED_T_trop_ANN.nc" + " tmp3.nc"
+cmd4="cdo -fldmean -sellonlatbox,0,360,-20,20 -selname,T,PS,Z3 ../CAM-IFv5_AMIP_br_ANN_climo.nc" + " tmp4.nc"
 
 areamean=systemfunc(cmd)
 areamean1=systemfunc(cmd1)
 areamean2=systemfunc(cmd2)
 areamean3=systemfunc(cmd3)
+areamean4=systemfunc(cmd4)
 f3=addfile("tmp.nc","r")
 f4=addfile("tmp1.nc","r")
 f5=addfile("tmp2.nc","r")
 f6=addfile("tmp3.nc","r")
+f7=addfile("tmp4.nc","r")
 
 T3=f3->ta(0,:,:,:)
 T4=f4->T(0,:,:,:)
 T5=f5->T(0,:,:,:)
 T6=f6->T(0,:,:,:)
+T7=f7->T(0,:,:,:)
+Zmerra=f6->Z3(0,:,:,:)
+Zcam4=f4->Z3(0,:,:,:)
+Zcamif=f5->Z3(0,:,:,:)
+Zcamifr=f7->Z3(0,:,:,:)
 ps3=f4->PS(0,:,:)
 ps4=f5->PS(0,:,:)
+ps5=f7->PS(0,:,:)
 ;ps5=f6->PS(0,:,:)
 
-test=f7->T(:,:,:)
-print(test)
+;test=f7->T(:,:,:)
+;print(test)
 
 T=f->ta(0,:,:,:)
 T1=f1->T(0,:,:,:)
@@ -136,14 +146,41 @@ dT=(u2(i+1,o,p)-u2(i,o,p))
 dTdZ3(i)=dT/dZ
 end do
 
+dtdz1=new(dimsizes(T(:,30,30)),double)
+do i=0,dimsizes(T(:,30,30))-2
+meanT=(T(i,r,p)+T(i+1,r,p))/2
+dz=((287*meanT/9.81)*log(T&plev(i)/T&plev(i+1)))/1000
+dt=(T(i+1,r,p)-T(i,r,p))
+dtdz1(i)=dt/dz
+end do
+
+delete(dz)
+dtdz2=new(dimsizes(T1(:,0,0)),double)
+do i=0,dimsizes(T1(:,0,0))-2
+meanT=(T1(i,o,p)+T1(i+1,o,p))/2
+dz=((287*meanT/9.81)*log(T1&lev(i)/T1&lev(i+1)))/1000
+dt=(T1(i+1,o,p)-T1(i,o,p))
+dtdz2(i)=dt/dz
+end do
+
+dtdz3=new(dimsizes(T2(:,0,0)),double)
+do i=0,dimsizes(T2(:,0,0))-2
+meanT=(T2(i,o,p)+T2(i+1,o,p))/2
+dz=((287*meanT/9.81)*log(T2&lev(i)/T2&lev(i+1)))/1000
+dt=(T2(i+1,o,p)-T2(i,o,p))
+dtdz3(i)=dt/dz
+end do
+
+
 
 
 T3@_FillValue=1e20
 u3=int2p_n_Wrap(plev*0.01,T3,PmeanANN,0,0)
 u4=vinth2p(T4,hyam,hybm,PmeanANN,ps3,2,1000,1,False)
 u5=vinth2p(T5,hyam,hybm,PmeanANN,ps4,2,1000,1,False)
-;u6=vinth2p(T6,hyam,hybm,PmeanANN,ps5,2,1000,1,False)
+u7=vinth2p(T7,hyam,hybm,PmeanANN,ps5,2,1000,1,False)
 elevs=f6->lev
+u6=int2p_n_Wrap(elevs,T6,PmeanANN,0,0)
 
 
 
@@ -172,14 +209,60 @@ dTdZ6(i)=dT/dZ
 end do
 delete(dZ)
 
-dTdZ7=new(dimsizes(elevs),double)
-do i=0,dimsizes(elevs)-2
-meanT=(T6(i,0,0)+T6(i+1,0,0))/2
-dZ=((287*meanT/9.81)*log(elevs(i)/elevs(i+1)))/1000
-dT=(T6(i+1,0,0)-T6(i,0,0))
+dTdZ8=new(dimsizes(PmeanANN),double)
+do i=0,ntimes-2
+meanT=(u7(i,0,0)+u7(i+1,0,0))/2
+dZ=((287*meanT/9.81)*log(PmeanANN(i)/PmeanANN(i+1)))/1000
+dT=(u7(i+1,0,0)-u7(i,0,0))
+dTdZ8(i)=dT/dZ
+end do
+delete(dZ)
+
+dTdZ7=new(dimsizes(PmeanANN),double)
+do i=0,ntimes-2
+meanT=(u6(i,0,0)+u6(i+1,0,0))/2
+dZ=((287*meanT/9.81)*log(PmeanANN(i)/PmeanANN(i+1)))/1000
+dT=(u6(i+1,0,0)-u6(i,0,0))
 dTdZ7(i)=dT/dZ
 end do
 
+dtdz7=new(dimsizes(T6(:,0,0)),double)
+do i=0,dimsizes(T6(:,0,0))-2
+dz=(Zmerra(i+1,0,0)-Zmerra(i,0,0))/1000
+dt=(T6(i+1,0,0)-T6(i,0,0))
+dtdz7(i)=dt/dz
+end do
+
+delete(dz)
+dtdz4=new(dimsizes(T3(:,0,0)),double)
+do i=0,dimsizes(T3(:,0,0))-2
+meanT=(T3(i,0,0)+T3(i+1,0,0))/2
+dz=((287*meanT/9.81)*log(plev(i)/plev(i+1)))/1000
+dt=(T3(i+1,0,0)-T3(i,0,0))
+dtdz4(i)=dt/dz
+end do
+
+
+dtdz5=new(dimsizes(T4(:,0,0)),double)
+do i=0,dimsizes(T4(:,0,0))-2
+dz=(Zcam4(i+1,0,0)-Zcam4(i,0,0))/1000
+dt=(T4(i+1,0,0)-T4(i,0,0))
+dtdz5(i)=dt/dz
+end do
+
+dtdz6=new(dimsizes(T5(:,0,0)),double)
+do i=0,dimsizes(T5(:,0,0))-2
+dz=(Zcamif(i+1,0,0)-Zcamif(i,0,0))/1000
+dt=(T5(i+1,0,0)-T5(i,0,0))
+dtdz6(i)=dt/dz
+end do
+
+dtdz8=new(dimsizes(T7(:,0,0)),double)
+do i=0,dimsizes(T7(:,0,0))-2
+dz=(Zcamifr(i+1,0,0)-Zcamifr(i,0,0))/1000
+dt=(T7(i+1,0,0)-T7(i,0,0))
+dtdz8(i)=dt/dz
+end do
 
 
 
@@ -190,34 +273,33 @@ rmse2=decimalPlaces(sqrt(avg((dTdZ3(1:43)-dTdZ(1:43))^2)),3,True)
 ;************************************************
 ; plotting parameters
 ;************************************************
- wks   = gsn_open_wks ("png","dtdz_koror")                  ; send graphics to PNG file
+ wks   = gsn_open_wks ("pdf","dtdz_koror")                  ; send graphics to PNG file
 
  res                   = True                       ; plot mods desired
 
 
  res@xyLineColor     = "blue"
  res@trYReverse        = True                       ; reverse Y-axis
- res@tiMainString    =  "ANN mean dT/dz (K/km)"
+ res@tiMainString    =  ""
  res@tiMainFontHeightF=0.018
  res@xyLineThicknesses = 4.0
- res@tiXAxisString=""
- res@tiXAxisFontHeightF=0.015
+ res@tiXAxisFontHeightF=0.018
  res@trYMaxF=1000
  res@trYMinF=100
  res@trXMaxF=0
  res@trXMinF=-9
  res@tiYAxisString="Pressure (hPa)"
- res@tiYAxisFontHeightF=0.015
+ res@tiYAxisFontHeightF=0.018
  res@xyYStyle = "Log"
  res@tmYLMode = "Explicit"
  res@tmYLValues        =(/100,200,300,400,500,600,700,850,1000/)
  res@tmYLLabels=(/100,200,300,400,500,600,700,850,1000/)
- res@tiXAxisString="CAM4-IF: red, CAM4: Blue, CMIP5 AMIP mean: orange, OBS: black"
+ res@tiXAxisString="dT/dz (K/km)"
 
- res@tiXAxisStringFontHeightF=0.008
- res@gsnRightString  ="CAM4 RMSE: " + rmse + " K/km" + "~C~AMIP mean RMSE: " + rmse1 + " K/km" + "~C~CAM4-IF RMSE: " + rmse2 + " K/km"
- res@gsnLeftString  ="KOR"  + ": (" + lon + "E, " + lat + "N)"
+ ;res@gsnRightString  ="CAM4-ZM RMSE: " + rmse + " K/km" + "~C~AMIP mean RMSE: " + rmse1 + " K/km" + "~C~CAM4-IF-t RMSE: " + rmse2 + " K/km"
+ res@gsnLeftString  ="b) KOR"  + ": (" + lon + "E, " + lat + "N)"
  res@gsnLeftStringFontHeightF=0.018
+  res@gsnRightStringFontHeightF=0.008
  res@gsnDraw=False
  res@gsnFrame=False
  res@xyLineColor    = "black"
@@ -225,32 +307,58 @@ rmse2=decimalPlaces(sqrt(avg((dTdZ3(1:43)-dTdZ(1:43))^2)),3,True)
  plot               = gsn_csm_xy (wks,dTdZ(0:45),PmeanANN(0:45),res) 
  res@xyLineColor    = "orange"
  res@xyLineThicknesses = 4.0
- plot1              = gsn_csm_xy (wks,dTdZ1(0:45),PmeanANN(0:45),res)
+ plot1              = gsn_csm_xy (wks,dtdz1(0:15),T&plev(0:15)*0.01,res)
  res@xyLineColor    = "blue"
  res@xyLineThicknesses = 4.0
- plot2= gsn_csm_xy (wks,dTdZ2(0:45),PmeanANN(0:45),res)
+ plot2= gsn_csm_xy (wks,dtdz2(0:24),T1&lev(1:25),res)
  res@xyLineColor    = "red"
  res@xyLineThicknesses = 4.0
- plot3= gsn_csm_xy (wks,dTdZ3(0:45),PmeanANN(0:45),res)
- 
+ plot3= gsn_csm_xy (wks,dtdz3(0:24),T2&lev(1:25),res)
  
  overlay(plot,plot1)
  overlay(plot,plot2)
  overlay(plot,plot3)
  
+gres = True
+gres@YPosPercent = 86.    ; expressed as %, 0->100, sets position of top border of legend 
+                            ;  when gres@Position is set to its default setting of "Top" (Default = 95.)
+gres@XPosPercent = 57    ; expressed as %, 0->100, sets position of left border of legend(Default = 5.)
+gres@ItemSpacePercent = 10.  
+lineres = True
+lineres@lgLineColors = (/"orange","red","blue","black"/) ; line colors
+lineres@lgLineThicknesses = 2.5                        ; line thicknesses
+lineres@LineLengthPercent = 9.                         ; expressed as %, 0->100, length of line
+
+textres = True
+textres@lgLabels = (/"CMIP5/AMIP mean","CAM4-IF-t","CAM4 default","RAOBS"/)  ; legend labels (required)
+textres@lgLabelFontHeights = (/0.015,0.015,0.015,0.015,0.015/)   
+plot = simple_legend(wks,plot,gres,lineres,textres)
+
+txid = new(1,graphic)                  ; Nine text strings
+txres               = True     
+txres@txFontHeightF = 0.014
+txid(0) = gsn_add_text (wks,plot,"CAM4-ZM RMSE: " + sprintf("%5.3f",rmse) + " K/km" + "~C~CAM4-IF-t RMSE: " + rmse2  + " K/km" + "~C~CMIP5/AMIP RMSE: " + sprintf("%5.3f",rmse1) +  " K/km", -2.2, 300 ,txres)
 draw(plot)               
 frame(wks) 
  
  
-wks   = gsn_open_wks ("png","dtdz_tropmean")                  ; send graphics to PNG file
+delete(txid)
+
+rmse3=decimalPlaces(sqrt(avg((dTdZ4(1:43)-dTdZ7(1:43))^2)),3,True)
+rmse4=decimalPlaces(sqrt(avg((dTdZ5(1:41)-dTdZ7(1:41))^2)),3,True)
+rmse5=decimalPlaces(sqrt(avg((dTdZ6(1:43)-dTdZ7(1:43))^2)),3,True)
+rmse6=decimalPlaces(sqrt(avg((dTdZ8(1:43)-dTdZ7(1:43))^2)),3,True)
+
+
+wks   = gsn_open_wks ("pdf","dtdz_tropmean")                  ; send graphics to PNG file
 
 res1                   = True                       ; plot mods desired
 
 
  res1@xyLineColor     = "blue"
  res1@trYReverse        = True                       ; reverse Y-axis
- res1@tiMainString    = "10S-10N tropical mean dT/dz (K/km)"
- res1@tiMainFontHeightF=0.018
+ res1@gsnLeftString    = "c) 20S-20N mean lapse rate"
+ res1@tiMainFontHeightF=0.022
  res1@xyLineThicknesses = 4.0
  res1@tiXAxisString=""
  res1@tiXAxisFontHeightF=0.015
@@ -259,39 +367,57 @@ res1                   = True                       ; plot mods desired
  res1@trXMaxF=0
  res1@trXMinF=-9
  res1@tiYAxisString="Pressure (hPa)"
- res1@tiYAxisFontHeightF=0.018
  res1@xyYStyle = "Log"
  res1@tmYLMode = "Explicit"
  res1@tmYLValues        =(/100,200,300,400,500,600,700,850,1000/)
  res1@tmYLLabels=(/100,200,300,400,500,600,700,850,1000/)
- res1@tiXAxisString="CAM4-IF: red, CAM4: Blue, CMIP5 AMIP mean: orange, ERAI/MERRA: black"
-
- res1@tiXAxisStringFontHeightF=0.008
+ res1@tiXAxisString="dT/dz (K/km)"
+ res1@tiYAxisFontHeightF=0.018
+ res1@tiXAxisFontHeightF=0.018
  res1@gsnDraw=False
  res1@gsnFrame=False
- res1@xyLineColor    = "black"
- 
- ;plot               = gsn_csm_xy (wks,dTdZ(0:45),PmeanANN(0:45),res1) 
- res1@xyLineColor    = "orange"
- res1@xyLineThicknesses = 4.0
- plot1              = gsn_csm_xy (wks,dTdZ4(0:45),PmeanANN(0:45),res1)
- res1@xyLineColor    = "blue"
- plot2= gsn_csm_xy (wks,dTdZ5(0:45),PmeanANN(0:45),res1)
- res1@xyLineColor    = "red"
- plot3= gsn_csm_xy (wks,dTdZ6(0:45),PmeanANN(0:45),res1)
+ res1@gsnLeftStringFontHeightF=0.018
  res1@xyLineColor    = "black"
  res1@xyLineThicknesses = 8.0
- plot4= gsn_csm_xy (wks,dTdZ7,elevs,res1)
+ plot4= gsn_csm_xy (wks,dtdz7(0:22),T6&lev(0:22),res1)
+ res1@xyLineThicknesses = 4.0
+ res1@xyLineColor    = "orange"
+ plot1              = gsn_csm_xy (wks,dtdz4(0:15),T3&plev(0:15)*0.01,res1)
+ res1@xyLineColor    = "blue"
+ plot2= gsn_csm_xy (wks,dtdz5(0:24),T4&lev(1:25),res1)
+ res1@xyLineColor    = "red"
+ plot3= gsn_csm_xy (wks,dtdz6(0:24),T5&lev(1:25),res1)
+ res1@xyLineColor    = "green"
+ plot5= gsn_csm_xy (wks,dtdz8(0:24),T7&lev(1:25),res1)
+
  
  
- overlay(plot1,plot2)
- overlay(plot1,plot3)
  overlay(plot1,plot4)
- 
+ overlay(plot1,plot3)
+ overlay(plot1,plot2)
+ overlay(plot1,plot5)
+ gres = True
+gres@YPosPercent = 86.    ; expressed as %, 0->100, sets position of top border of legend 
+                            ;  when gres@Position is set to its default setting of "Top" (Default = 95.)
+gres@XPosPercent = 62    ; expressed as %, 0->100, sets position of left border of legend(Default = 5.)
+gres@ItemSpacePercent = 10.  
+delete(lineres)
+lineres = True
+lineres@lgLineColors = (/"orange","red","green","blue","black"/) ; line colors
+lineres@lgLineThicknesses = 2.5                        ; line thicknesses
+lineres@LineLengthPercent = 9.                         ; expressed as %, 0->100, length of line
+delete(textres)
+textres = True
+textres@lgLabels = (/"CMIP5/AMIP mean","CAM4-IF-t","CAM4-IF-r","CAM4 default","MERRA/ERAI"/)  ; legend labels (required)
+textres@lgLabelFontHeights = (/0.012,0.012,0.012,0.012/)   
+plot1 = simple_legend(wks,plot1,gres,lineres,textres)
+txid = new(1,graphic)                  ; Nine text strings
+txres               = True     
+txres@txFontHeightF = 0.014
+txid(0) = gsn_add_text (wks,plot1,"CAM4 default RMSE: " + rmse4 + " K/km" + "~C~CAM4-IF-r RMSE: " + sprintf("%5.3f",rmse6) + " K/km" + "~C~CAM4-IF-t RMSE: " + sprintf("%5.3f",rmse5) + " K/km" + "~C~CMIP5/AMIP RMSE: " + rmse3 +  " K/km", -2.2, 300 ,txres)
 draw(plot1)               
 frame(wks) 
-
-crop=systemfunc("mogrify -trim dtdz_koror.png")
-crop=systemfunc("mogrify -trim dtdz_tropmean.png")
+crop=systemfunc("pdfcrop dtdz_koror.pdf")
+crop=systemfunc("pdfcrop dtdz_tropmean.pdf")
 cleanup=systemfunc("rm tmp*.nc")
 end

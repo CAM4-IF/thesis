@@ -1,14 +1,16 @@
 load "$NCARG_ROOT/lib/ncarg/nclscripts/csm/contributed.ncl"
 begin
 
-fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc4")
-fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/*ANN*.nc1")
+fils=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/CAM*ANN*.nc4")
+fils1=systemfunc("ls /run/media/shawn/4a83cd00-0edb-412a-b523-7ef85625597a/research_data/CAM-IF/new_data/CAM/files/CAM*ANN*.nc1")
 datalog=new(dimsizes(fils),double) ; create list to store output
 plotfile="200hpachistar_ANN" ;;;PDF file name!
-wks = gsn_open_wks("pdf", plotfile) ;; open a workstation file!
+wks = gsn_open_wks("epsi", plotfile) ;; open a workstation file!
 nummods=dimsizes(fils1) ;;number of models! 
 plot=new(nummods+1, graphic)    ;;;Create a panel plot with panels = number of models!
 ;;;create a giant loop over all models;;;
+lets=(/"a)","b)","c)","d)"/)
+names=(/"CAM4 default","CAM4-IF-r","CAM4-IF-t"/)
 n=0
 do while(n.le.dimsizes(fils)-1)
   f=addfile(fils(n),"r") ; add file
@@ -52,7 +54,7 @@ do while(n.le.dimsizes(fils)-1)
   
   hyam1 = f1->hyam ; read from a file the mid-layer coef
   hybm1 = f1->hybm ; read from a file
- ; psfc1 = f1->PS(:,{-10:10},:)   ; surface pressure [Pa]
+ ; psfc1 = f1->PS(:,{-30:30},:)   ; surface pressure [Pa]
   P01   = 100000. ; since ps is in Pa or [ f->P0]
   pm1  = pres_hybrid_ccm(psfc1,P01,hyam1,hybm1)/1000.
   
@@ -107,8 +109,8 @@ chidiff&lat=u&lat
 chidiff!1="lon"
 chidiff&lon=u&lon
 
-chistarmin=min(chistar({-20:20},:))
-chistarmin1=min(chistar1({-20:20},:))
+chistarmin=min(chistar({-30:30},:))
+chistarmin1=min(chistar1({-30:30},:))
 response=100*((chistarmin1-chistarmin)/(chistarmin))
   
 te=new((/dimsizes(lev_p),dimsizes(u&lat),dimsizes(u&lon)/), "double")
@@ -153,114 +155,8 @@ te&lat=u&lat
 te!2="lon"
 te&lon=u&lon
 
-
-
-;;;Calculate meridional wind * moist entropy;;;
-;mev=V(0,:,:,:)*te
-;mev!0="lev"
-;mev&lev=U&lev
-;mev!1="lat"
-;mev&lat=U&lat
-;mev!2="lon"
-;mev&lon=U&lon
-
- 
-;  vp1=vinth2p(V(0,:,:,:),hyam,hybm,lev_p,psfc(0,:,:),2,1000.,1,False)
   
-;mzmpsi=zonal_mpsi(vp,mev&lat,lev_p*100,psfc(0,:,:))
-;mzmpsi!0="lev"
-;mzmpsi&lev=lev_p
-;mzmpsi!1="lat"
-;mzmpsi&lat=U&lat
-
-;zmpsi=zonal_mpsi(vp1,mev&lat,lev_p*100,psfc(0,:,:))
-;zmpsi!0="lev"
-;zmpsi&lev=lev_p
-;zmpsi!1="lat"
-;zmpsi&lat=U&lat
-
-;print(max(mzmpsi(:,{-20:20})))
-;print(max(zmpsi(:,{-20:20})))
-;GMSHC=(max(mzmpsi(:,{-20:20})))/(max(zmpsi(:,{-20:20})))
-;print(GMSHC)
-
-
-;;;;calculate moisture flux convergence;;;
-;;advection term (neglect in deep tropics);;;
-;advQ=advect_var(U(0,:,:,:),V(0,:,:,:),te,1,"advection of Q","1/m",0)
-;advQ!0="lev"
-;advQ!1="lat"
-;advQ&lat=U&lat
-;advQ!2="lon"
-;advQ&lon=U&lon
-;advQ_trop=advQ(:,{-10:10},:)
-;;divergence term;;
-;;first set up empty arrays for divergence scalar and vector components;;
-;dv=new((dimsizes(U)),float,1e+36)
-;ud=new((dimsizes(U)),float,1e+36)
-;vd=new((dimsizes(U)),float,1e+36)
-;uv2dvf(U,V,dv) ;;calculates divergence scalar
-;dv2uvf(dv,ud,vd) ;;calculates divergent wind components
-;dv!1="lev"
-;dv&lev=lev_p
-;dv!2="lat"
-;dv&lat=U&lat
-;dv!3="lon"
-;dv&lon=U&lon
-;mdiv=Q(0,:,{-10:10},:)*dv(0,:,{-10:10},:) ;;scale divergence by Q (just deep tropics only)
-;;;total Mdiv;;
-;mfc=mdiv
-;mfc!0="lev"
-;mfc&lev=lev_p
-;mfc!1="lat"
-;troplat=f->lat({-10:10})
-;mfc&lat=troplat
-;mfc!2="lon"
-;mfc&lon=U&lon
-;;;horizontal divergence of MSE (ignore in deep tropics);;;
-;msediv=te(:,{-10:10},:)*dv(0,:,{-10:10},:)
-;;;do vertical integral of numerator and denominator, then do spatial averaging;;;
-;;vertically integrate then average denominator (925-100 hPa);;;
-opt=(/0,90,1000/)
-;wvam = wgt_vert_avg_beta(pm(0,:,{-10:10},{:}),mfc(:,{-10:10},{:}),psfc(0,{-10:10},{:}),0,opt)/910
-;mfcmean=avg(wvam)
-;;;vertically integrate numerator (vertical advection of MSE);;;
-  wva = wgt_vert_avg_beta(lev_p,(dTdP*ww),psfc(0,:,:),0,opt)/910
-  wva!0="lat"
-  wva&lat=u&lat
-  wva!1="lon"
-  wva&lon=u&lon
-  mask1=f->LANDFRAC(0,:,:)
-  wvamask=mask(wva,mask1,0)
-  wvamask!0="lat"
-  wvamask&lat=u&lat
-  wvamask!1="lon"
-  wvamask&lon=u&lon
-  GMS1=avg(wva({-10:10},{:})) ;;numerator (MSE transport)
-;;;;Calculate mass flux in this region (use omega_500 as an estimate);;;;
-  opt1=(/0,150,850/)
-  mflux=wgt_vert_avg_beta(pm(0,:,:,:),w(0,:,:,:),psfc(0,:,:),0,opt1)/700
-  mflux!0="lat"
-  mflux&lat=u&lat
-  mflux!1="lon"
-  mflux&lon=u&lon
- ; mflux=w(0,18,:,:)
-  mfluxmask=mask(mflux,mask1,0)
-  mfluxmask!0="lat"
-  mfluxmask&lat=u&lat
-  mfluxmask!1="lon"
-  mfluxmask&lon=u&lon
-  mfluxavg=avg(mflux({-10:10},{:}))
-  print(mfluxavg)
-  
-  
-  GMS2=9.81*GMS1/mfluxavg
-  print(GMS1)
-  print(GMS2)
-  print(fils(n))
-  print(fils1(n))
-  
-  f2=addfile("MERRA_ANN_UV200_climo_remap.nc","r")
+  f2=addfile("../MERGED_UV_ANN.nc","r")
 
 U2=f2->U
 V2=f2->V
@@ -272,35 +168,31 @@ sf=new((/96,144/),float,uvmsg)
 uv2sfvpf(U2(0,{200},:,:),V2(0,{200},:,:),sf,vpot)
 
 chistar2=dim_rmvmean_n_Wrap(vpot,0)
-print(chistar2)
 chistar2!0="lat"
 chistar2&lat=U2&lat
 chistar2!1="lon"
 chistar2&lon=U2&lon
-chistarmin2=min(chistar2({-20:20},:))
+chistarmin2=min(chistar2({-30:30},:))
 
   
-  pcor=pattern_cor(chistar({-20:20},:),chistar2({-20:20},:),1.0,0)
-  rmse=(wgt_arearmse(chistar({-20:20},:),chistar2({-20:20},:),1.0,1.0,0))
+  pcor=pattern_cor(chistar({-30:30},:),chistar2({-30:30},:),1.0,0)
+  varrat=variance(chistar({-30:30},:))/variance(chistar2({-30:30},:))
+  print(varrat)
+  print(pcor)
+  rmse=(wgt_arearmse(chistar({-30:30},:),chistar2({-30:30},:),1.0,1.0,0))
   
   
    res                      = True        
    res@cnLevelSelectionMode = "ExplicitLevels"   
-   ;res@cnLevels = (/0,5,10,15,20,25,30,35,40/)*3e-4
-   res@cnLevels = (/-16,-14,-12,-10,-8,-6,-4,-2,0,2,4,6,8,10,12,14,16/)*1e6
-   ;res@cnLevels =(/-18,-16,-14,-12,-10,-8,-6,-4,-2,0,2,4,6,8,10,12,14,16,18/)*3e-5
-   res@cnFillColors = (/2,6,12,24,40,60,90,100,0,0,156,170,190,210,220,230,240,250/)
-   ;res@cnFillColors = (/0,166,176,186,196,206,216,226,236,246/)
+   res@cnLevels = (/-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8,9,10,11,12/)*1e6
+   res@cnFillColors = (/40,50,60,70,80,85,90,95,100,105,110,120,0,130,140,150,160,170,180,190,200,210,220,230,240/)
    res@cnLinesOn       = False               
    res@cnLineLabelsOn       = False                 
   res@cnFillOn             = True                
-  res@lbLabelBarOn = False
-  res@lbLabelAutoStride    = True                 
+  res@lbLabelBarOn = False                 
   res@gsnDraw = False
   res@gsnFrame = False
   res@cnInfoLabelOn = False                
-  res@cnFillOpacityF=0.7
-  res@cnLineThicknessF = 1.                 
   res@cnLineLabelsOn   = False                
   res@cnInfoLabelOn = False                 
   res@gsnSpreadColors     = False
@@ -314,29 +206,28 @@ chistarmin2=min(chistar2({-20:20},:))
   res@mpGridLatSpacingF = 15
   res@mpGridLonSpacingF = 45
   res@pmTickMarkDisplayMode  = "Always" 
-  res@gsnLeftString    = ""
-  res@lbTitleFontHeightF=.007   
-  res@gsnCenterString    = f@case
+  res@gsnCenterString    = names(n)
   res@gsnCenterStringFontHeightF=0.012
-  ;res@gsnLeftString  = "chi* min: " + chistarmin + "chi* response (%): " + response + "~C~GMS: " + GMS2
-  res@gsnLeftString  = "chi* min: " + chistarmin + "~C~20S-20N pattern correlation (MERRA): " + pcor
-  res@gsnRightString="20S-20N RMSE (MERRA): " + rmse
-  res@gsnRightStringFontHeightF= 0.006
-res@gsnLeftStringFontHeightF= 0.006
+  res@gsnLeftString  = lets(n) + "                   "  + "min: " + decimalPlaces(chistarmin/1e6,2,True) + "~F34~W~F~10~S~6~N~  m~S~2~N~ s~S~-1~N~"
+  res@gsnRightString="r~B~pat~N~: " + decimalPlaces(pcor,2,True) + "; RMSE: " + decimalPlaces(rmse/1e6,2,True) + "~F34~W~F~10~S~6~N~  m~S~2~N~ s~S~-1~N~"
+  
 res@tmXBLabelFontHeightF=0.006
+res@gsnRightStringFontHeightF= 0.01
+res@gsnLeftStringFontHeightF= 0.01
+res@mpGridLineThicknessF=0.5
   
     ;;;;;;;;;;;;;;;;;;;;;;SET THE CONTOUR PLOT RESOURCES!!!!;;;;;;;;;;;;;;;;;;;
  cres                      = True                 ; plot mods desired
  cres@tmYRMode = "Automatic"
  cres@cnLevelSelectionMode = "ExplicitLevels"
- cres@cnLevels = (/-3.6,-3.4,-3.2,-3.,-2.8,-2.6,-2.4,-2.2,-2.,-1.8,-1.6,-1.4,-1.2,-1.,-0.8,-0.6,-0.4,-0.2,0,0.2,0.4,0.6,0.8,1.,1.2,1.4,1.6,1.8,2,2.2,2.4,2.6,2.8,3,3.2,3.4,3.6/)*5e6
+ cres@cnLevels =(/-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1,1,2,3,4,5,6,7,8,9,10,11,12/)*1e6
  ;cres@cnLevels=(/-100,-50,-25,-10,0,10,25,50,100/)
  cres@cnLineLabelsOn       = True                 ; turn on line labels
  cres@cnFillOn             = False                 ; turn on color fill
  cres@gsnDraw = False
  cres@gsnFrame = False
  cres@cnInfoLabelOn = False                ; turn off contour info label
- cres@cnLineThicknessF =0.5
+ cres@cnLineThicknessF =1
  cres@gsnRightString    = ""
  cres@gsnRightStringFontHeightF    = 0.05
  cres@cnLevelSpacingF=200.0
@@ -346,8 +237,6 @@ res@tmXBLabelFontHeightF=0.006
  cres@cnLineLabelPlacementMode = "Constant"
  cres@gsnContourNegLineDashPattern =2
  cres@cnLineLabelInterval=1
- ;cres@gsnLeftString  = "10S-10N response pattern correlation: " + pcor + "~C~10S-10N tropical mean Q:" + qstarmean
- ;cres@gsnLeftString  = "10S-10N response pattern correlation: " + pcor
  cres@gsnLeftStringFontHeightF=0.025
  cres@gsnLeftString    = ""
  cres@tmXTOn="False"
@@ -356,8 +245,8 @@ res@tmXBLabelFontHeightF=0.006
 
  
  plot(n)  = gsn_csm_contour_map(wks, chistar, res) 
- ;plot1=gsn_csm_contour(wks,chistar,cres)
- ;overlay(plot(n),plot1)
+ plot1=gsn_csm_contour(wks,chistar2,cres)
+ overlay(plot(n),plot1)
   n=n+1
   delete(u)
  ; delete(dp)
@@ -365,8 +254,6 @@ res@tmXBLabelFontHeightF=0.006
   delete(lons)
   delete(te)
   delete(dTdP)
-  delete(wva)
-  delete(mflux)
   delete(chistar)
   delete(chistar1)
   delete(chidiff)
@@ -378,28 +265,29 @@ end do
 
 print(n)
 
-res@gsnLeftString  = "chi* min: " + chistarmin2
-res@gsnCenterString="MERRA 1979-2013"
-res@gsnRightString =""
  
-plot(n)=gsn_csm_contour_map(wks, chistar2, res) 
+;plot(n)=gsn_csm_contour_map(wks, chistar2, res) 
 
 
 resP                            = True
- resP@gsnPanelLabelBar=True
- resP@cnInfoLabelOn       = False
- resP@lbOrientation =   "horizontal"          ; 
- resP@lbLabelFontHeightF    = 0.004
- resP@txString = "ANN"
- resP@lbTitleString    = "m^2/s"
- resP@lbTitleFontHeightF=.006
- resP@lbTitlePosition ="Top"
- resP@lbLabelAutoStride= False
- resP@txFontHeightF    = 0.01
- resP@gsnMaximize=True
- resP@gsnPaperOrientation = "portrait"
- resP@lbLabelStride=1
- gsn_panel(wks,plot,(/4,2/),resP)  
- delete(wks) 
-crop=systemfunc("/usr/bin/pdfcrop " + plotfile)  ;;remove the excessive white space in the PDF! (generates a $filename$-crop.pdf file)
+resP@gsnPanelLabelBar=True
+resP@cnInfoLabelOn       = False
+resP@lbOrientation =   "horizontal"          ; 
+resP@lbLabelFontHeightF    = 0.006
+resP@txString = ""
+resP@lbTitleString    = "~F33~_~H-18~~V-20~c~F~~N~~S~*~N~~B~200~N~  m~S~2~N~ s~S~-1~N~"
+resP@pmLabelBarOrthogonalPosF=-0.02
+resP@gsnMaximize=True
+resP@gsnPaperOrientation = "landscape"
+resP@lbTitlePosition ="Bottom"
+resP@lbTitleFontHeightF=.015
+resP@txFontHeightF    = 0.03
+gsn_panel(wks,plot,(/4,1/),resP)  
+delete(wks) 
+string1="eps2eps " + plotfile +".epsi" + " " + plotfile +".eps"
+print(string1)
+system(string1) 
+system("epstopdf " + plotfile +".eps") 
+system("rm " + plotfile +".eps") 
+system("rm " + plotfile +".epsi")
 end
