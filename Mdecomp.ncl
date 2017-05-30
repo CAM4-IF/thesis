@@ -122,13 +122,13 @@ do while(n.le.dimsizes(fils)-1)
  res@tmXBLabels=(/-0.01,-0.008,-0.006,-0.004,-0.002,0,0.002/)
  res@tmXBLabelFontHeightF=0.015
  
- res@tiXAxisString="M~B~u~N~ (kg m~S~-2~N~ s~S~-1~N~)"
+ res@tiXAxisString="_~H-20~~V-28~M~B~u~N~ (kg m~S~-2~N~ s~S~-1~N~)"
  res@vpHeightF 	 = 0.7               ; change aspect ratio of plot
  res@vpWidthF 	         = 0.5
  res@gsnXRefLine = 0.0 
 
  res@tiXAxisStringFontHeightF=0.0015
- res@gsnCenterString  = " " + names(n)
+ res@gsnCenterString  = lets(n) + " " + names(n)
  res@gsnLeftString  =""
  res@gsnCenterStringFontHeightF=0.03
  res@gsnRightStringFontHeightF=0.025
@@ -180,9 +180,9 @@ plot(i) = simple_legend(wks,plot(i),gres,lineres,textres)
  delete(res@tmXBLabels)
  res@tmXBValues        =(/-0.002,-0.001,0,0.001,0.002,0.003,0.004,0.005/)
  res@tmXBLabels=(/-0.002,-0.001,0,0.001,0.002,0.003,0.004,0.005/)
- res@gsnCenterString  =" " + names(n)
+ res@gsnCenterString  =lets(n+2) + " " + names(n)
 ;res@tiXAxisString="M~B~d~N~ (kg m~S~-2~N~ s~S~-1~N~)"
-res@tiXAxisString="_~H-16~~V-21~u"
+res@tiXAxisString="_~H-20~~V-28~M~B~d~N~ (kg m~S~-2~N~ s~S~-1~N~)"
 res@xyLineColor    = "black"
  res@xyLineThicknesses = 1.0
  res@xyDashPattern  = 0

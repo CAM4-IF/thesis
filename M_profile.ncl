@@ -119,7 +119,7 @@ do while(n.le.dimsizes(fils)-1)
  ;res@tmXBLabels=(/-0.01,-0.008,-0.006,-0.004,-0.002,0,0.002/)
  res@tmXBLabelFontHeightF=0.015
  
- res@tiXAxisString="M~B~c~N~ (kg m~S~-2~N~ s~S~-1~N~)"
+ res@tiXAxisString="_~H-20~~V-30~M~B~c~N~ (kg m~S~-2~N~ s~S~-1~N~)"
  ;res@tiXAxisString="Updraft M~B~c~N~ (kg m~S~-2~N~ s~S~-1~N~)"
  res@vpHeightF 	 = 0.7               ; change aspect ratio of plot
  res@vpWidthF 	         = 0.5
@@ -175,7 +175,7 @@ resP                            = True
  resP@txFontHeightF    = 0.03
  resP@gsnMaximize=True
  resP@gsnPaperOrientation = "portrait"
- gsn_panel(wks,plot,(/2,2/),resP)  
+ gsn_panel(wks,plot,(/1,3/),resP)  
  delete(wks) 
  print(fils)
  print(fils1)

@@ -8,8 +8,8 @@ nummods=dimsizes(fils1) ;;number of models!
 plot=new(nummods*2, graphic)    ;;;Create a panel plot with panels = number of models!
 ;;;create a giant loop over all models;;;
 n=0
-;lets=(/"a)","b)","c)","d)","e)","f)"/)
-names=(/"CAM4-ZM","CAM4-ZM","CAM4-IF-r","CAM4-IF-r","CAM4-IF-t","CAM4-IF-t"/)
+lets=(/"a)","b)","c)","d)","e)","f)"/)
+names=(/"CAM4 default","CAM4 default","CAM4-IF-r","CAM4-IF-r","CAM4-IF-t","CAM4-IF-t"/)
 i=0
 do while(n.le.dimsizes(fils)-1)
    filen=tostring(fils(n))
@@ -110,10 +110,10 @@ do while(n.le.dimsizes(fils)-1)
    ;res@lbLabelAutoStride    = True                ; optimal labels
    res@lbTitleString    = "kg m~S~-2~N~ s~S~-1~N~"
    res@lbTitlePosition ="Bottom"
-   res@pmLabelBarOrthogonalPosF=1.22
+   res@pmLabelBarOrthogonalPosF=1.26
    res@lbTitleFontHeightF=.015
    res@lbBoxEndCapStyle="TriangleBothEnds"
-   res@lbAutoManage=True
+   res@lbAutoManage=False
    ;res@lbLabelStrings =  (/"-2.4e-3","-2e-3","-1.6e-3","-1.2e-3","-8e-4","-4e-4","4e-4","8e-4","1.2e-3","1.6e-3","2e-3","2.4e-3"/)
   else
   end if
@@ -154,7 +154,7 @@ res@vpHeightF 	 = 0.4               ; change aspect ratio of plot
  ;cres@gsnContourNegLineDashPattern =-1  
  cres@gsnLeftString =""
  cres@gsnContourZeroLineThicknessF = 2
- cres@gsnLeftString    =  " " + names(i)
+ cres@gsnLeftString    = lets(i) + " " + names(i)
  cres@trYMinF            = 75.   ; Limits for Y axis.  The limits
  cres@trYMaxF            = 1000.
  cres@cnLineLabelDensityF      = 3.0
@@ -162,7 +162,7 @@ res@vpHeightF 	 = 0.4               ; change aspect ratio of plot
  cres@cnLineLabelPlacementMode = "Constant"
  cres@cnLineLabelInterval=1
  cres@gsnRightString  = "response (%): " + decimalPlaces(response*100,2,True)
- cres@gsnCenterString  = "M~B~c~N~"
+ cres@gsnCenterString  = "_~H-20~~V-30~M~B~c~N~"
  cres@gsnLeftStringFontHeightF=0.03
  cres@gsnRightStringFontHeightF=0.03
  cres@gsnCenterStringFontHeightF=0.035
@@ -179,8 +179,8 @@ gsn_define_colormap(wks,"ncl_default")
  cres@gsnContourPosLineDashPattern =1 
  ;cres@gsnRightString  = "~F33~w~F~~S~~F34~-~F~~N~ response (%): " + decimalPlaces(omegresponse*100,2,True)
  cres@gsnRightString  = ""
- cres@gsnLeftString  =  " " + names(i+1)
- cres@gsnCenterString  = "~F33~w~F~"
+ cres@gsnLeftString  = lets(i+1) + " " + names(i+1)
+ cres@gsnCenterString  = "_~H-18~~V-22~~F33~w~F~"
  if(i.eq.2) then
   res@lbTitleString    = "Pa s~S~-1~N~"
  else
