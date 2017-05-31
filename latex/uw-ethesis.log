@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.5.16)  29 MAY 2017 15:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.5.16)  30 MAY 2017 21:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -765,13 +765,13 @@ File: ../figures/ANN_omega500.pdf Graphic file (type pdf)
 Package pdftex.def Info: ../figures/ANN_omega500.pdf used on input line 820.
 (pdftex.def)             Requested size: 368.57838pt x 416.28387pt.
  [42]
-<../figures/200hpachistar_ANN.pdf, id=1254, 448.67625pt x 605.26125pt>
-File: ../figures/200hpachistar_ANN.pdf Graphic file (type pdf)
+<../figures/200hpachistar_ANN-crop.pdf, id=1254, 449.68pt x 604.2575pt>
+File: ../figures/200hpachistar_ANN-crop.pdf Graphic file (type pdf)
 
-<use ../figures/200hpachistar_ANN.pdf>
-Package pdftex.def Info: ../figures/200hpachistar_ANN.pdf used on input line 82
-8.
-(pdftex.def)             Requested size: 304.0777pt x 410.21457pt.
+<use ../figures/200hpachistar_ANN-crop.pdf>
+Package pdftex.def Info: ../figures/200hpachistar_ANN-crop.pdf used on input li
+ne 828.
+(pdftex.def)             Requested size: 304.0777pt x 408.62149pt.
  [43 <../figures/ANN_omega500.pdf>]
 <../figures/ANN_M_omega-crop.pdf, id=1265, 432.61626pt x 638.385pt>
 File: ../figures/ANN_M_omega-crop.pdf Graphic file (type pdf)
@@ -780,8 +780,8 @@ File: ../figures/ANN_M_omega-crop.pdf Graphic file (type pdf)
 Package pdftex.def Info: ../figures/ANN_M_omega-crop.pdf used on input line 834
 .
 (pdftex.def)             Requested size: 312.2162pt x 460.72124pt.
- [44 <../figures/200hpachistar_ANN.pdf>]
-[45 <../figures/ANN_M_omega-crop.pdf>] [46]
+ [44 <../figures/200hpachistar_ANN-crop.pdf>] [45 <../figures/ANN_M_omega-crop.
+pdf>] [46]
 Overfull \hbox (2.80539pt too wide) in paragraph at lines 860--860
 []$\OML/cmm/m/it/12 ^^N[]=[][]$| 
  []
@@ -791,14 +791,14 @@ Overfull \hbox (4.5041pt too wide) in paragraph at lines 856--873
  [] 
  []
 
-<../figures/Rplots.pdf, id=1313, 505.89pt x 505.89pt>
+<../figures/Rplots.pdf, id=1310, 505.89pt x 505.89pt>
 File: ../figures/Rplots.pdf Graphic file (type pdf)
 
 <use ../figures/Rplots.pdf>
 Package pdftex.def Info: ../figures/Rplots.pdf used on input line 877.
 (pdftex.def)             Requested size: 368.58644pt x 368.57838pt.
  [47] [48]
-<../figures/ANN_pr_response.pdf, id=1324, 536.0025pt x 599.23875pt>
+<../figures/ANN_pr_response.pdf, id=1321, 536.0025pt x 599.23875pt>
 File: ../figures/ANN_pr_response.pdf Graphic file (type pdf)
 
 <use ../figures/ANN_pr_response.pdf>
@@ -815,53 +815,49 @@ Overfull \vbox (7.09624pt too high) has occurred while \output is active []
 
 
 [50 <../figures/ANN_pr_response.pdf>] [51] [52]
-<../figures/ANN_M_omega_response.pdf, id=1382, 433.62pt x 639.38875pt>
+<../figures/ANN_M_omega_response.pdf, id=1379, 432.61626pt x 638.385pt>
 File: ../figures/ANN_M_omega_response.pdf Graphic file (type pdf)
 
 <use ../figures/ANN_M_omega_response.pdf>
 Package pdftex.def Info: ../figures/ANN_M_omega_response.pdf used on input line
  900.
-(pdftex.def)             Requested size: 345.54092pt x 509.54092pt.
+(pdftex.def)             Requested size: 322.50345pt x 475.91397pt.
 
-Overfull \hbox (48.81969pt too wide) in paragraph at lines 900--901
+Overfull \hbox (15.19273pt too wide) in paragraph at lines 900--901
  [] 
  []
 
-<../figures/FMASS_ANN-crop.pdf, id=1385, 543.02875pt x 534.99875pt>
+<../figures/FMASS_ANN-crop.pdf, id=1382, 543.02875pt x 552.0625pt>
 File: ../figures/FMASS_ANN-crop.pdf Graphic file (type pdf)
 
 <use ../figures/FMASS_ANN-crop.pdf>
 Package pdftex.def Info: ../figures/FMASS_ANN-crop.pdf used on input line 906.
-(pdftex.def)             Requested size: 460.72124pt x 453.92657pt.
+(pdftex.def)             Requested size: 414.6463pt x 421.55986pt.
  [53 <../figures/ANN_M_omega_response.pdf>]
-Overfull \vbox (31.42656pt too high) has occurred while \output is active []
-
-
-[54 <../figures/FMASS_ANN-crop.pdf>]
-<../figures/M_profile-crop.pdf, id=1413, 541.02126pt x 233.87375pt>
+<../figures/M_profile-crop.pdf, id=1399, 541.02126pt x 235.88126pt>
 File: ../figures/M_profile-crop.pdf Graphic file (type pdf)
 
 <use ../figures/M_profile-crop.pdf>
 Package pdftex.def Info: ../figures/M_profile-crop.pdf used on input line 913.
-(pdftex.def)             Requested size: 460.72124pt x 199.1683pt.
-
-<../figures/M_profile_updown-crop.pdf, id=1416, 542.025pt x 701.62125pt>
+(pdftex.def)             Requested size: 460.72124pt x 200.87793pt.
+ [54 <../figures/FMASS_ANN-crop.pdf>]
+<../figures/M_profile_updown-crop.pdf, id=1411, 369.38pt x 480.79625pt>
 File: ../figures/M_profile_updown-crop.pdf Graphic file (type pdf)
 
 <use ../figures/M_profile_updown-crop.pdf>
 Package pdftex.def Info: ../figures/M_profile_updown-crop.pdf used on input lin
 e 920.
-(pdftex.def)             Requested size: 256.27357pt x 331.71985pt.
+(pdftex.def)             Requested size: 254.85556pt x 331.71985pt.
  [55 <../figures/M_profile-crop.pdf>] [56 <../figures/M_profile_updown-crop.pdf
 >]
-<../figures/pe_scat-crop.pdf, id=1439, 544.0325pt x 558.085pt>
+<../figures/pe_scat-crop.pdf, id=1434, 540.0175pt x 558.085pt>
 File: ../figures/pe_scat-crop.pdf Graphic file (type pdf)
 
 <use ../figures/pe_scat-crop.pdf>
 Package pdftex.def Info: ../figures/pe_scat-crop.pdf used on input line 936.
-(pdftex.def)             Requested size: 460.72124pt x 472.64581pt.
+(pdftex.def)             Requested size: 460.72124pt x 476.14577pt.
  [57]
-Overfull \vbox (21.1458pt too high) has occurred while \output is active []
+Overfull \vbox (27.84155pt too high) has occurred while \output is active []
 
 
 [58 <../figures/pe_scat-crop.pdf>]
@@ -878,8 +874,8 @@ vail-able.
 
 
 Overfull \hbox (5.08188pt too wide) in paragraph at lines 957--957
-[]$\OML/cmm/m/it/12 ^^N\OT1/cmr/m/n/12 ([])\OML/cmm/m/it/12 =\OT1/cmr/m/n/12 (\
-OML/cmm/m/it/12 ![]\OT1/cmr/m/n/12 )[]$| 
+[]$\OML/cmm/m/it/12 ^^N\OT1/cmr/m/n/12 ([])\OML/cmm/m/it/12 =\OT1/cmr/m/n/12 ([
+][])[]$| 
  []
 
 
@@ -888,18 +884,19 @@ Overfull \hbox (11.84369pt too wide) in paragraph at lines 955--977
  []
 
 [59] [60]
-Overfull \vbox (25.89238pt too high) has occurred while \output is active []
+Overfull \vbox (35.17355pt too high) has occurred while \output is active []
 
 
 [61]
-<../figures/200hpachistar_response_ANN.pdf, id=1480, 543.02875pt x 545.03625pt>
+<../figures/200hpachistar_response_ANN.pdf, id=1475, 543.02875pt x 550.055pt>
 File: ../figures/200hpachistar_response_ANN.pdf Graphic file (type pdf)
+
 <use ../figures/200hpachistar_response_ANN.pdf>
 Package pdftex.def Info: ../figures/200hpachistar_response_ANN.pdf used on inpu
 t line 984.
-(pdftex.def)             Requested size: 368.57838pt x 369.95442pt.
+(pdftex.def)             Requested size: 368.57838pt x 373.361pt.
 
-<../figures/T_profile_response-crop.pdf, id=1481, 542.025pt x 579.16376pt>
+<../figures/T_profile_response-crop.pdf, id=1476, 542.025pt x 579.16376pt>
 File: ../figures/T_profile_response-crop.pdf Graphic file (type pdf)
 
 <use ../figures/T_profile_response-crop.pdf>
@@ -911,7 +908,7 @@ Overfull \vbox (21.14629pt too high) has occurred while \output is active []
 
 
 [63 <../figures/T_profile_response-crop.pdf>]
-<../figures/Q_response_decomp-crop.pdf, id=1502, 542.025pt x 653.44125pt>
+<../figures/Q_response_decomp-crop.pdf, id=1492, 542.025pt x 653.44125pt>
 File: ../figures/Q_response_decomp-crop.pdf Graphic file (type pdf)
 
 <use ../figures/Q_response_decomp-crop.pdf>
@@ -919,7 +916,7 @@ Package pdftex.def Info: ../figures/Q_response_decomp-crop.pdf used on input li
 ne 996.
 (pdftex.def)             Requested size: 382.16075pt x 460.72124pt.
 
-<../figures/wp_profiles_response-crop.pdf, id=1503, 433.62pt x 721.69624pt>
+<../figures/wp_profiles_response-crop.pdf, id=1493, 433.62pt x 721.69624pt>
 File: ../figures/wp_profiles_response-crop.pdf Graphic file (type pdf)
 
 <use ../figures/wp_profiles_response-crop.pdf>
@@ -928,21 +925,21 @@ Package pdftex.def Info: ../figures/wp_profiles_response-crop.pdf used on input
 (pdftex.def)             Requested size: 276.8145pt x 460.72124pt.
  [64 <../figures/Q_response_decomp-crop.pdf>] [65 <../figures/wp_profiles_respo
 nse-crop.pdf>] [66]
-<../figures/mpq_scat-crop.pdf, id=1541, 543.02875pt x 225.84375pt>
+<../figures/mpq_scat-crop.pdf, id=1531, 543.02875pt x 225.84375pt>
 File: ../figures/mpq_scat-crop.pdf Graphic file (type pdf)
 
 <use ../figures/mpq_scat-crop.pdf>
 Package pdftex.def Info: ../figures/mpq_scat-crop.pdf used on input line 1025.
 (pdftex.def)             Requested size: 460.72124pt x 191.62003pt.
  [67 <../figures/mpq_scat-crop.pdf>]
-<../figures/test_RH-crop.pdf, id=1560, 542.025pt x 211.79124pt>
+<../figures/test_RH-crop.pdf, id=1550, 542.025pt x 211.79124pt>
 File: ../figures/test_RH-crop.pdf Graphic file (type pdf)
 
 <use ../figures/test_RH-crop.pdf>
 Package pdftex.def Info: ../figures/test_RH-crop.pdf used on input line 1036.
 (pdftex.def)             Requested size: 460.72124pt x 180.02986pt.
 
-<../figures/test-crop.pdf, id=1561, 543.02875pt x 235.88126pt>
+<../figures/test-crop.pdf, id=1551, 543.02875pt x 235.88126pt>
 File: ../figures/test-crop.pdf Graphic file (type pdf)
 
 <use ../figures/test-crop.pdf>
@@ -1041,12 +1038,12 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1112.
  ) 
 Here is how much of TeX's memory you used:
  8900 strings out of 493046
- 137439 string characters out of 6137253
- 388782 words of memory out of 5000000
+ 137464 string characters out of 6137253
+ 395620 words of memory out of 5000000
  11966 multiletter control sequences out of 15000+600000
  19405 words of font info for 73 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
- 44i,18n,43p,2289b,593s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 44i,18n,43p,4203b,593s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texl
@@ -1065,10 +1062,10 @@ exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive
 dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/ty
 pe1/public/amsfonts/cm/cmtt12.pfb>
-Output written on uw-ethesis.pdf (96 pages, 9394676 bytes).
+Output written on uw-ethesis.pdf (96 pages, 9164963 bytes).
 PDF statistics:
- 1799 PDF objects out of 2073 (max. 8388607)
- 1572 compressed objects within 16 object streams
+ 1789 PDF objects out of 2073 (max. 8388607)
+ 1569 compressed objects within 16 object streams
  307 named destinations out of 1000 (max. 500000)
  409 words of extra memory for PDF output out of 10000 (max. 10000000)
 
