@@ -61,33 +61,18 @@ do while(n.le.dimsizes(fils)-1)
    Q1=cond1+lw1+sw1+diff1
    Qdiff=Q1-Q
    
-  
-   opt=(/0,100,1000/)
-   wva = wgt_vert_avg_beta(levs, Q, PS/100, 0, opt)/900
-   Qtot=wva(0,0)
    
-   opt1=(/0,100,1000/)
-   wva3 = wgt_vert_avg_beta(pm1/100, Qdiff, PS/100, 0, opt)/900
-   print(wva3)
-   Qtot1=wva3(0,0)
-   vertmean(n)=(Qtot1/Qtot)*100
+   opt1=(/0,50,1000/)
   
    s=static_stability(pm,T,0,0)
    s1=static_stability(pm1,T1,0,0)
    sdiff=s1-s
-   opt=(/0,150,1000/)
-   wva3 = wgt_vert_avg_beta(levs, s, PS/100, 0, opt)/850
-   wva4 = wgt_vert_avg_beta(levs, sdiff, PS/100, 0, opt)/850
-   ;datalog2(n,:)=sdiff(:,0,0)
-   vertmean1(n)=(wva4/wva3)*100
+   opt=(/0,50,1000/)
    
    omegdiff=omeg1-omeg
    datalog2(n,:)=omegdiff(:,0,0)
-   opt=(/0,100,1000/)
-   print(omegdiff)
-   wva5 = wgt_vert_avg_beta(levs, omeg, PS/100, 0, opt)/900
-   wva6 = wgt_vert_avg_beta(levs, omegdiff, PS/100, 0, opt)/900
-   vertmean2(n)=(wva6/wva5)*100
+   wva6 = wgt_vert_avg_beta(levs, omegdiff, PS/100, 0, opt)/950
+   print(wva6)
    
    
 ;;;;;Term 1 (diabatic heating);;;;;;;
@@ -96,8 +81,8 @@ wva = wgt_vert_avg_beta(levs,-Qdiff/s, PS/100, 0, opt)/900
 print(wva)
 
 ;;;;;Term 2 (static_stability);;;;;;;
-datalog1(n,:)=(Qdiff/(s^2))*sdiff
-wva1 = wgt_vert_avg_beta(levs,(Qdiff/(s^2))*sdiff, PS/100, 0, opt)/900
+datalog1(n,:)=(Q/(s^2))*sdiff
+wva1 = wgt_vert_avg_beta(levs,(Q/(s^2))*sdiff, PS/100, 0, opt)/900
 print(wva1)
 
  res                   = True                       ; plot mods desired
