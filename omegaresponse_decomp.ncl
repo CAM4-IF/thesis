@@ -77,12 +77,12 @@ do while(n.le.dimsizes(fils)-1)
    
 ;;;;;Term 1 (diabatic heating);;;;;;;
 datalog(n,:)=-Qdiff/s
-wva = wgt_vert_avg_beta(levs,-Qdiff/s, PS/100, 0, opt)/900
+wva = wgt_vert_avg_beta(levs,-Qdiff/s, PS/100, 0, opt)/950
 print(wva)
 
 ;;;;;Term 2 (static_stability);;;;;;;
 datalog1(n,:)=(Q/(s^2))*sdiff
-wva1 = wgt_vert_avg_beta(levs,(Q/(s^2))*sdiff, PS/100, 0, opt)/900
+wva1 = wgt_vert_avg_beta(levs,(Q/(s^2))*sdiff, PS/100, 0, opt)/950
 print(wva1)
 
  res                   = True                       ; plot mods desired
@@ -171,7 +171,7 @@ plot3 = simple_legend(wks,plot3,gres,lineres,textres)
  
  
  res@gsnCenterString  ="_~H-45~~V-24~~N~~F33~d(w)~F~"
- res@gsnLeftString  ="a)"
+ ;res@gsnLeftString  ="a)"
  delete(res@trXMinF)
  delete(res@trXMaxF)
  res@trXMinF=-0.04
@@ -179,7 +179,7 @@ plot3 = simple_legend(wks,plot3,gres,lineres,textres)
  delete(res@tmXBValues)
  delete(res@tmXBLabels)
  delete(res@tiXAxisString)
- res@tiXAxisString="(Pa/s)"
+ res@tiXAxisString="(Pa s~S~-1~N~)"
  ;res@tmXBValues        =(/-8,-6,-4,-2,0,2,4,6,8/)*1e-6
  ;res@tmXBLabels=(/-8,-6,-4,-2,0,2,4,6,8/)*1e-6
  res@tmXBLabelFontHeightF=0.015

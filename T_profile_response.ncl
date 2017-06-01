@@ -157,8 +157,8 @@ res@xyLineColor    = "blue"
  overlay(plot(0),plot2)
  overlay(plot(0),plot3)
  gres = True
-gres@YPosPercent = 25. 
-gres@XPosPercent = 20 
+gres@YPosPercent = 15. 
+gres@XPosPercent = 70 
 gres@ItemSpacePercent = 5.  
 lineres = True
 lineres@lgLineColors = (/"black","red","blue"/) ; line colors

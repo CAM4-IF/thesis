@@ -67,8 +67,8 @@ do while(n.le.dimsizes(fils)-1)
   res@tmYRMode = "Automatic"
 
   res@cnLevelSelectionMode = "ExplicitLevels"       ; manually select levels
-  res@cnLevels = (/-30,-20,-15,-10,-8,-6,-4,-3,-2,-1,0,1,2,3,4,6,8,10,15,20,30/)
-  res@cnFillColors = (/2,6,12,18,24,40,60,90,106,116,128,130,142,148,156,168,180,208,218,230,250,255/)
+  res@cnLevels = (/-15,-10,-8,-6,-4,-3,-2,-1,0,1,2,3,4,6,8,10,15/)
+  res@cnFillColors = (/12,18,24,40,60,90,106,116,128,130,142,148,156,168,180,208,218,230,250,255/)
   res@cnLinesOn       = False                 ; turn on line labels
   res@cnLineLabelsOn       = False                 ; turn on line labels
   res@cnFillOn             = True                 ; turn on color fill
@@ -124,15 +124,16 @@ do while(n.le.dimsizes(fils)-1)
  cres@gsnContourNegLineDashPattern =1  
  cres@gsnLeftString =""
  cres@gsnContourZeroLineThicknessF = 2
- cres@gsnRightString    = names(n)
+ cres@gsnCenterString    =lets(n) + " " + names(n)
  cres@trYMinF            = 100.   ; Limits for Y axis.  The limits
  cres@trYMaxF            = 1000.
  cres@cnLineLabelDensityF      = 3.0
  cres@cnLineLabelPlacementMode = "Constant"
  cres@cnLineLabelInterval=1
- cres@gsnLeftString  =lets(n)
+ cres@gsnLeftString  =""
  cres@gsnLeftStringFontHeightF=0.022
  cres@gsnRightStringFontHeightF=0.022
+ cres@gsnCenterStringFontHeightF=0.03
  cres1=cres
  cres1@cnLineColor="red"
  cres1@gsnContourPosLineDashPattern=1
@@ -156,14 +157,15 @@ end do
  resP@lbOrientation =   "horizontal"          ; 
  resP@lbLabelFontHeightF    = 0.004
  resP@txString = ""
- resP@lbTitleString    = "~F33~D~F~RH (%)"
- resP@lbTitleFontHeightF=.007
+ resP@lbTitleString    = "_~H-35~~V-29~~F33~d~F~~F33~H~F~/~F33~H~F~~H-20~~V+29~~N~_" + "~H+10~~V-29~~N~(%)"
+ resP@lbTitleFontHeightF=.012
  resP@lbTitlePosition ="Bottom"
  resP@lbLabelAutoStride= True
  resP@txFontHeightF    = 0.0085
  resP@gsnMaximize=True
  resP@gsnPaperOrientation = "portrait"
  resP@lbLabelStride=1
+ resP@pmLabelBarOrthogonalPosF=-0.02
  gsn_panel(wks,plot,(/4,3/),resP)  
  delete(wks) 
 crop=systemfunc("/usr/bin/pdfcrop test_RH.pdf")  ;;remove the excessive white space in the PDF! (generates a $filename$-crop.pdf file)

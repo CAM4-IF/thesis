@@ -33,12 +33,12 @@ datalog4=new((/3,26/),"double")
 datalog5=new((/3,26/),"double")
 wks = gsn_open_wks("pdf", plotfile) ;; open a workstation file!
 nummods=dimsizes(fils1) ;;number of models! 
-plot=new(4, graphic)    ;;;Create a panel plot with panels = number of models!
+plot=new(3, graphic)    ;;;Create a panel plot with panels = number of models!
 ;;;create a giant loop over all models;;;
 n=0
 lets=(/"a)","b)","c)","d"/)
-names=(/"CAM4-ZM","CAM4-IF-r","CAM4-IF-t","CAM4-IF-tune"/)
-do while(n.le.3)
+names=(/"CAM4 default","CAM4-IF-r","CAM4-IF-t","CAM4-IF-tune"/)
+do while(n.le.2)
   print(n)
    if (n.eq.0) then
     filen="../evap/evapterms_ANN_CAM4.nc"
@@ -115,7 +115,7 @@ do while(n.le.3)
    V&lev@units="hPa"
    X=f->RLP_RVV(0,:,:,:)
    X&lev@units="hPa"
-   tot=T+U+V+X
+   tot=T+U+V
    tot!0="lev"
    tot&lev=T&lev
    tot&lev@units="hPa"
@@ -141,7 +141,7 @@ do while(n.le.3)
    V1&lev@units="hPa"
    X1=f1->RLP_RVV(0,:,:,:)
    X1&lev@units="hPa"
-   tot1=T1+U1+V1+X1
+   tot1=T1+U1+V1
    tot1!0="lev"
    tot1&lev=T&lev
    tot1&lev@units="hPa"
@@ -171,23 +171,23 @@ do while(n.le.3)
  res@trXMinF=min(tot1(:,0,0))
  ;res@trXMinF=-0.009
  ;res@trXMaxF=0.002
- res@trXMaxF=max(tot(:,0,0))+max(tot(:,0,0))*0.1
+ res@trXMaxF=max(tot1(:,0,0))+max(tot1(:,0,0))*0.1
  res@tiYAxisString="Pressure (hPa)"
  res@tiYAxisFontHeightF=0.02
  res@tmXBFormat="0*+^e"
- res@xyYStyle = "Log"
+ res@xyYStyle = "Linear"
  res@tmYLMode = "Explicit"
  res@tmYLValues        =(/100,200,300,400,500,600,700,850,1000/)
  res@tmYLLabels=(/100,200,300,400,500,600,700,850,1000/)
  res@tmXBLabelFontHeightF=0.015
  
- res@tiXAxisString="kg m~S~-2~N~ s~S~-1~N~"
+ res@tiXAxisString="_~H-18~~V-28~E (kg m~S~-2~N~ s~S~-1~N~)"
  res@vpHeightF 	 = 0.7               ; change aspect ratio of plot
  res@vpWidthF 	         = 0.5
  res@gsnXRefLine = 0.0 
 
  res@tiXAxisStringFontHeightF=0.0015
- res@gsnCenterString  =" " + names(n)
+ res@gsnCenterString  =lets(n) + " " + names(n)
  res@gsnLeftString  =""
  res@gsnCenterStringFontHeightF=0.03
  res@gsnRightStringFontHeightF=0.025
@@ -216,6 +216,7 @@ do while(n.le.3)
  res@xyLineColor    = "cyan"
  plot6              = gsn_csm_xy (wks,X(:,0,0),T1&lev,res)
  res@xyLineColor    = "red"
+ print(n)
  plot(n)              = gsn_csm_xy (wks,tot(:,0,0),T1&lev,res)
  res@xyLineThicknesses = 1.0
  res@xyLineColor    = "black"
@@ -230,15 +231,15 @@ do while(n.le.3)
    res@xyDashPattern  = 1
  plot11              = gsn_csm_xy (wks,tot1(:,0,0),T1&lev,res)
  
- overlay(plot(n),plot1)
+ ;overlay(plot(n),plot1)
  ;overlay(plot(n),plot3)
- overlay(plot(n),plot4)
- overlay(plot(n),plot5)
- overlay(plot(n),plot6)
- overlay(plot(n),plot7)
- overlay(plot(n),plot8)
- overlay(plot(n),plot9)
- overlay(plot(n),plot10)
+; overlay(plot(n),plot4)
+; overlay(plot(n),plot5)
+; overlay(plot(n),plot6)
+; overlay(plot(n),plot7)
+; overlay(plot(n),plot8)
+; overlay(plot(n),plot9)
+; overlay(plot(n),plot10)
  overlay(plot(n),plot11)
 ; overlay(plot(n),plot12)
  
@@ -255,7 +256,7 @@ lineres@LineLengthPercent = 9.                         ; expressed as %, 0->100,
 textres = True
 textres@lgLabels = (/"NET","UPRAINDOWN","ANRAINDOWN","ANSNOWSUBL","RLP_RVV"/)  ; legend labels (required)
 textres@lgLabelFontHeights = (/0.015,0.015,0.015,0.015,0.015/)   
-plot(n) = simple_legend(wks,plot(n),gres,lineres,textres)
+;plot(n) = simple_legend(wks,plot(n),gres,lineres,textres)
  end if
 n=n+1
 end do      
@@ -267,7 +268,7 @@ resP                            = True
  resP@txFontHeightF    = 0.03
  resP@gsnMaximize=True
  resP@gsnPaperOrientation = "portrait"
- gsn_panel(wks,plot,(/2,2/),resP)  
+ gsn_panel(wks,plot,(/1,3/),resP)  
  delete(wks) 
  print(fils)
  print(fils1)
