@@ -5,45 +5,45 @@ The style file: newbib.bst
 Database file #1: uw-ethesis.bib
 Warning--to sort, need author or key in AMS_virtual_2012
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
-You've used 89 entries,
+You've used 96 entries,
             3039 wiz_defined-function locations,
-            1186 strings with 25239 characters,
-and the built_in function-call counts, 75226 in all, are:
-= -- 6459
-> -- 3084
-< -- 207
-+ -- 1169
-- -- 1039
-* -- 5394
-:= -- 10456
-add.period$ -- 430
-call.type$ -- 89
-change.case$ -- 798
-chr.to.int$ -- 90
-cite$ -- 92
-duplicate$ -- 5613
-empty$ -- 5245
-format.name$ -- 1322
-if$ -- 15622
-int.to.chr$ -- 1
+            1235 strings with 27810 characters,
+and the built_in function-call counts, 83495 in all, are:
+= -- 7083
+> -- 3624
+< -- 223
++ -- 1375
+- -- 1231
+* -- 6074
+:= -- 11641
+add.period$ -- 469
+call.type$ -- 96
+change.case$ -- 897
+chr.to.int$ -- 97
+cite$ -- 99
+duplicate$ -- 6156
+empty$ -- 5718
+format.name$ -- 1535
+if$ -- 17271
+int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 1038
-newline$ -- 615
-num.names$ -- 352
-pop$ -- 1945
+missing$ -- 1158
+newline$ -- 668
+num.names$ -- 380
+pop$ -- 2162
 preamble$ -- 1
-purify$ -- 702
+purify$ -- 794
 quote$ -- 0
-skip$ -- 2749
+skip$ -- 3019
 stack$ -- 0
-substring$ -- 3984
-swap$ -- 3789
-text.length$ -- 161
+substring$ -- 4337
+swap$ -- 4200
+text.length$ -- 175
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 795
+type$ -- 858
 warning$ -- 1
-while$ -- 497
+while$ -- 537
 width$ -- 0
-write$ -- 1486
+write$ -- 1613
 (There was 1 warning)
