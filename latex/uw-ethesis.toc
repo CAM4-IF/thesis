@@ -13,29 +13,29 @@
 \contentsline {section}{\numberline {1.3}Objectives and research questions}{15}{section.1.3}
 \contentsline {chapter}{\numberline {2}Data and methods}{17}{chapter.2}
 \contentsline {section}{\numberline {2.1}The NCAR CAM4 model}{17}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Zhang-McFarlane deep convective scheme}{17}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.1}Zhang-McFarlane deep convective scheme}{18}{subsection.2.1.1}
 \contentsline {section}{\numberline {2.2}IF convective scheme}{20}{section.2.2}
 \contentsline {subsection}{\numberline {2.2.1}Updrafts}{21}{subsection.2.2.1}
 \contentsline {subsection}{\numberline {2.2.2}Downdrafts}{24}{subsection.2.2.2}
 \contentsline {subsection}{\numberline {2.2.3}Cloud scheme}{25}{subsection.2.2.3}
 \contentsline {subsection}{\numberline {2.2.4}Model tuning}{26}{subsection.2.2.4}
-\contentsline {section}{\numberline {2.3}Reference datasets}{27}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Observation-based products}{27}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}CMIP5 AMIP simulations}{29}{subsection.2.3.2}
-\contentsline {section}{\numberline {2.4}Experimental design}{30}{section.2.4}
-\contentsline {chapter}{\numberline {3}Influence of convective scheme: present climate}{32}{chapter.3}
-\contentsline {section}{\numberline {3.1}Tropical temperature profile}{33}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Hydrological cycle}{35}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}The tropical circulation}{39}{subsection.3.1.2}
-\contentsline {subsection}{\numberline {3.1.3}Summary}{42}{subsection.3.1.3}
-\contentsline {chapter}{\numberline {4}Influence of convective scheme: future climate}{44}{chapter.4}
-\contentsline {section}{\numberline {4.1}Hydrological cycle and the tropical circulation}{44}{section.4.1}
+\contentsline {section}{\numberline {2.3}Reference datasets}{26}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Observation-based products}{26}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}CMIP5 AMIP simulations}{28}{subsection.2.3.2}
+\contentsline {section}{\numberline {2.4}Experimental design}{29}{section.2.4}
+\contentsline {chapter}{\numberline {3}Influence of convective scheme: present climate}{31}{chapter.3}
+\contentsline {section}{\numberline {3.1}Tropical temperature profile}{32}{section.3.1}
+\contentsline {section}{\numberline {3.2}Hydrological cycle}{34}{section.3.2}
+\contentsline {section}{\numberline {3.3}The tropical circulation}{38}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Summary}{41}{subsection.3.3.1}
+\contentsline {chapter}{\numberline {4}Influence of convective scheme: future climate}{43}{chapter.4}
+\contentsline {section}{\numberline {4.1}Hydrological cycle and the tropical circulation}{43}{section.4.1}
 \contentsline {section}{\numberline {4.2}Physical explanation}{48}{section.4.2}
 \contentsline {subsection}{\numberline {4.2.1}Convective mass flux}{48}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Walker circulation}{56}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Precipitation efficiency mechanism}{62}{subsection.4.2.3}
-\contentsline {chapter}{\numberline {5}Discussion and conclusion}{67}{chapter.5}
-\contentsline {section}{\numberline {5.1}Discussion}{67}{section.5.1}
-\contentsline {section}{\numberline {5.2}Conclusions}{69}{section.5.2}
-\contentsline {section}{\numberline {5.3}Future work}{70}{section.5.3}
-\contentsline {chapter}{\textbf {References}}{72}{section*.37}
+\contentsline {subsection}{\numberline {4.2.2}Precipitation efficiency mechanism}{55}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Walker circulation}{60}{subsection.4.2.3}
+\contentsline {chapter}{\numberline {5}Discussion and conclusion}{66}{chapter.5}
+\contentsline {section}{\numberline {5.1}Discussion}{66}{section.5.1}
+\contentsline {section}{\numberline {5.2}Conclusions}{68}{section.5.2}
+\contentsline {section}{\numberline {5.3}Future work}{69}{section.5.3}
+\contentsline {chapter}{\textbf {References}}{71}{section*.37}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.5.16)  13 JUN 2017 16:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.5.16)  27 JUN 2017 20:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -492,16 +492,16 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout4 = `uw-ethesis.toc'.
 
  [7]
-(./uw-ethesis.lot)
+(./uw-ethesis.lot [8
+
+
+
+
+])
 \tf@lot=\write5
 \openout5 = `uw-ethesis.lot'.
 
- [8
-
-
-
-
-] [9] (./uw-ethesis.lof [10
+ [9] (./uw-ethesis.lof [10
 
 
 
@@ -519,7 +519,7 @@ Chapter 1.
 
 
 
-] [2] [3] <../figures/cumuli_photos.jpg, id=525, 702.625pt x 594.22pt>
+] [2] [3] <../figures/cumuli_photos.jpg, id=533, 702.625pt x 594.22pt>
 File: ../figures/cumuli_photos.jpg Graphic file (type jpg)
 
 <use ../figures/cumuli_photos.jpg>
@@ -536,7 +536,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 335--340
 
  []
 
-[8] [9] <../figures/wc-crop.pdf, id=636, 504.88625pt x 256.96pt>
+[8] [9] <../figures/wc-crop.pdf, id=645, 504.88625pt x 256.96pt>
 File: ../figures/wc-crop.pdf Graphic file (type pdf)
 
 <use ../figures/wc-crop.pdf>
@@ -555,220 +555,214 @@ Chapter 2.
 [17
 
 
-] [18] [19] [20]
-<../figures/amp-crop.pdf, id=910, 488.82625pt x 536.0025pt>
+] [18] [19] [20] [21]
+<../figures/amp-crop.pdf, id=926, 488.82625pt x 536.0025pt>
 File: ../figures/amp-crop.pdf Graphic file (type pdf)
 
 <use ../figures/amp-crop.pdf>
-Package pdftex.def Info: ../figures/amp-crop.pdf used on input line 569.
-(pdftex.def)             Requested size: 368.57838pt x 404.15189pt.
- [21] [22] [23 <../figures/amp-crop.pdf>] [24]
+Package pdftex.def Info: ../figures/amp-crop.pdf used on input line 571.
+(pdftex.def)             Requested size: 184.28568pt x 202.07185pt.
+ [22] [23 <../figures/amp-crop.pdf>] [24]
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <15> not available
-(Font)              size <14.4> substituted on input line 607.
+(Font)              size <14.4> substituted on input line 609.
 
-LaTeX Font Info:    Calculating math sizes for size <15> on input line 607.
+LaTeX Font Info:    Calculating math sizes for size <15> on input line 609.
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <10.49995> not available
-(Font)              size <10.95> substituted on input line 607.
+(Font)              size <10.95> substituted on input line 609.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 607.
+(Font)              size <7> substituted on input line 609.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <15> not available
-(Font)              size <14.4> substituted on input line 607.
+(Font)              size <14.4> substituted on input line 609.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <10.49995> not available
-(Font)              size <10.95> substituted on input line 607.
+(Font)              size <10.95> substituted on input line 609.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <7.5> not available
-(Font)              size <7> substituted on input line 607.
+(Font)              size <7> substituted on input line 609.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <15> not available
-(Font)              size <14.4> substituted on input line 607.
+(Font)              size <14.4> substituted on input line 609.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <10.49995> not available
-(Font)              size <10.95> substituted on input line 607.
+(Font)              size <10.95> substituted on input line 609.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 607.
+(Font)              size <7> substituted on input line 609.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <15> not available
-(Font)              size <14.4> substituted on input line 607.
+(Font)              size <14.4> substituted on input line 609.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <10.49995> not available
-(Font)              size <10.95> substituted on input line 607.
+(Font)              size <10.95> substituted on input line 609.
 
 
 LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <7.5> not available
-(Font)              size <7> substituted on input line 607.
+(Font)              size <7> substituted on input line 609.
 
-[25]
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¡ in font cmr12!
- [26] <../figures/stations.pdf, id=968, 209.78375pt x 723.70375pt>
+[25] [26] <../figures/stations.pdf, id=980, 209.78375pt x 723.70375pt>
 File: ../figures/stations.pdf Graphic file (type pdf)
 
 <use ../figures/stations.pdf>
-Package pdftex.def Info: ../figures/stations.pdf used on input line 643.
+Package pdftex.def Info: ../figures/stations.pdf used on input line 645.
 (pdftex.def)             Requested size: 138.21777pt x 476.81773pt.
 
-Overfull \hbox (16.0965pt too wide) in paragraph at lines 643--644
+Overfull \hbox (16.0965pt too wide) in paragraph at lines 645--646
  [] 
  []
 
-[27]
-Underfull \hbox (badness 10000) in paragraph at lines 657--657
+[27 <../figures/stations.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 659--659
 []\OT1/cmr/m/n/12 Time
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 658--658
+Underfull \hbox (badness 10000) in paragraph at lines 660--660
 []\OT1/cmr/m/n/12 Satellite and rain
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 659--659
+Underfull \hbox (badness 10000) in paragraph at lines 661--661
 []\OT1/cmr/m/n/12 Satellite and rain
  []
 
 
-Overfull \hbox (5.4808pt too wide) in paragraph at lines 661--661
+Overfull \hbox (5.4808pt too wide) in paragraph at lines 663--663
 [][]| 
  []
 
-[28 <../figures/stations.pdf>]
-Overfull \hbox (1.2584pt too wide) in paragraph at lines 676--676
+[28]
+Overfull \hbox (1.2584pt too wide) in paragraph at lines 678--678
 []\OT1/cmr/m/n/12 precipitation| 
  []
 
-[29] [30] [31]
+[29] [30]
 Chapter 3.
-[32
+[31
 
 
-] <../figures/T_figure-crop.pdf, id=1064, 473.77pt x 460.72125pt>
+] <../figures/T_figure-crop.pdf, id=1060, 473.77pt x 460.72125pt>
 File: ../figures/T_figure-crop.pdf Graphic file (type pdf)
 
 <use ../figures/T_figure-crop.pdf>
-Package pdftex.def Info: ../figures/T_figure-crop.pdf used on input line 726.
+Package pdftex.def Info: ../figures/T_figure-crop.pdf used on input line 724.
 (pdftex.def)             Requested size: 460.72124pt x 448.04497pt.
 
-Overfull \hbox (4.5041pt too wide) in paragraph at lines 733--749
+Overfull \hbox (4.5041pt too wide) in paragraph at lines 731--747
 [][]
  []
 
-[33]
+[32]
 Overfull \vbox (9.21552pt too high) has occurred while \output is active []
 
 
-[34 <../figures/T_figure-crop.pdf>]
-<../figures/ANN_pr.pdf, id=1115, 543.02875pt x 495.8525pt>
+[33 <../figures/T_figure-crop.pdf>]
+<../figures/ANN_pr.pdf, id=1109, 543.02875pt x 495.8525pt>
 File: ../figures/ANN_pr.pdf Graphic file (type pdf)
 
 <use ../figures/ANN_pr.pdf>
-Package pdftex.def Info: ../figures/ANN_pr.pdf used on input line 757.
+Package pdftex.def Info: ../figures/ANN_pr.pdf used on input line 755.
 (pdftex.def)             Requested size: 403.6496pt x 368.57838pt.
- [35] [36 <../figures/ANN_pr.pdf>] [37]
-Overfull \hbox (3.10034pt too wide) in paragraph at lines 819--819
+ [34] [35 <../figures/ANN_pr.pdf>] [36]
+Overfull \hbox (3.10034pt too wide) in paragraph at lines 817--817
 []\OT1/cmr/m/n/12 TRMM| 
  []
 
 
-Overfull \hbox (1.23586pt too wide) in paragraph at lines 819--819
+Overfull \hbox (1.23586pt too wide) in paragraph at lines 817--817
 []\OT1/cmr/m/n/12 ERAI| 
  []
 
 
-Overfull \hbox (2.18433pt too wide) in paragraph at lines 819--819
+Overfull \hbox (2.18433pt too wide) in paragraph at lines 817--817
 []\OT1/cmr/m/n/12 MERRA| 
  []
 
 
-Overfull \hbox (2.22623pt too wide) in paragraph at lines 829--829
+Overfull \hbox (2.22623pt too wide) in paragraph at lines 827--827
 [][]| 
  []
 
 
-Overfull \hbox (10.81319pt too wide) in paragraph at lines 815--837
+Overfull \hbox (10.81319pt too wide) in paragraph at lines 813--835
 [][]
  []
 
-[38] <../figures/ANN_omega500.pdf, id=1164, 543.02875pt x 613.29124pt>
+[37] <../figures/ANN_omega500.pdf, id=1157, 543.02875pt x 613.29124pt>
 File: ../figures/ANN_omega500.pdf Graphic file (type pdf)
 
 <use ../figures/ANN_omega500.pdf>
-Package pdftex.def Info: ../figures/ANN_omega500.pdf used on input line 852.
+Package pdftex.def Info: ../figures/ANN_omega500.pdf used on input line 848.
 (pdftex.def)             Requested size: 368.57838pt x 416.28387pt.
- [39]
-<../figures/200hpachistar_ANN-crop.pdf, id=1169, 449.68pt x 604.2575pt>
+ [38]
+<../figures/200hpachistar_ANN-crop.pdf, id=1162, 449.68pt x 604.2575pt>
 File: ../figures/200hpachistar_ANN-crop.pdf Graphic file (type pdf)
 
 <use ../figures/200hpachistar_ANN-crop.pdf>
 Package pdftex.def Info: ../figures/200hpachistar_ANN-crop.pdf used on input li
-ne 859.
+ne 855.
 (pdftex.def)             Requested size: 304.0777pt x 408.62149pt.
- [40 <../figures/ANN_omega500.pdf>]
-<../figures/ANN_M_omega-crop.pdf, id=1181, 432.61626pt x 638.385pt>
+ [39 <../figures/ANN_omega500.pdf>]
+[40 <../figures/200hpachistar_ANN-crop.pdf>]
+<../figures/ANN_M_omega-crop.pdf, id=1182, 432.61626pt x 638.385pt>
 File: ../figures/ANN_M_omega-crop.pdf Graphic file (type pdf)
 
 <use ../figures/ANN_M_omega-crop.pdf>
-Package pdftex.def Info: ../figures/ANN_M_omega-crop.pdf used on input line 868
+Package pdftex.def Info: ../figures/ANN_M_omega-crop.pdf used on input line 864
 .
 (pdftex.def)             Requested size: 312.2162pt x 460.72124pt.
- [41 <../figures/200hpachistar_ANN-crop.pdf>] [42 <../figures/ANN_M_omega-crop.
-pdf>] [43]
+ [41 <../figures/ANN_M_omega-crop.pdf>]
+[42]
 Chapter 4.
-[44
+[43
 
 
-]
-Overfull \hbox (2.80539pt too wide) in paragraph at lines 898--898
-[]$\OML/cmm/m/it/12 ^^N[]=[][]$| 
- []
-
-
-Overfull \hbox (4.5041pt too wide) in paragraph at lines 894--911
- [] 
- []
-
-<../figures/Rplots.pdf, id=1231, 505.89pt x 505.89pt>
-File: ../figures/Rplots.pdf Graphic file (type pdf)
-
-<use ../figures/Rplots.pdf>
-Package pdftex.def Info: ../figures/Rplots.pdf used on input line 915.
-(pdftex.def)             Requested size: 368.58644pt x 368.57838pt.
- [45]
-<../figures/ANN_pr_response.pdf, id=1239, 536.0025pt x 599.23875pt>
+] <../figures/ANN_pr_response.pdf, id=1211, 536.0025pt x 599.23875pt>
 File: ../figures/ANN_pr_response.pdf Graphic file (type pdf)
 
 <use ../figures/ANN_pr_response.pdf>
-Package pdftex.def Info: ../figures/ANN_pr_response.pdf used on input line 922.
+Package pdftex.def Info: ../figures/ANN_pr_response.pdf used on input line 888.
 
 (pdftex.def)             Requested size: 414.6463pt x 463.56403pt.
 
-Overfull \hbox (2.84279pt too wide) in paragraph at lines 922--923
+Overfull \hbox (2.84279pt too wide) in paragraph at lines 888--889
  [] 
  []
 
-[46 <../figures/Rplots.pdf>] [47 <../figures/ANN_pr_response.pdf>] [48]
-<../figures/FMASS_ANN-crop.pdf, id=1284, 543.02875pt x 552.0625pt>
+[44] [45 <../figures/ANN_pr_response.pdf>]
+Overfull \hbox (2.80539pt too wide) in paragraph at lines 903--903
+[]$\OML/cmm/m/it/12 ^^N[]=[][]$| 
+ []
+
+<../figures/Rplots.pdf, id=1239, 505.89pt x 505.89pt>
+File: ../figures/Rplots.pdf Graphic file (type pdf)
+
+<use ../figures/Rplots.pdf>
+Package pdftex.def Info: ../figures/Rplots.pdf used on input line 920.
+(pdftex.def)             Requested size: 368.58644pt x 368.57838pt.
+ [46] [47 <../figures/Rplots.pdf>] [48]
+<../figures/FMASS_ANN-crop.pdf, id=1280, 543.02875pt x 552.0625pt>
 File: ../figures/FMASS_ANN-crop.pdf Graphic file (type pdf)
 
 <use ../figures/FMASS_ANN-crop.pdf>
 Package pdftex.def Info: ../figures/FMASS_ANN-crop.pdf used on input line 937.
-(pdftex.def)             Requested size: 414.6463pt x 421.55986pt.
- [49]
-<../figures/ANN_M_omega_response.pdf, id=1291, 432.61626pt x 638.385pt>
+(pdftex.def)             Requested size: 345.54092pt x 351.3055pt.
+
+<../figures/ANN_M_omega_response.pdf, id=1283, 432.61626pt x 638.385pt>
 File: ../figures/ANN_M_omega_response.pdf Graphic file (type pdf)
 
 <use ../figures/ANN_M_omega_response.pdf>
@@ -780,98 +774,98 @@ Overfull \hbox (15.19273pt too wide) in paragraph at lines 944--945
  [] 
  []
 
-[50 <../figures/FMASS_ANN-crop.pdf>]
-<../figures/M_profile-crop.pdf, id=1306, 541.02126pt x 235.88126pt>
+[49 <../figures/FMASS_ANN-crop.pdf>]
+<../figures/M_profile-crop.pdf, id=1298, 541.02126pt x 235.88126pt>
 File: ../figures/M_profile-crop.pdf Graphic file (type pdf)
 
 <use ../figures/M_profile-crop.pdf>
 Package pdftex.def Info: ../figures/M_profile-crop.pdf used on input line 952.
 (pdftex.def)             Requested size: 460.72124pt x 200.87793pt.
- [51 <../figures/ANN_M_omega_response.pdf>]
-<../figures/M_profile_updown-crop.pdf, id=1321, 369.38pt x 480.79625pt>
+
+<../figures/M_profile_updown-crop.pdf, id=1301, 369.38pt x 480.79625pt>
 File: ../figures/M_profile_updown-crop.pdf Graphic file (type pdf)
 
 <use ../figures/M_profile_updown-crop.pdf>
 Package pdftex.def Info: ../figures/M_profile_updown-crop.pdf used on input lin
 e 960.
 (pdftex.def)             Requested size: 254.85556pt x 331.71985pt.
- [52 <../figures/M_profile-crop.pdf>] [53 <../figures/M_profile_updown-crop.pdf
->]
-<../figures/pe_scat-crop.pdf, id=1346, 540.0175pt x 558.085pt>
+ [50 <../figures/ANN_M_omega_response.pdf>] [51 <../figures/M_profile-crop.pdf>
+] [52 <../figures/M_profile_updown-crop.pdf>] <../figures/pe_scat-crop.pdf, id=
+1337, 540.0175pt x 558.085pt>
 File: ../figures/pe_scat-crop.pdf Graphic file (type pdf)
 
 <use ../figures/pe_scat-crop.pdf>
 Package pdftex.def Info: ../figures/pe_scat-crop.pdf used on input line 979.
 (pdftex.def)             Requested size: 460.72124pt x 476.14577pt.
- [54]
+ [53]
 Overfull \vbox (2.45108pt too high) has occurred while \output is active []
 
 
-[55 <../figures/pe_scat-crop.pdf>] [56]
-Overfull \hbox (5.08188pt too wide) in paragraph at lines 1000--1000
+[54 <../figures/pe_scat-crop.pdf>] [55]
+<../figures/mpq_scat-crop.pdf, id=1378, 543.02875pt x 225.84375pt>
+File: ../figures/mpq_scat-crop.pdf Graphic file (type pdf)
+
+<use ../figures/mpq_scat-crop.pdf>
+Package pdftex.def Info: ../figures/mpq_scat-crop.pdf used on input line 1003.
+(pdftex.def)             Requested size: 460.72124pt x 191.62003pt.
+ [56] [57 <../figures/mpq_scat-crop.pdf>]
+<../figures/test-crop.pdf, id=1406, 543.02875pt x 235.88126pt>
+File: ../figures/test-crop.pdf Graphic file (type pdf)
+
+<use ../figures/test-crop.pdf>
+Package pdftex.def Info: ../figures/test-crop.pdf used on input line 1018.
+(pdftex.def)             Requested size: 460.72124pt x 200.13649pt.
+
+<../figures/test_RH-crop.pdf, id=1407, 543.02875pt x 230.8625pt>
+File: ../figures/test_RH-crop.pdf Graphic file (type pdf)
+
+<use ../figures/test_RH-crop.pdf>
+Package pdftex.def Info: ../figures/test_RH-crop.pdf used on input line 1024.
+(pdftex.def)             Requested size: 460.72124pt x 195.87825pt.
+ [58] [59 <../figures/test-crop.pdf> <../figures/test_RH-crop.pdf
+
+pdfTeX warning: pdflatex (file ../figures/test_RH-crop.pdf): PDF inclusion: mul
+tiple pdfs with page group included in a single page
+>] [60]
+Overfull \hbox (5.08188pt too wide) in paragraph at lines 1047--1047
 []$\OML/cmm/m/it/12 ^^N\OT1/cmr/m/n/12 ([])\OML/cmm/m/it/12 =\OT1/cmr/m/n/12 ([
 ][])[]$| 
  []
 
 
-Overfull \hbox (11.84369pt too wide) in paragraph at lines 998--1020
+Overfull \hbox (11.84369pt too wide) in paragraph at lines 1045--1067
  [] 
  []
 
-[57]
-<../figures/200hpachistar_response_ANN.pdf, id=1384, 543.02875pt x 550.055pt>
+[61]
+<../figures/200hpachistar_response_ANN.pdf, id=1456, 543.02875pt x 550.055pt>
 File: ../figures/200hpachistar_response_ANN.pdf Graphic file (type pdf)
 
 <use ../figures/200hpachistar_response_ANN.pdf>
 Package pdftex.def Info: ../figures/200hpachistar_response_ANN.pdf used on inpu
-t line 1027.
+t line 1074.
 (pdftex.def)             Requested size: 340.93623pt x 345.36143pt.
- [58] [59 <../figures/200hpachistar_response_ANN.pdf>] [60]
-<../figures/omega_decomp-crop.pdf, id=1418, 317.185pt x 339.2675pt>
+ [62] [63 <../figures/200hpachistar_response_ANN.pdf>] [64]
+<../figures/omega_decomp-crop.pdf, id=1490, 317.185pt x 339.2675pt>
 File: ../figures/omega_decomp-crop.pdf Graphic file (type pdf)
 
 <use ../figures/omega_decomp-crop.pdf>
 Package pdftex.def Info: ../figures/omega_decomp-crop.pdf used on input line 10
-52.
-(pdftex.def)             Requested size: 368.57838pt x 394.27014pt.
- [61 <../figures/omega_decomp-crop.pdf>]
-[62] <../figures/mpq_scat-crop.pdf, id=1452, 543.02875pt x 225.84375pt>
-File: ../figures/mpq_scat-crop.pdf Graphic file (type pdf)
-
-<use ../figures/mpq_scat-crop.pdf>
-Package pdftex.def Info: ../figures/mpq_scat-crop.pdf used on input line 1075.
-(pdftex.def)             Requested size: 460.72124pt x 191.62003pt.
- [63 <../figures/mpq_scat-crop.pdf>]
-<../figures/test-crop.pdf, id=1479, 543.02875pt x 235.88126pt>
-File: ../figures/test-crop.pdf Graphic file (type pdf)
-
-<use ../figures/test-crop.pdf>
-Package pdftex.def Info: ../figures/test-crop.pdf used on input line 1090.
-(pdftex.def)             Requested size: 460.72124pt x 200.13649pt.
- [64]
-<../figures/test_RH-crop.pdf, id=1485, 543.02875pt x 230.8625pt>
-File: ../figures/test_RH-crop.pdf Graphic file (type pdf)
-
-<use ../figures/test_RH-crop.pdf>
-Package pdftex.def Info: ../figures/test_RH-crop.pdf used on input line 1096.
-(pdftex.def)             Requested size: 460.72124pt x 195.87825pt.
- [65 <../figures/test-crop.pdf> <../figures/test_RH-crop.pdf
-
-pdfTeX warning: pdflatex (file ../figures/test_RH-crop.pdf): PDF inclusion: mul
-tiple pdfs with page group included in a single page
->] [66]
+99.
+(pdftex.def)             Requested size: 230.36061pt x 246.40524pt.
+ [65 <../figures/omega_decomp-crop.pdf>]
 Chapter 5.
-[67
+[66
 
 
-] [68] [69] [70] [71] (./uw-ethesis.bbl
+] [67] [68] [69] [70] (./uw-ethesis.bbl
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no “ in font cmr12!
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
- [72
+ [71
 
 
 
@@ -895,7 +889,7 @@ Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¶ in font cmr12!
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no © in font cmr12!
- [73]
+ [72]
 Underfull \hbox (badness 1472) in paragraph at lines 155--161
 []\OT1/cmr/m/n/12 Evans, J.-L. & Laing, A.  \OT1/cmr/m/it/12 In-tro-duc-tion to
  Trop-i-cal Me-te-o-rol-ogy, Ch. 5: Mois-
@@ -907,7 +901,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 155--161
 l / textbook _ 2nd _ edition / navmenu .
  []
 
-[74]
+[73]
 Missing character: There is no Ã in font cmr12!
 Missing character: There is no ¡ in font cmr12!
 Missing character: There is no â in font cmr12!
@@ -916,18 +910,18 @@ Missing character: There is no œ in font cmr12!
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no  in font cmr12!
+ [74]
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no “ in font cmr12!
+Missing character: There is no â in font cmr12!
+Missing character: There is no € in font cmr12!
+Missing character: There is no “ in font cmr12!
  [75]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no “ in font cmr12!
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no “ in font cmr12!
  [76]
-Missing character: There is no â in font cmr12!
-Missing character: There is no € in font cmr12!
-Missing character: There is no “ in font cmr12!
- [77]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
@@ -952,20 +946,20 @@ i:$10 . 1007 /
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no ™ in font cmr12!
-[78] [79]
+[77] [78]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no “ in font cmr12!
- [80] [81])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1177.
- [82]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1177.
+ [79] [80])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1178.
+ [81]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1178.
  (./uw-ethesis.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1177.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1177.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1178.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1178.
 
 Package rerunfilecheck Info: File `uw-ethesis.out' has not changed.
-(rerunfilecheck)             Checksum: 82E0F19809F3D696FDDEE52E00A3DF84;2857.
+(rerunfilecheck)             Checksum: 2A89549E13A3F9720330EFCC28914D27;2843.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -974,12 +968,12 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1177.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1178.
  ) 
 Here is how much of TeX's memory you used:
- 8900 strings out of 493046
- 137326 string characters out of 6137253
- 375413 words of memory out of 5000000
+ 8899 strings out of 493046
+ 137299 string characters out of 6137253
+ 382177 words of memory out of 5000000
  11969 multiletter control sequences out of 15000+600000
  21351 words of font info for 81 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
@@ -1008,10 +1002,10 @@ cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on uw-ethesis.pdf (96 pages, 8723379 bytes).
+Output written on uw-ethesis.pdf (95 pages, 8722275 bytes).
 PDF statistics:
- 1810 PDF objects out of 2073 (max. 8388607)
- 1586 compressed objects within 16 object streams
- 304 named destinations out of 1000 (max. 500000)
+ 1815 PDF objects out of 2073 (max. 8388607)
+ 1592 compressed objects within 16 object streams
+ 303 named destinations out of 1000 (max. 500000)
  434 words of extra memory for PDF output out of 10000 (max. 10000000)
 
