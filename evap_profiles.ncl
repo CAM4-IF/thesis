@@ -170,8 +170,8 @@ do while(n.le.2)
  res@trYMinF=100
  res@trXMinF=min(tot1(:,0,0))
  ;res@trXMinF=-0.009
- ;res@trXMaxF=0.002
- res@trXMaxF=max(tot1(:,0,0))+max(tot1(:,0,0))*0.1
+ res@trXMaxF=5.3e-6
+ ;res@trXMaxF=max(tot1(:,0,0))+max(tot1(:,0,0))*0.1
  res@tiYAxisString="Pressure (hPa)"
  res@tiYAxisFontHeightF=0.02
  res@tmXBFormat="0*+^e"
@@ -181,7 +181,7 @@ do while(n.le.2)
  res@tmYLLabels=(/100,200,300,400,500,600,700,850,1000/)
  res@tmXBLabelFontHeightF=0.015
  
- res@tiXAxisString="_~H-18~~V-28~E (kg m~S~-2~N~ s~S~-1~N~)"
+ res@tiXAxisString="_~H-35~~V-28~<E> (kg m~S~-2~N~ s~S~-1~N~)"
  res@vpHeightF 	 = 0.7               ; change aspect ratio of plot
  res@vpWidthF 	         = 0.5
  res@gsnXRefLine = 0.0 

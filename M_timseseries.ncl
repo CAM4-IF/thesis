@@ -95,7 +95,7 @@ do while(n.le.dimsizes(fils)-1)
    res@trXMinF  =  -0.25
    res@trYMaxF= 0.25
    res@trYMinF=0
-   res@tiYAxisString = "~F33~d~F~~F34~a~F~M~B~int~N~~F34~q~F~/~F34~a~F~M~B~int~N~~F34~q~F~"
+   res@tiYAxisString = "~F33~d~F~~F34~a~F~M~B~u,int~N~~F34~q~F~/~F34~a~F~M~B~u,int~N~~F34~q~F~"
    res@tiXAxisString = "~F33~d~F~~F34~a~F~(M~B~u~N~)~S~`~N~~F34~q~F~/~F34~a~F~(M~B~u~N~)~S~`~N~~F34~q~F~"
    res@xyMarkerSizeF     = 0.002
    res@xyMarkLineMode    = "Markers"                ; choose to use markers
@@ -168,6 +168,7 @@ res@trYMinF=-0.2
 res@trXMaxF  =  0.1
 res@trXMinF  =  -0.25
 res@tiXAxisString = "~F33~d~F~~F34~a~F~M~S~`~N~~F34~q~F~/~F34~a~F~M~S~`~N~~F34~q~F~"
+res@tiYAxisString = "~F33~d~F~~F34~a~F~M~B~int~N~~F34~q~F~/~F34~a~F~M~B~int~N~~F34~q~F~"
 res@xyMarkerColor     = colors1(0)
 cor2=escorc(Mprime1(:,0),datalog(0,:))
 plot(1)=gsn_csm_xy(wks,Mprime1(:,0), datalog(0,:),res)     ; create plot
