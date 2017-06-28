@@ -1,4 +1,4 @@
-\begin{thebibliography}{89}
+\begin{thebibliography}{88}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\urlprefix}{URL }
@@ -301,8 +301,8 @@ Kristjánsson, J.~E., Edwards, J.~M., \& Mitchell, D.~L.
 \newblock ISSN 2156-2202.
 \newblock \doi{10.1029/2000JD900015}.
 
-\bibitem[{LHeureux et~al.(2013)LHeureux, Lee, \& Lyon}]{lheureux_recent_2013}
-LHeureux, M.~L., Lee, S., \& Lyon, B.
+\bibitem[{L'Heureux et~al.(2013)L'Heureux, Lee, \& Lyon}]{lheureux_recent_2013}
+L'Heureux, M.~L., Lee, S., \& Lyon, B.
 \newblock Recent multidecadal strengthening of the {Walker} circulation across
   the tropical {Pacific}.
 \newblock \emph{Nature Climate Change}, volume~3(6):pp. 571--576, 2013.
@@ -406,19 +406,6 @@ Market, P., Allen, S., Scofield, R., Kuligowski, R., \& Gruber, A.
 \newblock ISSN 0882-8156.
 \newblock \doi{10.1175/1520-0434(2003)018<1273:PEOWMM>2.0.CO;2}.
 
-\bibitem[{Mechoso et~al.(1995)Mechoso, Robertson, Barth, Davey, Delecluse,
-  Gent, Ineson, Kirtman, Latif, Treut, Nagai, Neelin, Philander, Polcher,
-  Schopf, Stockdale, Suarez, Terray, Thual, \& Tribbia}]{mechoso_seasonal_1995}
-Mechoso, C., Robertson, A., Barth, N., Davey, M., Delecluse, P., Gent, P.,
-  Ineson, S., Kirtman, B., Latif, M., Treut, H.~L., Nagai, T., Neelin, J.,
-  Philander, S., Polcher, J., Schopf, P., Stockdale, T., Suarez, M., Terray,
-  L., Thual, O., \& Tribbia, J.
-\newblock The {Seasonal} {Cycle} over the {Tropical} {Pacific} in {Coupled}
-  {Ocean}–{Atmosphere} {General} {Circulation} {Models}.
-\newblock \emph{Monthly Weather Review}, volume 123(9):pp. 2825--2838, 1995.
-\newblock ISSN 0027-0644.
-\newblock \doi{10.1175/1520-0493(1995)123<2825:TSCOTT>2.0.CO;2}.
-
 \bibitem[{Merlis(2012)}]{merlis_general_2012}
 Merlis, T.~M.
 \newblock \emph{The general circulation of the tropical atmosphere and climate
@@ -483,9 +470,9 @@ Neale, R.~B., Richter, J., Park, S., Lauritzen, P.~H., Vavrus, S.~J., Rasch,
 \newblock ISSN 0894-8755.
 \newblock \doi{10.1175/JCLI-D-12-00236.1}.
 
-\bibitem[{O’Gorman et~al.(2012)O’Gorman, Allan, Byrne, \&
+\bibitem[{O'Gorman et~al.(2012)O'Gorman, Allan, Byrne, \&
   Previdi}]{ogorman_energetic_2012}
-O’Gorman, P.~A., Allan, R.~P., Byrne, M.~P., \& Previdi, M.
+O'Gorman, P.~A., Allan, R.~P., Byrne, M.~P., \& Previdi, M.
 \newblock Energetic {Constraints} on {Precipitation} {Under} {Climate}
   {Change}.
 \newblock \emph{Surveys in Geophysics}, volume~33(3-4):pp. 585--608, 2012.

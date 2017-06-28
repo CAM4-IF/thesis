@@ -27,13 +27,13 @@
 \contentsline {section}{\numberline {3.1}Tropical temperature profile}{32}{section.3.1}
 \contentsline {section}{\numberline {3.2}Hydrological cycle}{34}{section.3.2}
 \contentsline {section}{\numberline {3.3}The tropical circulation}{38}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Summary}{41}{subsection.3.3.1}
+\contentsline {section}{\numberline {3.4}Summary}{41}{section.3.4}
 \contentsline {chapter}{\numberline {4}Influence of convective scheme: future climate}{43}{chapter.4}
 \contentsline {section}{\numberline {4.1}Hydrological cycle and the tropical circulation}{43}{section.4.1}
 \contentsline {section}{\numberline {4.2}Physical explanation}{48}{section.4.2}
 \contentsline {subsection}{\numberline {4.2.1}Convective mass flux}{48}{subsection.4.2.1}
 \contentsline {subsection}{\numberline {4.2.2}Precipitation efficiency mechanism}{55}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Walker circulation}{60}{subsection.4.2.3}
+\contentsline {section}{\numberline {4.3}Walker circulation}{60}{section.4.3}
 \contentsline {chapter}{\numberline {5}Discussion and conclusion}{66}{chapter.5}
 \contentsline {section}{\numberline {5.1}Discussion}{66}{section.5.1}
 \contentsline {section}{\numberline {5.2}Conclusions}{68}{section.5.2}
